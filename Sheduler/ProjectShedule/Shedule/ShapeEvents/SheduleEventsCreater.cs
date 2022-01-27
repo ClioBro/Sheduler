@@ -1,8 +1,7 @@
 ﻿using ProjectShedule.Calendar.Models;
 using ProjectShedule.GlobalSetting;
-using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
-using ProjectShedule.Shedule.PackNotesManager.FilterManager;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -17,9 +16,20 @@ namespace ProjectShedule.Shedule.ShapeEvents
         }
         public IEnumerable<ICircleEvent> Create()
         {
-            ISortInDate<SortInDate> sort = new SortInDate();
-            List<PackNoteModel> packNoteModels = sort.GetItems();
+            var manager = new PackNoteDBManager();
+            List<PackNoteModel> packNoteModels = manager.GetAll();
 
+            return GetEvents(packNoteModels);
+        }
+        public IEnumerable<ICircleEvent> Create(DateTime first, DateTime second)
+        {
+            var manager = new PackNoteDBManager();
+            var packNoteModels = manager.GetForDate(first, second);
+
+            return GetEvents(packNoteModels);
+        }
+        private IEnumerable<ICircleEvent> GetEvents(List<PackNoteModel> packNoteModels)
+        {
             List<ICircleEvent> anyEvents = new List<ICircleEvent>();
 
             Size size = _shapeEventSetting.GetSize();
@@ -42,5 +52,6 @@ namespace ProjectShedule.Shedule.ShapeEvents
             }
             return anyEvents;
         }
+
     }
 }

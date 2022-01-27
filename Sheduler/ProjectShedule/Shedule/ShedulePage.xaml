@@ -149,23 +149,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <!--<Grid BackgroundColor="{DynamicResource ViewBackgroundColor}" Grid.Row="1" VerticalOptions="EndAndExpand">
-                <Label Text="Тут что-то будет..." HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource SecondaryTextColor}"/>
-                <Button 
-                    Command="{Binding OpenEditorCommand}"
-                    TextTransform="None"
-                    TextColor="{DynamicResource ButtonPrimaryTextColor}"
-                    BorderColor="{DynamicResource ButtonBorderColor}"
-                    BorderWidth="2"
-                    Text="+"
-                    Margin="5"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    BackgroundColor="{DynamicResource ButtonPrimaryBackGroundColor}"
-                    CornerRadius="25"/>
-            </Grid>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

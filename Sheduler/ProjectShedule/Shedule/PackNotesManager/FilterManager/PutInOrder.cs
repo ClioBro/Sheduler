@@ -19,7 +19,7 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
     {
         public override List<PackNoteModel> GetSorted(List<PackNoteModel> packNoteModels)
         {
-            return packNoteModels.Where(P => P.Note.DateTimeStatus).OrderBy(P => P.Note.AppointmentDate.Date).ToList();
+            return packNoteModels.OrderBy(P => P.Note.AppointmentDate.Date).ToList();
         }
     }
     public class PutInOrderByAlphabet : PutInOrder
@@ -27,13 +27,6 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
         public override List<PackNoteModel> GetSorted(List<PackNoteModel> packNoteModels)
         {
             return packNoteModels.OrderBy(P => P.Note.Header).ToList();
-        }
-    }
-    public class PutInOrderByWithoutDate : PutInOrder
-    {
-        public override List<PackNoteModel> GetSorted(List<PackNoteModel> packNoteModels)
-        {
-            return packNoteModels.Where(P => !P.Note.DateTimeStatus).ToList();
         }
     }
 }

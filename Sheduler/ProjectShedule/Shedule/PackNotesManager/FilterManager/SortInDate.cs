@@ -1,11 +1,7 @@
-﻿using ProjectShedule.DataNote;
-using ProjectShedule.Shedule.Interfaces;
+﻿using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
-using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
@@ -36,7 +32,7 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
         public DateTime Date => DateTime.Today;
         public override List<PackNoteModel> GetItems() => GetForDate(Date);
     }
-    public class TomorrowSortInDate : SortInDate 
+    public class TomorrowSortInDate : SortInDate
     {
         public DateTime Date => DateTime.Today.AddDays(1);
         public override List<PackNoteModel> GetItems() => GetForDate(Date);

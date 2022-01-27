@@ -1,9 +1,6 @@
-﻿using ProjectShedule.DataNote;
-using ProjectShedule.Shedule.Models;
+﻿using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ProjectShedule.Shedule.PackNotesManager
 {
@@ -17,8 +14,9 @@ namespace ProjectShedule.Shedule.PackNotesManager
             PutInOrder = variant;
             SortInDate = day;
         }
-        public PutInOrder PutInOrder { get; set; }
         public SortInDate SortInDate { get; set; }
+        public PutInOrder PutInOrder { get; set; }
+        
         public List<PackNoteModel> GetFiltered()
         {
             Collection = new List<PackNoteModel>(DayFiltration());

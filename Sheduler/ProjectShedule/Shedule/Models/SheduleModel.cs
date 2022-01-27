@@ -13,7 +13,7 @@ namespace ProjectShedule.Shedule.Models
     public partial class SheduleModel
     {
         #region Fields
-        private ObservableCollection<PackNoteViewModel> _packNotes;
+        private readonly ObservableCollection<PackNoteViewModel> _packNotes;
         private List<PackNoteViewModel> _selectedPackNotes;
         private IEnumerable<ICircleEvent> _calendarCircleEvents;
 
@@ -34,7 +34,7 @@ namespace ProjectShedule.Shedule.Models
         public event Action SelectedDatesChanged;
         public event Action DisplayedDateChanged;
 
-        private PackNoteDBManager _packNoteDB;
+        private readonly PackNoteDBManager _packNoteDB;
         public SheduleModel()
         {
             _packNotes = new ObservableCollection<PackNoteViewModel>();
@@ -112,7 +112,9 @@ namespace ProjectShedule.Shedule.Models
         public void UpdateEvents()
         {
             SheduleEventsCreater evemtsManager = new SheduleEventsCreater();
-            _calendarCircleEvents = evemtsManager.Create();
+            DateTime minDate = new DateTime(DisplayedDateOnCarousel.Year, DisplayedDateOnCarousel.Month, DisplayedDateOnCarousel.Day).AddDays(-7);
+            DateTime maxDate = new DateTime(DisplayedDateOnCarousel.Year, DisplayedDateOnCarousel.Month, DisplayedDateOnCarousel.Day).AddDays(7);
+            _calendarCircleEvents = evemtsManager.Create(minDate, maxDate);
             CalendarCirleEventsUpdated?.Invoke();
         }
   
@@ -129,7 +131,6 @@ namespace ProjectShedule.Shedule.Models
         {
             _packNoteDB.SaveInDataBase(hasSmallTask.SmallTask);
         }
-
         private void SmallTaskDeletedEventHandler(IHasSmallTask hasSmallTask)
         {
             _packNoteDB.DeleteInDataBase(hasSmallTask.SmallTask);

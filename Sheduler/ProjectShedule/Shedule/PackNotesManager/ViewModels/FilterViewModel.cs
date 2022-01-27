@@ -13,6 +13,7 @@ namespace ProjectShedule.Shedule
         public FilterViewModel()
         {
             _filterPackNotes = new FilterPackNote();
+
             FilterTypes = new SortInDate[]
             {
                 new SelectedSortInDate { Text = "Выбранной дате"},
@@ -40,6 +41,7 @@ namespace ProjectShedule.Shedule
             get => GetProperty<PutInOrder>();
             set => SetProperty(value);
         }
+
         public SortInDate[] FilterTypes
         {
             get => GetProperty<SortInDate[]>();

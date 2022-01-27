@@ -46,17 +46,22 @@ namespace ProjectShedule.Shedule
         }
         public List<PackNoteModel> GetForDate(DateTime dateTime)
         {
-            IQueryble<Note> QuerebleNote = _repositoryNote as IQueryble<Note>;
             DateTime minDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
             DateTime maxDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day).AddDays(1);
+            return GetForDate(minDateTime, maxDateTime);
+        }
 
-            List<Note> selectedNoteByDate = QuerebleNote.Query(minDateTime, maxDateTime);
+        private List<PackNoteModel> GetForDate(DateTime first, DateTime second)
+        {
+            IQueryble<Note> QuerebleNote = _repositoryNote as IQueryble<Note>;
+            List<Note> selectedNoteByDate = QuerebleNote.Query(first, second);
             if (selectedNoteByDate.Count() <= 0)
                 return new List<PackNoteModel>();
 
             return new List<PackNoteModel>(selectedNoteByDate
                 .Select(T => new PackNoteModel(T, GetTasks(T.Id))));
         }
+
         public ObservableCollection<SmallTaskViewModel> GetTasks(int noteId)
         {
             IQueryble<SmallTask> QuerebleSmallTask = _repositoryTask as IQueryble<SmallTask>;
