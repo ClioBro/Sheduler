@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ProjectShedule.PopUpAlert.RadioButtonsSelecterPage"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:popUpAlert="clr-namespace:ProjectShedule.PopUpAlert" 
+    xmlns:models="clr-namespace:ProjectShedule.Shedule.Models"
+    x:DataType="popUpAlert:RadioButtonsSelecterPage"
+    BackgroundColor="Transparent"
+    CloseWhenBackgroundIsClicked="True">
+    <pages:PopupPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame 
+            BorderColor="Transparent"
+            BackgroundColor="Transparent"
+            HasShadow="False"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            Margin="1"
+            Padding="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="#C75D5D" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <StackLayout Margin="3" Orientation="Horizontal" >
+                    <Grid WidthRequest="18"
+                      HeightRequest="18"
+                      HorizontalOptions="Start"
+                      VerticalOptions="Center">
+                        <Ellipse 
+                        Stroke="#C75D5D"
+                        Fill="Transparent"
+                        WidthRequest="16"
+                        HeightRequest="16"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                        <Ellipse 
+                        x:Name="check"
+                        Fill="#C75D5D"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter />
+                </StackLayout>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                Value="{StaticResource RadioButtonTemplate}" />
+            <Setter Property ="TextColor"
+                Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Top"
+            PositionOut="Bottom"
+            DurationIn="200"
+            DurationOut="300"
+            EasingIn="SpringOut"
+            EasingOut="SpringIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <Frame 
+        HasShadow="False"
+        CornerRadius="10"
+        HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="160"  Margin="35,15" Padding="10"
+        BackgroundColor="{DynamicResource PopUpBackGroundColor}"
+        BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
+        <StackLayout>
+            <Label 
+                Text="{Binding MainText}" 
+                IsVisible="{Binding MainTextVisible}" 
+                Style="{DynamicResource MediumLabelStyle}"
+                HorizontalOptions="CenterAndExpand"/>
+            <StackLayout 
+                BindableLayout.ItemsSource="{Binding Repeads}"
+                Spacing="0"
+                RadioButtonGroup.GroupName="Reminders"
+                RadioButtonGroup.SelectedValue="{Binding SelectedRepead}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Repead">
+                        <RadioButton 
+                            BackgroundColor="Transparent"
+                            BorderColor="Red"
+                            CornerRadius="4"
+                            Content="{Binding Text}" 
+                            IsChecked="{Binding IsChecked}" 
+                            Value="{Binding This}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectShedule.GlobalSetting.SettingPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             xmlns:viewModels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
+             xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
+             x:DataType="viewModels:SettingViewModel"
+             Title="Setting">
+    <ContentPage.Content>
+        <StackLayout>
+            <views:SwitchSettingView BindingContext="{Binding ThemeSettintElement}"/>
+            <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSettintElement}"/>
+            <views:DoubleSettingView BindingContext="{Binding SheduleCircleSettingElement}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

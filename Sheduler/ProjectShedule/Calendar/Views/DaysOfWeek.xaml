@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectShedule.Calendar.Views.DaysOfWeek">
+    
+  <ContentView.Content>
+      <StackLayout
+          x:Name="daysControl"
+          Orientation="Horizontal"
+          CompressedLayout.IsHeadless="True">
+          <Label 
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+          <Label
+              HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

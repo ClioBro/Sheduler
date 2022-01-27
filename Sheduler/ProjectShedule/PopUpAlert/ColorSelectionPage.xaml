@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+                 xmlns:local="clr-namespace:ProjectShedule.PopUpAlert"
+                 x:DataType="local:ColorSelectionPage"
+                 x:Name="thiView"
+                 x:Class="ProjectShedule.PopUpAlert.ColorSelectionPage">
+    <pages:PopupPage.Resources>
+        <Style x:Key="ButtonCancelation" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonSecondaryBackGroundColor}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="BorderColor" Value="{DynamicResource ButtonBorderColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style x:Key="ButtonAgreement" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonSecondaryBackGroundColor}"/>
+
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="BorderColor" Value="{DynamicResource ButtonBorderColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+        
+        <Style x:Key="ColoredButton" TargetType="Button">
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            DurationIn="120"
+            DurationOut="120"
+            EasingIn="SinIn"
+            EasingOut="SinInOut"/>
+    </pages:PopupPage.Animation>
+    <Frame
+        HasShadow="False"
+        CornerRadius="10"
+        HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="270" Margin="15" Padding="10"
+        BackgroundColor="{DynamicResource PopUpBackGroundColor}"
+        BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Label Text="Выберите цвет"
+                   HorizontalOptions="CenterAndExpand"
+                   Grid.ColumnSpan="6"
+                   VerticalOptions="StartAndExpand"
+                   Style="{DynamicResource MediumLabelStyle}"/>
+
+            <Button BackgroundColor="Red" Grid.Column="0" Grid.Row="1" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="Orange" Grid.Column="1" Grid.Row="1"
+                    Style="{x:DynamicResource ColoredButton}"  Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="Yellow" Grid.Column="2" Grid.Row="1" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="Brown" Grid.Column="3" Grid.Row="1" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="Blue" Grid.Column="4" Grid.Row="1"
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+
+            <Button BackgroundColor="Purple" Grid.Column="0" Grid.Row="2"
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="MediumPurple" Grid.Column="1" Grid.Row="2"
+                    Style="{x:DynamicResource ColoredButton}"  Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="LightPink" Grid.Column="2" Grid.Row="2" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="Gray" Grid.Column="3" Grid.Row="2" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="LightBlue" Grid.Column="4" Grid.Row="2" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+            <Button BackgroundColor="White" Grid.Column="5" Grid.Row="2" 
+                    Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
+
+            <Button 
+                x:Name="buttonResponsibleLineColor"
+                Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                VerticalOptions="Start"
+                BorderWidth="1"
+                Text="LineColor" Style="{x:DynamicResource ButtonAgreement}"
+                Clicked="LineSelectButtonClicked"/>
+            <Button 
+                x:Name="buttonResponsibleBackGroundColor"
+                Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"
+                VerticalOptions="Start"
+                BorderWidth="1"
+                Text="BackGrounColord" Style="{x:DynamicResource ButtonAgreement}"
+                Clicked="BackGroundSelectButtonClicked"/>
+            <views:PackNoteView 
+                    Grid.Row="4" Grid.ColumnSpan="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                    x:Name="packNoteView" SwipeIsEnabled="False"/>
+        </Grid>
+    </Frame>
+</pages:PopupPage>

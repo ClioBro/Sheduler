@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels" 
+             x:DataType="viewModels:EditorPackNoteViewModel"
+             x:Class="ProjectShedule.Shedule.EditorPackNotePage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Resources>
+        <Style x:Key="ColoredButton" TargetType="Button">
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+        <Style x:Key="EditorStyle" TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid CompressedLayout.IsHeadless="True" RowSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.ColumnSpan="3" ColumnSpacing="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Entry 
+                    Text="{Binding Header}" 
+                    Placeholder="Name Task"
+                    Style="{DynamicResource EntryStyle}"/>
+                <ImageButton
+                    Grid.Column="1"
+                    Style="{DynamicResource SaveImageButton}"
+                    WidthRequest="40" HeightRequest="40"
+                    Command="{Binding SavePackNoteCommand}"/>
+                <ImageButton 
+                    Grid.Column="2"
+                    Style="{DynamicResource PluseImageButton}"
+                    WidthRequest="40" HeightRequest="40"
+                    Command="{Binding AddNewTaskCommand}"/>
+                <Button
+                    Grid.Column="3"
+                    BorderColor="{Binding LineColor}"
+                    BackgroundColor="{Binding BackGroundColor}"
+                    Style="{x:StaticResource ColoredButton}"
+                    Command="{Binding ShowColorSelectionPageCommand}"/>
+            </Grid>
+            <CollectionView
+                Grid.Row="1" Grid.ColumnSpan="3"
+                ItemsSource="{Binding SmallTasks}"
+                VerticalOptions="Start">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Editor 
+                        AutoSize="TextChanges"
+                        Text="{Binding DopText}" 
+                        Placeholder="Bla,Bla,Bla,Bla"  
+                        IsSpellCheckEnabled="True"
+                        Style="{DynamicResource EditorStyle}"/>
+                        <Label Text="Дополнительные задачи:" IsVisible="{Binding HasSmallTasks}" TextColor="{DynamicResource PrimaryTextColor}"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:TaskView/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <StackLayout CompressedLayout.IsHeadless="True">
+                        <Label Text="На определённую дату и время:" TextColor="{DynamicResource PrimaryTextColor}"/>
+                        <StackLayout
+                            Orientation="Horizontal" >
+                            <Switch 
+                                x:Name="DateTimeSwitch" 
+                                Style="{DynamicResource SwitchStyle}"
+                                IsToggled="{Binding DateTimeStatus}"/>
+                            <DatePicker x:Name="datePicker" Format="D" Date="{Binding Date}" 
+                                TextColor="{DynamicResource PrimaryTextColor}"
+                                IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}">
+                                <DatePicker.MinimumDate>10/26/2020</DatePicker.MinimumDate>
+                                <DatePicker.MaximumDate>10/26/2040</DatePicker.MaximumDate>
+                            </DatePicker>
+                            <TimePicker x:Name="timePicker" Time="{Binding Time}" TextColor="{DynamicResource PrimaryTextColor}"
+                                IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" 
+                            IsVisible="{Binding Source={x:Reference DateTimeSwitch}, Path= IsToggled}">
+                            <Switch 
+                                Style="{DynamicResource SwitchStyle}"
+                                IsToggled="{Binding Notify}"/>
+                            <Label Text="Уведомление" 
+                                   TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Center">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        TargetType="Label"
+                                        Binding="{Binding Notify}"
+                                        Value="True">
+                                        <Setter Property="Text"
+                                                Value="Уведомление: "/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label 
+                                Text="{Binding SelectedRepead.Text}" 
+                                TextColor="{DynamicResource PrimaryTextColor}" 
+                                TextDecorations="Underline"
+                                IsVisible="{Binding Notify}"
+                                FontSize="15"
+                                VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowAvailableRepeadTypesCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Button 
+                                Text="Показать пример" 
+                                Command="{Binding ShowPackNoteViewCommand}" Style="{DynamicResource ButtonAgreement}"/>
+                            <ImageButton 
+                                Source="setting_Icon.png"
+                                BackgroundColor="{DynamicResource TransparentColor}"
+                                WidthRequest="20" HeightRequest="20" />
+                        </StackLayout>
+                    </StackLayout>
+                </CollectionView.Footer>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

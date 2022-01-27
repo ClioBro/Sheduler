@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectShedule.Calendar.Views.Header"
+             xmlns:models="clr-namespace:ProjectShedule.Calendar.Models"
+             x:DataType="local:CarouselMonthView"
+             x:Class="ProjectShedule.Calendar.Views.Header.CarouselMonthView"
+             x:Name="carouselMonthView">
+    
+  <ContentView.Content>
+        <CarouselView ItemsSource="{Binding Months, Source={x:Reference carouselMonthView}}"
+                          x:Name="carouselMonth" Loop="True"
+                          PeekAreaInsets="130"
+                          IsScrollAnimated="False"
+                          CurrentItem="{Binding CurrentMonth, Source={x:Reference carouselMonthView}}"
+                          CurrentItemChanged="CarouselMonth_CurrentItemChanged"
+                          HorizontalOptions="Center">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" SnapPointsAlignment="Center" SnapPointsType="Mandatory"/>
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate
+                        x:DataType="models:MonthModel">
+                    <StackLayout  CompressedLayout.IsHeadless="True">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="PreviousItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.30" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CurrentItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value="1.1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="NextItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.30" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="DefaultItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.30" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Label Text="{Binding Name}" TextColor="{DynamicResource PrimaryTextColor}" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </ContentView.Content>
+</ContentView>

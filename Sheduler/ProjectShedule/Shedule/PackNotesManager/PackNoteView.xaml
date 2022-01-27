@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             x:DataType="viewModels:PackNoteViewModel"
+             x:Class="ProjectShedule.Shedule.Views.PackNoteView"
+             x:Name="thisView">
+    <ContentView.Content>
+        <yummy:PancakeView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
+                           Grid.Column="1" CompressedLayout.IsHeadless="True">
+            <yummy:PancakeView.Border>
+                <yummy:Border Color="Silver" Thickness="1" />
+            </yummy:PancakeView.Border>
+            <xct:Expander AnimationLength="100">
+                <xct:Expander.Header>
+                    <SwipeView HeightRequest="80" IsEnabled="{Binding SwipeIsEnabled, Source = {x:Reference thisView}}">
+                        <SwipeView.RightItems>
+                            <SwipeItems CompressedLayout.IsHeadless="True">
+                                <SwipeItem 
+                                    Text="Удалить" 
+                                    IconImageSource="trash_icon.png"
+                                    BackgroundColor="{DynamicResource SwipeItemDeleteBackGroundColor}"
+                                    Command="{Binding DeleteMeCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                <SwipeItem 
+                                    Text="Редакор"  
+                                    IconImageSource="edit_Icon.png"
+                                    BackgroundColor="{DynamicResource SwipeItemEditBackGroundColor}"
+                                    Command="{Binding EditMeCommand}"
+                                    CommandParameter="{Binding .}"
+                                    >
+                                </SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid BackgroundColor="{Binding BackGroundColor}" RowSpacing="1" ColumnSpacing="1">
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <BoxView 
+                                Color="{Binding LineColor}"
+                                Grid.Column="0" Grid.RowSpan="3" 
+                                WidthRequest="4"/>
+                            <Label 
+                                Text="{Binding Header}"
+                                IsVisible="{Binding HeaderIsVisible}"
+                                LineBreakMode="TailTruncation"
+                                TextColor="Black"
+                                FontSize="23"
+                                Grid.Column="1"
+                                MaxLines="1"/>
+                            <Label 
+                                Text="{Binding DopText}"
+                                IsVisible="{Binding DopTextIsVisible}"
+                                VerticalOptions="Start"
+                                LineHeight="0.8"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <Grid Grid.Column="2" HorizontalOptions="End" IsVisible="{Binding DateTimeisVisible}" 
+                                  RowSpacing="0" ColumnSpacing="0"
+                                  WidthRequest="80">
+                                <Label 
+                                    Text="{Binding AppointmentDate, StringFormat='{0:d MMM yy}'}"
+                                    HorizontalOptions="Start"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"/>
+                                <Label 
+                                    Text="{Binding AppointmentDate, StringFormat='{}{0:H:mm}'}" 
+                                    HorizontalOptions="Start"
+                                    Grid.Row="1"/>
+                                <Image
+                                    Source="repead_icon.png"
+                                    IsVisible="{Binding HasRepead}"
+                                    Margin="1.5"
+                                    Grid.Row="1"
+                                    Grid.Column="1"/>
+                            </Grid>
+                            <Image 
+                                Source="arrowDown.png" 
+                                Aspect="AspectFit" 
+                                HeightRequest="17" WidthRequest="17" 
+                                Margin="1"
+                                Grid.Column="3"
+                                HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" 
+                                IsVisible="{Binding HasSmallTasks}">
+                                <Image.Triggers>
+                                    <DataTrigger 
+                                        TargetType="Image"
+                                        Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                        Value="True">
+                                        <Setter 
+                                            Property="Source" 
+                                            Value="arrowUp.png"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <Label 
+                                Text="{Binding TasksCompletedInformation}"  
+                                VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" 
+                                Grid.Column="3"
+                                TextColor="Black" FontAttributes="Italic"
+                                IsVisible="{Binding HasSmallTasks}"/>
+                            <ImageButton 
+                                Aspect="AspectFit" 
+                                HeightRequest="30" WidthRequest="30" 
+                                Grid.Column="3" Grid.Row="1" 
+                                BackgroundColor="{DynamicResource TransparentColor}"
+                                HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" 
+                                Source="read_icon.png"/>
+                            <Label 
+                                Grid.Row="2" Grid.Column="1"
+                                HorizontalOptions="Start"
+                                VerticalOptions="End"
+                                FontSize="10" Text="{Binding CreatedDateTime, StringFormat='{0:d MMM yy. H:mm}'}"/>
+                        </Grid>
+                    </SwipeView>
+                </xct:Expander.Header>
+                <xct:Expander.ContentTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            BindableLayout.ItemsSource="{Binding SmallTasks}"
+                            Spacing="0" >
+                            <BindableLayout.ItemTemplate >
+                                <DataTemplate>
+                                    <views:TaskView/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </DataTemplate>
+                </xct:Expander.ContentTemplate>
+            </xct:Expander>
+        </yummy:PancakeView>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectShedule.Games.TicTacToePage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="TicTacNameText" Text="Крестики нолики" HorizontalOptions="CenterAndExpand" 
+                  TextColor="Black" FontSize="40"/>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Label x:Name="YouTextStat" FontSize="35" TextColor="Black" Text="sd"/>
+                <Label x:Name="BotTextStat" FontSize="35" TextColor="Red" Text="sd"  />
+            </StackLayout>
+            <Label HorizontalOptions="Center" VerticalOptions="End" x:Name="BotStepInfo" Grid.Column="0" Grid.Row="1"  FontSize="30" Text=""/>
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button x:Name="LeftUp" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="0" Grid.Row="0" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="MidUp" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="1" Grid.Row="0" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="RightUp" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="2" Grid.Row="0" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="LeftMid" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="0" Grid.Row="1" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="MidMid" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="1" Grid.Row="1" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="RightMid" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="2" Grid.Row="1" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="LeftDown" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="0" Grid.Row="2" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+                <Button x:Name="MidDown" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="1" Grid.Row="2" Clicked="Press_TicTak_Button" IsEnabled="True" />
+                <Button x:Name="RightDown" Style="{DynamicResource ButtonTicTacToe}" Text="" Grid.Column="2" Grid.Row="2" Clicked="Press_TicTak_Button" IsEnabled="True"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ProjectShedule.Calendar.Views"
+             x:Class="ProjectShedule.Calendar.Views.MonthDays"
+             x:Name="monthDays"
+             x:DataType="views:MonthDays">
+    <ContentView.Content>
+      <Grid
+          x:Name="daysControl"
+          ColumnSpacing="0"
+          RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <views:DaysOfWeek
+                Grid.Row="0" Grid.ColumnSpan="7"
+                Culture="{Binding Culture}"
+                DaysTitleMaximumLength="{Binding DaysTitleMaximumLength}"/>
+
+            <views:DayView Grid.Row="1" Grid.Column="0" />
+            <views:DayView Grid.Row="1" Grid.Column="1" />
+            <views:DayView Grid.Row="1" Grid.Column="2" />
+            <views:DayView Grid.Row="1" Grid.Column="3" />
+            <views:DayView Grid.Row="1" Grid.Column="4" />
+            <views:DayView Grid.Row="1" Grid.Column="5" />
+            <views:DayView Grid.Row="1" Grid.Column="6" />
+
+            <views:DayView Grid.Row="2" Grid.Column="0" />
+            <views:DayView Grid.Row="2" Grid.Column="1" />
+            <views:DayView Grid.Row="2" Grid.Column="2" />
+            <views:DayView Grid.Row="2" Grid.Column="3" />
+            <views:DayView Grid.Row="2" Grid.Column="4" />
+            <views:DayView Grid.Row="2" Grid.Column="5" />
+            <views:DayView Grid.Row="2" Grid.Column="6" />
+
+            <views:DayView Grid.Row="3" Grid.Column="0" />
+            <views:DayView Grid.Row="3" Grid.Column="1" />
+            <views:DayView Grid.Row="3" Grid.Column="2" />
+            <views:DayView Grid.Row="3" Grid.Column="3" />
+            <views:DayView Grid.Row="3" Grid.Column="4" />
+            <views:DayView Grid.Row="3" Grid.Column="5" />
+            <views:DayView Grid.Row="3" Grid.Column="6" />
+
+            <views:DayView Grid.Row="4" Grid.Column="0" />
+            <views:DayView Grid.Row="4" Grid.Column="1" />
+            <views:DayView Grid.Row="4" Grid.Column="2" />
+            <views:DayView Grid.Row="4" Grid.Column="3" />
+            <views:DayView Grid.Row="4" Grid.Column="4" />
+            <views:DayView Grid.Row="4" Grid.Column="5" />
+            <views:DayView Grid.Row="4" Grid.Column="6" />
+
+            <views:DayView Grid.Row="5" Grid.Column="0" />
+            <views:DayView Grid.Row="5" Grid.Column="1" />
+            <views:DayView Grid.Row="5" Grid.Column="2" />
+            <views:DayView Grid.Row="5" Grid.Column="3" />
+            <views:DayView Grid.Row="5" Grid.Column="4" />
+            <views:DayView Grid.Row="5" Grid.Column="5" />
+            <views:DayView Grid.Row="5" Grid.Column="6" />
+
+            <views:DayView Grid.Row="6" Grid.Column="0" />
+            <views:DayView Grid.Row="6" Grid.Column="1" />
+            <views:DayView Grid.Row="6" Grid.Column="2" />
+            <views:DayView Grid.Row="6" Grid.Column="3" />
+            <views:DayView Grid.Row="6" Grid.Column="4" />
+            <views:DayView Grid.Row="6" Grid.Column="5" />
+            <views:DayView Grid.Row="6" Grid.Column="6" />
+
+            
+
+        </Grid>
+  </ContentView.Content>
+</ContentView>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+             xmlns:controlsPages="clr-namespace:ProjectShedule.Calendar.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"  
+             xmlns:models="clr-namespace:ProjectShedule.Shedule.PackNotesManager.FilterManager"
+             x:Class="ProjectShedule.Shedule.ShedulePage"
+             x:DataType="viewModels:SheduleViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Resources  xmlns:resources="clr-namespace:ProjectShedule.Resources">
+        <resources:MainPageResource x:Key="mainPageResource"/>
+    </ContentPage.Resources>
+    
+    <NavigationPage.TitleView >
+        <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+            <Label 
+                Text="Shedule" 
+                TextColor="{DynamicResource AppBarTextColor}"
+                VerticalOptions="Center" 
+                FontSize="Title"/>
+            <Label
+                Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMM yyy}'}"
+                Style="{DynamicResource SmallLabelStyle}"
+                VerticalOptions="Center" 
+                HorizontalOptions="EndAndExpand" 
+                TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MoveToDayCommand}" Tapped="ViewAnimatedPush"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <ImageButton
+                Style="{DynamicResource PluseImageButton}"
+                HeightRequest="30" WidthRequest="30"
+                VerticalOptions="Center"
+                Command="{Binding OpenEditorCommand}"
+                Clicked="ViewAnimatedPush"/>
+            <ImageButton 
+                Style="{DynamicResource CalendarImageButon}"
+                HeightRequest="40" WidthRequest="40"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Command="{Binding ExpandedCalendarCommand}"
+                Clicked="ViewAnimatedPush"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+        <ContentPage.Content>
+        <Grid Padding="5" CompressedLayout.IsHeadless="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CollectionView
+                ItemsSource="{Binding PackNotes}"
+                ItemsUpdatingScrollMode="KeepScrollOffset">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <controlsPages:Main
+                            SelectedDates="{Binding SelectedDates}"
+                            DayEvents="{Binding EventsForCalendar}"
+                            MonthDaysIsVisible="{Binding ExpandedCalendar}"
+                            DisplayedCarouselDayMontYear="{Binding DisplayedDateTime}">
+                        </controlsPages:Main>
+                        <xct:Expander AnimationLength="100" >
+                            <xct:Expander.Header>
+                                <Frame
+                                    HeightRequest="27"
+                                    Padding="1"
+                                    BorderColor="{DynamicResource PopUpPrimaryBorderColor}"
+                                    BackgroundColor="{DynamicResource TransparentColor}">
+                                    <FlexLayout 
+                                        AlignItems="Center"
+                                        JustifyContent="SpaceBetween">
+                                        <Label 
+                                            HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="5,0"
+                                            FontSize="18">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="{Binding FilterControl.SelectedFlter.Text}"
+                                                        TextColor="{DynamicResource PrimaryTextColor}"
+                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                                                    <Span 
+                                                        Text=": "
+                                                        TextColor="{DynamicResource PrimaryTextColor}"
+                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                                                    <Span 
+                                                        Text="{Binding FilterControl.SelectedOrder.Text}" 
+                                                        TextColor="{DynamicResource PrimaryTextColor}"
+                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Image 
+                                            Style="{DynamicResource FilterImage}" 
+                                            HeightRequest="24" WidthRequest="24"
+                                            Margin="1"/>
+                                    </FlexLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ViewAnimatedPush"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </xct:Expander.Header>
+                            <StackLayout CompressedLayout.IsHeadless="True" Spacing="0">
+                                <StackLayout 
+                                    BindableLayout.ItemsSource="{Binding FilterControl.FilterTypes}"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    RadioButtonGroup.GroupName="Filters"
+                                    RadioButtonGroup.SelectedValue="{Binding FilterControl.SelectedFlter}"
+                                    CompressedLayout.IsHeadless="True">
+                                    <BindableLayout.ItemTemplate CompressedLayout.IsHeadless="True">
+                                        <DataTemplate x:DataType="models:SortInDate">
+                                            <RadioButton 
+                                                Content="{Binding Text}"
+                                                IsChecked="{Binding IsSelected}" 
+                                                Value="{Binding ThisType}"/>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                                <StackLayout 
+                                    BindableLayout.ItemsSource="{Binding FilterControl.OrderTypes}"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    RadioButtonGroup.GroupName="Orders"
+                                    RadioButtonGroup.SelectedValue="{Binding FilterControl.SelectedOrder}"
+                                    CompressedLayout.IsHeadless="True">
+                                    <BindableLayout.ItemTemplate CompressedLayout.IsHeadless="True">
+                                        <DataTemplate x:DataType="models:PutInOrder">
+                                            <RadioButton 
+                                                Content="{Binding Text}"
+                                                IsChecked="{Binding IsSelected}" 
+                                                Value="{Binding ThisType}"/>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </StackLayout>
+                        </xct:Expander>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout >
+                    <LinearItemsLayout ItemSpacing="13" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:PackNoteView/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<Grid BackgroundColor="{DynamicResource ViewBackgroundColor}" Grid.Row="1" VerticalOptions="EndAndExpand">
+                <Label Text="Тут что-то будет..." HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource SecondaryTextColor}"/>
+                <Button 
+                    Command="{Binding OpenEditorCommand}"
+                    TextTransform="None"
+                    TextColor="{DynamicResource ButtonPrimaryTextColor}"
+                    BorderColor="{DynamicResource ButtonBorderColor}"
+                    BorderWidth="2"
+                    Text="+"
+                    Margin="5"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    BackgroundColor="{DynamicResource ButtonPrimaryBackGroundColor}"
+                    CornerRadius="25"/>
+            </Grid>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
