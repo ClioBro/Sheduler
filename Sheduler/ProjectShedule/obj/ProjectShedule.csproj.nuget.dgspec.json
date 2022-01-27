@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj": {}
+    "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj": {
+    "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj",
+        "projectUniqueName": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj",
         "projectName": "ProjectShedule",
-        "projectPath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj",
+        "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj",
         "packagesPath": "C:\\Users\\Clio7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\obj\\",
+        "outputPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

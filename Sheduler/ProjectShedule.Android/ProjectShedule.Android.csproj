@@ -167,7 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectShedule\ProjectShedule.csproj">
-      <Project>{2be3750c-1415-47b3-9003-ae9a2341a01f}</Project>
+      <Project>{a930d8d7-00a9-4f2a-8459-cc9432e8a8ad}</Project>
       <Name>ProjectShedule</Name>
     </ProjectReference>
   </ItemGroup>

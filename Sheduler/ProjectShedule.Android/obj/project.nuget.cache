@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1tyvftN1HGhsMf+QHqIuyqU0piY55e0VjgO6uRTBiIM5RSXcOwxAT004Qa3WXGlUBUlBGqcxWBxE7AWGDc0Cg==",
+  "dgSpecHash": "nzjEcfykLWGhMgHOkl6HfuPuHxK3Olc074H+o+1DDsGltXtlmJx3BzJDZM7tDs7uk+daQusN6dukRJ5reoOUFQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
+  "projectFilePath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Clio7\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Clio7\\.nuget\\packages\\rg.plugins.popup\\2.0.0.12\\rg.plugins.popup.2.0.0.12.nupkg.sha512",

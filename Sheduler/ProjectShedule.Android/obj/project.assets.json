@@ -2708,11 +2708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
+      "projectUniqueName": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
       "projectName": "ProjectShedule.Android",
-      "projectPath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
+      "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Android\\ProjectShedule.Android.csproj",
       "packagesPath": "C:\\Users\\Clio7\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule.Android\\obj\\",
+      "outputPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2735,8 +2735,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj": {
-              "projectPath": "C:\\Users\\Clio7\\source\\repos\\MyProject2.0\\MyProject2.0\\ProjectShedule\\ProjectShedule.csproj"
+            "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj": {
+              "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj"
             }
           }
         }
