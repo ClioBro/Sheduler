@@ -24,4 +24,26 @@ namespace ProjectShedule.GlobalSetting.ViewModels
             }
         }
     }
+
+    public class FloatSettingViewModel : SettingElementViewModel
+    {
+        public float MaxValue { get; set; }
+        public float MinValue { get; set; }
+
+        private float _settingValue;
+
+        public Action<float> ActionChangedDoubleValue;
+        public float Value
+        {
+            get => _settingValue;
+            set
+            {
+                if (value <= MaxValue && value >= MinValue)
+                {
+                    _settingValue = value;
+                    ActionChangedDoubleValue?.Invoke(value);
+                }
+            }
+        }
+    }
 }

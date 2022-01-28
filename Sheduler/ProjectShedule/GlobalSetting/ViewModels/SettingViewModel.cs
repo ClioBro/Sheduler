@@ -1,4 +1,6 @@
-﻿namespace ProjectShedule.GlobalSetting.ViewModels
+﻿using System.Collections.ObjectModel;
+
+namespace ProjectShedule.GlobalSetting.ViewModels
 {
     public class SettingViewModel
     {
@@ -6,10 +8,13 @@
         {
             ThemeSettintElement = new ThemeSettintElement();
             DeleteQuestionSettintElement = new DeleteQuestionSettintElement();
-            SheduleCircleSettingElement = new SheduleCircleSettingElement();
+            EventCornerRaiusSetting = new SheduleCircleCorcnerRadiusSetting();
+            EventOpacitySetting = new SheduleCircleOpacitySetting();
         }
         public ThemeSettintElement ThemeSettintElement { get; set; } 
         public DeleteQuestionSettintElement DeleteQuestionSettintElement { get; set; }
-        public SheduleCircleSettingElement SheduleCircleSettingElement { get; set; }
+        public SheduleCircleCorcnerRadiusSetting EventCornerRaiusSetting { get; set; }
+        public SheduleCircleOpacitySetting EventOpacitySetting { get; set; }
+
     }
 }

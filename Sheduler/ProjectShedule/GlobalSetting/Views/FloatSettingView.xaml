@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
-             x:Class="ProjectShedule.GlobalSetting.Views.DoubleSettingView"
-             x:DataType="local:DoubleSettingViewModel">
+             x:Class="ProjectShedule.GlobalSetting.Views.FloatSettingView"
+             x:DataType="local:FloatSettingViewModel">
   <ContentView.Content>
         <Grid BackgroundColor="{DynamicResource ViewBackgroundColor}">
             <Label 
@@ -11,7 +11,10 @@
                 Text="{Binding Title}" 
                 Style="{DynamicResource MediumLabelStyle}" 
                 VerticalOptions="Start"/>
-            <StackLayout Grid.Row="1" Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+            <StackLayout 
+                Grid.Row="1" 
+                Orientation="Horizontal"
+                CompressedLayout.IsHeadless="True">
                 <Label
                     Text="{Binding MainText}"
                     Style="{DynamicResource SmallLabelStyle}" 
@@ -30,7 +33,7 @@
                     Increment="0.1"
                     VerticalOptions="Start"
                     HorizontalOptions="EndAndExpand"
-                    HeightRequest="35"/>
+                     HeightRequest="35"/>
             </StackLayout>
         </Grid>
     </ContentView.Content>
