@@ -21,10 +21,10 @@ namespace ProjectShedule.Shedule.ShapeEvents
 
             return GetEvents(packNoteModels);
         }
-        public IEnumerable<ICircleEvent> Create(DateTime first, DateTime second)
+        public IEnumerable<ICircleEvent> Create(DateTime start, DateTime end)
         {
             var manager = new PackNoteDBManager();
-            var packNoteModels = manager.GetForDate(first, second);
+            List<PackNoteModel> packNoteModels = manager.GetForDate(start, end);
 
             return GetEvents(packNoteModels);
         }

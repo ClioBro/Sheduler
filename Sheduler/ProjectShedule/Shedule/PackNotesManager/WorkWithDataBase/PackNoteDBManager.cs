@@ -12,7 +12,7 @@ namespace ProjectShedule.Shedule
 {
     public class PackNoteDBManager : ParsRemover
     {
-        public void SavePackNote(IPackNote pack, bool correct = true)
+        public void Save(IPackNote pack, bool correct = true)
         {
             Note note = pack.Note;
 
@@ -32,7 +32,7 @@ namespace ProjectShedule.Shedule
                 SaveInDataBase(smallTasks, noteId: note.Id);
             }
         }
-        public void DeletePackNote(IPackNote pack)
+        public void Delete(IPackNote pack)
         {
             DeleteInDataBase(pack.Note);
             IEnumerable<IHasSmallTask> hasSmallTasks = pack.SmallTasks;
@@ -50,8 +50,7 @@ namespace ProjectShedule.Shedule
             DateTime maxDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day).AddDays(1);
             return GetForDate(minDateTime, maxDateTime);
         }
-
-        private List<PackNoteModel> GetForDate(DateTime first, DateTime second)
+        public List<PackNoteModel> GetForDate(DateTime first, DateTime second)
         {
             IQueryble<Note> QuerebleNote = _repositoryNote as IQueryble<Note>;
             List<Note> selectedNoteByDate = QuerebleNote.Query(first, second);
@@ -61,8 +60,7 @@ namespace ProjectShedule.Shedule
             return new List<PackNoteModel>(selectedNoteByDate
                 .Select(T => new PackNoteModel(T, GetTasks(T.Id))));
         }
-
-        public ObservableCollection<SmallTaskViewModel> GetTasks(int noteId)
+        private ObservableCollection<SmallTaskViewModel> GetTasks(int noteId)
         {
             IQueryble<SmallTask> QuerebleSmallTask = _repositoryTask as IQueryble<SmallTask>;
 

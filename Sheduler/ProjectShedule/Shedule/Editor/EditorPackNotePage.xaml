@@ -92,7 +92,7 @@
                             <Switch 
                                 x:Name="DateTimeSwitch" 
                                 Style="{DynamicResource SwitchStyle}"
-                                IsToggled="{Binding DateTimeStatus}"/>
+                                IsToggled="{Binding OnTheDate}"/>
                             <DatePicker x:Name="datePicker" Format="D" Date="{Binding Date}" 
                                 TextColor="{DynamicResource PrimaryTextColor}"
                                 IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}">
@@ -137,10 +137,6 @@
                             <Button 
                                 Text="Показать пример" 
                                 Command="{Binding ShowPackNoteViewCommand}" Style="{DynamicResource ButtonAgreement}"/>
-                            <ImageButton 
-                                Source="setting_Icon.png"
-                                BackgroundColor="{DynamicResource TransparentColor}"
-                                WidthRequest="20" HeightRequest="20" />
                         </StackLayout>
                     </StackLayout>
                 </CollectionView.Footer>

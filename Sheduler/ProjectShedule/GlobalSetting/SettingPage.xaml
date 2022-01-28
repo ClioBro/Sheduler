@@ -12,6 +12,7 @@
             <views:SwitchSettingView BindingContext="{Binding ThemeSettintElement}"/>
             <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSettintElement}"/>
             <views:DoubleSettingView BindingContext="{Binding SheduleCircleSettingElement}"/>
+            <views:DoubleSettingView BindingContext="{Binding SheduleCircleSettingElement}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -15,5 +15,20 @@ namespace ProjectShedule.Shedule
             editorViewModel.Navigation = this.Navigation;
             BindingContext = editorViewModel;
         }
+
+        public static bool IsPageOpened { get; private set; }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            IsPageOpened = true;
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            IsPageOpened = false;
+        }
     }
 }

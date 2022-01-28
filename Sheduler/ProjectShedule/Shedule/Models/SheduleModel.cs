@@ -117,16 +117,16 @@ namespace ProjectShedule.Shedule.Models
             _calendarCircleEvents = evemtsManager.Create(minDate, maxDate);
             CalendarCirleEventsUpdated?.Invoke();
         }
-  
         public void DeletePackNote(PackNoteViewModel packNoteViewModel)
         {
             if (_packNotes.Remove(packNoteViewModel))
             {
-                _packNoteDB.DeletePackNote(packNoteViewModel.Model);
+                _packNoteDB.Delete(packNoteViewModel.Model);
                 PackNoteDeleted?.Invoke(packNoteViewModel);
                 UpdateEvents();
             }
         }
+
         private void SmallTaskCheckChangedEventHandler(IHasSmallTask hasSmallTask)
         {
             _packNoteDB.SaveInDataBase(hasSmallTask.SmallTask);

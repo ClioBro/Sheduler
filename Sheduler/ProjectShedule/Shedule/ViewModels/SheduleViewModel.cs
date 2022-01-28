@@ -82,12 +82,16 @@ namespace ProjectShedule.Shedule.ViewModels
         }
         private async void OpenEditorCommandHandler()
         {
+            if (EditorPackNotePage.IsPageOpened)
+                return;
             EditorPackNotePage editorPage = CreaterPageManager
                 .CreateEditorPage(SavePressedCallBack: UpdatePage);
             await Navigation.PushModalAsync(editorPage);
         }
         private async void OpenEditorCommandHandler(PackNoteViewModel packNoteViewModel)
         {
+            if (EditorPackNotePage.IsPageOpened)
+                return;
             EditorPackNotePage editorPage = CreaterPageManager
                 .CreateEditorPage(SavePressedCallBack: UpdatePage, packNoteViewModel.Model);
             await Navigation.PushModalAsync(editorPage);

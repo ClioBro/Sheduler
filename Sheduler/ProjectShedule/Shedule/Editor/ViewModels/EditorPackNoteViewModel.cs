@@ -118,7 +118,7 @@ namespace ProjectShedule.Shedule.ViewModels
                 ReminderDateTime = date += value;
             }
         }
-        public bool DateTimeStatus
+        public bool OnTheDate
         {
             get => PackNoteModel.Note.DateTimeStatus;
             set
@@ -213,11 +213,13 @@ namespace ProjectShedule.Shedule.ViewModels
                 return;
 
             CreatedDateTime = DateTime.Now;
+            if (OnTheDate == false)
+                ReminderDateTime = CreatedDateTime;
 
             PackNoteDBManager packNoteManager = new PackNoteDBManager();
-            packNoteManager.SavePackNote(PackNoteModel, correct: true);
+            packNoteManager.Save(PackNoteModel, correct: true);
 
-            if (Notify)
+            if (OnTheDate && Notify)
             {
                 NotifyOnAppManager notyfyManager = new NotifyOnAppManager();
                 notyfyManager.SendNotify(PackNoteModel);
