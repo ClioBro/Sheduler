@@ -130,3 +130,5 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectS
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ref\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.pdb
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\FloatSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\littleSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SheduleEventsSettingView.xaml.g.cs

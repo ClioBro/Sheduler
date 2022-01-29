@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectShedule.GlobalSetting.Views"
+             x:Class="ProjectShedule.GlobalSetting.Views.littleSettingView"
+             x:DataType="local:littleSettingView"
+             x:Name="this">
+  <ContentView.Content>
+        <StackLayout 
+            Orientation="Horizontal"
+            CompressedLayout.IsHeadless="True">
+            <Label
+                Text="{Binding MainText, Source={x:Reference this}}"
+                Style="{DynamicResource SmallLabelStyle}" 
+                VerticalOptions="Start"/>
+            <Label 
+                Text="{Binding Value, Source={x:Reference stepper}}"
+                TextColor="{DynamicResource PrimaryTextColor}"  
+                VerticalOptions="Start"
+                TextDecorations="Underline"
+                FontSize="17"/>
+            <Stepper 
+                x:Name="stepper"
+                Maximum="{Binding MaxValue, Source={x:Reference this}}"
+                Minimum="{Binding MinValue, Source={x:Reference this}}"
+                Value="{Binding Value, Source={x:Reference this} }"
+                Increment="0.1"
+                VerticalOptions="Start"
+                HorizontalOptions="EndAndExpand"
+                HeightRequest="35"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

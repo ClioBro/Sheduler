@@ -11,8 +11,7 @@
         <StackLayout>
             <views:SwitchSettingView BindingContext="{Binding ThemeSettintElement}"/>
             <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSettintElement}"/>
-            <views:DoubleSettingView BindingContext="{Binding EventOpacitySetting}"/>
-            <views:FloatSettingView BindingContext="{Binding EventCornerRaiusSetting}"/>
+            <views:SheduleEventsSettingView/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
