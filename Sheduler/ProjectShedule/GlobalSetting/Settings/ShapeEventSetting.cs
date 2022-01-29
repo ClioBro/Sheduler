@@ -8,15 +8,19 @@ namespace ProjectShedule.GlobalSetting
         private const float _defaultCornerRadius = 4f;
         private const double _defaultSize = 7.0;
         private const double _defaultOpacity = 1;
-        public void SetSize(double size)
+
+        public readonly double MaxSize = 10;
+        public readonly double MinSize = 0;
+        public void SetSize(double size) => SendSize(size);
+        public void SetSize(Size size) => SendSize(size.Height);
+        private void SendSize(double size)
         {
-            double maxSize = 11;
-            double minSize = 0;
-            if (size < maxSize && size > minSize)
+            if (size <= MaxSize && size >= MinSize)
             {
                 SavePreference(nameof(Type.Size), size);
             }
         }
+
         public Size GetSize()
         {
             double symmetricalSides = GetPreference(nameof(Type.Size), _defaultSize);

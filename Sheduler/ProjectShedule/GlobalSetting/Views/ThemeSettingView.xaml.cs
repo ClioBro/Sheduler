@@ -1,16 +1,17 @@
-﻿
-using ProjectShedule.GlobalSetting.ViewModels;
+﻿using ProjectShedule.GlobalSetting.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ProjectShedule.GlobalSetting.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DoubleSettingView : ContentView
+    public partial class ThemeSettingView : ContentView
     {
-        public DoubleSettingView()
+        public ThemeSettingView()
         {
             InitializeComponent();
+            BindingContext = new ThemeSettingViewModel();
         }
     }
 }

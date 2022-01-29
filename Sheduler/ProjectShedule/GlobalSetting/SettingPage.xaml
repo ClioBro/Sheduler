@@ -6,12 +6,12 @@
              xmlns:viewModels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
              xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
              x:DataType="viewModels:SettingViewModel"
-             Title="Setting">
+             Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
-            <views:SwitchSettingView BindingContext="{Binding ThemeSettintElement}"/>
-            <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSettintElement}"/>
-            <views:SheduleEventsSettingView/>
+            <views:ThemeSettingView/>
+            <views:SheduleDeleteQuestionSettingView />
+            <views:SheduleEventsSettingView />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

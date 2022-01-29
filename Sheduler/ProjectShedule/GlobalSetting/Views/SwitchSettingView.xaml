@@ -1,37 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
+             xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
              x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
-             x:DataType="local:SwitchSettingViewModel">
+             x:DataType="views:SwitchSettingView"
+             x:Name="this">
   <ContentView.Content>
-        <Grid BackgroundColor="{DynamicResource ViewBackgroundColor}" >
+        <StackLayout  
+            Orientation="Horizontal"
+            CompressedLayout.IsHeadless="True">
             <Label 
-                Grid.Row="0" 
-                Text="{Binding Title}" 
-                Style="{DynamicResource MediumLabelStyle}" 
-                VerticalOptions="Start"/>
-            <StackLayout 
-                Grid.Row="1" 
-                Orientation="Horizontal"
-                CompressedLayout.IsHeadless="True">
-                <Label 
-                    Text="{Binding MainText}"
-                    Style="{DynamicResource SmallLabelStyle}" 
-                    VerticalOptions="Center" />
-                <Label 
-                    Text="{Binding IsToggled, Source={x:Reference switch}}"
-                    TextColor="{DynamicResource PrimaryTextColor}"  
-                    TextDecorations="Underline"
-                    VerticalOptions="Center"
-                    FontSize="17"/>
-                <Switch 
-                    x:Name="switch"
-                    IsToggled="{Binding SwipeValue}"
-                    Style="{DynamicResource SwitchStyle}"  
-                    VerticalOptions="Center"
-                    HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
-        </Grid>
+                Text="{Binding MainText, Source={x:Reference this}}"
+                Style="{DynamicResource SmallLabelStyle}" 
+                VerticalOptions="Center"/>
+            <Label Text="{Binding Value, Source={x:Reference this}}"
+                   Style="{DynamicResource SmallLabelStyle}"
+                   TextDecorations="Underline"
+                   VerticalOptions="Center"/>
+            <Switch 
+                x:Name="switch"
+                IsToggled="{Binding Value, Source={x:Reference this}}"
+                Style="{DynamicResource SwitchStyle}"  
+                VerticalOptions="Center"
+                HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

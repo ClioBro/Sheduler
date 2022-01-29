@@ -2,8 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProjectShedule.GlobalSetting.Views"
-             x:Class="ProjectShedule.GlobalSetting.Views.littleSettingView"
-             x:DataType="local:littleSettingView"
+             x:Class="ProjectShedule.GlobalSetting.Views.SettingPushButtonView"
+             x:DataType="local:SettingPushButtonView"
              x:Name="this">
   <ContentView.Content>
         <StackLayout 
@@ -12,11 +12,11 @@
             <Label
                 Text="{Binding MainText, Source={x:Reference this}}"
                 Style="{DynamicResource SmallLabelStyle}" 
-                VerticalOptions="Start"/>
+                VerticalOptions="Center"/>
             <Label 
                 Text="{Binding Value, Source={x:Reference stepper}}"
                 TextColor="{DynamicResource PrimaryTextColor}"  
-                VerticalOptions="Start"
+                VerticalOptions="Center"
                 TextDecorations="Underline"
                 FontSize="17"/>
             <Stepper 
@@ -25,7 +25,7 @@
                 Minimum="{Binding MinValue, Source={x:Reference this}}"
                 Value="{Binding Value, Source={x:Reference this} }"
                 Increment="0.1"
-                VerticalOptions="Start"
+                VerticalOptions="Center"
                 HorizontalOptions="EndAndExpand"
                 HeightRequest="35"/>
         </StackLayout>

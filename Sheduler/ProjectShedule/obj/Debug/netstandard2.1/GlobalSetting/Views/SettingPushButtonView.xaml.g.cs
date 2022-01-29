@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.GlobalSetting.Views.littleSettingView.xaml", "GlobalSetting/Views/littleSettingView.xaml", typeof(global::ProjectShedule.GlobalSetting.Views.littleSettingView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.GlobalSetting.Views.SettingPushButtonView.xaml", "GlobalSetting/Views/SettingPushButtonView.xaml", typeof(global::ProjectShedule.GlobalSetting.Views.SettingPushButtonView))]
 
 namespace ProjectShedule.GlobalSetting.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("GlobalSetting\\Views\\littleSettingView.xaml")]
-    public partial class littleSettingView : global::Xamarin.Forms.ContentView {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("GlobalSetting\\Views\\SettingPushButtonView.xaml")]
+    public partial class SettingPushButtonView : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ContentView @this;
@@ -24,7 +24,7 @@ namespace ProjectShedule.GlobalSetting.Views {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(littleSettingView));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SettingPushButtonView));
             @this = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ContentView>(this, "this");
             stepper = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Stepper>(this, "stepper");
         }

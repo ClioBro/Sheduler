@@ -1,20 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ProjectShedule.GlobalSetting.ViewModels
 {
-    public class SettingViewModel
+    public class SettingViewModel : INotifyPropertyChanged
     {
-        public SettingViewModel()
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(object sender, [CallerMemberName] string propertyName = "")
         {
-            ThemeSettintElement = new ThemeSettintElement();
-            DeleteQuestionSettintElement = new DeleteQuestionSettintElement();
-            EventCornerRaiusSetting = new SheduleCircleCorcnerRadiusSetting();
-            EventOpacitySetting = new SheduleCircleOpacitySetting();
+            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propertyName));
         }
-        public ThemeSettintElement ThemeSettintElement { get; set; } 
-        public DeleteQuestionSettintElement DeleteQuestionSettintElement { get; set; }
-        public SheduleCircleCorcnerRadiusSetting EventCornerRaiusSetting { get; set; }
-        public SheduleCircleOpacitySetting EventOpacitySetting { get; set; }
+        #endregion
+
+        public string Title { get; set; } = "Setting";
 
     }
 }

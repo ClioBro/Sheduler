@@ -6,11 +6,11 @@ namespace ProjectShedule
     public partial class App : Application
     {
         public static Shedule.DataBase.PackNoteData SchedulerDataBase { get; set; }
-        public static ThemeController Theme { get; set; }
+        public static ThemeController ThemeController { get; set; }
         public App()
         {
-            Theme = new ThemeController();
-            Resources.Add(Theme.GetCurrentThemeResource());
+            ThemeController = new ThemeController();
+            Resources.Add(ThemeController.GetCurrentThemeResource());
             InitializeComponent();
             SchedulerDataBase = new Shedule.DataBase.PackNoteData();
             MainPage = new AppFlyout.Main();

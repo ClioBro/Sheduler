@@ -15,7 +15,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
         {
             MenuItems = GetMyCustomItems();
             SignatureEvent();
-            SetDisplayedImageByTheme(App.Theme.CurrentTheme);
+            SetDisplayedImageByTheme(App.ThemeController.CurrentTheme);
         }
         public void SetDisplayedImageByTheme(ThemeController.Theme newTheme)
         {
@@ -30,7 +30,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
         }
         private void SignatureEvent()
         {
-            App.Theme.ThemeChanged += OnThemeChanged;
+            App.ThemeController.ThemeChanged += OnThemeChanged;
         }
 
         private void OnThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)

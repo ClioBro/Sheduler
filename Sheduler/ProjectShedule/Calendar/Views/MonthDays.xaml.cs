@@ -135,7 +135,7 @@ namespace ProjectShedule.Calendar.Views
 
                 dayView.BindingContext = dayModel;
                 dayModel.TappedCommand = DayTappedCommand;
-                App.Theme.ThemeChanged += dayModel.OnAppThemeChanged;
+                App.ThemeController.ThemeChanged += dayModel.OnAppThemeChanged;
                 newDaysViews.Add(dayView);
             }
             DayViews = newDaysViews;

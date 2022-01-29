@@ -41,6 +41,9 @@
     <Compile Update="GlobalSetting\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="GlobalSetting\Views\SettingPushButtonView.xaml.cs">
+      <DependentUpon>SettingPushButtonView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="GlobalSetting\Views\SwitchSettingView.xaml.cs">
       <DependentUpon>SwitchSettingView.xaml</DependentUpon>
     </Compile>
@@ -71,13 +74,16 @@
     <EmbeddedResource Update="Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\FloatSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Views\SettingPushButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\littleSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Views\SheduleDeleteQuestionSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SheduleEventsSettingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\DarkTheme.xaml">
@@ -111,9 +117,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\SettingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\DoubleSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SwitchSettingView.xaml">

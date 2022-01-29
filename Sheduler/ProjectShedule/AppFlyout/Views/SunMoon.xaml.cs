@@ -22,13 +22,13 @@ namespace ProjectShedule.AppFlyout.Views
             if (!IsAnimated && sender is VisualElement visualElement)
             {
                 OpacityAnimated();
-                switch (App.Theme.CurrentTheme)
+                switch (App.ThemeController.CurrentTheme)
                 {
                     case ThemeController.Theme.Light:
-                        App.Theme.SetThemeOnApp(ThemeController.Theme.Dark);
+                        App.ThemeController.SetThemeOnApp(ThemeController.Theme.Dark);
                         break;
                     case ThemeController.Theme.Dark:
-                        App.Theme.SetThemeOnApp(ThemeController.Theme.Light);
+                        App.ThemeController.SetThemeOnApp(ThemeController.Theme.Light);
                         break;
                     default:
                         break;

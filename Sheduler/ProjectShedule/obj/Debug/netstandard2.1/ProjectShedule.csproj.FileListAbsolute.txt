@@ -89,7 +89,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\bin\Debug\netstandard2.1\ProjectS
 D:\Repository\Sheduler\Sheduler\ProjectShedule\bin\Debug\netstandard2.1\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\bin\Debug\netstandard2.1\ref\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\bin\Debug\netstandard2.1\ProjectShedule.pdb
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.csproj.AssemblyReference.cache
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.GeneratedMSBuildEditorConfig.editorconfig
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\App.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\AppFlyout\Main.xaml.g.cs
@@ -106,8 +105,11 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Calendar
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Calendar\Views\MonthDays.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Games\TicTacToePage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\SettingPage.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\DoubleSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SettingPushButtonView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SheduleDeleteQuestionSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SheduleEventsSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SwitchSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\ThemeSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\ColorSelectionPage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\DemonstrationViewPackNote.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\EntryView.xaml.g.cs
@@ -129,6 +131,3 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\XamlC.st
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ref\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.pdb
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\FloatSettingView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\littleSettingView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SheduleEventsSettingView.xaml.g.cs
