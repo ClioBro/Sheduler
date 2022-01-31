@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.GlobalSetting
 {
-    internal class ShapeEventSetting : Setting<ShapeEventSetting>, ISimpleShape
+    public class ShapeEventSetting : Setting<ShapeEventSetting>, ISimpleShape
     {
         private const float _defaultCornerRadius = 4f;
         private const double _defaultSize = 7.0;

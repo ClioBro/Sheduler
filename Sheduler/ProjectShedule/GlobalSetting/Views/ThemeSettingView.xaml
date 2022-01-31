@@ -4,7 +4,7 @@
              xmlns:viewModels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
              xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
              x:Class="ProjectShedule.GlobalSetting.Views.ThemeSettingView"
-             x:DataType="viewModels:ThemeSettingViewModel">
+             x:DataType="viewModels:SheduleThemeSettingModel">
   <ContentView.Content>
       <Grid 
           RowSpacing="0" BackgroundColor="{DynamicResource ViewBackgroundColor}">
@@ -15,7 +15,7 @@
           <StackLayout 
               Grid.Row="1"
               CompressedLayout.IsHeadless="True">
-              <views:SwitchSettingView MainText="{Binding DarkModeText}" Value="{Binding DarkModeStatus}"/>
+              <views:SwitchSettingView BindingContext="{Binding ThemeSetting}"/>
           </StackLayout>
        </Grid>
     </ContentView.Content>

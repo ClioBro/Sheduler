@@ -11,7 +11,7 @@ namespace ProjectShedule.GlobalSetting.Views
         public ThemeSettingView()
         {
             InitializeComponent();
-            BindingContext = new ThemeSettingViewModel();
+            BindingContext = new SheduleThemeSettingModel();
         }
     }
 }

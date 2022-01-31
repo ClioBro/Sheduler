@@ -8,10 +8,12 @@
              x:DataType="viewModels:SettingViewModel"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <views:ThemeSettingView/>
-            <views:SheduleDeleteQuestionSettingView />
-            <views:SheduleEventsSettingView />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <views:ThemeSettingView/>
+                <views:SheduleDeleteQuestionSettingView />
+                <views:SheduleEventsSettingView />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

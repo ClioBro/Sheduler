@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
+             xmlns:viewMdodels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
              x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
-             x:DataType="views:SwitchSettingView"
-             x:Name="this">
+             x:DataType="viewMdodels:SwitchsSettingModel">
   <ContentView.Content>
         <StackLayout  
             Orientation="Horizontal"
             CompressedLayout.IsHeadless="True">
             <Label 
-                Text="{Binding MainText, Source={x:Reference this}}"
+                Text="{Binding MainText}"
                 Style="{DynamicResource SmallLabelStyle}" 
                 VerticalOptions="Center"/>
-            <Label Text="{Binding Value, Source={x:Reference this}}"
-                   Style="{DynamicResource SmallLabelStyle}"
-                   TextDecorations="Underline"
-                   VerticalOptions="Center"/>
+            <Label 
+                Text="{Binding IsToggled, Source={x:Reference switch}}"
+                Style="{DynamicResource SmallLabelStyle}"
+                TextDecorations="Underline"
+                VerticalOptions="Center"/>
             <Switch 
                 x:Name="switch"
-                IsToggled="{Binding Value, Source={x:Reference this}}"
+                IsToggled="{Binding Status}"
                 Style="{DynamicResource SwitchStyle}"  
                 VerticalOptions="Center"
                 HorizontalOptions="EndAndExpand"/>

@@ -4,7 +4,7 @@
              xmlns:viewModels ="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
              xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
              x:Class="ProjectShedule.GlobalSetting.Views.SheduleDeleteQuestionSettingView"
-             x:DataType="viewModels:SheduleDeleteQuestionSettingViewModel">
+             x:DataType="viewModels:SheduleDeleteNotesSettingModel">
   <ContentView.Content>
       <Grid 
           RowSpacing="0" BackgroundColor="{DynamicResource ViewBackgroundColor}">
@@ -15,7 +15,7 @@
           <StackLayout 
               Grid.Row="1"
               CompressedLayout.IsHeadless="True">
-              <views:SwitchSettingView MainText="{Binding DeleteConfirmationSettingText}" Value="{Binding Status}"/>
+              <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSetting}"/>
           </StackLayout>
       </Grid>
   </ContentView.Content>

@@ -131,3 +131,4 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\XamlC.st
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ref\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.pdb
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.csproj.AssemblyReference.cache

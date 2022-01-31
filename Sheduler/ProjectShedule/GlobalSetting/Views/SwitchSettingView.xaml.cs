@@ -11,21 +11,5 @@ namespace ProjectShedule.GlobalSetting.Views
         {
             InitializeComponent();
         }
-
-        public static readonly BindableProperty MainTextProperty =
-          BindableProperty.Create(nameof(MainText), typeof(string), typeof(SettingPushButtonView), "no info", BindingMode.TwoWay);
-        public string MainText
-        {
-            get => (string)GetValue(MainTextProperty);
-            set => SetValue(MainTextProperty, value);
-        }
-
-        public static readonly BindableProperty ValueProperty =
-          BindableProperty.Create(nameof(Value), typeof(bool), typeof(SettingPushButtonView), false, BindingMode.TwoWay);
-        public bool Value
-        {
-            get => (bool)GetValue(ValueProperty);
-            set => SetValue(ValueProperty, value);
-        }
     }
 }

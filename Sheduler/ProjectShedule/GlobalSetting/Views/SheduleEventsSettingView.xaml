@@ -20,9 +20,9 @@
                 Grid.Row="1" 
                 CompressedLayout.IsHeadless="True"
                 Spacing="0">
-                <views:SettingPushButtonView MainText="{Binding OpacityText}" Value="{Binding Opacity}" MinValue="{Binding MinOpacity}" MaxValue="{Binding MaxOpacity}"/>
-                <views:SettingPushButtonView MainText="{Binding CornerRadiusText}" Value="{Binding CornerRadius}" MinValue="{Binding MinCornerRadius}" MaxValue="{Binding MaxCornerRadius}"/>
-                <views:SettingPushButtonView MainText="{Binding SizeText}" Value="{Binding Size}" MinValue="{Binding MinSize}" MaxValue="{Binding MaxSize}"/>
+                <views:SettingPushButtonView BindingContext="{Binding OpacityEventSettingModel}"/>
+                <views:SettingPushButtonView BindingContext="{Binding CornerRadiusEventSettingModel}"/>
+                <views:SettingPushButtonView BindingContext="{Binding SizeEventSettingModel}"/>
             </StackLayout>
         </Grid>
   </ContentView.Content>

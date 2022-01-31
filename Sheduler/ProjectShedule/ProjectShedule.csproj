@@ -44,9 +44,6 @@
     <Compile Update="GlobalSetting\Views\SettingPushButtonView.xaml.cs">
       <DependentUpon>SettingPushButtonView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GlobalSetting\Views\SwitchSettingView.xaml.cs">
-      <DependentUpon>SwitchSettingView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
@@ -117,9 +114,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\SettingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\SwitchSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\TestPages\ColorSelection.xaml">

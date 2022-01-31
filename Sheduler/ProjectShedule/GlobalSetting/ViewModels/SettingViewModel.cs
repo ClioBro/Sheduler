@@ -7,7 +7,7 @@ namespace ProjectShedule.GlobalSetting.ViewModels
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(object sender, [CallerMemberName] string propertyName = "")
+        protected virtual void OnPropertyChanged(object sender, [CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propertyName));
         }

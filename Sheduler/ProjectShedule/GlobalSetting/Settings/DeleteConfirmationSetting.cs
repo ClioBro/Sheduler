@@ -1,6 +1,6 @@
 ﻿namespace ProjectShedule.GlobalSetting
 {
-    internal class DeleteConfirmationSetting : Setting<DeleteConfirmationSetting>, IDeleteConfirmation
+    public class DeleteConfirmationSetting : Setting<DeleteConfirmationSetting>, IDeleteConfirmation
     {
         private bool _askQuestion;
         public DeleteConfirmationSetting()
