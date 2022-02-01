@@ -47,7 +47,7 @@ namespace ProjectShedule.Calendar.Controls
         {
             if (bindable is Main main && newValue is List<DateTime> list && !Equals(newValue, oldValue))
             {
-                main.SetValue(CurrentDayProperty, list.FirstOrDefault().Date);
+                //main.SetValue(CurrentDayProperty, list.FirstOrDefault().Date);
                 //main.SetValue(SelectedDateProperty, dateToSet.FirstOrDefault());
             }
         }
@@ -190,6 +190,10 @@ namespace ProjectShedule.Calendar.Controls
                 if (!Equals(CurrentDateOnCarousels.Date, DisplayedCarouselDayMontYear.Date))
                 {
                     DisplayedCarouselDayMontYear = CurrentDateOnCarousels;
+                    if (DisplayedCarouselDayMontYear.Date != SelectedDates.FirstOrDefault())
+                    {
+                        SelectedDates = new List<DateTime>() { DisplayedCarouselDayMontYear.Date };
+                    }
                 }
             }
             Scrolled = false;
