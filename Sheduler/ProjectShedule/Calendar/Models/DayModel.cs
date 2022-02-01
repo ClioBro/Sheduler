@@ -1,5 +1,5 @@
 ﻿using ProjectShedule.Calendar.Enums;
-using ProjectShedule.GlobalSetting;
+using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;

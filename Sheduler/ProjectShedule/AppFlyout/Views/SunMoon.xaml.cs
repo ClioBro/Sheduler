@@ -1,4 +1,4 @@
-﻿using ProjectShedule.GlobalSetting;
+﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using ProjectShedule.Shedule.Interfaces;
 using System;
 using Xamarin.Forms;

@@ -11,8 +11,8 @@ namespace ProjectShedule.DataNote
         
         public ParsRemover()
         {
-            _repositoryNote = App.SchedulerDataBase.Note;
-            _repositoryTask = App.SchedulerDataBase.Tasks;
+            _repositoryNote = App.SchedulerPackNoteDataBase.Note;
+            _repositoryTask = App.SchedulerPackNoteDataBase.Tasks;
         }
 
         public void SaveInDataBase(Note note)

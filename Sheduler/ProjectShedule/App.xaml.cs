@@ -1,18 +1,18 @@
-﻿using ProjectShedule.GlobalSetting;
+﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using Xamarin.Forms;
 
 namespace ProjectShedule
 {
     public partial class App : Application
     {
-        public static Shedule.DataBase.PackNoteData SchedulerDataBase { get; set; }
+        public static Shedule.DataBase.PackNoteData SchedulerPackNoteDataBase { get; set; }
         public static ThemeController ThemeController { get; set; }
         public App()
         {
             ThemeController = new ThemeController();
             Resources.Add(ThemeController.GetCurrentThemeResource());
             InitializeComponent();
-            SchedulerDataBase = new Shedule.DataBase.PackNoteData();
+            SchedulerPackNoteDataBase = new Shedule.DataBase.PackNoteData();
             MainPage = new AppFlyout.Main();
         }
 

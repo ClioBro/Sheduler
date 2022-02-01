@@ -1,5 +1,5 @@
 ﻿using ProjectShedule.Calendar.Models;
-using ProjectShedule.GlobalSetting;
+using ProjectShedule.GlobalSetting.Settings.SheduleEvents;
 using ProjectShedule.Shedule.Models;
 using System;
 using System.Collections.Generic;

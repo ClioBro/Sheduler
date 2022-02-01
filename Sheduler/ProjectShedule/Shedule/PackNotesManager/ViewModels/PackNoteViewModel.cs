@@ -1,5 +1,6 @@
 ﻿using ProjectShedule.DataNote;
 using ProjectShedule.GlobalSetting;
+using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Shedule.Enum;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
@@ -27,6 +28,7 @@ namespace ProjectShedule.Shedule.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        private readonly PackNoteModel _packNoteModel;
 
         public delegate void SmallTaskViewModelDelegate(SmallTaskViewModel smallTaskViewModel);
         public event SmallTaskViewModelDelegate TaskCheckChanged;
@@ -35,8 +37,8 @@ namespace ProjectShedule.Shedule.ViewModels
         public PackNoteViewModel() : this(new PackNoteModel()) { }
         public PackNoteViewModel(PackNoteModel packNoteModel)
         {
-            PackNoteModel = packNoteModel;
-            PackNoteModel.SmallTaskAdded += AssigmentCommands;
+            _packNoteModel = packNoteModel;
+            _packNoteModel.SmallTaskAdded += AssigmentCommands;
 
             DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTaskCommandHandler);
             CheckChangedTaskCommand = new Command<SmallTaskViewModel>(TaskCheckChangedCommandHandler);
@@ -56,64 +58,64 @@ namespace ProjectShedule.Shedule.ViewModels
         #endregion
 
         public INavigation Navigation { get; set; }
-        private PackNoteModel PackNoteModel { get; }
+        
         
         public int Id
         {
-            get => PackNoteModel.Note.Id;
+            get => _packNoteModel.Note.Id;
             set
             {
-                if (PackNoteModel.Note.Id != value)
+                if (_packNoteModel.Note.Id != value)
                 {
-                    PackNoteModel.Note.Id = value;
+                    _packNoteModel.Note.Id = value;
                     OnPropertyChanged();
                 }
             }
         }
         public string Header
         {
-            get => PackNoteModel.Note.Header;
+            get => _packNoteModel.Note.Header;
             set
             {
-                if (PackNoteModel.Note.Header != value)
+                if (_packNoteModel.Note.Header != value)
                 {
-                    PackNoteModel.Note.Header = value;
+                    _packNoteModel.Note.Header = value;
                     OnPropertyChanged();
                 }
             }
         }
         public string DopText
         {
-            get => PackNoteModel.Note.DopText;
+            get => _packNoteModel.Note.DopText;
             set
             {
-                if (PackNoteModel.Note.DopText != value)
+                if (_packNoteModel.Note.DopText != value)
                 {
-                    PackNoteModel.Note.DopText = value;
+                    _packNoteModel.Note.DopText = value;
                     OnPropertyChanged();
                 }
             }
         }
         public DateTime CreatedDateTime
         {
-            get => PackNoteModel.Note.CreatedDateTime;
+            get => _packNoteModel.Note.CreatedDateTime;
             set
             {
-                if (PackNoteModel.Note.CreatedDateTime != value)
+                if (_packNoteModel.Note.CreatedDateTime != value)
                 {
-                    PackNoteModel.Note.CreatedDateTime = value;
+                    _packNoteModel.Note.CreatedDateTime = value;
                     OnPropertyChanged();
                 }
             }
         }
         public DateTime AppointmentDate
         {
-            get => PackNoteModel.Note.AppointmentDate;
+            get => _packNoteModel.Note.AppointmentDate;
             set
             {
-                if (PackNoteModel.Note.AppointmentDate != value)
+                if (_packNoteModel.Note.AppointmentDate != value)
                 {
-                    PackNoteModel.Note.AppointmentDate = value;
+                    _packNoteModel.Note.AppointmentDate = value;
                     OnPropertyChanged();
                 }
             }
@@ -121,24 +123,24 @@ namespace ProjectShedule.Shedule.ViewModels
 
         public int RepeadIdKey
         {
-            get => PackNoteModel.Note.RepeadIdKey;
+            get => _packNoteModel.Note.RepeadIdKey;
             set
             {
-                if (PackNoteModel.Note.RepeadIdKey != value)
+                if (_packNoteModel.Note.RepeadIdKey != value)
                 {
-                    PackNoteModel.Note.RepeadIdKey = value;
+                    _packNoteModel.Note.RepeadIdKey = value;
                     OnPropertyChanged();
                 }
             }
         }
         public bool Notify
         {
-            get => PackNoteModel.Note.Notify;
+            get => _packNoteModel.Note.Notify;
             set
             {
-                if (PackNoteModel.Note.Notify != value)
+                if (_packNoteModel.Note.Notify != value)
                 {
-                    PackNoteModel.Note.Notify = value;
+                    _packNoteModel.Note.Notify = value;
                     OnPropertyChanged();
                 }
             }
@@ -147,12 +149,12 @@ namespace ProjectShedule.Shedule.ViewModels
         #region VisebleObjectsOnView
         public bool DateTimeisVisible
         {
-            get => PackNoteModel.Note.DateTimeStatus;
+            get => _packNoteModel.Note.DateTimeStatus;
             set
             {
-                if (PackNoteModel.Note.DateTimeStatus != value)
+                if (_packNoteModel.Note.DateTimeStatus != value)
                 {
-                    PackNoteModel.Note.DateTimeStatus = value;
+                    _packNoteModel.Note.DateTimeStatus = value;
                     OnPropertyChanged();
                 }
             }
@@ -164,36 +166,36 @@ namespace ProjectShedule.Shedule.ViewModels
 
         public bool HasSmallTasks => SmallTasks.Count() > 0;
         public string TasksCompletedInformation => $"{SmallTasks.Count(t => t.Status)}/{SmallTasks.Count}";
-        public Note Note => PackNoteModel.Note;
-        public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => PackNoteModel.SmallTasks;
+        public Note Note => _packNoteModel.Note;
+        public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => _packNoteModel.SmallTasks;
 
         #region Colors
         public Color BackGroundColor
         {
-            get => PackNoteModel.BackGroundColor;
+            get => _packNoteModel.BackGroundColor;
             set
             {
-                if (PackNoteModel.BackGroundColor != value)
+                if (_packNoteModel.BackGroundColor != value)
                 {
-                    PackNoteModel.BackGroundColor = value;
+                    _packNoteModel.BackGroundColor = value;
                     OnPropertyChanged();
                 }
             }
         }
         public Color LineColor
         {
-            get => PackNoteModel.LineColor;
+            get => _packNoteModel.LineColor;
             set
             {
-                if (PackNoteModel.LineColor != value)
+                if (_packNoteModel.LineColor != value)
                 {
-                    PackNoteModel.LineColor = value;
+                    _packNoteModel.LineColor = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        public IPackNote Model { get => PackNoteModel; }
+        public IPackNote Model { get => _packNoteModel; }
         #endregion
 
         #endregion
@@ -220,7 +222,7 @@ namespace ProjectShedule.Shedule.ViewModels
                     return;
             }
                 
-            PackNoteModel.DeleteSmallTask(taskViewModel);
+            _packNoteModel.DeleteSmallTask(taskViewModel);
             TaskDeletePressed?.Invoke(taskViewModel);
             OnPropertyChanged(nameof(HasSmallTasks));
             OnPropertyChanged(nameof(TasksCompletedInformation));

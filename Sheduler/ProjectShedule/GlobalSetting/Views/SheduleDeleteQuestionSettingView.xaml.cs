@@ -1,4 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.ViewModels;
+﻿using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels;
+using ProjectShedule.GlobalSetting.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
