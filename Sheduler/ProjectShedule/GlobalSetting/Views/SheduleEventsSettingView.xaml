@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views"
-             xmlns:viewmodels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
+             xmlns:viewmodels="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels"
              x:Class="ProjectShedule.GlobalSetting.Views.SheduleEventsSettingView"
              x:DataType="viewmodels:SheduleEventsSettingViewModel">
   <ContentView.Content>

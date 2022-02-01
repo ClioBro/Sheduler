@@ -1,4 +1,4 @@
-﻿namespace ProjectShedule.GlobalSetting
+﻿namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete
 {
     public class DeleteConfirmationSetting : Setting<DeleteConfirmationSetting>, IDeleteConfirmation
     {

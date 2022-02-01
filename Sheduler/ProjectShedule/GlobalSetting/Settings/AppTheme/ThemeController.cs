@@ -1,9 +1,8 @@
 ﻿using ProjectShedule.Calendar.Controls.ThemingDemo;
 using System.Collections.Generic;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace ProjectShedule.GlobalSetting
+namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
     public class ThemeController : Setting<ThemeController>
     {

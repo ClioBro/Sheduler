@@ -1,7 +1,7 @@
 ﻿using ProjectShedule.Shedule;
 using Xamarin.Forms;
 
-namespace ProjectShedule.GlobalSetting
+namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents
 {
     public class ShapeEventSetting : Setting<ShapeEventSetting>, ISimpleShape
     {

@@ -1,7 +1,6 @@
-﻿using ProjectShedule.GlobalSetting.Models;
-using System.Collections.Generic;
+﻿using ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models;
 
-namespace ProjectShedule.GlobalSetting.ViewModels
+namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
 {
     internal class SheduleEventsSettingViewModel
     {

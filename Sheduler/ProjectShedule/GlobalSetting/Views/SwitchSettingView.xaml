@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:viewMdodels="clr-namespace:ProjectShedule.GlobalSetting.ViewModels"
+             xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Models"
              x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
-             x:DataType="viewMdodels:SwitchsSettingModel">
+             x:DataType="models:SwitchsSettingModel">
   <ContentView.Content>
         <StackLayout  
             Orientation="Horizontal"
@@ -13,7 +13,7 @@
                 Style="{DynamicResource SmallLabelStyle}" 
                 VerticalOptions="Center"/>
             <Label 
-                Text="{Binding IsToggled, Source={x:Reference switch}}"
+                Text="{Binding Status}"
                 Style="{DynamicResource SmallLabelStyle}"
                 TextDecorations="Underline"
                 VerticalOptions="Center"/>

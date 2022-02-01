@@ -11,7 +11,7 @@ namespace ProjectShedule.GlobalSetting.Views
         public SheduleDeleteQuestionSettingView()
         {
             InitializeComponent();
-            BindingContext = new SheduleDeleteNotesSettingModel();
+            BindingContext = new SheduleDeleteNotesSettingViewModel();
         }
     }
 }

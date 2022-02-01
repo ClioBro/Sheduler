@@ -1,6 +1,6 @@
 ﻿using Xamarin.Essentials;
 
-namespace ProjectShedule.GlobalSetting
+namespace ProjectShedule.GlobalSetting.Settings
 {
     public abstract class Setting<TClass>
     {
