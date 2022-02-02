@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:languageResources="clr-namespace:ProjectShedule.Shedule.Resources"
              xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
              xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels" 
              x:DataType="viewModels:EditorPackNoteViewModel"
@@ -45,7 +46,7 @@
                 </Grid.ColumnDefinitions>
                 <Entry 
                     Text="{Binding Header}" 
-                    Placeholder="Name Task"
+                    Placeholder="{x:Static languageResources:AppResources.HeaderPlaceholder}"
                     Style="{DynamicResource EntryStyle}"/>
                 <ImageButton
                     Grid.Column="1"
@@ -73,7 +74,7 @@
                         <Editor 
                         AutoSize="TextChanges"
                         Text="{Binding DopText}" 
-                        Placeholder="Bla,Bla,Bla,Bla"  
+                        Placeholder="{x:Static languageResources:AppResources.DopTexPlaceHolder}"
                         IsSpellCheckEnabled="True"
                         Style="{DynamicResource EditorStyle}"/>
                         <Label Text="Дополнительные задачи:" IsVisible="{Binding HasSmallTasks}" TextColor="{DynamicResource PrimaryTextColor}"/>
@@ -135,7 +136,7 @@
                         <StackLayout 
                             Orientation="Horizontal">
                             <Button 
-                                Text="Показать пример" 
+                                Text="{x:Static languageResources:AppResources.ShowExampleButton}"
                                 Command="{Binding ShowPackNoteViewCommand}" Style="{DynamicResource ButtonAgreement}"/>
                         </StackLayout>
                     </StackLayout>

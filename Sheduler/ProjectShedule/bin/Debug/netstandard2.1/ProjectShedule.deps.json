@@ -20,6 +20,11 @@
         },
         "runtime": {
           "ProjectShedule.dll": {}
+        },
+        "resources": {
+          "ru-RU/ProjectShedule.resources.dll": {
+            "locale": "ru-RU"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},

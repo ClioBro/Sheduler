@@ -1,9 +1,9 @@
 ﻿using ProjectShedule.DataNote;
 using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
-using ProjectShedule.Shedule.Enum;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.NotifyOnApp.Enum;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

@@ -35,7 +35,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public event Action SavePressed;
         public INavigation Navigation { get; set; }
 
-        private Repead _selectedRepead;
+        private RepeadItem _selectedRepead;
         private readonly PackNoteModel PackNoteModel;
 
         public EditorPackNoteViewModel(): this (new PackNoteModel()) {}
@@ -156,7 +156,7 @@ namespace ProjectShedule.Shedule.ViewModels
                     PackNoteModel.Note.Notify = value;
                     if (!value)
                     {
-                        SelectedRepead = CustomRepeads.Repeads[0];
+                        SelectedRepead = CustomRepeads.RepeadsItems[0];
                         ExpanderExpanded = value;
                     }
                     OnPropertyChanged();
@@ -176,7 +176,7 @@ namespace ProjectShedule.Shedule.ViewModels
                 }
             }
         }
-        public Repead SelectedRepead
+        public RepeadItem SelectedRepead
         {
             get => _selectedRepead;
             set 
@@ -194,7 +194,7 @@ namespace ProjectShedule.Shedule.ViewModels
 
         private void InicializateSelectedRepead()
         {
-            SelectedRepead = CustomRepeads.Repeads[PackNoteModel.Note.RepeadIdKey];
+            SelectedRepead = CustomRepeads.RepeadsItems[PackNoteModel.Note.RepeadIdKey];
         }
 
         private void AssigmentCommands(IEnumerable<SmallTaskViewModel> smallTaskViewModels)
@@ -267,13 +267,12 @@ namespace ProjectShedule.Shedule.ViewModels
         }
         private async void ShowAvailableRepeads()
         {
-            if (RadioButtonsSelecterPage.IsPageOpened)
-                return;
+            await Navigation.ShowAvailableRepeadsAsync(OnSelectedItemChangedAction, SelectedRepead);
 
-            var radioButtonsPage = new RadioButtonsSelecterPage(CustomRepeads.Repeads, SelectedRepead, "Repeads:");
-            radioButtonsPage.SelectedItemChanged += (object sender, Repead selectedRepead) => SelectedRepead = selectedRepead;
-
-            await Navigation.PushPopupAsync(radioButtonsPage);
+            void OnSelectedItemChangedAction(object sender, RadioButtonItem selectedItem)
+            {
+                SelectedRepead = (RepeadItem)selectedItem;
+            }
         }
         private async void ReturnNavigationPageAsync() => await Navigation.PopModalAsync();
     }

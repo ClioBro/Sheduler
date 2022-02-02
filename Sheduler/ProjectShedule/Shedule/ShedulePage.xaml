@@ -10,7 +10,7 @@
              x:Class="ProjectShedule.Shedule.ShedulePage"
              x:DataType="viewModels:SheduleViewModel"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
-    <ContentPage.Resources  xmlns:resources="clr-namespace:ProjectShedule.Resources">
+    <ContentPage.Resources  xmlns:resources="clr-namespace:ProjectShedule.Shedule.Resources">
         <resources:MainPageResource x:Key="mainPageResource"/>
     </ContentPage.Resources>
     

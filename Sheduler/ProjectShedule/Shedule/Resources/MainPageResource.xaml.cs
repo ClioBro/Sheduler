@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Resources
+namespace ProjectShedule.Shedule.Resources
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageResource 

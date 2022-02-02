@@ -97,23 +97,25 @@
                 IsVisible="{Binding MainTextVisible}" 
                 Style="{DynamicResource MediumLabelStyle}"
                 HorizontalOptions="CenterAndExpand"/>
-            <StackLayout 
-                BindableLayout.ItemsSource="{Binding Repeads}"
+            <ScrollView>
+                <StackLayout 
+                BindableLayout.ItemsSource="{Binding Items}"
                 Spacing="0"
                 RadioButtonGroup.GroupName="Reminders"
-                RadioButtonGroup.SelectedValue="{Binding SelectedRepead}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:Repead">
-                        <RadioButton 
+                RadioButtonGroup.SelectedValue="{Binding SelectedItem}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:RadioButtonItem">
+                            <RadioButton 
                             BackgroundColor="Transparent"
                             BorderColor="Red"
                             CornerRadius="4"
                             Content="{Binding Text}" 
                             IsChecked="{Binding IsChecked}" 
                             Value="{Binding This}"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </Frame>
 </pages:PopupPage>

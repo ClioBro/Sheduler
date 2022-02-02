@@ -1,7 +1,8 @@
-﻿using ProjectShedule.DataNote;
-using ProjectShedule.PopUpAlert;
+﻿using ProjectShedule.PopUpAlert;
 using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.Resources;
 using ProjectShedule.Shedule.ViewModels;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,17 @@ namespace ProjectShedule.Shedule.Models
                                  cancelText: "Отмена",
                                  agreementText: "Да",
                                  sizePopUp: new Size(350, 200)));
+        }
+
+        public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, Action<object, RadioButtonItem> selectedItemChangedActionCallBack, RadioButtonItem selectedRadioButton = null)
+        {
+            if (RadioButtonsSelecterPage.IsPageOpened)
+                return;
+
+            var radioButtonsPage = new RadioButtonsSelecterPage(CustomRepeads.RepeadsItems, selectedRadioButton, Repeads.HeaderLabel);
+            radioButtonsPage.SelectedItemChanged += (object sender, RadioButtonItem selectedItem) => selectedItemChangedActionCallBack?.Invoke(sender, selectedItem);
+
+            await navigation.PushPopupAsync(radioButtonsPage);
         }
     }
 }

@@ -5,7 +5,6 @@ using Android.OS;
 using AndroidX.Core.App;
 using ProjectShedule.Droid;
 using ProjectShedule.Escaping;
-using ProjectShedule.Shedule.Enum;
 using System;
 using Xamarin.Forms;
 using AndroidApp = Android.App.Application;

@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Resources.MainPageResource.xaml", "Shedule/Resources/MainPageResource.xaml", typeof(global::ProjectShedule.Resources.MainPageResource))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Resources.MainPageResource.xaml", "Shedule/Resources/MainPageResource.xaml", typeof(global::ProjectShedule.Shedule.Resources.MainPageResource))]
 
-namespace ProjectShedule.Resources {
+namespace ProjectShedule.Shedule.Resources {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Resources\\MainPageResource.xaml")]

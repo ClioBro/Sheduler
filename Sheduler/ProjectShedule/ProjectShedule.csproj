@@ -47,6 +47,16 @@
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Shedule\Resources\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\Resources\Repeads.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Repeads.resx</DependentUpon>
+    </Compile>
     <Compile Update="Shedule\ShedulePage.xaml.cs">
       <DependentUpon>ShedulePage.xaml</DependentUpon>
     </Compile>
@@ -82,6 +92,14 @@
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\Resources\Repeads.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Repeads.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\DarkTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -155,6 +173,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="Shedule\Views\" />
   </ItemGroup>
 </Project>

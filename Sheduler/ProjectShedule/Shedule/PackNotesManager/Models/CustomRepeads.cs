@@ -1,5 +1,5 @@
-﻿using ProjectShedule.Shedule.Enum;
-using ProjectShedule.Shedule.ViewModels;
+﻿using ProjectShedule.Shedule.NotifyOnApp.Enum;
+using ProjectShedule.Shedule.Resources;
 
 namespace ProjectShedule.Shedule.Models
 {
@@ -7,15 +7,15 @@ namespace ProjectShedule.Shedule.Models
     {
         static CustomRepeads()
         {
-            Repeads = new Repead[]
+            RepeadsItems = new RepeadItem[]
             {
-                   new Repead{ Text = "Без повтора", RepeadType = RepeadType.NoRepeat },
-                   new Repead{ Text = "Каждый день", RepeadType = RepeadType.EveryDay },
-                   new Repead{ Text = "Каждую неделю", RepeadType = RepeadType.EveryWeek },
-                   new Repead{ Text = "Каждый месяц", RepeadType = RepeadType.EveryMonth },
-                   new Repead{ Text = "Каждый год", RepeadType = RepeadType.EveryYear }
+                   new RepeadItem{ Text = Repeads.NoRepeat, RepeadType = RepeadType.NoRepeat },
+                   new RepeadItem{ Text = Repeads.EveryDay, RepeadType = RepeadType.EveryDay },
+                   new RepeadItem{ Text = Repeads.EveryWeek, RepeadType = RepeadType.EveryWeek },
+                   new RepeadItem{ Text = Repeads.EveryMonth, RepeadType = RepeadType.EveryMonth },
+                   new RepeadItem{ Text = Repeads.EveryYear, RepeadType = RepeadType.EveryYear }
             };
         }
-        public static Repead[] Repeads { get; }
+        public static RepeadItem[] RepeadsItems { get; }
     }
 }

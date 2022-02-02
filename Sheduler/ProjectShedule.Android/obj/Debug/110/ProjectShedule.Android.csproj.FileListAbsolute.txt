@@ -1294,3 +1294,4 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_Conv
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ru-RU\ProjectShedule.resources.dll

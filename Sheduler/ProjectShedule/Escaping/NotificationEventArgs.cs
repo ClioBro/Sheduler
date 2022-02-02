@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Enum;
+﻿using ProjectShedule.Shedule.NotifyOnApp.Enum;
 using System;
 
 namespace ProjectShedule.Escaping

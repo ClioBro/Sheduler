@@ -1,6 +1,6 @@
 ﻿using ProjectShedule.Escaping;
-using ProjectShedule.Shedule.Enum;
 using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.NotifyOnApp.Enum;
 using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule

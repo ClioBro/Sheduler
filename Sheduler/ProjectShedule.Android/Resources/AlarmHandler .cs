@@ -1,6 +1,6 @@
 ﻿using Android.Content;
 using ProjectShedule.Escaping;
-using ProjectShedule.Shedule.Enum;
+using ProjectShedule.Shedule.NotifyOnApp.Enum;
 using System;
 
 namespace ProjectShedule._0.Droid.Resources

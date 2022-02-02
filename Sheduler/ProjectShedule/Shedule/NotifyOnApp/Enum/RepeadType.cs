@@ -1,11 +1,11 @@
-﻿namespace ProjectShedule.Shedule.Enum
+﻿namespace ProjectShedule.Shedule.NotifyOnApp.Enum
 {
     public enum RepeadType
     {
-        NoRepeat = 0, 
-        EveryDay = 1, 
-        EveryWeek = 2, 
-        EveryMonth = 3, 
+        NoRepeat = 0,
+        EveryDay = 1,
+        EveryWeek = 2,
+        EveryMonth = 3,
         EveryYear = 4
     }
 }
