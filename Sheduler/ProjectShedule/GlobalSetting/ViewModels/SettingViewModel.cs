@@ -13,7 +13,7 @@ namespace ProjectShedule.GlobalSetting.ViewModels
         }
         #endregion
 
-        public string Title { get; set; } = "Setting";
+        public string Title { get; set; }
 
     }
 }

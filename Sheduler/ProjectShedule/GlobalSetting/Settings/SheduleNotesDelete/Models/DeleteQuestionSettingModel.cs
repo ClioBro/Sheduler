@@ -4,11 +4,13 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
 {
     public class DeleteQuestionSettingModel : SwitchsSettingModel
     {
-        private DeleteConfirmationSetting _deleteConfirmationSetting;
-        public DeleteQuestionSettingModel(DeleteConfirmationSetting deleteConfirmationSetting)
+        private readonly DeleteConfirmationSetting _deleteConfirmationSetting;
+        public DeleteQuestionSettingModel()
+            : base(falseText: Resources.SettingResources.FalseLabel,
+                 trueText: Resources.SettingResources.TrueLabel)
         {
-            _deleteConfirmationSetting = deleteConfirmationSetting;
-            MainText = "DeleteQuestion:";
+            _deleteConfirmationSetting = new DeleteConfirmationSetting();
+            MainText = Resources.SettingResources.DeleteQuestionDopTextLabel;
             Status = _deleteConfirmationSetting.AskQuestion;
             StatusChanged += OnStatusChanged;
         }
@@ -17,6 +19,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
         {
             _deleteConfirmationSetting.SetDeleteQuestion(value);
             OnPropertyChanged(this, nameof(Status));
+            OnPropertyChanged(this, nameof(StatusText));
         }
     }
 }

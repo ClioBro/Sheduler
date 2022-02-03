@@ -5,15 +5,12 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
 {
     public class SheduleDeleteNotesSettingViewModel : SettingViewModel
     {
-        private DeleteConfirmationSetting _deleteConfirmationSetting;
-
         public SheduleDeleteNotesSettingViewModel()
         {
-            _deleteConfirmationSetting = new DeleteConfirmationSetting();
+            Title = Resources.SettingResources.DeleteNotesHeaderLabel;
 
-            Title = "SheduleDeleteNotes:";
-            DeleteQuestionSetting = new DeleteQuestionSettingModel(_deleteConfirmationSetting);
+            DeleteQuestion = new DeleteQuestionSettingModel();
         }
-        public DeleteQuestionSettingModel DeleteQuestionSetting { get; set; }
+        public DeleteQuestionSettingModel DeleteQuestion { get; set; }
     }
 }

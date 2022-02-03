@@ -8,7 +8,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
         public SizeEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
-            MainText = "Size:";
+            MainText = Resources.SettingResources.SizeDopTextLabel;
             Value = _shapeEventSetting.GetSize().Height;
             MinValue = 0;
             MaxValue = 10;

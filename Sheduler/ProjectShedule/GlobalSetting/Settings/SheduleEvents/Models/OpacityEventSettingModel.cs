@@ -8,7 +8,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
         public OpacityEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
-            MainText = "Opacity:";
+            MainText = Resources.SettingResources.OpacityDopTextLabel;
             Value = _shapeEventSetting.GetOpacity();
             MinValue = 0;
             MaxValue = 1;

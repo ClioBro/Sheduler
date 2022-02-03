@@ -7,16 +7,17 @@
              x:DataType="viewModels:SheduleDeleteNotesSettingViewModel">
   <ContentView.Content>
       <Grid 
-          RowSpacing="0" BackgroundColor="{DynamicResource ViewBackgroundColor}">
+          RowSpacing="0" 
+          BackgroundColor="{DynamicResource ViewBackgroundColor}">
           <Label 
               Grid.Row="0"
               Text="{Binding Title}"
               Style="{DynamicResource MediumLabelStyle}"/>
-          <StackLayout 
+            <StackLayout 
               Grid.Row="1"
               CompressedLayout.IsHeadless="True">
-              <views:SwitchSettingView BindingContext="{Binding DeleteQuestionSetting}"/>
-          </StackLayout>
-      </Grid>
+                <views:SwitchSettingView BindingContext="{Binding DeleteQuestion}"/>
+            </StackLayout>
+        </Grid>
   </ContentView.Content>
 </ContentView>

@@ -13,12 +13,11 @@
                 Style="{DynamicResource SmallLabelStyle}" 
                 VerticalOptions="Center"/>
             <Label 
-                Text="{Binding Status}"
+                Text="{Binding StatusText}"
                 Style="{DynamicResource SmallLabelStyle}"
                 TextDecorations="Underline"
                 VerticalOptions="Center"/>
             <Switch 
-                x:Name="switch"
                 IsToggled="{Binding Status}"
                 Style="{DynamicResource SwitchStyle}"  
                 VerticalOptions="Center"

@@ -5,12 +5,10 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme.ViewModels
 {
     public class SheduleThemeSettingViewModel : SettingViewModel
     {
-        private ThemeController _themeController;
         public SheduleThemeSettingViewModel()
         {
-            _themeController = App.ThemeController;
-            Title = "Theme:";
-            ThemeSetting = new DarkModeSettingModel(_themeController);
+            Title = Resources.SettingResources.ThemeHeaderLabel;
+            ThemeSetting = new DarkModeSettingModel();
         }
         public DarkModeSettingModel ThemeSetting { get; set; }
     }
