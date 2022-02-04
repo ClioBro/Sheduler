@@ -43,8 +43,7 @@
               <Image 
                   Source="{Binding DisplayedImage}"
                   HeightRequest="24" WidthRequest="24" 
-                  VerticalOptions="CenterAndExpand" Aspect="AspectFill"
-                  />
+                  VerticalOptions="CenterAndExpand" Aspect="AspectFill"/>
               <Label 
                   VerticalOptions="FillAndExpand" 
                   VerticalTextAlignment="Center" 

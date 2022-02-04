@@ -17,14 +17,13 @@ namespace ProjectShedule.AppFlyout.ViewModels
         }
         public void SetDisplayedImageByTheme(ThemeController.Theme newTheme)
         {
-            
             if (newTheme is ThemeController.Theme.Light)
                 foreach (var menuItem in MenuItems)
-                    menuItem.DisplayedImage = menuItem.LightImage;
+                    menuItem.DisplayedImage = menuItem.DarkImage;
 
             else
                 foreach (var menuItem in MenuItems)
-                    menuItem.DisplayedImage = menuItem.DarkImage;
+                    menuItem.DisplayedImage = menuItem.LightImage;
         }
         private void SignatureEvent()
         {
@@ -40,28 +39,29 @@ namespace ProjectShedule.AppFlyout.ViewModels
             return new ObservableCollection<MainFlyoutMenuItemViewModel>(new[]
             {
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 0, Title = "Setting",
+                        Id = 0, Title = Resources.Lobby.SettingTitle,
                         TargetType = typeof( GlobalSetting.SettingPage) })
                     {
-                        LightImage = "setting_Icon.png",
-                        DarkImage = "setting_Icon_negate.png"
+                        DarkImage = "setting_Icon.png",
+                        LightImage = "setting_Icon_negate.png"
                     },
 
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 1, Title = "Game",
+                        Id = 1, Title = Resources.Lobby.GameTitle,
                         TargetType = typeof( Games.TicTacToePage)})
                     {
-                        LightImage = "ticTacToe_icon.png",
-                        DarkImage = "ticTacToe_icon_negate.png"
+                        DarkImage = "ticTacToe_icon.png",
+                        LightImage = "ticTacToe_icon_negate.png"
                     },
 
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 2, Title = "Sheduler",
+                        Id = 2, Title = Resources.Lobby.SheduleTitle,
                         TargetType = typeof( Shedule.ShedulePage) })
                     {
-                        LightImage = "note_icon.png",
-                        DarkImage = "note_icon_negate.png"
-                    },
+                        DarkImage = "note_icon.png",
+                        LightImage = "note_icon_negate.png"
+                    }
+
             });
         }
 

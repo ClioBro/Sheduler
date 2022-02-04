@@ -56,7 +56,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 
         public enum Theme
         {
-            Dark,Light,Nier
+            Dark, Light, Nier
         }
     }
 }

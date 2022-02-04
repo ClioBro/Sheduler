@@ -11,7 +11,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+// View
+//   |
+// ViewModel
+//   |
+// Model
 namespace ProjectShedule.Shedule.ViewModels
 {
     public class SheduleViewModel : INotifyPropertyChanged

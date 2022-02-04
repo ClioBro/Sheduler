@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CornerRadiusDopTextLabel" xml:space="preserve">
-    <value>Угловой радиус:</value>
+    <value>Окружность</value>
   </data>
   <data name="DarkModeDopTextLabel" xml:space="preserve">
     <value>Тёмная тема:</value>
   </data>
   <data name="DeleteNotesHeaderLabel" xml:space="preserve">
-    <value>Удаление задачь в планировке:</value>
+    <value>Удаление задач в планировке:</value>
   </data>
   <data name="DeleteQuestionDopTextLabel" xml:space="preserve">
     <value>Подтверждение об удалении:</value>

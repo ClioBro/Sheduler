@@ -5,6 +5,7 @@ using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -33,6 +34,7 @@ namespace ProjectShedule.Shedule.Models
         public event Action CalendarCirleEventsUpdated;
         public event Action SelectedDatesChanged;
         public event Action DisplayedDateChanged;
+        
 
         private readonly PackNoteDBManager _packNoteDB;
         public SheduleModel()
@@ -107,8 +109,10 @@ namespace ProjectShedule.Shedule.Models
                 newPNVM.TaskDeletePressed += SmallTaskDeletedEventHandler;
                 _packNotes.Add(newPNVM);
             }
+           
             PackNoteListUpdated?.Invoke();
         }
+
         public void UpdateEvents()
         {
             SheduleEventsCreater evemtsManager = new SheduleEventsCreater();

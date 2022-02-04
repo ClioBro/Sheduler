@@ -124,15 +124,6 @@ namespace ProjectShedule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting.
-        /// </summary>
-        internal static string PageTitleLabel {
-            get {
-                return ResourceManager.GetString("PageTitleLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Size:.
         /// </summary>
         internal static string SizeDopTextLabel {

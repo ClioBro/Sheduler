@@ -10,7 +10,7 @@ namespace ProjectShedule.GlobalSetting
         public SettingPage()
         {
             InitializeComponent();
-            BindingContext = new SettingViewModel();
+            BindingContext = new SettingViewModel() { Title = AppFlyout.Resources.Lobby.SettingTitle };
         }
 
     }

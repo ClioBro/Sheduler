@@ -11,13 +11,32 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Label 
                 Grid.Row="0" 
                 Text="{Binding Title}" 
                 Style="{DynamicResource MediumLabelStyle}"
                 VerticalOptions="Start"/>
+            <Frame 
+                Margin="0"
+                Padding="0"
+                Grid.Row="0"
+                Grid.Column="1"
+                HasShadow="False"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="Red"
+                BorderColor="Black"
+                Opacity="{Binding OpacityEventSettingModel.Value}"
+                CornerRadius="{Binding CornerRadiusEventSettingModel.Value}"
+                HeightRequest="{Binding SizeEventSettingModel.Value}"
+                WidthRequest="{Binding SizeEventSettingModel.Value}"/>
             <StackLayout 
                 Grid.Row="1" 
+                Grid.ColumnSpan="2"
                 CompressedLayout.IsHeadless="True"
                 Spacing="0">
                 <views:SettingPushButtonView BindingContext="{Binding OpacityEventSettingModel}"/>
