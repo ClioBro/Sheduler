@@ -123,6 +123,9 @@
   <data name="HeaderPlaceholder" xml:space="preserve">
     <value>Название задачи...</value>
   </data>
+  <data name="ShedulePageTitle" xml:space="preserve">
+    <value>Планировщик</value>
+  </data>
   <data name="ShowExampleButton" xml:space="preserve">
     <value>Показать пример</value>
   </data>

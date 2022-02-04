@@ -11,11 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-// View
-//   |
-// ViewModel
-//   |
-// Model
+
 namespace ProjectShedule.Shedule.ViewModels
 {
     public class SheduleViewModel : INotifyPropertyChanged
@@ -27,7 +23,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public SheduleViewModel()
         {
             _sheduleModel = new SheduleModel();
-            
+            Title = Resources.AppResources.ShedulePageTitle;
             AssigmentCommandEvents();
         }
 
@@ -37,6 +33,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public ICommand MoveToDayCommand { get; private set; }
         public INavigation Navigation { get; set; }
         public bool ExpandedCalendar { get; set; }
+        public string Title { get; set; }
         public ObservableCollection<PackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
         public FilterViewModel FilterControl { get => _sheduleModel.FilterPackNotes; }
         public IEnumerable<ICircleEvent> EventsForCalendar => _sheduleModel.CalendarCircleEvents;

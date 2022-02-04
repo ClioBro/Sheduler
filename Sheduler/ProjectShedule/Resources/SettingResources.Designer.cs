@@ -97,7 +97,7 @@ namespace ProjectShedule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Events:.
+        ///   Looks up a localized string similar to Events Mark:.
         /// </summary>
         internal static string EventsHeaderLabel {
             get {

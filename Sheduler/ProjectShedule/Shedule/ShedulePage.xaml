@@ -15,14 +15,14 @@
     </ContentPage.Resources>
     
     <NavigationPage.TitleView >
-        <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+        <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True" Spacing="0">
             <Label 
-                Text="Shedule" 
+                Text="{Binding Title}" 
                 TextColor="{DynamicResource AppBarTextColor}"
                 VerticalOptions="Center" 
                 FontSize="Title"/>
             <Label
-                Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMM yyy}'}"
+                Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:d/M/y}'}"
                 Style="{DynamicResource SmallLabelStyle}"
                 VerticalOptions="Center" 
                 HorizontalOptions="EndAndExpand" 

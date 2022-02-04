@@ -130,7 +130,7 @@
     <value>Подтверждение об удалении:</value>
   </data>
   <data name="EventsHeaderLabel" xml:space="preserve">
-    <value>События:</value>
+    <value>Метка события:</value>
   </data>
   <data name="FalseLabel" xml:space="preserve">
     <value>Выкл</value>

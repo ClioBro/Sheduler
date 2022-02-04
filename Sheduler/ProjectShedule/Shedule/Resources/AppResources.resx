@@ -123,6 +123,9 @@
   <data name="HeaderPlaceholder" xml:space="preserve">
     <value>Note name...</value>
   </data>
+  <data name="ShedulePageTitle" xml:space="preserve">
+    <value>Shedule</value>
+  </data>
   <data name="ShowExampleButton" xml:space="preserve">
     <value>Show example</value>
   </data>

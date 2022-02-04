@@ -79,6 +79,15 @@ namespace ProjectShedule.Shedule.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shedule.
+        /// </summary>
+        public static string ShedulePageTitle {
+            get {
+                return ResourceManager.GetString("ShedulePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show example.
         /// </summary>
         public static string ShowExampleButton {

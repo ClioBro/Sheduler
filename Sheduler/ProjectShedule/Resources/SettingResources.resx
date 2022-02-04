@@ -130,7 +130,7 @@
     <value>Removal request:</value>
   </data>
   <data name="EventsHeaderLabel" xml:space="preserve">
-    <value>Events:</value>
+    <value>Events Mark:</value>
   </data>
   <data name="FalseLabel" xml:space="preserve">
     <value>False</value>

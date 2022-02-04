@@ -9,7 +9,7 @@ namespace ProjectShedule._0.Droid
 {
     [Activity(Label = "MyProject2._0", 
         Icon = "@mipmap/icon", 
-        Theme = "@style/MainTheme", 
+        Theme = "@style/MainTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
         LaunchMode = LaunchMode.SingleTop)]
