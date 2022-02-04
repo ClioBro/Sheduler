@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ProjectShedule.GlobalSetting;
 using Xamarin.Forms;
 
 namespace ProjectShedule.AppFlyout
 {
-    public class MainFlyoutMenuItemViewModel: INotifyPropertyChanged
+    public class MainFlyoutMenuItemViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;

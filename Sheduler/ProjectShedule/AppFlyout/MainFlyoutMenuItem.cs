@@ -5,9 +5,11 @@ namespace ProjectShedule.AppFlyout
 {
     public class MainFlyoutMenuItem
     {
+        private static int _createdCount;
         public MainFlyoutMenuItem()
         {
             TargetType = typeof(MainFlyoutMenuItem);
+            Id = _createdCount++;
         }
 
         public int Id { get; set; }

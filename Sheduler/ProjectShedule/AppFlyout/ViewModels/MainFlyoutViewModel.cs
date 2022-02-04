@@ -39,7 +39,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
             return new ObservableCollection<MainFlyoutMenuItemViewModel>(new[]
             {
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 0, Title = Resources.Lobby.SettingTitle,
+                        Title = Resources.Lobby.SettingTitle,
                         TargetType = typeof( GlobalSetting.SettingPage) })
                     {
                         DarkImage = "setting_Icon.png",
@@ -47,7 +47,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
                     },
 
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 1, Title = Resources.Lobby.GameTitle,
+                        Title = Resources.Lobby.GameTitle,
                         TargetType = typeof( Games.TicTacToePage)})
                     {
                         DarkImage = "ticTacToe_icon.png",
@@ -55,7 +55,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
                     },
 
                     new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                        Id = 2, Title = Resources.Lobby.SheduleTitle,
+                        Title = Resources.Lobby.SheduleTitle,
                         TargetType = typeof( Shedule.ShedulePage) })
                     {
                         DarkImage = "note_icon.png",
