@@ -17,12 +17,11 @@
     <NavigationPage.TitleView >
         <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True" Spacing="0">
             <Label 
-                Text="{Binding Title}" 
-                TextColor="{DynamicResource AppBarTextColor}"
-                VerticalOptions="Center" 
-                FontSize="Title"/>
+                Text="{Binding Title}"        
+                Style="{DynamicResource MediumLabelStyle}"
+                VerticalOptions="Center" />
             <Label
-                Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:d/M/y}'}"
+                Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:d/MM/yyy}'}"
                 Style="{DynamicResource SmallLabelStyle}"
                 VerticalOptions="Center" 
                 HorizontalOptions="EndAndExpand" 
@@ -46,7 +45,7 @@
                 Clicked="ViewAnimatedPush"/>
         </StackLayout>
     </NavigationPage.TitleView>
-        <ContentPage.Content>
+    <ContentPage.Content>
         <Grid Padding="5" CompressedLayout.IsHeadless="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
