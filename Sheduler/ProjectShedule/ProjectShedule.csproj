@@ -62,6 +62,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Shedule\Resources\Filters.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Filters.resx</DependentUpon>
+    </Compile>
     <Compile Update="Shedule\Resources\Repeads.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -114,6 +119,10 @@
     <EmbeddedResource Update="Shedule\Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\Resources\Filters.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Filters.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Resources\Repeads.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

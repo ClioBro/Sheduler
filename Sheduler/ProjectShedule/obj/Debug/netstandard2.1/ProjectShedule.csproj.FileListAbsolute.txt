@@ -143,3 +143,5 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectS
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.Resources.SettingResources.ru-RU.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.AppFlyout.Resources.Lobby.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.AppFlyout.Resources.Lobby.ru-RU.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.Shedule.Resources.Filters.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.Shedule.Resources.Filters.ru-RU.resources

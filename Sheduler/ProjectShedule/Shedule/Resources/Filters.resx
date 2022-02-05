@@ -117,25 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdditionalTasksLabel" xml:space="preserve">
-    <value>Дополнительные задачи:</value>
+  <data name="AllLabel" xml:space="preserve">
+    <value>All</value>
   </data>
-  <data name="DopTexPlaceHolder" xml:space="preserve">
-    <value>Дополнительный текст...</value>
+  <data name="AlphabeticallyLabel" xml:space="preserve">
+    <value>Alphabetically</value>
   </data>
-  <data name="ForSpecificDateTimeLabel" xml:space="preserve">
-    <value>На определённую дату и время:</value>
+  <data name="ByDateLabel" xml:space="preserve">
+    <value>By Date</value>
   </data>
-  <data name="HeaderPlaceholder" xml:space="preserve">
-    <value>Название задачи...</value>
+  <data name="SelectedDateLabel" xml:space="preserve">
+    <value>Selected date</value>
   </data>
-  <data name="NotificationLabel" xml:space="preserve">
-    <value>Уведомление:</value>
-  </data>
-  <data name="ShedulePageTitle" xml:space="preserve">
-    <value>Планировщик</value>
-  </data>
-  <data name="ShowExampleButton" xml:space="preserve">
-    <value>Показать пример</value>
+  <data name="ToDayLabel" xml:space="preserve">
+    <value>Today</value>
   </data>
 </root>

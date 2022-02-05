@@ -77,7 +77,7 @@
                         Placeholder="{x:Static languageResources:AppResources.DopTexPlaceHolder}"
                         IsSpellCheckEnabled="True"
                         Style="{DynamicResource EditorStyle}"/>
-                        <Label Text="Дополнительные задачи:" IsVisible="{Binding HasSmallTasks}" TextColor="{DynamicResource PrimaryTextColor}"/>
+                        <Label Text="{x:Static languageResources:AppResources.AdditionalTasksLabel}" IsVisible="{Binding HasSmallTasks}" TextColor="{DynamicResource PrimaryTextColor}"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
@@ -87,7 +87,9 @@
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>
                     <StackLayout CompressedLayout.IsHeadless="True">
-                        <Label Text="На определённую дату и время:" TextColor="{DynamicResource PrimaryTextColor}"/>
+                        <Label 
+                            Text="{x:Static languageResources:AppResources.ForSpecificDateTimeLabel}" 
+                            TextColor="{DynamicResource PrimaryTextColor}"/>
                         <StackLayout
                             Orientation="Horizontal" >
                             <Switch 
@@ -108,19 +110,9 @@
                             <Switch 
                                 Style="{DynamicResource SwitchStyle}"
                                 IsToggled="{Binding Notify}"/>
-                            <Label Text="Уведомление" 
+                            <Label Text="{x:Static languageResources:AppResources.NotificationLabel}" 
                                    TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="Center">
-                                <Label.Triggers>
-                                    <DataTrigger
-                                        TargetType="Label"
-                                        Binding="{Binding Notify}"
-                                        Value="True">
-                                        <Setter Property="Text"
-                                                Value="Уведомление: "/>
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
+                                   VerticalOptions="Center"/>
                             <Label 
                                 Text="{Binding SelectedRepead.Text}" 
                                 TextColor="{DynamicResource PrimaryTextColor}" 

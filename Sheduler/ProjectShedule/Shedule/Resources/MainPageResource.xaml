@@ -20,17 +20,17 @@
                         <VisualState x:Name="Checked">
                             <VisualState.Setters>
                                 <Setter Property="BorderColor"
-                                            Value="#C75D5D" />
+                                        Value="#C75D5D" />
                                 <Setter TargetName="check"
-                                            Property="Opacity"
-                                            Value="1" />
+                                        Property="Opacity"
+                                        Value="1" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Unchecked">
                             <VisualState.Setters>
                                 <Setter TargetName="check"
-                                            Property="Opacity"
-                                            Value="0" />
+                                        Property="Opacity"
+                                        Value="0" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -47,7 +47,8 @@
                         WidthRequest="16"
                         HeightRequest="16"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center" 
+                        />
                     <Ellipse 
                         x:Name="check"
                         Fill="#C75D5D"

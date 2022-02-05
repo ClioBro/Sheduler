@@ -22,24 +22,24 @@ namespace ProjectShedule.Shedule.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppResources {
+    internal class Filters {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources() {
+        internal Filters() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.Shedule.Resources.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.Shedule.Resources.Filters", typeof(Filters).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ProjectShedule.Shedule.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,65 +61,47 @@ namespace ProjectShedule.Shedule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Additional tasks:.
+        ///   Looks up a localized string similar to All.
         /// </summary>
-        public static string AdditionalTasksLabel {
+        internal static string AllLabel {
             get {
-                return ResourceManager.GetString("AdditionalTasksLabel", resourceCulture);
+                return ResourceManager.GetString("AllLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dop text....
+        ///   Looks up a localized string similar to Alphabetically.
         /// </summary>
-        public static string DopTexPlaceHolder {
+        internal static string AlphabeticallyLabel {
             get {
-                return ResourceManager.GetString("DopTexPlaceHolder", resourceCulture);
+                return ResourceManager.GetString("AlphabeticallyLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For Specific Date Time:.
+        ///   Looks up a localized string similar to By Date.
         /// </summary>
-        public static string ForSpecificDateTimeLabel {
+        internal static string ByDateLabel {
             get {
-                return ResourceManager.GetString("ForSpecificDateTimeLabel", resourceCulture);
+                return ResourceManager.GetString("ByDateLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note name....
+        ///   Looks up a localized string similar to Selected date.
         /// </summary>
-        public static string HeaderPlaceholder {
+        internal static string SelectedDateLabel {
             get {
-                return ResourceManager.GetString("HeaderPlaceholder", resourceCulture);
+                return ResourceManager.GetString("SelectedDateLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notification:.
+        ///   Looks up a localized string similar to Today.
         /// </summary>
-        public static string NotificationLabel {
+        internal static string ToDayLabel {
             get {
-                return ResourceManager.GetString("NotificationLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shedule.
-        /// </summary>
-        public static string ShedulePageTitle {
-            get {
-                return ResourceManager.GetString("ShedulePageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show example.
-        /// </summary>
-        public static string ShowExampleButton {
-            get {
-                return ResourceManager.GetString("ShowExampleButton", resourceCulture);
+                return ResourceManager.GetString("ToDayLabel", resourceCulture);
             }
         }
     }

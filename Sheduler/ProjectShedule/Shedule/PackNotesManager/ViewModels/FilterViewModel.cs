@@ -16,15 +16,15 @@ namespace ProjectShedule.Shedule
 
             FilterTypes = new SortInDate[]
             {
-                new SelectedSortInDate { Text = "Выбранной дате"},
-                new ToDaySortInDate { Text = "Сегодня"},
-                new AllSortInDate { Text = "Все"},
+                new SelectedSortInDate { Text = Resources.Filters.SelectedDateLabel},
+                new ToDaySortInDate { Text = Resources.Filters.ToDayLabel},
+                new AllSortInDate { Text = Resources.Filters.AllLabel},
             };
 
             OrderTypes = new PutInOrder[]
             {
-                new PutInOrderByDate{ Text = "По Дате"},
-                new PutInOrderByAlphabet{ Text = "По Алфавиту"},
+                new PutInOrderByDate{ Text = Resources.Filters.ByDateLabel},
+                new PutInOrderByAlphabet{ Text = Resources.Filters.AlphabeticallyLabel},
             };
             PropertyChanged += OnFilterControlPropertyChanged;
 
