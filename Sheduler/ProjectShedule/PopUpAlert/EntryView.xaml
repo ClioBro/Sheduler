@@ -7,8 +7,7 @@
     x:TypeArguments="local:EntryView+ResultText"
     x:Class="ProjectShedule.PopUpAlert.EntryView"
     x:DataType="local:EntryView"
-    Size="300,300"
-    x:Name="popUpView">
+    Size="{Binding PageSize}">
     <xctViews:Popup.Resources>
         <Style x:Key="ButtonCancelation" TargetType="Button">
             <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
@@ -43,7 +42,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label 
-            x:Name="headerLabel"
+            Text="{Binding HeaderText}"
             Grid.Row="0" Grid.ColumnSpan="2"
             HorizontalOptions="CenterAndExpand"
             Style="{DynamicResource LargeLabelStyle}" />
@@ -52,23 +51,21 @@
             HeightRequest="75"
             Grid.Row="1" Grid.ColumnSpan="2">
             <Editor
-                x:Name="editor"
-                Placeholder="Name"
+                Text="{Binding EditorText}"
+                Placeholder="{Binding EditorPlaceHolder}"
                 AutoSize="TextChanges"
                 IsSpellCheckEnabled="True"
                 Style="{DynamicResource EditorStyle}"/>
         </ScrollView>
         <Button 
-            x:Name="cancelationButton"
             Grid.Row="2" Grid.Column="0"
             Style="{DynamicResource ButtonCancelation}"
             Clicked="CancelationButton_Clicked"
-            Text="Cancelation"/>
+            Text="{Binding CancelationButtonText}"/>
         <Button
-            x:Name="agreementButton"
             Grid.Row="2" Grid.Column="1"
             Style="{DynamicResource ButtonAgreement}" 
             Clicked="AgreementButton_Clicked"
-            Text="Ok"/>
+            Text="{Binding AgreementButtonText}"/>
     </Grid>
 </xctViews:Popup>

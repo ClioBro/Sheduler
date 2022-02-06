@@ -52,6 +52,11 @@
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
+    <Compile Update="PopUpAlert\Resources\EntryViewResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EntryViewResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\SettingResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -66,6 +71,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Filters.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\Resources\RadioButton.xaml.cs">
+      <DependentUpon>RadioButton.xaml</DependentUpon>
     </Compile>
     <Compile Update="Shedule\Resources\Repeads.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -112,9 +120,16 @@
     <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\Resources\EntryViewResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\SettingResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -182,7 +197,7 @@
     <EmbeddedResource Update="PopUpAlert\RadioButtonsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Resources\MainPageResource.xaml">
+    <EmbeddedResource Update="Shedule\Resources\RadioButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Editor\EditorPackNotePage.xaml">

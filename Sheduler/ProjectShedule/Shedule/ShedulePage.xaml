@@ -6,14 +6,13 @@
              xmlns:controlsPages="clr-namespace:ProjectShedule.Calendar.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"  
-             xmlns:models="clr-namespace:ProjectShedule.Shedule.PackNotesManager.FilterManager"
+             xmlns:models="clr-namespace:ProjectShedule.Shedule.Models"
              x:Class="ProjectShedule.Shedule.ShedulePage"
              x:DataType="viewModels:SheduleViewModel"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Resources  xmlns:resources="clr-namespace:ProjectShedule.Shedule.Resources">
-        <resources:MainPageResource x:Key="mainPageResource"/>
+        <resources:RadioButton x:Key="mainPageResource"/>
     </ContentPage.Resources>
-    
     <NavigationPage.TitleView >
         <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True" Spacing="0">
             <Label 
@@ -111,11 +110,11 @@
                                     RadioButtonGroup.SelectedValue="{Binding FilterControl.SelectedFlter}"
                                     CompressedLayout.IsHeadless="True">
                                     <BindableLayout.ItemTemplate CompressedLayout.IsHeadless="True">
-                                        <DataTemplate x:DataType="models:SortInDate">
+                                        <DataTemplate x:DataType="models:RadioButtonItem">
                                             <RadioButton 
                                                 Content="{Binding Text}"
-                                                IsChecked="{Binding IsSelected}" 
-                                                Value="{Binding ThisType}"/>
+                                                IsChecked="{Binding IsChecked}" 
+                                                Value="{Binding This}"/>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
@@ -127,11 +126,11 @@
                                     RadioButtonGroup.SelectedValue="{Binding FilterControl.SelectedOrder}"
                                     CompressedLayout.IsHeadless="True">
                                     <BindableLayout.ItemTemplate CompressedLayout.IsHeadless="True">
-                                        <DataTemplate x:DataType="models:PutInOrder">
+                                        <DataTemplate x:DataType="models:RadioButtonItem">
                                             <RadioButton 
                                                 Content="{Binding Text}"
-                                                IsChecked="{Binding IsSelected}" 
-                                                Value="{Binding ThisType}"/>
+                                                IsChecked="{Binding IsChecked}" 
+                                                Value="{Binding This}"/>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>

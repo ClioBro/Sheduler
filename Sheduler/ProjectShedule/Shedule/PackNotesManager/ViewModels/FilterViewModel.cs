@@ -56,7 +56,7 @@ namespace ProjectShedule.Shedule
         public void SetBySelectedDate(DateTime dateTime)
         {
             if ((SelectedFlter is SelectedSortInDate) == false)
-                SelectedFlter = FilterTypes.FirstOrDefault(t => t.ThisType is SelectedSortInDate);
+                SelectedFlter = FilterTypes.FirstOrDefault(t => t.This is SelectedSortInDate);
 
             var selectedSortInDate = SelectedFlter as SelectedSortInDate;
             selectedSortInDate.Date = dateTime;
@@ -69,10 +69,10 @@ namespace ProjectShedule.Shedule
             switch (e.PropertyName)
             {
                 case nameof(SelectedFlter):
-                    _filterPackNotes.SortInDate = SelectedFlter.ThisType;
+                    _filterPackNotes.SortInDate = (SortInDate)SelectedFlter.This;
                     break;
                 case nameof(SelectedOrder):
-                    _filterPackNotes.PutInOrder = SelectedOrder.ThisType;
+                    _filterPackNotes.PutInOrder = (PutInOrder)SelectedOrder.This;
                     break;
                 default:
                     break;

@@ -5,11 +5,8 @@ using System.Collections.Generic;
 
 namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
-    public class SortInDate : ISortInDate<SortInDate>
+    public abstract class SortInDate : RadioButtonItem, ISortInDate<PackNoteModel>
     {
-        public SortInDate ThisType => this;
-        public string Text { get; set; }
-        public bool IsSelected { get; set; }
         public virtual List<PackNoteModel> GetItems() => GetAll();
         private protected List<PackNoteModel> GetAll()
         {

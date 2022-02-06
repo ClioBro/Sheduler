@@ -116,7 +116,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAle
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Editor\EditorPackNotePage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\PackNoteView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\TaskView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Resources\MainPageResource.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\ShedulePage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\TestPages\ColorSelection.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\TestPages\NoteReadPage.xaml.g.cs
@@ -145,3 +144,7 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectS
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.AppFlyout.Resources.Lobby.ru-RU.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.Shedule.Resources.Filters.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.Shedule.Resources.Filters.ru-RU.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Resources\RadioButton.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Resources.EntryViewResource.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Resources.EntryViewResource.ru-RU.resources

@@ -72,11 +72,11 @@
                 <CollectionView.Header>
                     <StackLayout>
                         <Editor 
-                        AutoSize="TextChanges"
-                        Text="{Binding DopText}" 
-                        Placeholder="{x:Static languageResources:AppResources.DopTexPlaceHolder}"
-                        IsSpellCheckEnabled="True"
-                        Style="{DynamicResource EditorStyle}"/>
+                            AutoSize="TextChanges"
+                            Text="{Binding DopText}" 
+                            Placeholder="{x:Static languageResources:AppResources.DopTexPlaceHolder}"
+                            IsSpellCheckEnabled="True"
+                            Style="{DynamicResource EditorStyle}"/>
                         <Label Text="{x:Static languageResources:AppResources.AdditionalTasksLabel}" IsVisible="{Binding HasSmallTasks}" TextColor="{DynamicResource PrimaryTextColor}"/>
                     </StackLayout>
                 </CollectionView.Header>
@@ -87,6 +87,16 @@
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>
                     <StackLayout CompressedLayout.IsHeadless="True">
+                        <StackLayout CompressedLayout.IsHeadless="True" Orientation="Horizontal">
+                            <Entry 
+                                Text="{Binding TaskAddingEntryText}" 
+                                Placeholder="{Binding TaskAddingPlaceHolder}"
+                                HorizontalOptions="FillAndExpand"/>
+                            <ImageButton 
+                                Style="{DynamicResource PluseImageButton}"
+                                WidthRequest="30" HeightRequest="30"
+                                Command="{Binding AddTaskCommand}" />
+                        </StackLayout>
                         <Label 
                             Text="{x:Static languageResources:AppResources.ForSpecificDateTimeLabel}" 
                             TextColor="{DynamicResource PrimaryTextColor}"/>

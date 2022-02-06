@@ -7,7 +7,7 @@ using Android.Runtime;
 
 namespace ProjectShedule._0.Droid
 {
-    [Activity(Label = "MyProject2._0", 
+    [Activity(Label = "Sheduler", 
         Icon = "@mipmap/icon", 
         Theme = "@style/MainTheme",
         MainLauncher = true,

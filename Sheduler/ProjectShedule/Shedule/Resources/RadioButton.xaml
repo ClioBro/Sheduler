@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary    
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ProjectShedule.Shedule.Resources.RadioButton">
+
+    <ControlTemplate x:Key="RadioButtonTemplate">
+        <Frame 
+            BorderColor="Transparent"
+            BackgroundColor="Transparent"
+            HasShadow="False"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            Margin="1"
+            Padding="0">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BorderColor"
+                                        Value="#C75D5D" />
+                                <Setter TargetName="check"
+                                        Property="Opacity"
+                                        Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter TargetName="check"
+                                        Property="Opacity"
+                                        Value="0" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+            <StackLayout Margin="3" Orientation="Horizontal" >
+                <Grid WidthRequest="18"
+                      HeightRequest="18"
+                      HorizontalOptions="Start"
+                      VerticalOptions="Center">
+                    <Ellipse 
+                        Stroke="#C75D5D"
+                        Fill="Transparent"
+                        WidthRequest="16"
+                        HeightRequest="16"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" 
+                        />
+                    <Ellipse 
+                        x:Name="check"
+                        Fill="#C75D5D"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Grid>
+                <ContentPresenter />
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="ControlTemplate"
+                Value="{StaticResource RadioButtonTemplate}" />
+        <Setter Property ="TextColor"
+                Value="{DynamicResource PrimaryTextColor}"/>
+    </Style>
+</ResourceDictionary >

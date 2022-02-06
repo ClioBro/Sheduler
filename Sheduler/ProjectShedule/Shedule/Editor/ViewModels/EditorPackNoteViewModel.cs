@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
+using ProjectShedule.PopUpAlert.Resources;
 
 namespace ProjectShedule.Shedule.ViewModels
 {
@@ -29,6 +30,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public ICommand DeleteTaskCommand { get; private protected set; }
         public ICommand ShowPackNoteViewCommand { get; private protected set; }
         public ICommand ShowColorSelectionPageCommand { get; private protected set; }
+        public ICommand AddTaskCommand { get; private protected set; }
 
         public ICommand ShowAvailableRepeadTypesCommand { get; private protected set; }
         #endregion
@@ -48,6 +50,8 @@ namespace ProjectShedule.Shedule.ViewModels
             ShowColorSelectionPageCommand = new Command(ShowColorSelectionPage);
             ShowAvailableRepeadTypesCommand = new Command(ShowAvailableRepeads);
             DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTask);
+
+            AddTaskCommand = new Command(AddTask);
 
             AssigmentCommands(PackNoteModel.SmallTasks);
 
@@ -190,6 +194,9 @@ namespace ProjectShedule.Shedule.ViewModels
             }
         }
         public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => PackNoteModel.SmallTasks;
+
+        public string TaskAddingEntryText { get; set; }
+        public string TaskAddingPlaceHolder { get; set; } = "Add little task...";
         #endregion
 
         private void InicializateSelectedRepead()
@@ -229,14 +236,34 @@ namespace ProjectShedule.Shedule.ViewModels
 
             ReturnNavigationPageAsync();
         }
+        private void AddTask()
+        {
+            if (string.IsNullOrWhiteSpace(TaskAddingEntryText))
+            {
+                return;
+            }
+            string taskName = TaskAddingEntryText;
+            TaskAddingEntryText = string.Empty;
+            var smallTaskViewModel = new SmallTaskViewModel { Text = taskName.Trim() };
+            PackNoteModel.AddSmallTask(smallTaskViewModel);
+            //Нужно один объект
+            AssigmentCommands(smallTaskViewModel);
+            OnPropertyChanged(nameof(HasSmallTasks));
+            OnPropertyChanged(nameof(SmallTasks));
+            OnPropertyChanged(nameof(TaskAddingEntryText));
+        }
         private async void AddNewTask()
         {
             EntryView.ResultText result = await Navigation.ShowPopupAsync(
-                new EntryView(headerText: "Добавдение новой задачи:", editorPlaceholder: "Название задачи...", agreementText: "Добавить", size: new Size(300, 220)));
+                new EntryView(headerText: EntryViewResource.HeaderLabel,
+                              editorPlaceholder: EntryViewResource.EditorPlaceHolder,
+                              cancelText: EntryViewResource.CancelButtonText,
+                              agreementText: EntryViewResource.AddButtonText,
+                              size: new Size(300, 220)));
             if (result is EntryView.ResultText resulText && !resulText.IsCanceled && !string.IsNullOrEmpty(resulText.Value))
             {
                 var smallTaskViewModel = new SmallTaskViewModel { Text = result.Value.Trim() };
-                PackNoteModel.AddSmallTask(new SmallTaskViewModel { Text = result.Value.Trim() });
+                PackNoteModel.AddSmallTask(smallTaskViewModel);
                 //Нужно один объект
                 AssigmentCommands(smallTaskViewModel);
                 OnPropertyChanged(nameof(HasSmallTasks));

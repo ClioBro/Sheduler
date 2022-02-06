@@ -14,25 +14,28 @@ namespace ProjectShedule.PopUpAlert
             public bool IsCanceled = false;
         }
         public EntryView(
-            string headerText = null, 
-            string editorPlaceholder = null, 
-            string cancelText = "Cancel", 
-            string agreementText = "Ok", 
+            string headerText = null,
+            string editorPlaceholder = null,
+            string cancelText = "Cancel",
+            string agreementText = "Ok",
             Size size = new Size())
         {
             InitializeComponent();
-            headerLabel.Text = headerText;
-            editor.Placeholder = editorPlaceholder;
-            cancelationButton.Text = cancelText;
-            agreementButton.Text = agreementText;
-            InicializatePopUpViewSize(size);
+            HeaderText = headerText;
+            EditorPlaceHolder = editorPlaceholder;
+            CancelationButtonText = cancelText;
+            AgreementButtonText = agreementText;
+            PageSize = size;
             _answer = new ResultText();
+            BindingContext = this;
         }
-        private void InicializatePopUpViewSize(Size size)
-        {
-            popUpView.Size = size;
-            editor.Focus();
-        }
+        public string HeaderText { get; set; }
+        public string EditorText { get; set; }
+        public string EditorPlaceHolder { get; set; }
+        public string CancelationButtonText { get; set; }
+        public string AgreementButtonText { get; set; }
+
+        public Size PageSize { get; set; }
 
         private void CancelationButton_Clicked(object sender, System.EventArgs e)
         {
@@ -54,7 +57,7 @@ namespace ProjectShedule.PopUpAlert
         }
         private protected void AssigningEditorTextToResult()
         {
-            _answer.Value = editor.Text;
+            _answer.Value = EditorText;
         }
     }
 }

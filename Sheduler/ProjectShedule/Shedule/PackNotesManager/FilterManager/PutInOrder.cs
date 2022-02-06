@@ -5,15 +5,9 @@ using System.Linq;
 
 namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
-    public class PutInOrder : ISortInOrder<PutInOrder>
+    public abstract class PutInOrder : RadioButtonItem, ISortInOrder<PackNoteModel>
     {
-        public PutInOrder ThisType => this;
-        public string Text { get; set; }
-        public bool IsSelected { get; set; }
-        public virtual List<PackNoteModel> GetSorted(List<PackNoteModel> packNoteModels) 
-        {
-            return packNoteModels;
-        }
+        public abstract List<PackNoteModel> GetSorted(List<PackNoteModel> packNoteModels);
     }
     public class PutInOrderByDate : PutInOrder
     {
