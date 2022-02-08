@@ -52,7 +52,12 @@
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
-    <Compile Update="PopUpAlert\Resources\EntryViewResource.Designer.cs">
+    <Compile Update="PopUpAlert\ColorSelection\ColorSelectionResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColorSelectionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="PopUpAlert\Entry\EntryViewResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EntryViewResource.resx</DependentUpon>
@@ -120,7 +125,11 @@
     <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\Resources\EntryViewResource.resx">
+    <EmbeddedResource Update="PopUpAlert\ColorSelection\ColorSelectionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColorSelectionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\Entry\EntryViewResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -182,10 +191,10 @@
     <EmbeddedResource Update="Shedule\TestPages\NoteReadPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\ColorSelectionPage.xaml">
+    <EmbeddedResource Update="PopUpAlert\ColorSelection\ColorSelectionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\EntryView.xaml">
+    <EmbeddedResource Update="PopUpAlert\Entry\EntryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\DemonstrationViewPackNote.xaml">
@@ -212,9 +221,5 @@
     <EmbeddedResource Update="Shedule\PackNotesManager\TaskView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Shedule\Views\" />
   </ItemGroup>
 </Project>

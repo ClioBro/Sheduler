@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Extensions;
+﻿using ProjectShedule.PopUpAlert.ColorSelection;
+using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 
 namespace ProjectShedule.PopUpAlert

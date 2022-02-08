@@ -3,9 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xctViews="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
-    xmlns:local="clr-namespace:ProjectShedule.PopUpAlert"
+    xmlns:local="clr-namespace:ProjectShedule.PopUpAlert.Entry"
     x:TypeArguments="local:EntryView+ResultText"
-    x:Class="ProjectShedule.PopUpAlert.EntryView"
+    x:Class="ProjectShedule.PopUpAlert.Entry.EntryView"
     x:DataType="local:EntryView"
     Size="{Binding PageSize}">
     <xctViews:Popup.Resources>

@@ -3,11 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:colorSelection="clr-namespace:ProjectShedule.PopUpAlert.ColorSelection"
                  xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
-                 xmlns:local="clr-namespace:ProjectShedule.PopUpAlert"
-                 x:DataType="local:ColorSelectionPage"
-                 x:Name="thiView"
-                 x:Class="ProjectShedule.PopUpAlert.ColorSelectionPage">
+                 x:DataType="colorSelection:ColorSelectionViewModel"
+                 x:Class="ProjectShedule.PopUpAlert.ColorSelection.ColorSelectionPage">
     <pages:PopupPage.Resources>
         <Style x:Key="ButtonCancelation" TargetType="Button">
             <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
@@ -62,7 +61,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <Label Text="Выберите цвет"
+            <Label Text="{Binding HeaderText}"
                    HorizontalOptions="CenterAndExpand"
                    Grid.ColumnSpan="6"
                    VerticalOptions="StartAndExpand"
@@ -93,22 +92,26 @@
                     Style="{x:DynamicResource ColoredButton}" Clicked="PressOnColoredButton"/>
 
             <Button 
-                x:Name="buttonResponsibleLineColor"
                 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                 VerticalOptions="Start"
-                BorderWidth="1"
-                Text="LineColor" Style="{x:DynamicResource ButtonAgreement}"
-                Clicked="LineSelectButtonClicked"/>
+                BorderWidth="1.5"
+                Style="{x:DynamicResource ButtonAgreement}"
+                Text="{Binding LineTargetButtonText}"
+                BorderColor="{Binding LinteTargetButtonBorderColor}"
+                Command="{Binding LineDesignatingButtonCommand}"/>
             <Button 
-                x:Name="buttonResponsibleBackGroundColor"
                 Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"
                 VerticalOptions="Start"
-                BorderWidth="1"
-                Text="BackGrounColord" Style="{x:DynamicResource ButtonAgreement}"
-                Clicked="BackGroundSelectButtonClicked"/>
-            <views:PackNoteView 
-                    Grid.Row="4" Grid.ColumnSpan="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                    x:Name="packNoteView" SwipeIsEnabled="False"/>
+                BorderWidth="1.5"
+                Style="{x:DynamicResource ButtonAgreement}"
+                Text="{Binding BackGroundTargetButtonText}"
+                BorderColor="{Binding BackGroundTargetButtonBorderColor}"
+                Command="{Binding BackGroundDesignatingButtonCommand}"/>
+            <views:PackNoteView
+                BindingContext="{Binding PackNoteViewModel}"
+                Grid.Row="4" Grid.ColumnSpan="6"
+                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                SwipeIsEnabled="False"/>
         </Grid>
     </Frame>
 </pages:PopupPage>

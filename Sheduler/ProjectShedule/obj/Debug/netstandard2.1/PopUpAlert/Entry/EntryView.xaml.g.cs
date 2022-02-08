@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.PopUpAlert.EntryView.xaml", "PopUpAlert/EntryView.xaml", typeof(global::ProjectShedule.PopUpAlert.EntryView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.PopUpAlert.Entry.EntryView.xaml", "PopUpAlert/Entry/EntryView.xaml", typeof(global::ProjectShedule.PopUpAlert.Entry.EntryView))]
 
-namespace ProjectShedule.PopUpAlert {
+namespace ProjectShedule.PopUpAlert.Entry {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("PopUpAlert\\EntryView.xaml")]
-    public partial class EntryView : global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.EntryView.ResultText> {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("PopUpAlert\\Entry\\EntryView.xaml")]
+    public partial class EntryView : global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.Entry.EntryView.ResultText> {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ScrollView scroll;

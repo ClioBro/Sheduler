@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.PopUpAlert
+namespace ProjectShedule.PopUpAlert.Entry
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EntryView : Popup<EntryView.ResultText>

@@ -32,15 +32,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.ColumnSpan="3" ColumnSpacing="4">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
@@ -53,20 +47,15 @@
                     Style="{DynamicResource SaveImageButton}"
                     WidthRequest="40" HeightRequest="40"
                     Command="{Binding SavePackNoteCommand}"/>
-                <ImageButton 
-                    Grid.Column="2"
-                    Style="{DynamicResource PluseImageButton}"
-                    WidthRequest="40" HeightRequest="40"
-                    Command="{Binding AddNewTaskCommand}"/>
                 <Button
-                    Grid.Column="3"
+                    Grid.Column="2"
                     BorderColor="{Binding LineColor}"
                     BackgroundColor="{Binding BackGroundColor}"
                     Style="{x:StaticResource ColoredButton}"
                     Command="{Binding ShowColorSelectionPageCommand}"/>
             </Grid>
             <CollectionView
-                Grid.Row="1" Grid.ColumnSpan="3"
+                Grid.Row="1" 
                 ItemsSource="{Binding SmallTasks}"
                 VerticalOptions="Start">
                 <CollectionView.Header>
@@ -91,6 +80,7 @@
                             <Entry 
                                 Text="{Binding TaskAddingEntryText}" 
                                 Placeholder="{Binding TaskAddingPlaceHolder}"
+                                Style="{DynamicResource EntryStyle}"
                                 HorizontalOptions="FillAndExpand"/>
                             <ImageButton 
                                 Style="{DynamicResource PluseImageButton}"

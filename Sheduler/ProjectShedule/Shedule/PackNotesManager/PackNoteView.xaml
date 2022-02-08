@@ -11,9 +11,6 @@
     <ContentView.Content>
         <yummy:PancakeView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
                            Grid.Column="1" CompressedLayout.IsHeadless="True">
-            <yummy:PancakeView.Border>
-                <yummy:Border Color="Silver" Thickness="1" />
-            </yummy:PancakeView.Border>
             <xct:Expander AnimationLength="100">
                 <xct:Expander.Header>
                     <SwipeView HeightRequest="80" IsEnabled="{Binding SwipeIsEnabled, Source = {x:Reference thisView}}">

@@ -28,7 +28,7 @@
                 TextColor="{DynamicResource PrimaryTextColor}" 
                 BorderColor="{DynamicResource SecondaryColor}"
                 Color="{DynamicResource SecondaryColor}"
-                BackgroundColor="{DynamicResource PopUpBackGroundColor}"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 IconColor="#0BAB35" />
         </SwipeView>
     </ContentView.Content>

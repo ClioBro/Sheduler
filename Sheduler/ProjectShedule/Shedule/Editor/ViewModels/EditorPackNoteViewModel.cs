@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.PopUpAlert;
+using ProjectShedule.PopUpAlert.ColorSelection;
 using ProjectShedule.Shedule.Models;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -8,9 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
-using ProjectShedule.PopUpAlert.Resources;
 
 namespace ProjectShedule.Shedule.ViewModels
 {
@@ -26,11 +25,11 @@ namespace ProjectShedule.Shedule.ViewModels
 
         #region Commands
         public ICommand SavePackNoteCommand { get; private protected set; }
-        public ICommand AddNewTaskCommand { get; private protected set; }
+        public ICommand AddTaskCommand { get; private protected set; }
         public ICommand DeleteTaskCommand { get; private protected set; }
         public ICommand ShowPackNoteViewCommand { get; private protected set; }
         public ICommand ShowColorSelectionPageCommand { get; private protected set; }
-        public ICommand AddTaskCommand { get; private protected set; }
+        
 
         public ICommand ShowAvailableRepeadTypesCommand { get; private protected set; }
         #endregion
@@ -45,13 +44,13 @@ namespace ProjectShedule.Shedule.ViewModels
         {
             PackNoteModel = packNoteModel;
             SavePackNoteCommand = new Command(SaveCommanHandling);
-            AddNewTaskCommand = new Command(AddNewTask);
+            AddTaskCommand = new Command(AddTask);
             ShowPackNoteViewCommand = new Command(ShowViewPackNote);
             ShowColorSelectionPageCommand = new Command(ShowColorSelectionPage);
             ShowAvailableRepeadTypesCommand = new Command(ShowAvailableRepeads);
             DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTask);
 
-            AddTaskCommand = new Command(AddTask);
+            
 
             AssigmentCommands(PackNoteModel.SmallTasks);
 
@@ -161,25 +160,25 @@ namespace ProjectShedule.Shedule.ViewModels
                     if (!value)
                     {
                         SelectedRepead = CustomRepeads.RepeadsItems[0];
-                        ExpanderExpanded = value;
+                        //ExpanderExpanded = value;
                     }
                     OnPropertyChanged();
                 }
             }
         }
-        private bool _expanderExpanded;
-        public bool ExpanderExpanded
-        {
-            get => _expanderExpanded;
-            set
-            {
-                if (_expanderExpanded != value)
-                {
-                    _expanderExpanded = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        //private bool _expanderExpanded;
+        //public bool ExpanderExpanded
+        //{
+        //    get => _expanderExpanded;
+        //    set
+        //    {
+        //        if (_expanderExpanded != value)
+        //        {
+        //            _expanderExpanded = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
         public RepeadItem SelectedRepead
         {
             get => _selectedRepead;
@@ -246,29 +245,12 @@ namespace ProjectShedule.Shedule.ViewModels
             TaskAddingEntryText = string.Empty;
             var smallTaskViewModel = new SmallTaskViewModel { Text = taskName.Trim() };
             PackNoteModel.AddSmallTask(smallTaskViewModel);
-            //Нужно один объект
+
             AssigmentCommands(smallTaskViewModel);
+
             OnPropertyChanged(nameof(HasSmallTasks));
             OnPropertyChanged(nameof(SmallTasks));
             OnPropertyChanged(nameof(TaskAddingEntryText));
-        }
-        private async void AddNewTask()
-        {
-            EntryView.ResultText result = await Navigation.ShowPopupAsync(
-                new EntryView(headerText: EntryViewResource.HeaderLabel,
-                              editorPlaceholder: EntryViewResource.EditorPlaceHolder,
-                              cancelText: EntryViewResource.CancelButtonText,
-                              agreementText: EntryViewResource.AddButtonText,
-                              size: new Size(300, 220)));
-            if (result is EntryView.ResultText resulText && !resulText.IsCanceled && !string.IsNullOrEmpty(resulText.Value))
-            {
-                var smallTaskViewModel = new SmallTaskViewModel { Text = result.Value.Trim() };
-                PackNoteModel.AddSmallTask(smallTaskViewModel);
-                //Нужно один объект
-                AssigmentCommands(smallTaskViewModel);
-                OnPropertyChanged(nameof(HasSmallTasks));
-                OnPropertyChanged(nameof(SmallTasks));
-            }
         }
         private void DeleteTask(SmallTaskViewModel task)
         {
@@ -282,10 +264,19 @@ namespace ProjectShedule.Shedule.ViewModels
             if (ColorSelectionPage.IsPageOpened)
                 return;
 
-            IColorSelection colorSelectionPage = new ColorSelectionPage(new PackNoteViewModel(PackNoteModel));
-            colorSelectionPage.BackGround.ColorSelected += (Color color) => BackGroundColor = color;
-            colorSelectionPage.Line.ColorSelected += (Color color) => LineColor = color;
-            Navigation.ShowColorSelection((ColorSelectionPage)colorSelectionPage);
+            ColorSelectionModel colorSelectionModel = new ColorSelectionModel(
+                packNoteViewModel: new PackNoteViewModel(PackNoteModel),
+                headerText: ColorSelectionResource.HeaderLabel,
+                lineTargetText: ColorSelectionResource.LineTargetButtonText,
+                backGroundText: ColorSelectionResource.BackGroundTargetButtonText);
+
+            colorSelectionModel.LineTarget.ColorSelected += (object sender, Color color) => LineColor = color;
+            colorSelectionModel.BackGroundTarget.ColorSelected += (object sender, Color color) => BackGroundColor = color;
+
+            ColorSelectionViewModel colorSelectionViewModel = new ColorSelectionViewModel(colorSelectionModel);
+            
+            ColorSelectionPage colorSelectionPage = new ColorSelectionPage(colorSelectionViewModel);
+            Navigation.ShowColorSelection(colorSelectionPage);
         }
         private async void ShowViewPackNote()
         {

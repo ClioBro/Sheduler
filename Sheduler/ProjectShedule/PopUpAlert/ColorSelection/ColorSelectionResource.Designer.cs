@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectShedule.PopUpAlert.Resources {
+namespace ProjectShedule.PopUpAlert.ColorSelection {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace ProjectShedule.PopUpAlert.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class EntryViewResource {
+    internal class ColorSelectionResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal EntryViewResource() {
+        internal ColorSelectionResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ProjectShedule.PopUpAlert.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.PopUpAlert.Resources.EntryViewResource", typeof(EntryViewResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.PopUpAlert.ColorSelection.ColorSelectionResource", typeof(ColorSelectionResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,29 @@ namespace ProjectShedule.PopUpAlert.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
+        ///   Looks up a localized string similar to BackGround.
         /// </summary>
-        internal static string AddButtonText {
+        internal static string BackGroundTargetButtonText {
             get {
-                return ResourceManager.GetString("AddButtonText", resourceCulture);
+                return ResourceManager.GetString("BackGroundTargetButtonText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        internal static string CancelButtonText {
-            get {
-                return ResourceManager.GetString("CancelButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Task name....
-        /// </summary>
-        internal static string EditorPlaceHolder {
-            get {
-                return ResourceManager.GetString("EditorPlaceHolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adding a new task:.
+        ///   Looks up a localized string similar to Choose a color.
         /// </summary>
         internal static string HeaderLabel {
             get {
                 return ResourceManager.GetString("HeaderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line.
+        /// </summary>
+        internal static string LineTargetButtonText {
+            get {
+                return ResourceManager.GetString("LineTargetButtonText", resourceCulture);
             }
         }
     }
