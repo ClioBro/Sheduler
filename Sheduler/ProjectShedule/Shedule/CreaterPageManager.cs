@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.PopUpAlert;
+using ProjectShedule.PopUpAlert.Question;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Resources;
 using ProjectShedule.Shedule.ViewModels;
@@ -31,14 +32,15 @@ namespace ProjectShedule.Shedule.Models
             return new PackNoteModel(packNote.Note, newSmallTasksModels);
         }
 
-        public static async Task<QuestionView.Answer> ShowQuestionForDeletion(this INavigation navigation, string itemNameToBeDeleted)
+        public static async Task<QuestionView.Answer> ShowQuestionForDeletion(this INavigation navigation, string itemNameToBeDeleted, string dopText = null)
         {
             return await navigation.ShowPopupAsync(
-                new QuestionView(headerText: "Удалить?",
+                new QuestionView(headerText: QuestionResource.HeaderLabel,
                                  secondaryText: itemNameToBeDeleted,
-                                 cancelText: "Отмена",
-                                 agreementText: "Да",
-                                 sizePopUp: new Size(350, 200)));
+                                 dopText: dopText,
+                                 cancelText: QuestionResource.CancelButtonText,
+                                 agreementText: QuestionResource.DeleteButtonText,
+                                 sizePopUp: new Size(300, 200)));;
         }
 
         public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, Action<object, RadioButtonItem> selectedItemChangedActionCallBack, RadioButtonItem selectedRadioButton = null)

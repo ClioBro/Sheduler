@@ -8,22 +8,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.PopUpAlert.QuestionView.xaml", "PopUpAlert/QuestionView.xaml", typeof(global::ProjectShedule.PopUpAlert.QuestionView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.PopUpAlert.Question.QuestionView.xaml", "PopUpAlert/Question/QuestionView.xaml", typeof(global::ProjectShedule.PopUpAlert.Question.QuestionView))]
 
-namespace ProjectShedule.PopUpAlert {
+namespace ProjectShedule.PopUpAlert.Question {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("PopUpAlert\\QuestionView.xaml")]
-    public partial class QuestionView : global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.QuestionView.Answer> {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("PopUpAlert\\Question\\QuestionView.xaml")]
+    public partial class QuestionView : global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.Question.QuestionView.Answer> {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.QuestionView.Answer> popUpView;
+        private global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.Question.QuestionView.Answer> popUpView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Label headerLabel;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Label secondaryLabel;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Label dopTextLabel;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button cancelationButton;
@@ -34,9 +37,10 @@ namespace ProjectShedule.PopUpAlert {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(QuestionView));
-            popUpView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.QuestionView.Answer>>(this, "popUpView");
+            popUpView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.CommunityToolkit.UI.Views.Popup<global::ProjectShedule.PopUpAlert.Question.QuestionView.Answer>>(this, "popUpView");
             headerLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "headerLabel");
             secondaryLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "secondaryLabel");
+            dopTextLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "dopTextLabel");
             cancelationButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "cancelationButton");
             agreementButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "agreementButton");
         }

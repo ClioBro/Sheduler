@@ -3,7 +3,7 @@ using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
 
-namespace ProjectShedule.PopUpAlert
+namespace ProjectShedule.PopUpAlert.Question
 {
     
     public partial class QuestionView : Popup<QuestionView.Answer>
@@ -13,17 +13,18 @@ namespace ProjectShedule.PopUpAlert
             public bool Value;
         }
         private readonly Answer _answer = new Answer();
-        public QuestionView(string headerText = null, string secondaryText = null, string cancelText = "Cancel", string agreementText = "Ok", Size sizePopUp = new Size())
+        public QuestionView(string headerText = null, string secondaryText = null, string dopText = null, string cancelText = "Cancel", string agreementText = "Ok", Size sizePopUp = new Size())
         {
             InitializeComponent();
-            InicializateTexts(headerText, secondaryText, cancelText, agreementText);
+            InicializateTexts(headerText, secondaryText, dopText, cancelText, agreementText);
             SetPopUpViewSize(sizePopUp);
         }
 
-        private void InicializateTexts(string header, string secondary, string cancel, string agreement)
+        private void InicializateTexts(string header, string secondary, string dopText, string cancel, string agreement)
         {
             headerLabel.Text = header;
             secondaryLabel.Text = secondary;
+            dopTextLabel.Text = dopText;
             cancelationButton.Text = cancel;
             agreementButton.Text = agreement;
         }

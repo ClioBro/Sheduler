@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -101,7 +102,11 @@ namespace ProjectShedule.Shedule.ViewModels
             IDeleteConfirmation deleteConfirmation = new DeleteConfirmationSetting();
             if (deleteConfirmation.AskQuestion)
             {
-                QuestionView.Answer answer = await Navigation.ShowQuestionForDeletion(packNoteViewModel.Header);
+                string header = packNoteViewModel.Header;
+                string createdText = PopUpAlert.Question.QuestionResource.CreationTimeLabel;
+                string createdDateTime = packNoteViewModel.CreatedDateTime.ToString();
+                string createdDateTimeText = $"{createdText}: {createdDateTime}";
+                var answer = await Navigation.ShowQuestionForDeletion(itemNameToBeDeleted: header, dopText: createdDateTimeText);
                 if (answer.Value == false)
                     return;
             }

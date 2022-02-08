@@ -2,9 +2,9 @@
 <xctViews:Popup xmlns="http://xamarin.com/schemas/2014/forms" 
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:xctViews="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
-                xmlns:local="clr-namespace:ProjectShedule.PopUpAlert"
+                xmlns:local="clr-namespace:ProjectShedule.PopUpAlert.Question"
                 x:TypeArguments="local:QuestionView+Answer"
-                x:Class="ProjectShedule.PopUpAlert.QuestionView"
+                x:Class="ProjectShedule.PopUpAlert.Question.QuestionView"
                 x:Name="popUpView"
                 Size="400,300">
     <xctViews:Popup.Resources>
@@ -46,6 +46,10 @@
             Style="{DynamicResource MediumLabelStyle}"
             HorizontalOptions="Center"
             LineBreakMode="TailTruncation"/>
+        <Label 
+            x:Name="dopTextLabel"
+            Style="{DynamicResource SmallLabelStyle}"
+            HorizontalOptions="Start"/>
         <StackLayout 
             Orientation="Horizontal"  
             HorizontalOptions="Center" VerticalOptions="EndAndExpand">

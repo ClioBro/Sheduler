@@ -62,6 +62,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>EntryViewResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="PopUpAlert\Question\QuestionResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>QuestionResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\SettingResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -133,6 +138,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\Question\QuestionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuestionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\SettingResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>
@@ -200,7 +209,7 @@
     <EmbeddedResource Update="PopUpAlert\DemonstrationViewPackNote.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\QuestionView.xaml">
+    <EmbeddedResource Update="PopUpAlert\Question\QuestionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\RadioButtonsPage.xaml">

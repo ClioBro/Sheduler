@@ -109,7 +109,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSe
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SwitchSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\ThemeSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\DemonstrationViewPackNote.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\QuestionView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\RadioButtonsPage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Editor\EditorPackNotePage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\PackNoteView.xaml.g.cs
@@ -150,3 +149,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAle
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Entry.EntryViewResource.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Entry.EntryViewResource.ru-RU.resources
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\Entry\EntryView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Question.QuestionResource.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ProjectShedule.PopUpAlert.Question.QuestionResource.ru-RU.resources
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\Question\QuestionView.xaml.g.cs
