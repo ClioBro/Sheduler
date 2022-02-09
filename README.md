@@ -34,7 +34,7 @@
 ## Animations
 | DateScroll |
 | ---------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation) |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
