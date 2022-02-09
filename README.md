@@ -4,17 +4,19 @@
 - Добавлять, удалять, редактировать задачи.
 - Уведомление/Напоминание пользователя в определённые даты и время.
 - Менять тему.
-- Настройка фигурного индикатора для всех событий: размер, прозрачность, острота углов.
+- Общая настройка фигурного индикатора событий: размер, прозрачность, острота углов.
 
 ## MainPage
+Даты можно скролить вправо/лево
 | LightMode | DarkMode |
 | --------- | -------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
 ### Expanded
+Развернуть календарь, фильтр и маленькие задачи
 | LightMode | DarkMode |
 | --------- | -------- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150837.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150845.png) | 
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150845.png) | 
 
 ## EditorPage
 | LightMode | DarkMode |
@@ -28,6 +30,11 @@
 
 ### Functions
 | (ColorSelection) | (Notifications) | 
+
+## Animations
+| DateScroll |
+| ---------- |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
