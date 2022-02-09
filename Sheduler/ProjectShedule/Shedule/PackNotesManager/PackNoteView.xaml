@@ -4,7 +4,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
              xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:languageResource="clr-namespace:ProjectShedule.Shedule.PackNotesManager.Resources"
              x:DataType="viewModels:PackNoteViewModel"
              x:Class="ProjectShedule.Shedule.Views.PackNoteView"
              x:Name="thisView">
@@ -17,13 +18,13 @@
                         <SwipeView.RightItems>
                             <SwipeItems CompressedLayout.IsHeadless="True">
                                 <SwipeItem 
-                                    Text="Удалить" 
+                                    Text="{x:Static languageResource:SwipeResource.DeleteButton}" 
                                     IconImageSource="trash_icon.png"
                                     BackgroundColor="{DynamicResource SwipeItemDeleteBackGroundColor}"
                                     Command="{Binding DeleteMeCommand}"
                                     CommandParameter="{Binding .}"/>
                                 <SwipeItem 
-                                    Text="Редакор"  
+                                    Text="{x:Static languageResource:SwipeResource.EditButton}"   
                                     IconImageSource="edit_Icon.png"
                                     BackgroundColor="{DynamicResource SwipeItemEditBackGroundColor}"
                                     Command="{Binding EditMeCommand}"

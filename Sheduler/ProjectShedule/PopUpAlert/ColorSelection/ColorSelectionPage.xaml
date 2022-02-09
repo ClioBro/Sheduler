@@ -61,7 +61,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <Label Text="{Binding HeaderText}"
+            <Label Text="{x:Static colorSelection:ColorSelectionResource.HeaderLabel}"
                    HorizontalOptions="CenterAndExpand"
                    Grid.ColumnSpan="6"
                    VerticalOptions="StartAndExpand"
@@ -96,7 +96,7 @@
                 VerticalOptions="Start"
                 BorderWidth="1.5"
                 Style="{x:DynamicResource ButtonAgreement}"
-                Text="{Binding LineTargetButtonText}"
+                Text="{x:Static colorSelection:ColorSelectionResource.LineTargetButtonText}"
                 BorderColor="{Binding LinteTargetButtonBorderColor}"
                 Command="{Binding LineDesignatingButtonCommand}"/>
             <Button 
@@ -104,7 +104,7 @@
                 VerticalOptions="Start"
                 BorderWidth="1.5"
                 Style="{x:DynamicResource ButtonAgreement}"
-                Text="{Binding BackGroundTargetButtonText}"
+                Text="{x:Static colorSelection:ColorSelectionResource.BackGroundTargetButtonText}"
                 BorderColor="{Binding BackGroundTargetButtonBorderColor}"
                 Command="{Binding BackGroundDesignatingButtonCommand}"/>
             <views:PackNoteView

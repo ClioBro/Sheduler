@@ -22,7 +22,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ColorSelectionResource {
+    public class ColorSelectionResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.PopUpAlert.ColorSelection.ColorSelectionResource", typeof(ColorSelectionResource).Assembly);
@@ -51,7 +51,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         /// <summary>
         ///   Looks up a localized string similar to BackGround.
         /// </summary>
-        internal static string BackGroundTargetButtonText {
+        public static string BackGroundTargetButtonText {
             get {
                 return ResourceManager.GetString("BackGroundTargetButtonText", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         /// <summary>
         ///   Looks up a localized string similar to Choose a color.
         /// </summary>
-        internal static string HeaderLabel {
+        public static string HeaderLabel {
             get {
                 return ResourceManager.GetString("HeaderLabel", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         /// <summary>
         ///   Looks up a localized string similar to Line.
         /// </summary>
-        internal static string LineTargetButtonText {
+        public static string LineTargetButtonText {
             get {
                 return ResourceManager.GetString("LineTargetButtonText", resourceCulture);
             }
