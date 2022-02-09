@@ -10,7 +10,7 @@
 Даты можно скролить вправо/лево
 | LightMode | DarkMode |
 | --------- | -------- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
 ### Expanded
 Развернуть календарь, фильтр и маленькие задачи
