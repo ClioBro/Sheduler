@@ -16,7 +16,7 @@
 Развернуть календарь, фильтр и маленькие задачи
 | LightMode | DarkMode |
 | --------- | -------- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150845.png) | 
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150845.png) | 
 
 ## EditorPage
 | LightMode | DarkMode |
@@ -32,9 +32,9 @@
 | (ColorSelection) | (Notifications) | 
 
 ## Animations
-| DateScroll |
-| ---------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) |
+| DateScroll | FilterExpander | 
+| ---------- | -------------- |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
