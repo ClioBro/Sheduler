@@ -2,8 +2,9 @@
 
 ## MainPage
 ### LightMode
-|        Expanded      |
-| -------------------- |
+|      Expanded        |
+| LightMode | DarkMode |
+| --------- | -------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
 ### DarkMode
