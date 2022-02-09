@@ -1,5 +1,11 @@
 # Sheduler
 
+Текущие возможности:
+- Добавлять, удалять, редактировать задачи.
+- Уведомление/Напоминание пользователя в определённые даты и время.
+- Менять тему.
+- Настройка фигурного индикатора для всех событий: размер, прозрачность, острота углов.
+
 ## MainPage
 | LightMode | DarkMode |
 | --------- | -------- |
@@ -24,7 +30,5 @@
 | (ColorSelection) | (Notifications) | 
 
 ## LanguageResources
-Для добавления дополнительных языковых ресурсов, рекомендую использовать бесплатный инструмент для VS [ResXManager.VSIX](https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager)
-
-## Theme
-(Text)
+Языковые ресурсы находятся в папках страниц или же визуального элемента
+Для удобного добавления/редактирования дополнительных языковых ресурсов, используется/рекомендуется бесплатный инструмент для Visual Studio [ResXManager.VSIX](https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager)
