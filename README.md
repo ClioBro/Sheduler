@@ -10,7 +10,7 @@
 Даты можно скролить вправо/лево
 | LightMode | DarkMode |
 | --------- | -------- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
 ### Expanded
 Развернуть календарь, фильтр и маленькие задачи
@@ -32,9 +32,9 @@
 | (ColorSelection) | (Notifications) | 
 
 ## Animations
-| DateScroll | FilterExpander | 
-| ---------- | -------------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/date_scroll_animation.gif) | ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) |
+| Expander And Scroll | FilterExpander | 
+| ------------------- | -------------- |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
