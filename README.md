@@ -11,16 +11,6 @@
 | --------- | -------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
-## EditorPage
-| LightMode | DarkMode |
-| --------- | -------- |
-|  (image)  |  (image) |
-
-## SettingPage
-| LightMode | DarkMode |
-| --------- | -------- |
-|  (image)  |  (image) |
-
 ## Notification
 <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220">
 
