@@ -7,16 +7,9 @@
 - Общая настройка фигурного индикатора событий: размер, прозрачность, острота углов.
 
 ## MainPage
-Даты можно скролить вправо/лево
 | LightMode | DarkMode |
 | --------- | -------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
-
-### Expanded
-Развернуть календарь, фильтр и маленькие задачи
-| LightMode | DarkMode |
-| --------- | -------- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/Screenshot_20220201-150845.png) | 
 
 ## EditorPage
 | LightMode | DarkMode |
@@ -29,12 +22,14 @@
 |  (image)  |  (image) |
 
 ### Functions
-| (ColorSelection) | (Notifications) | 
+| Choose a color | Notification |
+| -- | -- |
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_ChooseColor.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png) | 
 
 ## Animations
 | Expander And Scroll | FilterExpander | 
 | ------------------- | -------------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/expander_filter_animation.gif) |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_ChooseColor.png) |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
