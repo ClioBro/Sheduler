@@ -22,7 +22,7 @@
 ## Other
 | Expander And Scroll | FilterExpander | 
 | ------------------- | -------------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220"> |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="260"> |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
