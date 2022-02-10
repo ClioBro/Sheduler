@@ -20,9 +20,9 @@
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/editor_dark_page.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/choose_color_dark.png) | 
 
 ### Демонстрация возможностей
-| Expander And Scroll | Edit/Delete | Change Theme | 
-| ------------------- | ----------- | ------------ | 
-| ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | ![AndroidEditDeleteGIF](https://github.com/ClioBro/Sheduler/blob/main/art/editor_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif) |
+| Expander And Scroll |Edit/Delete|Change Theme| 
+| ------------------- |-----------|------------| 
+| ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) |![AndroidEditDeleteGIF](https://github.com/ClioBro/Sheduler/blob/main/art/editor_animation.gif)|![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif)|
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
