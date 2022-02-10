@@ -18,13 +18,17 @@
 
 ## Notification
 Возможность уведомлять пользователя.
+
 <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220">
 
-### Демонстрация возможностей
+### Различная демонстрация
 | Expander And Scroll | Change Theme | 
 | ------------------- | ------------ | 
 | ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif) |
 
-## LanguageResources
+### LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента. 
 Для удобного добавления/редактирования дополнительных языковых ресурсов, используется/рекомендуется бесплатный инструмент для Visual Studio [ResXManager.VSIX](https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager)
+
+### Сross-platform
+На данный момент нету возможности тестировать на IOS 
