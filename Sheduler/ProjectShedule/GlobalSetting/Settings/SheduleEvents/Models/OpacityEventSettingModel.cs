@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
+using ProjectShedule.GlobalSetting.Resource;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {
@@ -8,7 +9,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
         public OpacityEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
-            MainText = Resources.SettingResources.OpacityDopTextLabel;
+            MainText = SettingResources.OpacityDopTextLabel;
             Value = _shapeEventSetting.GetOpacity();
             MinValue = 0;
             MaxValue = 1;

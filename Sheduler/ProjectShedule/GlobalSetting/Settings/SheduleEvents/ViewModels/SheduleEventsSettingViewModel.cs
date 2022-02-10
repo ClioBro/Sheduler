@@ -1,4 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models;
+﻿using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models;
 using ProjectShedule.GlobalSetting.ViewModels;
 using Xamarin.Forms;
 
@@ -11,7 +12,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
         {
             _shapeSetting = new ShapeEventSetting();
 
-            Title = Resources.SettingResources.EventsHeaderLabel;
+            Title = SettingResources.EventsHeaderLabel;
 
             OpacityEventSettingModel = new OpacityEventSettingModel(_shapeSetting);
             CornerRadiusEventSettingModel = new CornerRadiusEventSettingModel(_shapeSetting);

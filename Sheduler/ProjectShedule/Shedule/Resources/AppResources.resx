@@ -138,4 +138,7 @@
   <data name="ShowExampleButton" xml:space="preserve">
     <value>Show example</value>
   </data>
+  <data name="TaskAddingPlaceHolder" xml:space="preserve">
+    <value>Add little task...</value>
+  </data>
 </root>

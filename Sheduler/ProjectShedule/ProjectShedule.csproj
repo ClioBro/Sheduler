@@ -43,6 +43,11 @@
     <Compile Update="Calendar\Views\MonthDays.xaml.cs">
       <DependentUpon>MonthDays.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Escaping\Resource\NotificationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NotificationResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="GlobalSetting\Resource\SettingResources.Designer.cs">
       <DependentUpon>SettingResources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -122,6 +127,10 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Escaping\Resource\NotificationResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Resource\SettingResources.resx">
       <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>

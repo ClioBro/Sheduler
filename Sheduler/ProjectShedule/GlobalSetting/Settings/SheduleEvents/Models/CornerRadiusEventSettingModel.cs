@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
+using ProjectShedule.GlobalSetting.Resource;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {
@@ -8,7 +9,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
         public CornerRadiusEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
-            MainText = Resources.SettingResources.CornerRadiusDopTextLabel;
+            MainText = SettingResources.CornerRadiusDopTextLabel;
             Value = _shapeEventSetting.GetCornerRadius();
             MinValue = 0;
             MaxValue = 10;

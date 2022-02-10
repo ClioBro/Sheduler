@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
+using ProjectShedule.GlobalSetting.Resource;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {
@@ -8,7 +9,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
         public SizeEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
-            MainText = Resources.SettingResources.SizeDopTextLabel;
+            MainText = SettingResources.SizeDopTextLabel;
             Value = _shapeEventSetting.GetSize().Height;
             MinValue = 0;
             MaxValue = 10;

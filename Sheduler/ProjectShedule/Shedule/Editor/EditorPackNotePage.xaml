@@ -79,7 +79,7 @@
                         <StackLayout CompressedLayout.IsHeadless="True" Orientation="Horizontal">
                             <Entry 
                                 Text="{Binding TaskAddingEntryText}" 
-                                Placeholder="{Binding TaskAddingPlaceHolder}"
+                                Placeholder="{x:Static languageResources:AppResources.TaskAddingPlaceHolder}"
                                 Style="{DynamicResource EntryStyle}"
                                 HorizontalOptions="FillAndExpand"/>
                             <ImageButton 

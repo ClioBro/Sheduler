@@ -90,11 +90,10 @@ namespace ProjectShedule._0.Droid.Resources
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
-                .SetContentTitle(notify.Title)
-                .SetContentText(notify.Message)
-                .SetColor(Resource.Color.material_blue_grey_950)
-                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.pluse2_icon))
-                .SetSmallIcon(Resource.Drawable.pluse2_icon)
+                .SetContentTitle($"{Escaping.Resource.NotificationResource.TitleNotify} {notify.Title}")
+                .SetContentText(Escaping.Resource.NotificationResource.Message)
+                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.notification_icon))
+                .SetSmallIcon(Resource.Drawable.note_icon_negate)
                 .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
 
             Android.App.Notification notification = builder.Build();

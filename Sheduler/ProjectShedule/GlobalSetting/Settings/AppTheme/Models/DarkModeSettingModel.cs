@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
+using ProjectShedule.GlobalSetting.Resource;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
 {
@@ -6,11 +7,11 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
     {
         private ThemeController _themeController;
         public DarkModeSettingModel()
-            : base(falseText: Resources.SettingResources.FalseLabel,
-                  trueText: Resources.SettingResources.TrueLabel)
+            : base(falseText: SettingResources.FalseLabel,
+                  trueText: SettingResources.TrueLabel)
         {
             _themeController = App.ThemeController;
-            MainText = Resources.SettingResources.DarkModeDopTextLabel;
+            MainText = SettingResources.DarkModeDopTextLabel;
             Status = _themeController.CurrentTheme is ThemeController.Theme.Dark;
             StatusChanged += OnStatusChanged;
             _themeController.ThemeChanged += OnAppThemeChanged;

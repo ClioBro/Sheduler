@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
+using ProjectShedule.GlobalSetting.Resource;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
 {
@@ -6,11 +7,11 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
     {
         private readonly DeleteConfirmationSetting _deleteConfirmationSetting;
         public DeleteQuestionSettingModel()
-            : base(falseText: Resources.SettingResources.FalseLabel,
-                 trueText: Resources.SettingResources.TrueLabel)
+            : base(falseText: SettingResources.FalseLabel,
+                 trueText: SettingResources.TrueLabel)
         {
             _deleteConfirmationSetting = new DeleteConfirmationSetting();
-            MainText = Resources.SettingResources.DeleteQuestionDopTextLabel;
+            MainText = SettingResources.DeleteQuestionDopTextLabel;
             Status = _deleteConfirmationSetting.AskQuestion;
             StatusChanged += OnStatusChanged;
         }

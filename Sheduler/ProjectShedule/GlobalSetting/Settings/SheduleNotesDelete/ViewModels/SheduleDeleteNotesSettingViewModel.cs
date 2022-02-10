@@ -1,4 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
+﻿using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
 using ProjectShedule.GlobalSetting.ViewModels;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
@@ -7,7 +8,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
     {
         public SheduleDeleteNotesSettingViewModel()
         {
-            Title = Resources.SettingResources.DeleteNotesHeaderLabel;
+            Title = SettingResources.DeleteNotesHeaderLabel;
 
             DeleteQuestion = new DeleteQuestionSettingModel();
         }

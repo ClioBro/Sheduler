@@ -1,4 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.Settings.AppTheme.Models;
+﻿using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.GlobalSetting.Settings.AppTheme.Models;
 using ProjectShedule.GlobalSetting.ViewModels;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.ViewModels
@@ -7,7 +8,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme.ViewModels
     {
         public SheduleThemeSettingViewModel()
         {
-            Title = Resources.SettingResources.ThemeHeaderLabel;
+            Title = SettingResources.ThemeHeaderLabel;
             ThemeSetting = new DarkModeSettingModel();
         }
         public DarkModeSettingModel ThemeSetting { get; set; }

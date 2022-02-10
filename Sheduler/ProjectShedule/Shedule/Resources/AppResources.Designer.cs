@@ -122,5 +122,14 @@ namespace ProjectShedule.Shedule.Resources {
                 return ResourceManager.GetString("ShowExampleButton", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add little task....
+        /// </summary>
+        public static string TaskAddingPlaceHolder {
+            get {
+                return ResourceManager.GetString("TaskAddingPlaceHolder", resourceCulture);
+            }
+        }
     }
 }
