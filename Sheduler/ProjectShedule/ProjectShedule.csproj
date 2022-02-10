@@ -59,11 +59,6 @@
     <Compile Update="GlobalSetting\Views\SettingPushButtonView.xaml.cs">
       <DependentUpon>SettingPushButtonView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="PopUpAlert\ColorSelection\ColorSelectionResource.Designer.cs">
-      <DependentUpon>ColorSelectionResource.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
@@ -147,10 +142,6 @@
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\ColorSelection\ColorSelectionResource.resx">
-      <LastGenOutput>ColorSelectionResource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\Entry\EntryViewResource.resx">
       <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
@@ -251,7 +242,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
     <ProjectReference Include="..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
   </ItemGroup>
 </Project>

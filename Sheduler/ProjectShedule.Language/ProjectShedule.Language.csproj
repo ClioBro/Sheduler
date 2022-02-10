@@ -7,14 +7,27 @@
   <ItemGroup>
     <Folder Include="Resources\Pages\EditorPackNote\" />
     <Folder Include="Resources\Pages\AppFlyout\" />
-    <Folder Include="Resources\Pages\NewFolder\" />
     <Folder Include="Resources\Pages\Sheduler\" />
-    <Folder Include="Resources\Pages\SettingPage\" />
+    <Folder Include="Resources\Pages\Setting\" />
     <Folder Include="Resources\PopUp\DeleteQuestion\" />
     <Folder Include="Resources\PopUp\AppNotification\" />
     <Folder Include="Resources\PopUp\Entry\" />
-    <Folder Include="Resources\PopUp\ColorSelection\" />
     <Folder Include="Resources\PopUp\Repeads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\PopUp\ColorSelection\ColorSelectionResource.Designer.cs">
+      <DependentUpon>ColorSelectionResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\PopUp\ColorSelection\ColorSelectionResource.resx">
+      <LastGenOutput>ColorSelectionResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

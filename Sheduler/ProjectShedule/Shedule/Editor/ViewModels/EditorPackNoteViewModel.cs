@@ -1,4 +1,5 @@
-﻿using ProjectShedule.PopUpAlert;
+﻿using ProjectShedule.Language.Resources.PopUp.ColorSelection;
+using ProjectShedule.PopUpAlert;
 using ProjectShedule.PopUpAlert.ColorSelection;
 using ProjectShedule.Shedule.Models;
 using Rg.Plugins.Popup.Extensions;
@@ -49,8 +50,6 @@ namespace ProjectShedule.Shedule.ViewModels
             ShowColorSelectionPageCommand = new Command(ShowColorSelectionPage);
             ShowAvailableRepeadTypesCommand = new Command(ShowAvailableRepeads);
             DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTask);
-
-            
 
             AssigmentCommands(PackNoteModel.SmallTasks);
 
@@ -166,19 +165,7 @@ namespace ProjectShedule.Shedule.ViewModels
                 }
             }
         }
-        //private bool _expanderExpanded;
-        //public bool ExpanderExpanded
-        //{
-        //    get => _expanderExpanded;
-        //    set
-        //    {
-        //        if (_expanderExpanded != value)
-        //        {
-        //            _expanderExpanded = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
+
         public RepeadItem SelectedRepead
         {
             get => _selectedRepead;
@@ -195,7 +182,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => PackNoteModel.SmallTasks;
 
         public string TaskAddingEntryText { get; set; }
-        public string TaskAddingPlaceHolder { get; set; } = "Add little task...";
+        public string TaskAddingPlaceHolder { get; set; } 
         #endregion
 
         private void InicializateSelectedRepead()

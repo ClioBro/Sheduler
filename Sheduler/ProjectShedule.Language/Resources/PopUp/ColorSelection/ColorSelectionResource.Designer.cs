@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectShedule.PopUpAlert.ColorSelection {
+namespace ProjectShedule.Language.Resources.PopUp.ColorSelection {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.PopUpAlert.ColorSelection.ColorSelectionResource", typeof(ColorSelectionResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.Language.Resources.PopUp.ColorSelection.ColorSelectionResource", typeof(ColorSelectionResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

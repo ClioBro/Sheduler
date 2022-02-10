@@ -9,6 +9,7 @@ namespace ProjectShedule.PopUpAlert
         public static async void ShowColorSelection(this INavigation Navigation, ColorSelectionPage colorSelectionPage)
         {
             await Navigation.PushPopupAsync(colorSelectionPage);
+            
         }
     }
 }
