@@ -27,12 +27,12 @@
 ### Functions
 | Choose a color | Notification |
 | -- | -- |
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_ChooseColor.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png) | 
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_ChooseColor.png) |  | 
 
 ## Animations
 | Expander And Scroll | FilterExpander | 
 | ------------------- | -------------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_ChooseColor.png) |
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) |  |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
