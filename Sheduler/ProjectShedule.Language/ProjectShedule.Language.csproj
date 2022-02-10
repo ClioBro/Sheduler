@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Pages\EditorPackNote\" />
+    <Folder Include="Resources\Pages\AppFlyout\" />
+    <Folder Include="Resources\Pages\NewFolder\" />
+    <Folder Include="Resources\Pages\Sheduler\" />
+    <Folder Include="Resources\Pages\SettingPage\" />
+    <Folder Include="Resources\PopUp\DeleteQuestion\" />
+    <Folder Include="Resources\PopUp\AppNotification\" />
+    <Folder Include="Resources\PopUp\Entry\" />
+    <Folder Include="Resources\PopUp\ColorSelection\" />
+    <Folder Include="Resources\PopUp\Repeads\" />
+  </ItemGroup>
+
+</Project>

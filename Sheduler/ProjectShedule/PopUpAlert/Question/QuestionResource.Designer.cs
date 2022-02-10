@@ -22,7 +22,7 @@ namespace ProjectShedule.PopUpAlert.Question {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class QuestionResource {
+    public class QuestionResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.PopUpAlert.Question.QuestionResource", typeof(QuestionResource).Assembly);
@@ -51,7 +51,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string CancelButtonText {
+        public static string CancelButtonText {
             get {
                 return ResourceManager.GetString("CancelButtonText", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         /// <summary>
         ///   Looks up a localized string similar to Created date time.
         /// </summary>
-        internal static string CreationTimeLabel {
+        public static string CreationTimeLabel {
             get {
                 return ResourceManager.GetString("CreationTimeLabel", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        internal static string DeleteButtonText {
+        public static string DeleteButtonText {
             get {
                 return ResourceManager.GetString("DeleteButtonText", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ProjectShedule.PopUpAlert.Question {
         /// <summary>
         ///   Looks up a localized string similar to Delete?.
         /// </summary>
-        internal static string HeaderLabel {
+        public static string HeaderLabel {
             get {
                 return ResourceManager.GetString("HeaderLabel", resourceCulture);
             }

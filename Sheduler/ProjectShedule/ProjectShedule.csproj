@@ -28,19 +28,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Lobby.resx</DependentUpon>
     </Compile>
-    <Compile Update="Calendar\Views\DayVIew.xaml.cs">
+    <Compile Update="Shedule\Calendar\Views\DayVIew.xaml.cs">
       <DependentUpon>DayVIew.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Calendar\Views\HeaderView.xaml.cs">
+    <Compile Update="Shedule\Calendar\Views\HeaderView.xaml.cs">
       <DependentUpon>HeaderView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Calendar\Views\Header\CarouselDaysView.xaml.cs">
+    <Compile Update="Shedule\Calendar\Views\Header\CarouselDaysView.xaml.cs">
       <DependentUpon>CarouselDaysView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Calendar\Views\Header\CarouselMonthsView.xaml.cs">
+    <Compile Update="Shedule\Calendar\Views\Header\CarouselMonthsView.xaml.cs">
       <DependentUpon>CarouselMonthsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Calendar\Views\MonthDays.xaml.cs">
+    <Compile Update="Shedule\Calendar\Views\MonthDays.xaml.cs">
       <DependentUpon>MonthDays.xaml</DependentUpon>
     </Compile>
     <Compile Update="Escaping\Resource\NotificationResource.Designer.cs">
@@ -119,13 +119,13 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="AppFlyout\Resources\Lobby.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lobby.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\Main.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Escaping\Resource\NotificationResource.resx">
@@ -134,7 +134,7 @@
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Resource\SettingResources.resx">
       <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SettingPushButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -154,11 +154,11 @@
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\Entry\EntryViewResource.resx">
       <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\Question\QuestionResource.resx">
       <LastGenOutput>QuestionResource.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -172,7 +172,7 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Resources\Filters.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Filters.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Resources\Repeads.resx">
@@ -185,25 +185,25 @@
     <EmbeddedResource Update="ThemingDemo\LightTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\DayVIew.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\DayVIew.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\DaysOfWeek.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\DaysOfWeek.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\HeaderView.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\HeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\Header\CarouselDaysView.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselDaysView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\Header\CarouselMonthsView.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselMonthsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\Header\CarouselYearsView.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselYearsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Calendar\Views\MonthDays.xaml">
+    <EmbeddedResource Update="Shedule\Calendar\Views\MonthDays.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Games\TicTacToePage.xaml">
@@ -251,7 +251,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Shedule\PackNotesManager\NewFolder\" />
+    <ProjectReference Include="..\..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
+    <ProjectReference Include="..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
   </ItemGroup>
 </Project>

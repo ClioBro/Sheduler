@@ -1296,3 +1296,8 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_Gene
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\res\drawable\notification_icon.png
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ProjectShedule.Language.dll
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ProjectShedule.Language.pdb
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ru-RU\ProjectShedule.Language.resources.dll
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\android\assets\ProjectShedule.Language.dll
+D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\android\assets\ProjectShedule.Language.pdb

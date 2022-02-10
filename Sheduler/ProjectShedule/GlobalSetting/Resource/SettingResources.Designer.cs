@@ -22,7 +22,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SettingResources {
+    public class SettingResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.GlobalSetting.Resource.SettingResources", typeof(SettingResources).Assembly);
@@ -51,7 +51,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Corner radius:.
         /// </summary>
-        internal static string CornerRadiusDopTextLabel {
+        public static string CornerRadiusDopTextLabel {
             get {
                 return ResourceManager.GetString("CornerRadiusDopTextLabel", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Dark mode:.
         /// </summary>
-        internal static string DarkModeDopTextLabel {
+        public static string DarkModeDopTextLabel {
             get {
                 return ResourceManager.GetString("DarkModeDopTextLabel", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Shedule Delete Notes:.
         /// </summary>
-        internal static string DeleteNotesHeaderLabel {
+        public static string DeleteNotesHeaderLabel {
             get {
                 return ResourceManager.GetString("DeleteNotesHeaderLabel", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Removal request:.
         /// </summary>
-        internal static string DeleteQuestionDopTextLabel {
+        public static string DeleteQuestionDopTextLabel {
             get {
                 return ResourceManager.GetString("DeleteQuestionDopTextLabel", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Events Mark:.
         /// </summary>
-        internal static string EventsHeaderLabel {
+        public static string EventsHeaderLabel {
             get {
                 return ResourceManager.GetString("EventsHeaderLabel", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to False.
         /// </summary>
-        internal static string FalseLabel {
+        public static string FalseLabel {
             get {
                 return ResourceManager.GetString("FalseLabel", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Opacity:.
         /// </summary>
-        internal static string OpacityDopTextLabel {
+        public static string OpacityDopTextLabel {
             get {
                 return ResourceManager.GetString("OpacityDopTextLabel", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Setting.
         /// </summary>
-        internal static string PageTitleLabel {
+        public static string PageTitleLabel {
             get {
                 return ResourceManager.GetString("PageTitleLabel", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Size:.
         /// </summary>
-        internal static string SizeDopTextLabel {
+        public static string SizeDopTextLabel {
             get {
                 return ResourceManager.GetString("SizeDopTextLabel", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to Theme:.
         /// </summary>
-        internal static string ThemeHeaderLabel {
+        public static string ThemeHeaderLabel {
             get {
                 return ResourceManager.GetString("ThemeHeaderLabel", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace ProjectShedule.GlobalSetting.Resource {
         /// <summary>
         ///   Looks up a localized string similar to True.
         /// </summary>
-        internal static string TrueLabel {
+        public static string TrueLabel {
             get {
                 return ResourceManager.GetString("TrueLabel", resourceCulture);
             }

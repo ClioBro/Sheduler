@@ -22,7 +22,7 @@ namespace ProjectShedule.AppFlyout.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Lobby {
+    public class Lobby {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectShedule.AppFlyout.Resources.Lobby", typeof(Lobby).Assembly);
@@ -51,7 +51,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Game.
         /// </summary>
-        internal static string GameTitle {
+        public static string GameTitle {
             get {
                 return ResourceManager.GetString("GameTitle", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         /// <summary>
         ///   Looks up a localized string similar to ClioBro.
         /// </summary>
-        internal static string LobbyTitleLabel {
+        public static string LobbyTitleLabel {
             get {
                 return ResourceManager.GetString("LobbyTitleLabel", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Setting.
         /// </summary>
-        internal static string SettingTitle {
+        public static string SettingTitle {
             get {
                 return ResourceManager.GetString("SettingTitle", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ProjectShedule.AppFlyout.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sheduler.
         /// </summary>
-        internal static string SheduleTitle {
+        public static string SheduleTitle {
             get {
                 return ResourceManager.GetString("SheduleTitle", resourceCulture);
             }

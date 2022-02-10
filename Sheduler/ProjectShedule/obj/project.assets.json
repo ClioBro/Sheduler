@@ -282,6 +282,16 @@
         "runtime": {
           "lib/netstandard2.1/Xamarin.Forms.PancakeView.dll": {}
         }
+      },
+      "ProjectShedule.Language/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/ProjectShedule.Language.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectShedule.Language.dll": {}
+        }
       }
     }
   },
@@ -1120,11 +1130,17 @@
         "xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512",
         "xamarin.forms.pancakeview.nuspec"
       ]
+    },
+    "ProjectShedule.Language/1.0.0": {
+      "type": "project",
+      "path": "../ProjectShedule.Language/ProjectShedule.Language.csproj",
+      "msbuildProject": "../ProjectShedule.Language/ProjectShedule.Language.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
       "Newtonsoft.Json >= 13.0.1",
+      "ProjectShedule.Language >= 1.0.0",
       "Rg.Plugins.Popup >= 2.0.0.12",
       "Xamarin.CommunityToolkit >= 1.2.0",
       "Xamarin.Essentials >= 1.6.1",
@@ -1168,7 +1184,14 @@
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Repository\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj": {
+              "projectPath": "D:\\Repository\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj"
+            },
+            "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj": {
+              "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

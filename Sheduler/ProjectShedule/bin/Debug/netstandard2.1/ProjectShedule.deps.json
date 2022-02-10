@@ -10,6 +10,7 @@
       "ProjectShedule/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "ProjectShedule.Language": "1.0.0",
           "Rg.Plugins.Popup": "2.0.0.12",
           "Xamarin.CommunityToolkit": "1.2.0",
           "Xamarin.Essentials": "1.6.1",
@@ -206,6 +207,16 @@
             "fileVersion": "2.0.1.0"
           }
         }
+      },
+      "ProjectShedule.Language/1.0.0": {
+        "runtime": {
+          "ProjectShedule.Language.dll": {}
+        },
+        "resources": {
+          "ru-RU/ProjectShedule.Language.resources.dll": {
+            "locale": "ru-RU"
+          }
+        }
       }
     }
   },
@@ -354,6 +365,11 @@
       "sha512": "sha512-TGVsLJuGd/PKlyhmcBxZnHhHqyhYppzyrdb2q/sy+S6dQYkeGM8A+HmIIHVhbi7r8Sjasa/HRBkOmTSYQOZzhQ==",
       "path": "xamarin.forms.pancakeview/2.3.0.759",
       "hashPath": "xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"
+    },
+    "ProjectShedule.Language/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

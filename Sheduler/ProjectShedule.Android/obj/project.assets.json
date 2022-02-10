@@ -1149,6 +1149,7 @@
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "ProjectShedule.Language": "1.0.0",
           "Rg.Plugins.Popup": "2.0.0.12",
           "Xamarin.CommunityToolkit": "1.2.0",
           "Xamarin.Essentials": "1.6.1",
@@ -1162,6 +1163,16 @@
         },
         "runtime": {
           "bin/placeholder/ProjectShedule.dll": {}
+        }
+      },
+      "ProjectShedule.Language/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/ProjectShedule.Language.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectShedule.Language.dll": {}
         }
       }
     }
@@ -2691,6 +2702,11 @@
       "type": "project",
       "path": "../ProjectShedule/ProjectShedule.csproj",
       "msbuildProject": "../ProjectShedule/ProjectShedule.csproj"
+    },
+    "ProjectShedule.Language/1.0.0": {
+      "type": "project",
+      "path": "../ProjectShedule.Language/ProjectShedule.Language.csproj",
+      "msbuildProject": "../ProjectShedule.Language/ProjectShedule.Language.csproj"
     }
   },
   "projectFileDependencyGroups": {

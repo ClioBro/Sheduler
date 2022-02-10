@@ -45,7 +45,7 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid Padding="5" CompressedLayout.IsHeadless="True">
+        <Grid Padding="5,0" CompressedLayout.IsHeadless="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>

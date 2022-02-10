@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "ProjectShedule.Android.dll" comes first in this list. */
 		"ProjectShedule.Android.dll",
+		"ProjectShedule.Language.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
 		"Plugin.InputKit.dll",
