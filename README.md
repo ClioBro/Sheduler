@@ -22,7 +22,8 @@
 |  (image)  |  (image) |
 
 ## Notification
-| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png) | 
+<img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="100" height="100">
+ ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png) 
 
 ### Functions
 | Choose a color | Notification |
