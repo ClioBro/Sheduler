@@ -19,13 +19,10 @@
 | ---- | -------------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/editor_dark_page.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/choose_color_dark.png) | 
 
-## Animations
+## Other
 | Expander And Scroll | FilterExpander | 
 | ------------------- | -------------- |
-| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) |  |
-
-## Test
-<gif src="https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif" width="100" height="100">
+| ![Android Animation](https://github.com/ClioBro/Sheduler/blob/main/art/scroll_expander_animations.gif) | <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220"> |
 
 ## LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента
