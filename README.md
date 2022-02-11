@@ -27,7 +27,6 @@
 | ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif) | 
 
 ### LanguageResources
-Языковые ресурсы находятся в папках страниц или же визуального элемента. 
 Для удобного добавления/редактирования дополнительных языковых ресурсов, используется/рекомендуется бесплатный инструмент для Visual Studio [ResXManager.VSIX](https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager)
 
 ### Сross-platform
