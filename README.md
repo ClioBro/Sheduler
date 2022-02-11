@@ -22,9 +22,9 @@
 <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220">
 
 ### Различная демонстрация
-| Expander And Scroll | Change Theme | asasd |
-| ------------------- | ------------ | ----- |
-| ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif) | ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) 
+| Expander And Scroll | Change Theme |
+| ------------------- | ------------ |
+| ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/Theme_change_animation.gif) | 
 
 ### LanguageResources
 Языковые ресурсы находятся в папках страниц или же визуального элемента. 
