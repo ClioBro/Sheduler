@@ -1,7 +1,8 @@
-﻿using ProjectShedule.PopUpAlert;
+﻿using ProjectShedule.Language.Resources.PopUp.DeleteQuestion;
+using ProjectShedule.Language.Resources.PopUp.Repeads;
+using ProjectShedule.PopUpAlert;
 using ProjectShedule.PopUpAlert.Question;
 using ProjectShedule.Shedule.Interfaces;
-using ProjectShedule.Shedule.Resources;
 using ProjectShedule.Shedule.ViewModels;
 using Rg.Plugins.Popup.Extensions;
 using System;

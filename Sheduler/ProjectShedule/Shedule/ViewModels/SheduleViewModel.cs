@@ -1,15 +1,16 @@
 ﻿using ProjectShedule.Calendar.Models;
 using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
-using ProjectShedule.PopUpAlert;
+using ProjectShedule.Language.Resources.PopUp.DeleteQuestion;
+using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -24,7 +25,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public SheduleViewModel()
         {
             _sheduleModel = new SheduleModel();
-            Title = Resources.AppResources.ShedulePageTitle;
+            Title = Lobby.SheduleTitle;
             AssigmentCommandEvents();
         }
 
@@ -103,7 +104,7 @@ namespace ProjectShedule.Shedule.ViewModels
             if (deleteConfirmation.AskQuestion)
             {
                 string header = packNoteViewModel.Header;
-                string createdText = PopUpAlert.Question.QuestionResource.CreationTimeLabel;
+                string createdText = QuestionResource.CreationTimeLabel;
                 string createdDateTime = packNoteViewModel.CreatedDateTime.ToString();
                 string createdDateTimeText = $"{createdText}: {createdDateTime}";
                 var answer = await Navigation.ShowQuestionForDeletion(itemNameToBeDeleted: header, dopText: createdDateTimeText);

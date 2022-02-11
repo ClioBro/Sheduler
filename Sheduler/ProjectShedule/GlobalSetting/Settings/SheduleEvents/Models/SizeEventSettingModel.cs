@@ -1,5 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
-using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {

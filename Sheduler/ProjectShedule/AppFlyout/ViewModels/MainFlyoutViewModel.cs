@@ -1,12 +1,10 @@
 ﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
-using System.Collections.Generic;
+using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace ProjectShedule.AppFlyout.ViewModels
 {
-    internal class MainFlyoutViewModel : INotifyPropertyChanged
+    internal class MainFlyoutViewModel
     {
         public ObservableCollection<MainFlyoutMenuItemViewModel> MenuItems { get; set; }
 
@@ -47,15 +45,15 @@ namespace ProjectShedule.AppFlyout.ViewModels
             return new ObservableCollection<MainFlyoutMenuItemViewModel>
             {
                 new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                    Title = Resources.Lobby.SettingTitle,
-                    TargetType = typeof( GlobalSetting.SettingPage) })
+                    Title = Lobby.SettingTitle,
+                    TargetType = typeof( GlobalSetting.SettingMainPage) })
                 {
                     DarkImage = "setting_Icon.png",
                     LightImage = "setting_Icon_negate.png"
                 },
 
                 new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                    Title = Resources.Lobby.GameTitle,
+                    Title = Lobby.GameTitle,
                     TargetType = typeof( Games.TicTacToePage)})
                 {
                     DarkImage = "ticTacToe_icon.png",
@@ -63,7 +61,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
                 },
 
                 new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                    Title = Resources.Lobby.SheduleTitle,
+                    Title = Lobby.SheduleTitle,
                     TargetType = typeof( Shedule.ShedulePage) })
                 {
                     DarkImage = "note_icon.png",
@@ -72,17 +70,5 @@ namespace ProjectShedule.AppFlyout.ViewModels
 
             };
         }
-
-        #region INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged == null)
-                return;
-
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

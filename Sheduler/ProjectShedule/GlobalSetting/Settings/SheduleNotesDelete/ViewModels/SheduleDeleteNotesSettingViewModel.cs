@@ -1,14 +1,14 @@
-﻿using ProjectShedule.GlobalSetting.Resource;
-using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
-using ProjectShedule.GlobalSetting.ViewModels;
+﻿using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
+using ProjectShedule.GlobalSetting.ViewModel;
+using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
 {
-    public class SheduleDeleteNotesSettingViewModel : SettingViewModel
+    public class SheduleDeleteNotesSettingViewModel : SettingBoxViewModel
     {
         public SheduleDeleteNotesSettingViewModel()
         {
-            Title = SettingResources.DeleteNotesHeaderLabel;
+            Header = SettingResources.DeleteNotesHeaderLabel;
 
             DeleteQuestion = new DeleteQuestionSettingModel();
         }

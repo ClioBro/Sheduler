@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:languageResx="clr-namespace:ProjectShedule.Language.Resources.OtherElements;assembly=ProjectShedule.Language"
              xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
              x:DataType="viewModels:SmallTaskViewModel"
              x:Class="ProjectShedule.Shedule.Views.TaskView">
@@ -11,7 +12,7 @@
             <SwipeView.RightItems CompressedLayout.IsHeadless="True">
                 <SwipeItems CompressedLayout.IsHeadless="True">
                     <SwipeItem 
-                        Text="Удалить" 
+                        Text="{x:Static languageResx:SwipeResource.DeleteButton}" 
                         BackgroundColor="{DynamicResource SwipeItemDeleteBackGroundColor}" 
                         IconImageSource="trash_icon.png"
                         Command="{Binding DeleteMeCommand}"

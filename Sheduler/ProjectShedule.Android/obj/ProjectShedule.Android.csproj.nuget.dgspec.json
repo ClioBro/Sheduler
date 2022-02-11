@@ -34,6 +34,9 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
+              "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj": {
+                "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule.Language\\ProjectShedule.Language.csproj"
+              },
               "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj": {
                 "projectPath": "D:\\Repository\\Sheduler\\Sheduler\\ProjectShedule\\ProjectShedule.csproj"
               }

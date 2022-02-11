@@ -683,7 +683,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\com.companyname
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\com.companyname.myproject2.x_0-Signed.apk.idsig
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ProjectShedule.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ProjectShedule.pdb
-D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\bin\Debug\ru-RU\ProjectShedule.resources.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\ProjectShedule.Android.csproj.CopyComplete
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\ProjectShedule.Android.dll
 D:\Repository\Sheduler\Sheduler\ProjectShedule.Android\obj\Debug\110\ProjectShedule.Android.pdb

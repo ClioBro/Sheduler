@@ -1,11 +1,11 @@
 ﻿using ProjectShedule.Calendar.Models;
 using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using ProjectShedule.Shedule.ShapeEvents;
 using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 

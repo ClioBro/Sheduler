@@ -5,29 +5,122 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Pages\EditorPackNote\" />
-    <Folder Include="Resources\Pages\AppFlyout\" />
-    <Folder Include="Resources\Pages\Sheduler\" />
-    <Folder Include="Resources\Pages\Setting\" />
-    <Folder Include="Resources\PopUp\DeleteQuestion\" />
-    <Folder Include="Resources\PopUp\AppNotification\" />
-    <Folder Include="Resources\PopUp\Entry\" />
-    <Folder Include="Resources\PopUp\Repeads\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Update="Resources\OtherElements\AppNotification.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppNotification.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\OtherElements\Filters.Designer.cs">
+      <DependentUpon>Filters.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\OtherElements\SwipeResource.Designer.cs">
+      <DependentUpon>SwipeResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Pages\AppFlyout\Lobby.Designer.cs">
+      <DependentUpon>Lobby.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Pages\EditorPackNote\Editor.Designer.cs">
+      <DependentUpon>Editor.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Pages\Setting\SettingResources.Designer.cs">
+      <DependentUpon>SettingResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\PopUp\AppNotification\NotificationResource.Designer.cs">
+      <DependentUpon>NotificationResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\PopUp\ColorSelection\ColorSelectionResource.Designer.cs">
       <DependentUpon>ColorSelectionResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\PopUp\DeleteQuestion\QuestionResource.Designer.cs">
+      <DependentUpon>QuestionResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\PopUp\Entry\EntryViewResource.Designer.cs">
+      <DependentUpon>EntryViewResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\PopUp\Repeads\Repeads.Designer.cs">
+      <DependentUpon>Repeads.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\OtherElements\AppNotification.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppNotification.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\OtherElements\Filters.resx">
+      <LastGenOutput>Filters.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.OtherElements</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\OtherElements\SwipeResource.resx">
+      <LastGenOutput>SwipeResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.OtherElements</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Pages\AppFlyout\Lobby.resx">
+      <LastGenOutput>Lobby.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.Pages.AppFlyout</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Pages\EditorPackNote\Editor.resx">
+      <LastGenOutput>Editor.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.Pages.EditorPackNote</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Pages\Setting\SettingResources.resx">
+      <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.Pages.Setting</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PopUp\AppNotification\NotificationResource.resx">
+      <LastGenOutput>NotificationResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.AppNotification</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\PopUp\ColorSelection\ColorSelectionResource.resx">
       <LastGenOutput>ColorSelectionResource.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.ColorSelection</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PopUp\DeleteQuestion\QuestionResource.resx">
+      <LastGenOutput>QuestionResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.DeleteQuestion</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PopUp\Entry\EntryViewResource.resx">
+      <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.Entry</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PopUp\Repeads\Repeads.resx">
+      <LastGenOutput>Repeads.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.Repeads</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Pages\Sheduler\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using ProjectShedule.Shedule.NotifyOnApp.Enum;
-using ProjectShedule.Shedule.Resources;
+﻿using ProjectShedule.Language.Resources.PopUp.Repeads;
+using ProjectShedule.Shedule.NotifyOnApp.Enum;
 
 namespace ProjectShedule.Shedule.Models
 {

@@ -1,14 +1,12 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
-using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
 {
-    public class DarkModeSettingModel : SwitchsSettingModel
+    public class DarkModeSettingModel : SwitchsElementModel
     {
-        private ThemeController _themeController;
+        private readonly ThemeController _themeController;
         public DarkModeSettingModel()
-            : base(falseText: SettingResources.FalseLabel,
-                  trueText: SettingResources.TrueLabel)
         {
             _themeController = App.ThemeController;
             MainText = SettingResources.DarkModeDopTextLabel;

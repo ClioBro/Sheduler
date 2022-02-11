@@ -166,6 +166,10 @@
     <AndroidResource Include="Resources\drawable\pluse2_icon_negate.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectShedule.Language\ProjectShedule.Language.csproj">
+      <Project>{7798b67c-e406-4043-a7b7-f45b18182ba7}</Project>
+      <Name>ProjectShedule.Language</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectShedule\ProjectShedule.csproj">
       <Project>{a930d8d7-00a9-4f2a-8459-cc9432e8a8ad}</Project>
       <Name>ProjectShedule</Name>

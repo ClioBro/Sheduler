@@ -23,11 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AppFlyout\Resources\Lobby.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Lobby.resx</DependentUpon>
-    </Compile>
     <Compile Update="Shedule\Calendar\Views\DayVIew.xaml.cs">
       <DependentUpon>DayVIew.xaml</DependentUpon>
     </Compile>
@@ -43,18 +38,8 @@
     <Compile Update="Shedule\Calendar\Views\MonthDays.xaml.cs">
       <DependentUpon>MonthDays.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Escaping\Resource\NotificationResource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>NotificationResource.resx</DependentUpon>
-    </Compile>
-    <Compile Update="GlobalSetting\Resource\SettingResources.Designer.cs">
-      <DependentUpon>SettingResources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="GlobalSetting\SettingPage.xaml.cs">
-      <DependentUpon>SettingPage.xaml</DependentUpon>
+    <Compile Update="GlobalSetting\SettingMainPage.xaml.cs">
+      <DependentUpon>SettingMainPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="GlobalSetting\Views\SettingPushButtonView.xaml.cs">
       <DependentUpon>SettingPushButtonView.xaml</DependentUpon>
@@ -62,38 +47,8 @@
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
-    <Compile Update="PopUpAlert\Entry\EntryViewResource.Designer.cs">
-      <DependentUpon>EntryViewResource.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="PopUpAlert\Question\QuestionResource.Designer.cs">
-      <DependentUpon>QuestionResource.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Shedule\PackNotesManager\Resources\SwipeResource.Designer.cs">
-      <DependentUpon>SwipeResource.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Shedule\Resources\AppResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Shedule\Resources\Filters.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Filters.resx</DependentUpon>
-    </Compile>
     <Compile Update="Shedule\Resources\RadioButton.xaml.cs">
       <DependentUpon>RadioButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Shedule\Resources\Repeads.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Repeads.resx</DependentUpon>
     </Compile>
     <Compile Update="Shedule\ShedulePage.xaml.cs">
       <DependentUpon>ShedulePage.xaml</DependentUpon>
@@ -110,65 +65,26 @@
     <EmbeddedResource Update="AppFlyout\MainFlyout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="AppFlyout\Resources\FlyoutResource.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="AppFlyout\Resources\Lobby.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lobby.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Escaping\Resource\NotificationResource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NotificationResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Resource\SettingResources.resx">
-      <LastGenOutput>SettingResources.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SettingPushButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\SheduleDeleteQuestionSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\SheduleEventsSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\SheduleEvents\Views\SheduleEventsSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\ThemeSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\Entry\EntryViewResource.resx">
-      <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\Question\QuestionResource.resx">
-      <LastGenOutput>QuestionResource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\PackNotesManager\Resources\SwipeResource.resx">
-      <LastGenOutput>SwipeResource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Resources\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Resources\Filters.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Filters.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Resources\Repeads.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Repeads.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\DarkTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -200,7 +116,7 @@
     <EmbeddedResource Update="Games\TicTacToePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\SettingPage.xaml">
+    <EmbeddedResource Update="GlobalSetting\SettingMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\TestPages\ColorSelection.xaml">

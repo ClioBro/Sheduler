@@ -5,6 +5,7 @@ using Android.OS;
 using AndroidX.Core.App;
 using ProjectShedule.Droid;
 using ProjectShedule.Escaping;
+using LanguageResource = ProjectShedule.Language.Resources.OtherElements;
 using System;
 using Xamarin.Forms;
 using AndroidApp = Android.App.Application;
@@ -90,8 +91,8 @@ namespace ProjectShedule._0.Droid.Resources
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
-                .SetContentTitle($"{Escaping.Resource.NotificationResource.TitleNotify} {notify.Title}")
-                .SetContentText(Escaping.Resource.NotificationResource.Message)
+                .SetContentTitle($"{LanguageResource.AppNotification.Title} {notify.Title}")
+                .SetContentText(LanguageResource.AppNotification.Message)
                 .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.notification_icon))
                 .SetSmallIcon(Resource.Drawable.note_icon_negate)
                 .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);

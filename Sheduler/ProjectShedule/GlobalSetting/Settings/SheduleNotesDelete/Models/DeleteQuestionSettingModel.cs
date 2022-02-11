@@ -1,14 +1,12 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
-using ProjectShedule.GlobalSetting.Resource;
+using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
 {
-    public class DeleteQuestionSettingModel : SwitchsSettingModel
+    public class DeleteQuestionSettingModel : SwitchsElementModel
     {
         private readonly DeleteConfirmationSetting _deleteConfirmationSetting;
         public DeleteQuestionSettingModel()
-            : base(falseText: SettingResources.FalseLabel,
-                 trueText: SettingResources.TrueLabel)
         {
             _deleteConfirmationSetting = new DeleteConfirmationSetting();
             MainText = SettingResources.DeleteQuestionDopTextLabel;
