@@ -3,8 +3,7 @@
 Текущие возможности:
 - Добавлять, удалять, редактировать задачи.
 - Уведомление/Напоминание пользователя в определённые даты и время.
-- Менять тему.
-- Общая настройка фигурного индикатора событий: размер, прозрачность, острота углов.
+- Менять цветовую тему приложения.
 
 ## MainPage
 | Light Mode | Dark Mode |
@@ -20,6 +19,11 @@
 Возможность уведомлять пользователя.
 
 <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220">
+
+### SettingPage
+| Rus | Engl |
+| --- | ---- |
+| ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/setting_page_ru.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/setting_page_en.png) | 
 
 ### Различная демонстрация
 | Expander And Scroll | Change Theme |
