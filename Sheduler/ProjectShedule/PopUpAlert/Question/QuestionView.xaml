@@ -6,7 +6,8 @@
                 x:TypeArguments="local:QuestionView+Answer"
                 x:Class="ProjectShedule.PopUpAlert.Question.QuestionView"
                 x:Name="popUpView"
-                Size="400,300">
+                Size="400,300"
+                BackgroundColor="Transparent">
     <xctViews:Popup.Resources>
         <Style x:Key="ButtonCancelation" TargetType="Button">
             <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
@@ -30,39 +31,51 @@
             <Setter Property="CornerRadius" Value="3"/>
         </Style>
     </xctViews:Popup.Resources>
-    <StackLayout 
+    <Frame 
         x:DataType="local:QuestionView"
-        Padding="4"
-        BackgroundColor="{DynamicResource PopUpBackGroundColor}">
-        <Label  
-            x:Name="headerLabel"
-            Style="{DynamicResource LargeLabelStyle}"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="Start"
-            LineBreakMode="TailTruncation"
-            MaxLines="1"/>
-        <Label 
-            x:Name="secondaryLabel" 
-            Style="{DynamicResource MediumLabelStyle}"
-            HorizontalOptions="Center"
-            LineBreakMode="TailTruncation"/>
-        <Label 
-            x:Name="dopTextLabel"
-            Style="{DynamicResource SmallLabelStyle}"
-            HorizontalOptions="Start"/>
-        <StackLayout 
-            Orientation="Horizontal"  
-            HorizontalOptions="Center" VerticalOptions="EndAndExpand">
-            <Button 
-                x:Name="cancelationButton"
-                Style="{DynamicResource ButtonCancelation}"
-                HorizontalOptions="StartAndExpand"
-                Clicked="CancelationButton_Clicked"/>
-            <Button 
-                x:Name="agreementButton"
-                Style="{DynamicResource ButtonAgreement}" 
-                HorizontalOptions="EndAndExpand"
-                Clicked="AgreementButton_Clicked"/>
-        </StackLayout>
-    </StackLayout>
+        HasShadow="False"
+        CornerRadius="10"
+        Margin="15" Padding="10"
+        BackgroundColor="{DynamicResource PopUpBackGroundColor}"
+        BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
+        <Grid>
+            <Label  
+                x:Name="headerLabel"
+                Grid.Row="0"
+                Style="{DynamicResource LargeLabelStyle}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"/>
+            <Label 
+                x:Name="secondaryLabel"
+                Grid.Row="1"
+                Style="{DynamicResource MediumLabelStyle}"
+                HorizontalOptions="Center"
+                LineBreakMode="TailTruncation"/>
+            <Label 
+                x:Name="dopTextLabel"
+                Grid.Row="2"
+                Style="{DynamicResource SmallLabelStyle}"
+                HorizontalOptions="Start"/>
+            <StackLayout 
+                Grid.Row="3"
+                Orientation="Horizontal"  
+                HorizontalOptions="Center" 
+                VerticalOptions="EndAndExpand">
+                <Button 
+                    x:Name="cancelationButton"
+                    Style="{DynamicResource ButtonCancelation}"
+                    HorizontalOptions="StartAndExpand"
+                    Clicked="CancelationButton_Clicked"/>
+                <Button 
+                    x:Name="agreementButton"
+                    Style="{DynamicResource ButtonAgreement}" 
+                    HorizontalOptions="EndAndExpand"
+                    Clicked="AgreementButton_Clicked"/>
+            </StackLayout>
+
+        </Grid>
+        
+    </Frame>
 </xctViews:Popup>

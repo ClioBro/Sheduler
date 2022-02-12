@@ -1,7 +1,7 @@
-﻿using ProjectShedule.Language.Resources.PopUp.ColorSelection;
-using ProjectShedule.PopUpAlert;
+﻿using ProjectShedule.PopUpAlert;
 using ProjectShedule.PopUpAlert.ColorSelection;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.ViewModels;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace ProjectShedule.Shedule.ViewModels
+namespace ProjectShedule.Shedule.Editor.ViewModels
 {
-    public class EditorPackNoteViewModel : INotifyPropertyChanged
+    public partial class EditorPackNoteViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,7 +47,7 @@ namespace ProjectShedule.Shedule.ViewModels
             SavePackNoteCommand = new Command(SaveCommanHandling);
             AddTaskCommand = new Command(AddTask);
             ShowPackNoteViewCommand = new Command(ShowViewPackNote);
-            ShowColorSelectionPageCommand = new Command(ShowColorSelectionPage);
+            ShowColorSelectionPageCommand = new Command(ShowColorSelectionPageAcync);
             ShowAvailableRepeadTypesCommand = new Command(ShowAvailableRepeads);
             DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTask);
 
@@ -246,23 +246,18 @@ namespace ProjectShedule.Shedule.ViewModels
             OnPropertyChanged(nameof(HasSmallTasks));
         }
 
-        private void ShowColorSelectionPage()
+        private void ShowColorSelectionPageAcync()
         {
             if (ColorSelectionPage.IsPageOpened)
                 return;
 
-            ColorSelectionModel colorSelectionModel = new ColorSelectionModel(
-                packNoteViewModel: new PackNoteViewModel(PackNoteModel),
-                headerText: ColorSelectionResource.HeaderLabel,
-                lineTargetText: ColorSelectionResource.LineTargetButtonText,
-                backGroundText: ColorSelectionResource.BackGroundTargetButtonText);
+            ColorSelectionPageCreation colorSelectionPageCreation = new ColorSelectionPageCreation(PackNoteModel);
 
-            colorSelectionModel.LineTarget.ColorSelected += (object sender, Color color) => LineColor = color;
-            colorSelectionModel.BackGroundTarget.ColorSelected += (object sender, Color color) => BackGroundColor = color;
-
-            ColorSelectionViewModel colorSelectionViewModel = new ColorSelectionViewModel(colorSelectionModel);
+            colorSelectionPageCreation.ColorSelection.LineTarget.ColorSelected += (object sender, Color color) => LineColor = color;
+            colorSelectionPageCreation.ColorSelection.BackGroundTarget.ColorSelected += (object sender, Color color) => BackGroundColor = color;
             
-            ColorSelectionPage colorSelectionPage = new ColorSelectionPage(colorSelectionViewModel);
+            ColorSelectionPage colorSelectionPage = colorSelectionPageCreation.Create();
+
             Navigation.ShowColorSelection(colorSelectionPage);
         }
         private async void ShowViewPackNote()
@@ -272,7 +267,9 @@ namespace ProjectShedule.Shedule.ViewModels
         }
         private async void ShowAvailableRepeads()
         {
-            await Navigation.ShowAvailableRepeadsAsync(OnSelectedItemChangedAction, SelectedRepead);
+            if (RadioButtonsSelecterPage.IsPageOpened)
+                return;
+            await Navigation.ShowAvailableRepeadsAsync(OnSelectedItemChangedAction, CustomRepeads.RepeadsItems, SelectedRepead);
 
             void OnSelectedItemChangedAction(object sender, RadioButtonItem selectedItem)
             {

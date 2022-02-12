@@ -9,19 +9,20 @@ namespace ProjectShedule.PopUpAlert
     public partial class RadioButtonsSelecterPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         public static bool IsPageOpened { get; private set; }
+        private readonly List<RadioButtonItem> _radioButtons;
         private RadioButtonItem _selectedItem;
-        public RadioButtonsSelecterPage(IEnumerable<RadioButtonItem> items, RadioButtonItem selectedItem = null, string title = null)
+        public RadioButtonsSelecterPage(IEnumerable<RadioButtonItem> items, int selectedItemIndex = 0, string title = null)
         {
             InitializeComponent();
-            Items = items;
-            _selectedItem = selectedItem;
+            _radioButtons = new List<RadioButtonItem>(items);
+            SetSelectedItemByIndex(selectedItemIndex);
             MainText = title;
             BindingContext = this;
         }
 
         public event EventHandler<RadioButtonItem> SelectedItemChanged;
 
-        public IEnumerable<RadioButtonItem> Items { get; }
+        public IEnumerable<RadioButtonItem> Items => _radioButtons;
         public RadioButtonItem SelectedItem
         {
             get => _selectedItem;
@@ -36,6 +37,7 @@ namespace ProjectShedule.PopUpAlert
         }
         public string MainText { get; }
         public bool MainTextVisible => !string.IsNullOrWhiteSpace(MainText);
+        private protected void SetSelectedItemByIndex(int index) => _selectedItem = _radioButtons[index];
 
         protected override void OnAppearing()
         {

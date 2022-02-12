@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace ProjectShedule.Shedule.Models
 {
@@ -44,12 +45,9 @@ namespace ProjectShedule.Shedule.Models
                                  sizePopUp: new Size(300, 200)));;
         }
 
-        public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, Action<object, RadioButtonItem> selectedItemChangedActionCallBack, RadioButtonItem selectedRadioButton = null)
+        public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, Action<object, RadioButtonItem> selectedItemChangedActionCallBack, RadioButtonItem[] items, RadioButtonItem selectedRadioButton = null)
         {
-            if (RadioButtonsSelecterPage.IsPageOpened)
-                return;
-
-            var radioButtonsPage = new RadioButtonsSelecterPage(CustomRepeads.RepeadsItems, selectedRadioButton, Repeads.HeaderLabel);
+            var radioButtonsPage = new RadioButtonsSelecterPage(items, items.IndexOf(selectedRadioButton), Repeads.HeaderLabel);
             radioButtonsPage.SelectedItemChanged += (object sender, RadioButtonItem selectedItem) => selectedItemChangedActionCallBack?.Invoke(sender, selectedItem);
 
             await navigation.PushPopupAsync(radioButtonsPage);

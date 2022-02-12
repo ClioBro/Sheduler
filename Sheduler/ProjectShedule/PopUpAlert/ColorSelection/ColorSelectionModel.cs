@@ -4,7 +4,14 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.PopUpAlert.ColorSelection
 {
-    public class ColorSelectionModel
+    public interface IColorSelection
+    {
+        event EventHandler<Target> TargetSelected;
+        ITarget CurrentTarget { get; }
+        ITarget LineTarget { get; }
+        ITarget BackGroundTarget { get; }
+    }
+    public class ColorSelectionModel : IColorSelection
     {
         private Target _currentTarget;
         private readonly Target _lineTarget;
