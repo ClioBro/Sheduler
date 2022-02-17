@@ -4,11 +4,11 @@
 - Добавлять, удалять, редактировать задачи.
 - Уведомление/Напоминание пользователя в определённые даты и время.
 - Менять цветовую тему приложения.
-- Смена языка.
+- Адаптивный языковой ресурс RU, EN.
 
 ## MainPage
 | Light Mode | Dark Mode |
-| --------- | -------- |
+| ---------- | --------- |
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_light.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/shedule_main_page_dark.png) |
 
 ### Note
