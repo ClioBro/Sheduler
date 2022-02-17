@@ -1,9 +1,11 @@
-﻿namespace ProjectShedule.DataNote
+﻿using ProjectShedule.DataNote.Interfaces;
+
+namespace ProjectShedule.DataNote
 {
-    public interface ISmallTask
+    public interface ISmallTask : ITable
     {
-        public int IdNote { get; set; }
-        public string Name { get; set; }
-        public bool Status { get; set; }
+        public int IdNote { get; }
+        public string Name { get; }
+        public bool Status { get; }
     }
 }

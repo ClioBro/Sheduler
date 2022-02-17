@@ -8,10 +8,13 @@ namespace ProjectShedule.Shedule.Editor
     public class ColorSelectionPageCreation
     {
         private readonly ColorSelectionModel _colorSelectionModel;
-        public ColorSelectionPageCreation(PackNoteModel packNoteViewModel)
+        private readonly PackNoteViewModel _packNoteViewModel;
+        public ColorSelectionPageCreation(PackNoteModel packNoteModel) : this(new PackNoteViewModel(packNoteModel)) { }
+        public ColorSelectionPageCreation(PackNoteViewModel packNoteViewModel)
         {
+            _packNoteViewModel = packNoteViewModel;
             _colorSelectionModel = new ColorSelectionModel(
-                packNoteViewModel: new PackNoteViewModel(packNoteViewModel),
+                packNoteViewModel: _packNoteViewModel,
                 headerText: ColorSelectionResource.HeaderLabel,
                 lineTargetText: ColorSelectionResource.LineTargetButtonText,
                 backGroundText: ColorSelectionResource.BackGroundTargetButtonText);

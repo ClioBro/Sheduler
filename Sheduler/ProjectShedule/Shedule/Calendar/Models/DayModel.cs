@@ -131,7 +131,7 @@ namespace ProjectShedule.Calendar.Models
         }
         public Color BorderColor => IsToday
                                    ? TodayBorderColor
-                                   : Color.Default;
+                                   : BackgroundColor;
         public Color PrimaryTextColor 
         {
             get => GetProperty((Color)App.Current.Resources["PrimaryTextColor"]);
@@ -149,6 +149,6 @@ namespace ProjectShedule.Calendar.Models
         public Color TextColor => IsThisMonth ? PrimaryTextColor : SecondaryTextColor;
 
         public void OnAppThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
-            => Notify(nameof(TextColor), nameof(BackgroundColor));
+            => Notify(nameof(TextColor), nameof(BackgroundColor), nameof(BorderColor));
     }
 }

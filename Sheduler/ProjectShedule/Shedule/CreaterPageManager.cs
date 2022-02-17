@@ -1,7 +1,8 @@
 ﻿using ProjectShedule.Language.Resources.PopUp.DeleteQuestion;
-using ProjectShedule.Language.Resources.PopUp.Repeads;
 using ProjectShedule.PopUpAlert;
 using ProjectShedule.PopUpAlert.Question;
+using ProjectShedule.Shedule.Editor.Models;
+using ProjectShedule.Shedule.Editor.ViewModels;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.ViewModels;
 using Rg.Plugins.Popup.Extensions;
@@ -11,7 +12,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace ProjectShedule.Shedule.Models
 {
@@ -19,11 +19,13 @@ namespace ProjectShedule.Shedule.Models
     {
         public static EditorPackNotePage CreateEditorPage(Action SavePressedCallBack, IPackNote packNote = null)
         {
-            EditorPackNoteViewModel editorVM = packNote == null
-                ? new EditorPackNoteViewModel()
-                : new EditorPackNoteViewModel(GetCleanPackNoteViewModel(packNote));
+            EditorPackNoteModel editorModel = packNote == null
+                ? new EditorPackNoteModel()
+                : new EditorPackNoteModel(GetCleanPackNoteViewModel(packNote));
 
-            editorVM.SavePressed += SavePressedCallBack;
+            EditorPackNoteVM editorVM = new EditorPackNoteVM(editorModel);
+
+            editorVM.SavedActionCallBack += SavePressedCallBack;
 
             return new EditorPackNotePage(editorVM);
         }
@@ -45,12 +47,9 @@ namespace ProjectShedule.Shedule.Models
                                  sizePopUp: new Size(300, 200)));;
         }
 
-        public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, Action<object, RadioButtonItem> selectedItemChangedActionCallBack, RadioButtonItem[] items, RadioButtonItem selectedRadioButton = null)
+        public static async Task ShowAvailableRepeadsAsync(this INavigation navigation, RadioButtonsSelecterPage radioButtonsSelecterPage)
         {
-            var radioButtonsPage = new RadioButtonsSelecterPage(items, items.IndexOf(selectedRadioButton), Repeads.HeaderLabel);
-            radioButtonsPage.SelectedItemChanged += (object sender, RadioButtonItem selectedItem) => selectedItemChangedActionCallBack?.Invoke(sender, selectedItem);
-
-            await navigation.PushPopupAsync(radioButtonsPage);
+            await navigation.PushPopupAsync(radioButtonsSelecterPage);
         }
     }
 }

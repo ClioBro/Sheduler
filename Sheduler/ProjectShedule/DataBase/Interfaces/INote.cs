@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProjectShedule.DataNote.Interfaces;
+using System;
 
 namespace ProjectShedule.DataNote
 {
-    public interface INote
+    public interface INote : ITable
     {
         public string Header { get; set; }
-        public string DopText { get; set; }
+        public string DopText { get; set;}
         public DateTime CreatedDateTime { get; set; }
         public DateTime AppointmentDate { get; set; }
         public int RepeadIdKey { get; set; }

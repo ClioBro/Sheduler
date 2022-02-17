@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.ViewModels;
+﻿using ProjectShedule.Shedule.Editor.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,8 +8,9 @@ namespace ProjectShedule.Shedule
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditorPackNotePage : ContentPage
     {
-        public EditorPackNotePage() : this(new EditorPackNoteViewModel()) {}
-        public EditorPackNotePage(EditorPackNoteViewModel editorViewModel)
+        public EditorPackNotePage() : this(new EditorPackNoteVM()) { }
+
+        public EditorPackNotePage(EditorPackNoteVM editorViewModel)
         {
             InitializeComponent();
             editorViewModel.Navigation = this.Navigation;

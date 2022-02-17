@@ -5,38 +5,38 @@ using System.Collections.Generic;
 
 namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
-    public abstract class SortInDate : RadioButtonItem, ISortInDate<PackNoteModel>
+    public abstract class SortInDate : RadioButtonItem, ISortInDate<IPackNote>
     {
-        public virtual List<PackNoteModel> GetItems() => GetAll();
-        private protected List<PackNoteModel> GetAll()
+        public virtual List<IPackNote> GetItems() => GetAll();
+        private protected List<IPackNote> GetAll()
         {
-            var manager = new PackNoteDBManager();
-            return manager.GetAll();
+            var repository = new PackNoteRepository();
+            return repository.GetAll();
         }
-        private protected List<PackNoteModel> GetForDate(DateTime dateTime)
+        private protected List<IPackNote> GetForDate(DateTime dateTime)
         {
-            var manager = new PackNoteDBManager();
-            return manager.GetForDate(dateTime);
+            var repository = new PackNoteRepository();
+            return repository.GetForDate(dateTime);
         }
     }
     public class SelectedSortInDate : SortInDate
     {
         public DateTime Date { get; set; }
-        public override List<PackNoteModel> GetItems() => GetForDate(Date);
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class ToDaySortInDate : SortInDate
     {
         public DateTime Date => DateTime.Today;
-        public override List<PackNoteModel> GetItems() => GetForDate(Date);
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class TomorrowSortInDate : SortInDate
     {
         public DateTime Date => DateTime.Today.AddDays(1);
-        public override List<PackNoteModel> GetItems() => GetForDate(Date);
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class AllSortInDate : SortInDate
     {
-        public override List<PackNoteModel> GetItems() => GetAll();
+        public override List<IPackNote> GetItems() => GetAll();
     }
 
 }

@@ -166,7 +166,7 @@ namespace ProjectShedule.Shedule.ViewModels
 
         public bool HasSmallTasks => SmallTasks.Count() > 0;
         public string TasksCompletedInformation => $"{SmallTasks.Count(t => t.Status)}/{SmallTasks.Count}";
-        public Note Note => _packNoteModel.Note;
+        public Note Note => _packNoteModel.Note as Note;
         public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => _packNoteModel.SmallTasks;
 
         #region Colors

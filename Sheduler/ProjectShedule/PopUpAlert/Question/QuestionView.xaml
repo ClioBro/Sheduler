@@ -6,8 +6,7 @@
                 x:TypeArguments="local:QuestionView+Answer"
                 x:Class="ProjectShedule.PopUpAlert.Question.QuestionView"
                 x:Name="popUpView"
-                Size="400,300"
-                BackgroundColor="Transparent">
+                Size="400,300">
     <xctViews:Popup.Resources>
         <Style x:Key="ButtonCancelation" TargetType="Button">
             <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
@@ -34,7 +33,6 @@
     <Frame 
         x:DataType="local:QuestionView"
         HasShadow="False"
-        CornerRadius="10"
         Margin="15" Padding="10"
         BackgroundColor="{DynamicResource PopUpBackGroundColor}"
         BorderColor="{DynamicResource PopUpPrimaryBorderColor}">

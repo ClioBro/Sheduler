@@ -23,10 +23,18 @@ namespace ProjectShedule.PopUpAlert.Question
         private void InicializateTexts(string header, string secondary, string dopText, string cancel, string agreement)
         {
             headerLabel.Text = header;
-            secondaryLabel.Text = secondary;
-            dopTextLabel.Text = dopText;
+            VisibleValid(secondaryLabel, secondary);
+            VisibleValid(dopTextLabel, dopText);
             cancelationButton.Text = cancel;
             agreementButton.Text = agreement;
+        }
+        private void VisibleValid(Label label, string text)
+        {
+            bool empty = string.IsNullOrWhiteSpace(text);
+            if (empty) 
+                label.IsVisible = false;
+            else
+                label.Text = text;
         }
         private void SetPopUpViewSize(Size size)
         {

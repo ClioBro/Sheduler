@@ -3,6 +3,7 @@ using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.PackNotesManager.FilterManager;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace ProjectShedule.Shedule.ViewModels
         public bool ExpandedCalendar { get; set; }
         public string Title { get; set; }
         public ObservableCollection<PackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
-        public FilterViewModel FilterControl { get => _sheduleModel.FilterPackNotes; }
+        public FilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
         public IEnumerable<ICircleEvent> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
         public List<PackNoteViewModel> SelectedPackNotes
         {

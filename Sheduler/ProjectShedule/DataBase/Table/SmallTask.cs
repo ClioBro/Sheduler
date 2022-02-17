@@ -4,7 +4,7 @@ using SQLite;
 namespace ProjectShedule.DataNote
 {
     [Table(nameof(Table.SmallTasks))]
-    public class SmallTask : ITable<SmallTask>, ISmallTask
+    public class SmallTask : ISmallTask
     {
         [PrimaryKey, AutoIncrement]
         [Column("_id")]

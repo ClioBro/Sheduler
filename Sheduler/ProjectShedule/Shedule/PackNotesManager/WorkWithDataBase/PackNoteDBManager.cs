@@ -12,10 +12,14 @@ namespace ProjectShedule.Shedule
 {
     public class PackNoteDBManager : ParsRemover
     {
-        public void Save(IPackNote pack, bool correct = true)
+        private IPackNote _packNote;
+        public PackNoteDBManager(IPackNote pack)
         {
-            Note note = pack.Note;
-
+            _packNote = pack;
+        }
+        public void Save(bool correct = true)
+        {
+            Note note = _packNote.Note;
             if (correct)
             {
                 Correction correctionNote = new Correction(note);
@@ -23,19 +27,19 @@ namespace ProjectShedule.Shedule
             }
 
             SaveInDataBase(note);
-            IEnumerable<IHasSmallTask> hasSmallTasks = pack.SmallTasks;
+            IEnumerable<IHasSmallTask> hasSmallTasks = _packNote.SmallTasks;
             IEnumerable<SmallTask> smallTasks = hasSmallTasks.Select(s => s.SmallTask);
-            if (pack.SmallTasks.Count() > 0)
+            if (_packNote.SmallTasks.Count() > 0)
             {
                 if (note.Id == 0)
                     note = GetLastSavedNote();
                 SaveInDataBase(smallTasks, noteId: note.Id);
             }
         }
-        public void Delete(IPackNote pack)
+        public void Delete()
         {
-            DeleteInDataBase(pack.Note);
-            IEnumerable<IHasSmallTask> hasSmallTasks = pack.SmallTasks;
+            DeleteInDataBase(_packNote.Note);
+            IEnumerable<IHasSmallTask> hasSmallTasks = _packNote.SmallTasks;
             IEnumerable<SmallTask> smallTasks = hasSmallTasks.Select(s => s.SmallTask);
             DeleteInDataBase(smallTasks);
         }
@@ -52,7 +56,7 @@ namespace ProjectShedule.Shedule
         }
         public List<PackNoteModel> GetForDate(DateTime first, DateTime second)
         {
-            IQueryble<Note> QuerebleNote = _repositoryNote as IQueryble<Note>;
+            IQuerybleDateTime<Note> QuerebleNote = _repositoryNote as IQuerybleDateTime<Note>;
             List<Note> selectedNoteByDate = QuerebleNote.Query(first, second);
             if (selectedNoteByDate.Count() <= 0)
                 return new List<PackNoteModel>();
@@ -62,7 +66,7 @@ namespace ProjectShedule.Shedule
         }
         private ObservableCollection<SmallTaskViewModel> GetTasks(int noteId)
         {
-            IQueryble<SmallTask> QuerebleSmallTask = _repositoryTask as IQueryble<SmallTask>;
+            IQuerybleId<SmallTask> QuerebleSmallTask = _repositoryTask as IQuerybleId<SmallTask>;
 
             return new ObservableCollection<SmallTaskViewModel>(QuerebleSmallTask.Query(noteId)
                 .Select(t => new SmallTaskViewModel(t)));

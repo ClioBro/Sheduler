@@ -1,4 +1,5 @@
-﻿using ProjectShedule.Shedule.ViewModels;
+﻿using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace ProjectShedule.PopUpAlert
@@ -7,10 +8,8 @@ namespace ProjectShedule.PopUpAlert
     public partial class DemonstrationViewPackNote : Rg.Plugins.Popup.Pages.PopupPage
     {
         public static bool isPageOpened = false;
-        public DemonstrationViewPackNote()
-        {
-            InitializeComponent();
-        }
+        public DemonstrationViewPackNote() : this(new PackNoteViewModel()) { }
+        public DemonstrationViewPackNote(PackNoteModel packNoteModel) : this(new PackNoteViewModel(packNoteModel)) { }
         public DemonstrationViewPackNote(PackNoteViewModel packNoteViewModel)
         {
             InitializeComponent();

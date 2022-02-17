@@ -67,7 +67,6 @@
                 </StackLayout>
             </Frame>
         </ControlTemplate>
-
         <Style TargetType="RadioButton">
             <Setter Property="ControlTemplate"
                 Value="{StaticResource RadioButtonTemplate}" />
@@ -88,7 +87,8 @@
     <Frame 
         HasShadow="False"
         CornerRadius="10"
-        HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="160"  Margin="35,15" Padding="10"
+        HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="160"
+        Margin="35,15" Padding="10"
         BackgroundColor="{DynamicResource PopUpBackGroundColor}"
         BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
         <StackLayout>

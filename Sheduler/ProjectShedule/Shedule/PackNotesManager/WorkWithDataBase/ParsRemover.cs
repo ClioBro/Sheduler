@@ -1,5 +1,4 @@
-﻿using ProjectShedule.DataNote.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectShedule.DataNote
@@ -31,16 +30,16 @@ namespace ProjectShedule.DataNote
                 SaveInDataBase(task);
             }
         }
-        public void DeleteInDataBase(ITable<Note> note)
+        public void DeleteInDataBase(Note note)
         {
             _repositoryNote.DeleteItem(note.Id);
         }
-        public void DeleteInDataBase(IEnumerable<ITable<SmallTask>> smallTasks)
+        public void DeleteInDataBase(IEnumerable<SmallTask> smallTasks)
         {
-            foreach (ITable<SmallTask> smallTask in smallTasks)
+            foreach (SmallTask smallTask in smallTasks)
                 DeleteInDataBase(smallTask);
         }
-        public void DeleteInDataBase(ITable<SmallTask> task)
+        public void DeleteInDataBase(SmallTask task)
         {
             _repositoryTask.DeleteItem(task.Id);
         }
@@ -48,8 +47,6 @@ namespace ProjectShedule.DataNote
         public Note GetLastSavedNote()
         {
             return _repositoryNote.GetItems().Last();
-        }
-
-                
+        }  
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ProjectShedule.Calendar.Models;
 using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.PackNotesManager;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using ProjectShedule.Shedule.ShapeEvents;
 using ProjectShedule.Shedule.ViewModels;
@@ -36,16 +37,16 @@ namespace ProjectShedule.Shedule.Models
         public event Action DisplayedDateChanged;
         
 
-        private readonly PackNoteDBManager _packNoteDB;
+        private readonly PackNoteRepository _packNoteDB;
         public SheduleModel()
         {
             _packNotes = new ObservableCollection<PackNoteViewModel>();
             _calendarCircleEvents = new List<ICircleEvent>();
-            _packNoteDB = new PackNoteDBManager();
-            SelectedPackNotes = new List<PackNoteViewModel>();
-            SelectedDates = new List<DateTime>();
+            _packNoteDB = new PackNoteRepository();
+            _selectedPackNotes = new List<PackNoteViewModel>();
+            _selectedDates = new List<DateTime>();
             FilterPackNotes = new FilterViewModel();
-            FilterPackNotes.PropertyChanged += (sender, propName) => UpdatePackNotes();
+            _filterPackNotes.PropertyChanged += (sender, propName) => UpdatePackNotes();
         }
 
         
@@ -125,7 +126,8 @@ namespace ProjectShedule.Shedule.Models
         {
             if (_packNotes.Remove(packNoteViewModel))
             {
-                _packNoteDB.Delete(packNoteViewModel.Model);
+                var repository = new PackNoteRepository();
+                repository.Delete(packNoteViewModel.Model);
                 PackNoteDeleted?.Invoke(packNoteViewModel);
                 UpdateEvents();
             }

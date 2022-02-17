@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.Language.Resources.OtherElements;
+using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel
 
             SelectedFlter = FilterTypes[0];
             SelectedOrder = OrderTypes[0];
+
+            SelectedFlter.IsChecked = true;
+            SelectedOrder.IsChecked = true;
         }
         public SortInDate SelectedFlter
         {
@@ -61,7 +65,7 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel
             selectedSortInDate.Date = dateTime;
             Notify(nameof(SelectedFlter));
         } 
-        public IEnumerable<PackNoteModel> GetFiltered() => _filterPackNotes.GetFiltered();
+        public IEnumerable<IPackNote> GetFiltered() => _filterPackNotes.GetFiltered();
 
         private void OnFilterControlPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {

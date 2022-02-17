@@ -1,11 +1,10 @@
-﻿using ProjectShedule.DataNote.Interfaces;
-using SQLite;
+﻿using SQLite;
 using System;
 
 namespace ProjectShedule.DataNote
 {
     [Table(nameof(Table.Notes))]
-    public class Note : ITable<Note>, INote
+    public class Note : INote
     {
         [PrimaryKey, AutoIncrement]
         [Column("_id")]

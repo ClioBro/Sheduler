@@ -1,4 +1,5 @@
-﻿using ProjectShedule.Shedule.Models;
+﻿using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ namespace ProjectShedule.Shedule.PackNotesManager
 {
     internal partial class FilterPackNote
     {
-        private protected List<PackNoteModel> Collection;
+        private protected List<IPackNote> Collection;
 
         public FilterPackNote() : this(new PutInOrderByAlphabet(), new ToDaySortInDate()) { }
         public FilterPackNote(PutInOrder variant, SortInDate day)
@@ -17,17 +18,17 @@ namespace ProjectShedule.Shedule.PackNotesManager
         public SortInDate SortInDate { get; set; }
         public PutInOrder PutInOrder { get; set; }
         
-        public List<PackNoteModel> GetFiltered()
+        public List<IPackNote> GetFiltered()
         {
-            Collection = new List<PackNoteModel>(DayFiltration());
+            Collection = new List<IPackNote>(DayFiltration());
             Collection = VariantFiltration();
             return Collection;
         }
-        private List<PackNoteModel> DayFiltration()
+        private List<IPackNote> DayFiltration()
         {
             return SortInDate.GetItems();
         }
-        private List<PackNoteModel> VariantFiltration()
+        private List<IPackNote> VariantFiltration()
         {
             return PutInOrder.GetSorted(Collection);
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ProjectShedule.DataNote
 {
-    public class NoteRepository : IRepositoryDateBase<Note>, IQueryble<Note>
+    public class NoteRepository : IRepositoryDateBase<Note>, IQuerybleDateTime<Note>
     {
         private readonly SQLiteConnection database;
         public NoteRepository(string databasePath)
@@ -36,12 +36,6 @@ namespace ProjectShedule.DataNote
                 return database.Insert(item);
             }
         }
-
-        public List<Note> Query(int idConnectedItem)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Note> Query(DateTime appointmentDate)
         {
             string tableName = nameof(Table.Notes);

@@ -115,7 +115,8 @@
                                 Grid.Column="3" Grid.Row="1" 
                                 BackgroundColor="{DynamicResource TransparentColor}"
                                 HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" 
-                                Source="read_icon.png"/>
+                                Source="read_icon.png"
+                                IsVisible="false"/>
                             <Label 
                                 Grid.Row="2" Grid.Column="1"
                                 HorizontalOptions="Start"

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 namespace ProjectShedule.DataNote
 {
-    public class TaskRepository : IRepositoryDateBase<SmallTask>, IQueryble<SmallTask>
+    public class TaskRepository : IRepositoryDateBase<SmallTask>, IQuerybleId<SmallTask>
     {
         private readonly SQLiteConnection database;
         public TaskRepository(string databasePath)
@@ -42,16 +42,6 @@ namespace ProjectShedule.DataNote
             string propertyName = nameof(SmallTask.IdNote);
 
             return database.Query<SmallTask>($"select * from {tableName} where {propertyName} = ?", idNote);
-        }
-
-        public List<SmallTask> Query(DateTime idConnectedItem)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<SmallTask> Query(DateTime from, DateTime till)
-        {
-            throw new NotImplementedException();
         }
     }
 }
