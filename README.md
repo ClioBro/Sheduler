@@ -18,6 +18,7 @@
 
 ## Notification
 Возможность уведомлять пользователя.
+
 <img src="https://github.com/ClioBro/Sheduler/blob/main/art/PopUp_Notification.png" width="450" height="220">
 
 ### SettingPage
