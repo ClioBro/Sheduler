@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using ProjectShedule.DataNote;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectShedule.DataNote
+namespace ProjectShedule.Shedule.PackNotesManager.WorkWithDataBase
 {
-    public abstract class ParsRemover
+    public abstract class PackNoteParsRemove
     {
         protected readonly IRepositoryDateBase<Note> _repositoryNote;
         protected readonly IRepositoryDateBase<SmallTask> _repositoryTask;
         
-        public ParsRemover()
+        public PackNoteParsRemove()
         {
             _repositoryNote = App.SchedulerPackNoteDataBase.Note;
             _repositoryTask = App.SchedulerPackNoteDataBase.Tasks;

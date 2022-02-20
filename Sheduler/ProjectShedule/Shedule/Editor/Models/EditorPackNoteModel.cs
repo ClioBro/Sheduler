@@ -122,7 +122,7 @@ namespace ProjectShedule.Shedule.Editor.Models
             if (OnTheDate == false)
                 AppointmentDate = CreatedDateTime;
 
-            PackNoteRepository packNoteManager = new PackNoteRepository();
+            PackNoteDataBaseController packNoteManager = new PackNoteDataBaseController();
             packNoteManager.Save(_packNoteModel, correct: true);
 
             bool NotifyIsValid = OnTheDate && Notify;

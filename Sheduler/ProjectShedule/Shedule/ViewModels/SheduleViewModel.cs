@@ -39,22 +39,10 @@ namespace ProjectShedule.Shedule.ViewModels
         public ObservableCollection<PackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
         public FilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
         public IEnumerable<ICircleEvent> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
-        public List<PackNoteViewModel> SelectedPackNotes
-        {
-            get => _sheduleModel.SelectedPackNotes;
-            set => _sheduleModel.SelectedPackNotes = value;
-        }
         public List<DateTime> SelectedDates
         {
             get => _sheduleModel.SelectedDates;
-            set
-            {
-                if (value is List<DateTime> newDate && newDate.FirstOrDefault() != DateTime.MinValue)
-                {
-                    _sheduleModel.DisplayedDateOnCarousel = newDate.FirstOrDefault();
-                }
-                _sheduleModel.SelectedDates = value;
-            }
+            set => _sheduleModel.SelectedDates = value;
         }
         public DateTime DisplayedDateTime
         {
@@ -73,9 +61,9 @@ namespace ProjectShedule.Shedule.ViewModels
             MoveToDayCommand = new Command(() => _sheduleModel.DisplayedDateOnCarousel = DateTime.Today);
 
             _sheduleModel.PackNoteListUpdated += () => OnPropertyChanged(nameof(PackNotes));
-            _sheduleModel.SelectedPackNotesChanged += () => OnPropertyChanged(nameof(SelectedPackNotes));
+            //_sheduleModel.SelectedPackNotesChanged += () => OnPropertyChanged(nameof(SelectedPackNotes));
             _sheduleModel.CalendarCirleEventsUpdated += () => OnPropertyChanged(nameof(EventsForCalendar));
-            _sheduleModel.SelectedDatesChanged += () => OnPropertyChanged(nameof(SelectedDates));
+            //_sheduleModel.SelectedDatesChanged += () => OnPropertyChanged(nameof(SelectedDates));
             _sheduleModel.DisplayedDateChanged += () => OnPropertyChanged(nameof(DisplayedDateTime));
 
 

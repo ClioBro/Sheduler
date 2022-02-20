@@ -103,7 +103,9 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSe
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\SheduleEvents\Views\SheduleEventsSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\CustomStepperView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SettingPushButtonView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SliderSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SwitchSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\ColorSelection\ColorSelectionPage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\DemonstrationViewPackNote.xaml.g.cs
@@ -119,10 +121,9 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Calendar\Views\Main.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Calendar\Views\MonthDays.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Editor\EditorPackNotePage.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml.g.cs
+D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\FilterManager\RadioButtonResource.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\PackNoteView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\PackNotesManager\TaskView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Resources\RadioButton.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\ShedulePage.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\Shedule\Views\RadioButtonsView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\ThemingDemo\DarkTheme.xaml.g.cs

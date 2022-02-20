@@ -42,15 +42,8 @@ namespace ProjectShedule.Calendar.Controls
         }
 
         public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(List<DateTime>), typeof(Main), new List<DateTime>(), BindingMode.TwoWay, propertyChanged: SelectedDatesChanged);
-        private static void SelectedDatesChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is Main main && newValue is List<DateTime> list && !Equals(newValue, oldValue))
-            {
-                //main.SetValue(CurrentDayProperty, list.FirstOrDefault().Date);
-                //main.SetValue(SelectedDateProperty, dateToSet.FirstOrDefault());
-            }
-        }
+          BindableProperty.Create(nameof(SelectedDates), typeof(List<DateTime>), typeof(Main), new List<DateTime>(), BindingMode.TwoWay);
+        
         public List<DateTime> SelectedDates
         {
             get => (List<DateTime>)GetValue(SelectedDatesProperty);

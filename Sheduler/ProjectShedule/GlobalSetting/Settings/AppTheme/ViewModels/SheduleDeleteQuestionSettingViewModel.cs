@@ -1,16 +1,17 @@
-﻿using ProjectShedule.GlobalSetting.Settings.AppTheme.Models;
+﻿using ProjectShedule.GlobalSetting.Interfaces;
+using ProjectShedule.GlobalSetting.Settings.AppTheme.Models;
 using ProjectShedule.GlobalSetting.ViewModel;
 using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.ViewModels
 {
-    public class SheduleThemeSettingViewModel : SettingBoxViewModel
+    public class SheduleThemeSettingViewModel : SettingBox
     {
         public SheduleThemeSettingViewModel()
         {
             Header = SettingResources.ThemeHeaderLabel;
             ThemeSetting = new DarkModeSettingModel();
         }
-        public DarkModeSettingModel ThemeSetting { get; set; }
+        public IElementCell<bool> ThemeSetting { get; set; }
     }
 }

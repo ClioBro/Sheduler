@@ -132,7 +132,7 @@
   <data name="EventsHeaderLabel" xml:space="preserve">
     <value>Метка события:</value>
   </data>
-  <data name="FalseLabel" xml:space="preserve">
+  <data name="OffLabel" xml:space="preserve">
     <value>Выкл</value>
   </data>
   <data name="OpacityDopTextLabel" xml:space="preserve">
@@ -144,7 +144,7 @@
   <data name="ThemeHeaderLabel" xml:space="preserve">
     <value>Тема:</value>
   </data>
-  <data name="TrueLabel" xml:space="preserve">
+  <data name="OnLabel" xml:space="preserve">
     <value>Вкл</value>
   </data>
 </root>

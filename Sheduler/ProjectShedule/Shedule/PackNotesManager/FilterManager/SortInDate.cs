@@ -10,12 +10,12 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
         public virtual List<IPackNote> GetItems() => GetAll();
         private protected List<IPackNote> GetAll()
         {
-            var repository = new PackNoteRepository();
+            var repository = new PackNoteDataBaseController();
             return repository.GetAll();
         }
         private protected List<IPackNote> GetForDate(DateTime dateTime)
         {
-            var repository = new PackNoteRepository();
+            var repository = new PackNoteDataBaseController();
             return repository.GetForDate(dateTime);
         }
     }

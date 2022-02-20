@@ -8,7 +8,6 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.Models
 {
-    //В интерфейс IPackNote добавить INote и IHasSmallTasks
     public class PackNoteModel : IPackNote
     {
         public delegate void SmallTaskDelegate(SmallTaskViewModel smallTaskViewModel);

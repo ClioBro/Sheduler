@@ -1,10 +1,11 @@
-﻿using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
+﻿using ProjectShedule.GlobalSetting.Interfaces;
+using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models;
 using ProjectShedule.GlobalSetting.ViewModel;
 using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
 {
-    public class SheduleDeleteNotesSettingViewModel : SettingBoxViewModel
+    public class SheduleDeleteNotesSettingViewModel : SettingBox
     {
         public SheduleDeleteNotesSettingViewModel()
         {
@@ -12,6 +13,6 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.ViewMdoels
 
             DeleteQuestion = new DeleteQuestionSettingModel();
         }
-        public DeleteQuestionSettingModel DeleteQuestion { get; set; }
+        public IElementCell<bool> DeleteQuestion { get; set; }
     }
 }

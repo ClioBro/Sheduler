@@ -106,11 +106,20 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to False.
+        ///   Looks up a localized string similar to Off.
         /// </summary>
-        public static string FalseLabel {
+        public static string OffLabel {
             get {
-                return ResourceManager.GetString("FalseLabel", resourceCulture);
+                return ResourceManager.GetString("OffLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string OnLabel {
+            get {
+                return ResourceManager.GetString("OnLabel", resourceCulture);
             }
         }
         
@@ -138,15 +147,6 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
         public static string ThemeHeaderLabel {
             get {
                 return ResourceManager.GetString("ThemeHeaderLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to True.
-        /// </summary>
-        public static string TrueLabel {
-            get {
-                return ResourceManager.GetString("TrueLabel", resourceCulture);
             }
         }
     }

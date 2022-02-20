@@ -21,6 +21,10 @@
     <Color x:Key="ButtonPrimaryBackGroundColor">#5E5E5E</Color>
     <Color x:Key="ButtonSecondaryBackGroundColor">Silver</Color>
     <Color x:Key="ButtonBorderColor">Gray</Color>
+    <!--Slider-->
+    <Color x:Key="SliderThumbColor">#4E759D</Color>
+    <Color x:Key="SliderMaximumTrackColor">white</Color>
+    <Color x:Key="SliderMinimumTrackColor">#7090AF</Color>
 
     <!--Switch-->
     <Color x:Key="SwitchThumbColor">#4E759D</Color>

@@ -27,13 +27,13 @@
 
             <Setter Property="TextTransform" Value="None"/>
             <Setter Property="BorderColor" Value="{DynamicResource ButtonBorderColor}"/>
-            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="BorderWidth" Value="2"/>
             <Setter Property="CornerRadius" Value="3"/>
         </Style>
         
         <Style x:Key="ColoredButton" TargetType="Button">
             <Setter Property="BorderColor" Value="Black"/>
-            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="BorderWidth" Value="2"/>
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="HeightRequest" Value="35"/>
             <Setter Property="WidthRequest" Value="35"/>

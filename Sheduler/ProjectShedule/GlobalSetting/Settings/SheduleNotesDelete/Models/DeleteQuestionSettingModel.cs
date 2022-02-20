@@ -3,22 +3,22 @@ using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
 {
-    public class DeleteQuestionSettingModel : SwitchsElementModel
+    public class DeleteQuestionSettingModel : BooleanValueElementCell
     {
         private readonly DeleteConfirmationSetting _deleteConfirmationSetting;
-        public DeleteQuestionSettingModel()
+        public DeleteQuestionSettingModel() : base(SettingResources.OnLabel, SettingResources.OffLabel)
         {
             _deleteConfirmationSetting = new DeleteConfirmationSetting();
             MainText = SettingResources.DeleteQuestionDopTextLabel;
-            Status = _deleteConfirmationSetting.AskQuestion;
-            StatusChanged += OnStatusChanged;
+            Value = _deleteConfirmationSetting.AskQuestion;
+            ValueChanged += OnValueChanged;
         }
 
-        private void OnStatusChanged(object sender, bool value)
+        private void OnValueChanged(object sender, bool value)
         {
             _deleteConfirmationSetting.SetDeleteQuestion(value);
-            OnPropertyChanged(this, nameof(Status));
-            OnPropertyChanged(this, nameof(StatusText));
+            NotifyVisualUpdate(this, nameof(Value));
+            NotifyVisualUpdate(this, nameof(ValueText));
         }
     }
 }

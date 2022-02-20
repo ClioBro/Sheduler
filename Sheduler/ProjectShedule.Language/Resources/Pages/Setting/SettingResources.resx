@@ -132,8 +132,8 @@
   <data name="EventsHeaderLabel" xml:space="preserve">
     <value>Events Mark:</value>
   </data>
-  <data name="FalseLabel" xml:space="preserve">
-    <value>False</value>
+  <data name="OffLabel" xml:space="preserve">
+    <value>Off</value>
   </data>
   <data name="OpacityDopTextLabel" xml:space="preserve">
     <value>Opacity:</value>
@@ -144,7 +144,7 @@
   <data name="ThemeHeaderLabel" xml:space="preserve">
     <value>Theme:</value>
   </data>
-  <data name="TrueLabel" xml:space="preserve">
-    <value>True</value>
+  <data name="OnLabel" xml:space="preserve">
+    <value>On</value>
   </data>
 </root>

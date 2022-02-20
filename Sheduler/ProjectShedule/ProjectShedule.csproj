@@ -47,8 +47,8 @@
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Shedule\Resources\RadioButton.xaml.cs">
-      <DependentUpon>RadioButton.xaml</DependentUpon>
+    <Compile Update="Shedule\PackNotesManager\FilterManager\RadioButtonResource.xaml.cs">
+      <DependentUpon>RadioButtonResource.xaml</DependentUpon>
     </Compile>
     <Compile Update="Shedule\ShedulePage.xaml.cs">
       <DependentUpon>ShedulePage.xaml</DependentUpon>
@@ -68,6 +68,12 @@
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="GlobalSetting\Views\CustomStepperView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="GlobalSetting\Views\SliderSettingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -81,9 +87,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\Views\RadioButtonsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Views\RadioButtonsView.xaml">
@@ -137,7 +140,7 @@
     <EmbeddedResource Update="PopUpAlert\RadioButtonsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Resources\RadioButton.xaml">
+    <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\RadioButtonResource.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Editor\EditorPackNotePage.xaml">

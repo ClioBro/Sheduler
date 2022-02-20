@@ -6,8 +6,8 @@
              xmlns:models="clr-namespace:ProjectShedule.Shedule.Models"
              x:DataType="local:RadioButtonsView"
              x:Name="thisView">
-    <ContentView.Resources  xmlns:resources="clr-namespace:ProjectShedule.Shedule.Resources">
-        <resources:RadioButton x:Key="mainPageResource"/>
+    <ContentView.Resources  xmlns:resources="clr-namespace:ProjectShedule.Shedule.PackNotesManager.FilterManager">
+        <resources:RadioButtonResource x:Key="mainPageResource"/>
     </ContentView.Resources>
   <ContentView.Content>
         <StackLayout 

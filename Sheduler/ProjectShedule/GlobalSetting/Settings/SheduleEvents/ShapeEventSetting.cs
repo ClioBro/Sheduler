@@ -6,11 +6,17 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents
     public class ShapeEventSetting : Setting<ShapeEventSetting>, ISimpleShape
     {
         private const float _defaultCornerRadius = 4f;
-        private const double _defaultSize = 7.0;
-        private const double _defaultOpacity = 1;
+        private const double _defaultSize = 7d;
+        private const double _defaultOpacity = 1d;
 
-        public readonly double MaxSize = 10;
-        public readonly double MinSize = 0;
+        public readonly double MaxSize = 10d;
+        public readonly double MinSize = 0d;
+
+        public readonly float MaxCornerRadius = 5f;
+        public readonly float MinCornerRadius = 0f;
+
+        public readonly double MaxOpacity = 1d;
+        public readonly double MinOpacity = 0d;
         public void SetSize(double size) => SendSize(size);
         public void SetSize(Size size) => SendSize(size.Height);
         private void SendSize(double size)
@@ -29,7 +35,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents
 
         public void SetCornerRadius(float radius)
         {
-            if (radius >= 0 && radius <= 10)
+            if (radius >= MinCornerRadius && radius <= MaxCornerRadius)
             {
                 SavePreference(nameof(Type.CornerRadius), radius);
                 
@@ -39,7 +45,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents
 
         public void SetOpacity(double opacity)
         {
-            if (opacity >= 0 && opacity <= 1)
+            if (opacity >= MinOpacity && opacity <= MaxOpacity)
             {
                 SavePreference(nameof(Type.Opacity), opacity);
             }

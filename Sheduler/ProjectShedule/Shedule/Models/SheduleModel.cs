@@ -37,12 +37,12 @@ namespace ProjectShedule.Shedule.Models
         public event Action DisplayedDateChanged;
         
 
-        private readonly PackNoteRepository _packNoteDB;
+        private readonly PackNoteDataBaseController _packNoteDB;
         public SheduleModel()
         {
             _packNotes = new ObservableCollection<PackNoteViewModel>();
             _calendarCircleEvents = new List<ICircleEvent>();
-            _packNoteDB = new PackNoteRepository();
+            _packNoteDB = new PackNoteDataBaseController();
             _selectedPackNotes = new List<PackNoteViewModel>();
             _selectedDates = new List<DateTime>();
             FilterPackNotes = new FilterViewModel();
@@ -73,9 +73,13 @@ namespace ProjectShedule.Shedule.Models
             get => _selectedDates;
             set
             {
-                if (value is List<DateTime> newDate && newDate.FirstOrDefault() != DateTime.MinValue)
+                if (value.Count() >= 1)
                 {
-                    DisplayedDateOnCarousel = newDate.FirstOrDefault();
+                    DisplayedDateOnCarousel = value.First();
+                }
+                else
+                {
+                    DisplayedDateOnCarousel = DateTime.Today;
                 }
                 _selectedDates = value;
                 SelectedDatesChanged?.Invoke();
@@ -110,7 +114,6 @@ namespace ProjectShedule.Shedule.Models
                 newPNVM.TaskDeletePressed += SmallTaskDeletedEventHandler;
                 _packNotes.Add(newPNVM);
             }
-           
             PackNoteListUpdated?.Invoke();
         }
 
@@ -126,7 +129,7 @@ namespace ProjectShedule.Shedule.Models
         {
             if (_packNotes.Remove(packNoteViewModel))
             {
-                var repository = new PackNoteRepository();
+                var repository = new PackNoteDataBaseController();
                 repository.Delete(packNoteViewModel.Model);
                 PackNoteDeleted?.Invoke(packNoteViewModel);
                 UpdateEvents();

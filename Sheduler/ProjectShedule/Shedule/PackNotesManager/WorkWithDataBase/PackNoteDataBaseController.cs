@@ -1,15 +1,17 @@
 ﻿using ProjectShedule.DataNote;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.PackNotesManager.WorkWithDataBase;
 using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ProjectShedule.Shedule.PackNotesManager
 {
-    public class PackNoteRepository : ParsRemover, IPackNoteRepository
+    public class PackNoteDataBaseController : PackNoteParsRemove, IPackNoteRepository
     {
         public void Save(IPackNote packNote, bool correct = true)
         {
@@ -64,6 +66,42 @@ namespace ProjectShedule.Shedule.PackNotesManager
 
             return new ObservableCollection<SmallTaskViewModel>(QuerebleSmallTask.Query(noteId)
                 .Select(t => new SmallTaskViewModel(t)));
+        }
+    }
+    internal class Correction
+    {
+        private readonly INote _note;
+        public Correction(INote note)
+        {
+            _note = note;
+        }
+        public void Сorrect(bool replaceEmptyHeader = true, bool reduceGaps = true)
+        {
+            string header = _note.Header;
+            string dopText = _note.DopText;
+
+            if (reduceGaps)
+            {
+                if (!string.IsNullOrWhiteSpace(dopText))
+                    dopText = ReduceGaps(dopText);
+                if (!string.IsNullOrWhiteSpace(header))
+                    header = ReduceGaps(header);
+            }
+            if (replaceEmptyHeader && string.IsNullOrWhiteSpace(header))
+            {
+                header = AssignPartText(dopText, length: 22);
+            }
+
+            _note.Header = header;
+            _note.DopText = dopText;
+        }
+        private string AssignPartText(string text, int length = 15)
+        {
+            return text.Substring(0, text.Length >= length ? length : text.Length);
+        }
+        private string ReduceGaps(string text)
+        {
+            return new Regex(@"\s+").Replace(text, " ");
         }
     }
 }

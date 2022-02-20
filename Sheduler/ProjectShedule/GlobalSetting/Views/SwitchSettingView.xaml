@@ -3,22 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Models"
              x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
-             x:DataType="models:SwitchsElementModel">
+             x:DataType="models:BooleanValueElementCell">
   <ContentView.Content>
         <StackLayout  
             Orientation="Horizontal"
             CompressedLayout.IsHeadless="True">
-            <Label 
-                Text="{Binding MainText}"
-                Style="{DynamicResource SmallLabelStyle}" 
-                VerticalOptions="Center"/>
-            <Label 
-                Text="{Binding StatusText}"
-                Style="{DynamicResource SmallLabelStyle}"
-                TextDecorations="Underline"
-                VerticalOptions="Center"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding MainText}"
+                            Style="{DynamicResource SmallLabelStyle}"/>
+                        <Span 
+                            x:Name="spaceSpan"
+                            Text=" "/>
+                        <Span
+                            Text="{Binding ValueText}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             <Switch 
-                IsToggled="{Binding Status}"
+                IsToggled="{Binding Value}"
                 Style="{DynamicResource SwitchStyle}"  
                 VerticalOptions="Center"
                 HorizontalOptions="EndAndExpand"/>

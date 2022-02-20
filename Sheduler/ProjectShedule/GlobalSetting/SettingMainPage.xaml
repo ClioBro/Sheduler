@@ -2,18 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectShedule.GlobalSetting.SettingMainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}"
-             xmlns:viewModels="clr-namespace:ProjectShedule.GlobalSetting.ViewModel"
-             x:DataType="viewModels:SettingBoxViewModel">
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Content>
         <ScrollView Padding="2">
             <StackLayout
                 xmlns:themeViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.AppTheme.Views"
                 xmlns:sheduleDeleteQuestionViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Views"
-                xmlns:sheduleEventsViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleEvents.Views">
+                xmlns:sheduleEventsViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleEvents.Views"
+                xmlns:views="clr-namespace:ProjectShedule.GlobalSetting.Views">
                 <themeViews:ThemeSettingView/>
                 <sheduleDeleteQuestionViews:SheduleDeleteQuestionSettingView />
-                <sheduleEventsViews:SheduleEventsSettingView />
+                <sheduleEventsViews:SheduleEventsSettingView/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

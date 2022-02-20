@@ -3,22 +3,23 @@ using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {
-    public class OpacityEventSettingModel : SettingPushButtonModel
+    public class OpacityEventSettingModel : DoubleValueElementCell
     {
         private readonly ShapeEventSetting _shapeEventSetting;
         public OpacityEventSettingModel(ShapeEventSetting shapeEventSetting)
         {
             _shapeEventSetting = shapeEventSetting;
             MainText = SettingResources.OpacityDopTextLabel;
-            Value = _shapeEventSetting.GetOpacity();
-            MinValue = 0;
-            MaxValue = 1;
+            MaxValue = 100d;
+            MinValue = 0d;
+            Value = PercentConverter.DeConvert(_shapeEventSetting.GetOpacity(), _shapeEventSetting.MaxOpacity);
             ValueChanged += OnValueChanged;
         }
         private void OnValueChanged(object sender, double e)
         {
-            _shapeEventSetting.SetOpacity(e);
-            OnPropertyChanged(this, nameof(Value));
+            double value = PercentConverter.Convert(e, _shapeEventSetting.MaxOpacity);
+            _shapeEventSetting.SetOpacity(value);
+            NotifyVisualUpdate(this, nameof(Value));
         }
     }
 }

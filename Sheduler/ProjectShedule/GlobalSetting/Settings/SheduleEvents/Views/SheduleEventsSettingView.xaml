@@ -30,18 +30,18 @@
                 VerticalOptions="Center"
                 BackgroundColor="Red"
                 BorderColor="Black"
-                Opacity="{Binding OpacityEventSettingModel.Value}"
-                CornerRadius="{Binding CornerRadiusEventSettingModel.Value}"
-                HeightRequest="{Binding SizeEventSettingModel.Value}"
-                WidthRequest="{Binding SizeEventSettingModel.Value}"/>
+                Opacity="{Binding Opacity}"
+                CornerRadius="{Binding CornerRadius}"
+                HeightRequest="{Binding Size}"
+                WidthRequest="{Binding Size}"/>
             <StackLayout 
                 Grid.Row="1" 
                 Grid.ColumnSpan="2"
                 CompressedLayout.IsHeadless="True"
-                Spacing="0">
-                <views:SettingPushButtonView BindingContext="{Binding OpacityEventSettingModel}"/>
-                <views:SettingPushButtonView BindingContext="{Binding CornerRadiusEventSettingModel}"/>
-                <views:SettingPushButtonView BindingContext="{Binding SizeEventSettingModel}"/>
+                Spacing="5">
+                <views:SliderSettingView BindingContext="{Binding OpacityEventSettingModel}"/>
+                <views:SliderSettingView BindingContext="{Binding CornerRadiusEventSettingModel}"/>
+                <views:SliderSettingView BindingContext="{Binding SizeEventSettingModel}"/>
             </StackLayout>
         </Grid>
   </ContentView.Content>

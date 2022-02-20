@@ -1,11 +1,11 @@
 ﻿using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Shedule.Resources
+namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RadioButton 
+    public partial class RadioButtonResource
     {
-        public RadioButton()
+        public RadioButtonResource()
         {
             InitializeComponent();
         }

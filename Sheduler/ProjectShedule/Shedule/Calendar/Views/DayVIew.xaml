@@ -55,7 +55,7 @@
                 </StackLayout>
             </FlexLayout>
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnTapped" />
+                <TapGestureRecognizer Tapped="OnTapped"/>
             </Frame.GestureRecognizers>
         </Frame>
     </ContentView.Content>

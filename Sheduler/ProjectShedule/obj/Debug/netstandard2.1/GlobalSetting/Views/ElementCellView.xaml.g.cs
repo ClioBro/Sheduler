@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Resources.RadioButton.xaml", "Shedule/Resources/RadioButton.xaml", typeof(global::ProjectShedule.Shedule.Resources.RadioButton))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.GlobalSetting.Views.ElementCellView.xaml", "GlobalSetting/Views/ElementCellView.xaml", typeof(global::ProjectShedule.GlobalSetting.Views.ElementCellView))]
 
-namespace ProjectShedule.Shedule.Resources {
+namespace ProjectShedule.GlobalSetting.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Resources\\RadioButton.xaml")]
-    public partial class RadioButton : global::Xamarin.Forms.ResourceDictionary {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("GlobalSetting\\Views\\ElementCellView.xaml")]
+    public partial class ElementCellView : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(RadioButton));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ElementCellView));
         }
     }
 }

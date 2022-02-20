@@ -3,29 +3,29 @@ using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
 {
-    public class DarkModeSettingModel : SwitchsElementModel
+    public class DarkModeSettingModel : BooleanValueElementCell
     {
         private readonly ThemeController _themeController;
-        public DarkModeSettingModel()
+
+        public DarkModeSettingModel() : base(SettingResources.OnLabel, SettingResources.OffLabel)
         {
             _themeController = App.ThemeController;
             MainText = SettingResources.DarkModeDopTextLabel;
-            Status = _themeController.CurrentTheme is ThemeController.Theme.Dark;
-            StatusChanged += OnStatusChanged;
+            Value = _themeController.CurrentTheme is ThemeController.Theme.Dark;
+            ValueChanged += OnValueChanged;
             _themeController.ThemeChanged += OnAppThemeChanged;
-            
         }
 
         private void OnAppThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
         {
-            Status = newTheme is ThemeController.Theme.Dark;
+            Value = newTheme is ThemeController.Theme.Dark;
         }
 
-        private void OnStatusChanged(object sender, bool value)
+        private void OnValueChanged(object sender, bool value)
         {
             _themeController.SetThemeOnApp(value ? ThemeController.Theme.Dark : ThemeController.Theme.Light);
-            OnPropertyChanged(this, nameof(Status));
-            OnPropertyChanged(this, nameof(StatusText));
+            NotifyVisualUpdate(this, nameof(Value));
+            NotifyVisualUpdate(this, nameof(ValueText));
         }
     }
 }

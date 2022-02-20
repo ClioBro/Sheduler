@@ -3,21 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectShedule.GlobalSetting.Views.SettingPushButtonView"
              xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Models"
-             x:DataType="models:SettingPushButtonModel">
+             x:DataType="models:DoubleValueElementCell">
   <ContentView.Content>
         <StackLayout 
             Orientation="Horizontal"
             CompressedLayout.IsHeadless="True">
-            <Label
-                Text="{Binding MainText}"
-                Style="{DynamicResource SmallLabelStyle}" 
-                VerticalOptions="Center"/>
-            <Label 
-                Text="{Binding Value}"
-                TextColor="{DynamicResource PrimaryTextColor}"  
-                VerticalOptions="Center"
-                TextDecorations="Underline"
-                FontSize="17"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding MainText}"
+                            Style="{DynamicResource SmallLabelStyle}"/>
+                        <Span
+                            Text="{Binding Value}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             <Stepper 
                 x:Name="stepper"
                 Maximum="{Binding MaxValue}"

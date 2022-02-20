@@ -15,11 +15,7 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.ViewModels
 {
-    public interface IHasModel<T>
-    {
-        T Model { get; }
-    }
-    public class PackNoteViewModel : INotifyPropertyChanged, IHasModel<IPackNote>
+    public class PackNoteViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,8 +54,7 @@ namespace ProjectShedule.Shedule.ViewModels
         #endregion
 
         public INavigation Navigation { get; set; }
-        
-        
+
         public int Id
         {
             get => _packNoteModel.Note.Id;
@@ -120,7 +115,6 @@ namespace ProjectShedule.Shedule.ViewModels
                 }
             }
         }
-
         public int RepeadIdKey
         {
             get => _packNoteModel.Note.RepeadIdKey;
