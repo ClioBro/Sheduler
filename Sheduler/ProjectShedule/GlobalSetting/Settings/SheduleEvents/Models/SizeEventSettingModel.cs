@@ -1,9 +1,10 @@
 ﻿using ProjectShedule.GlobalSetting.Models;
 using ProjectShedule.Language.Resources.Pages.Setting;
+using Xamarin.Forms;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
 {
-    public class SizeEventSettingModel : DoubleValueElementCell
+    public class SizeEventSettingModel : SlideSettingModel
     {
         private readonly ShapeEventSetting _shapeEventSetting;
         public SizeEventSettingModel(ShapeEventSetting shapeEventSetting)
@@ -13,13 +14,12 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MaxValue = 100d;
             MinValue = 0d;
             Value = PercentConverter.DeConvert(_shapeEventSetting.GetSize().Height, _shapeEventSetting.MaxSize);
-            ValueChanged += OnValueChanged;
+            DragCompletedCommand = new Command(() => SaveOnMemory(Value));
         }
-        private void OnValueChanged(object sender, double e)
+        private void SaveOnMemory(double value)
         {
-            double value = PercentConverter.Convert(e, _shapeEventSetting.MaxSize);
-            _shapeEventSetting.SetSize(value);
-            NotifyVisualUpdate(this, nameof(Value));
+            double result = PercentConverter.Convert(value, _shapeEventSetting.MaxSize);
+            _shapeEventSetting.SetSize(result);
         }
     }
 }

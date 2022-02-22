@@ -18,10 +18,13 @@ namespace ProjectShedule.GlobalSetting.Models
                 ValueChanged?.Invoke(this, value);
             }
         }
+
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyVisualUpdate(object sender, string propName)
         {
             PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propName));
         }
+        #endregion
     }
 }

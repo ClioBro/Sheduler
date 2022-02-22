@@ -40,9 +40,9 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
         public double Opacity { get; set; }
         public double CornerRadius { get; set; }
         public double Size { get; set; }
-        public DoubleValueElementCell OpacityEventSettingModel { get; set; }
-        public DoubleValueElementCell CornerRadiusEventSettingModel { get; set; }
-        public DoubleValueElementCell SizeEventSettingModel { get; set; }
+        public SlideSettingModel OpacityEventSettingModel { get; set; }
+        public SlideSettingModel CornerRadiusEventSettingModel { get; set; }
+        public SlideSettingModel SizeEventSettingModel { get; set; }
         private void OnPropertyChanged(object sender, string propName = "")
         {
             PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propName));

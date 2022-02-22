@@ -41,9 +41,6 @@
     <Compile Update="GlobalSetting\SettingMainPage.xaml.cs">
       <DependentUpon>SettingMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GlobalSetting\Views\SettingPushButtonView.xaml.cs">
-      <DependentUpon>SettingPushButtonView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
@@ -68,16 +65,10 @@
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\CustomStepperView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SliderSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\Calendar\Views\Main.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\SettingPushButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml">

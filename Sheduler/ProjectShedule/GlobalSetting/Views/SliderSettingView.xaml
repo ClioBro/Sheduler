@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Models"
              x:Class="ProjectShedule.GlobalSetting.Views.SliderSettingView"
-             x:DataType="models:DoubleValueElementCell">
+             x:DataType="models:SlideSettingModel">
     <ContentView.Content>
         <Grid
             CompressedLayout.IsHeadless="True">
@@ -18,7 +18,7 @@
                             x:Name="spaceSpan"
                             Text=" "/>
                         <Span
-                            Text="{Binding Value}"
+                            Text="{Binding Source={x:Reference slider}, Path=Value}"
                             TextColor="{DynamicResource PrimaryTextColor}"
                             TextDecorations="Underline"
                             FontSize="17"/>
@@ -26,14 +26,17 @@
                 </Label.FormattedText>
             </Label>
             <Slider 
+                x:Name="slider"
                 Grid.Column="1"
                 HorizontalOptions="Fill"
                 Maximum="{Binding MaxValue}"
                 Minimum="{Binding MinValue}"
                 Value="{Binding Value}"
+                DragCompletedCommand="{Binding DragCompletedCommand}"
                 ThumbColor="{DynamicResource SliderThumbColor}"
                 MaximumTrackColor="{DynamicResource SliderMaximumTrackColor}"
-                MinimumTrackColor="{DynamicResource SliderMinimumTrackColor}"/>
+                MinimumTrackColor="{DynamicResource SliderMinimumTrackColor}"
+                />
         </Grid>
     </ContentView.Content>
 </ContentView>
