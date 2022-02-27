@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
-namespace ProjectShedule.Calendar.Controls.SelectionEngine
+namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
 {
     internal class SingleSelectionEngine : ISelectionEngine
     {

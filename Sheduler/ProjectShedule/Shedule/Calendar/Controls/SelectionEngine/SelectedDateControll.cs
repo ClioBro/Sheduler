@@ -1,9 +1,7 @@
-﻿using ProjectShedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ProjectShedule.Calendar.Controls.SelectionEngine
+namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
 {
     public class SelectedDateControll
     {

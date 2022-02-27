@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
 
-namespace ProjectShedule.Calendar.Models
+namespace ProjectShedule.Shedule.Calendar.Models
 {
     class HeaderModel
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectShedule.Calendar.Models
+﻿namespace ProjectShedule.Shedule.Calendar.Models
 {
     public class YearModel
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjectShedule.Calendar.Models
+﻿namespace ProjectShedule.Shedule.Calendar.Models
 {
     public class MonthModel
     {

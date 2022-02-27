@@ -1,5 +1,4 @@
-﻿using ProjectShedule.Calendar.Models;
-using ProjectShedule.Calendar.Views;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +7,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Controls
+namespace ProjectShedule.Shedule.Calendar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Main : ContentView

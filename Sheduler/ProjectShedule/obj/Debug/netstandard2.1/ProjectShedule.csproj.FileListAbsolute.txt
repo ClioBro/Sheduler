@@ -103,8 +103,6 @@ D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSe
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\SheduleEvents\Views\SheduleEventsSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\CustomStepperView.xaml.g.cs
-D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SettingPushButtonView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SliderSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\GlobalSetting\Views\SwitchSettingView.xaml.g.cs
 D:\Repository\Sheduler\Sheduler\ProjectShedule\obj\Debug\netstandard2.1\PopUpAlert\ColorSelection\ColorSelectionPage.xaml.g.cs

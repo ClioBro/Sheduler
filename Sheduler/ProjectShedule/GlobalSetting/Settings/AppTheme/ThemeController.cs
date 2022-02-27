@@ -1,4 +1,5 @@
 ﻿using ProjectShedule.Calendar.Controls.ThemingDemo;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -6,8 +7,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
     public class ThemeController : Setting<ThemeController>
     {
-        public delegate void ThemeHendler(Theme oldTheme, Theme newTheme);
-        public event ThemeHendler ThemeChanged;
+        public event EventHandler<ThemeChangedEventArgs> ThemeChanged;
         private protected ICollection<ResourceDictionary> _mergedDictionaries = Application.Current.Resources.MergedDictionaries;
         private readonly Dictionary<Theme, ResourceDictionary> _themesDictionaries;
         public ThemeController()
@@ -37,7 +37,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
                 Theme oldTheme = CurrentTheme;
                 CurrentTheme = newTheme;
                 SetResourceOnApp();
-                ThemeChanged?.Invoke(oldTheme, newTheme);
+                ThemeChanged?.Invoke(this, new ThemeChangedEventArgs(oldTheme, newTheme));
                 SaveThemeOnApp();
             }
             else

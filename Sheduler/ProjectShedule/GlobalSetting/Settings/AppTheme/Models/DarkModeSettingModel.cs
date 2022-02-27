@@ -16,9 +16,9 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
             _themeController.ThemeChanged += OnAppThemeChanged;
         }
 
-        private void OnAppThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
+        private void OnAppThemeChanged(object sender, ThemeChangedEventArgs e)
         {
-            Value = newTheme is ThemeController.Theme.Dark;
+            Value = e.NewTheme is ThemeController.Theme.Dark;
         }
 
         private void OnValueChanged(object sender, bool value)

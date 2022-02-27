@@ -13,12 +13,12 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MainText = SettingResources.SizeDopTextLabel;
             MaxValue = 100d;
             MinValue = 0d;
-            Value = PercentConverter.DeConvert(_shapeEventSetting.GetSize().Height, _shapeEventSetting.MaxSize);
-            DragCompletedCommand = new Command(() => SaveOnMemory(Value));
+            Value = ConvertToValue(_shapeEventSetting.GetSize().Height, _shapeEventSetting.MaxSize);
+            DragCompletedCommand = new Command(() => SaveOnMemory());
         }
-        private void SaveOnMemory(double value)
+        private void SaveOnMemory()
         {
-            double result = PercentConverter.Convert(value, _shapeEventSetting.MaxSize);
+            double result = ConvertToMemory(Value, _shapeEventSetting.MaxSize);
             _shapeEventSetting.SetSize(result);
         }
     }

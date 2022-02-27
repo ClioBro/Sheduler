@@ -1,7 +1,7 @@
-﻿using ProjectShedule.Calendar.Models;
-using ProjectShedule.GlobalSetting;
+﻿using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
+using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;

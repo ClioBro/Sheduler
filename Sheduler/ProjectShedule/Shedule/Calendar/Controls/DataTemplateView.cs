@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace ProjectShedule.Calendar.Controls
+namespace ProjectShedule.Shedule.Calendar.Controls
 {
     internal class DataTemplateView : ContentView
     {

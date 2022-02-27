@@ -1,10 +1,9 @@
 ﻿using System.Globalization;
 using System.Linq;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Views
+namespace ProjectShedule.Shedule.Calendar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DaysOfWeek : ContentView

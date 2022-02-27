@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
-namespace ProjectShedule.Calendar.Controls
+namespace ProjectShedule.Shedule.Calendar.Controls
 {
     public class EventCollection : Dictionary<DateTime, ICollection>
     {
@@ -65,7 +64,7 @@ namespace ProjectShedule.Calendar.Controls
         }
         public new void Clear()
         {
-            if (base.Count == 0)
+            if (Count == 0)
                 return;
 
             base.Clear();

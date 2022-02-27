@@ -1,4 +1,4 @@
-﻿namespace ProjectShedule.Calendar.Enums
+﻿namespace ProjectShedule.Shedule.Calendar.Enums
 {
     public enum EventIndicatorType
     {

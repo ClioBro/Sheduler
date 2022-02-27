@@ -14,13 +14,12 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MainText = SettingResources.CornerRadiusDopTextLabel;
             MaxValue = 100d;
             MinValue = 0d;
-            double result = PercentConverter.DeConvert(_shapeEventSetting.GetCornerRadius(), _shapeEventSetting.MaxCornerRadius);
-            Value = Math.Round(result, 1);
+            Value = ConvertToValue(_shapeEventSetting.GetCornerRadius(), _shapeEventSetting.MaxCornerRadius);
             DragCompletedCommand = new Command(() => SaveOnMemory(Value));
         }
         private void SaveOnMemory(double value)
         {
-            float result = (float)PercentConverter.Convert(value, _shapeEventSetting.MaxCornerRadius);
+            float result = (float)ConvertToMemory(value, _shapeEventSetting.MaxCornerRadius);
             _shapeEventSetting.SetCornerRadius(result);
         }
     }

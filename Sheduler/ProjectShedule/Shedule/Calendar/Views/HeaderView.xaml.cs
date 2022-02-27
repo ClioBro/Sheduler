@@ -1,8 +1,8 @@
-﻿using ProjectShedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Views
+namespace ProjectShedule.Shedule.Calendar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HeaderView : ContentView

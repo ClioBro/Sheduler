@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.HeaderView.xaml", "Shedule/Calendar/Views/HeaderView.xaml", typeof(global::ProjectShedule.Calendar.Views.HeaderView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.HeaderView.xaml", "Shedule/Calendar/Views/HeaderView.xaml", typeof(global::ProjectShedule.Shedule.Calendar.Views.HeaderView))]
 
-namespace ProjectShedule.Calendar.Views {
+namespace ProjectShedule.Shedule.Calendar.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Calendar\\Views\\HeaderView.xaml")]

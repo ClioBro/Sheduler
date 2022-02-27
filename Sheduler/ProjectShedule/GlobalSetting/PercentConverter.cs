@@ -2,17 +2,17 @@
 {
     public static class PercentConverter
     {
-        public static double Convert(double incoming, double maxValue)
+        public static double DeConvertValue(double incoming, double maxIncomingValue, double percentValue)
         {
-            double res1 = incoming / 100;
-            double result = maxValue * res1;
+            double res1 = incoming / percentValue;
+            double result = maxIncomingValue * res1;
             return result;
         }
 
-        public static double DeConvert(double incoming, double maxValue)
+        public static double ConvertToValue(double incoming, double maxIncomingValue, double percentValue)
         {
-            double res1 = incoming * 100;
-            double result = res1 / maxValue;
+            double res1 = incoming * percentValue;
+            double result = res1 / maxIncomingValue;
             return result;
         }
     }

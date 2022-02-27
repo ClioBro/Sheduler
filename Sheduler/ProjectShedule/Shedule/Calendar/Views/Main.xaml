@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:ProjectShedule.Calendar.Views"
-             xmlns:carousels="clr-namespace:ProjectShedule.Calendar.Views.Header"
-             x:Class="ProjectShedule.Calendar.Controls.Main"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Calendar.Views"
+             xmlns:carousels="clr-namespace:ProjectShedule.Shedule.Calendar.Views.Header"
+             x:Class="ProjectShedule.Shedule.Calendar.Views.Main"
              x:Name="main">
     <ContentView.Content>
         <Grid  CompressedLayout.IsHeadless="True" RowSpacing="0">

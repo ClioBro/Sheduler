@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ProjectShedule.Calendar.Controls
+namespace ProjectShedule.Shedule.Calendar.Controls
 {
     internal static class Extensions
     {

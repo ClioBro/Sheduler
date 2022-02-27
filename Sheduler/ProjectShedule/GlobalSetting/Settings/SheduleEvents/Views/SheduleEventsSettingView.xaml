@@ -30,10 +30,10 @@
                 VerticalOptions="Center"
                 BackgroundColor="Red"
                 BorderColor="Black"
-                Opacity="{Binding Opacity}"
-                CornerRadius="{Binding CornerRadius}"
-                HeightRequest="{Binding Size}"
-                WidthRequest="{Binding Size}"/>
+                Opacity="{Binding CircleEventModel.Opacity}"
+                CornerRadius="{Binding CircleEventModel.CornerRadius}"
+                HeightRequest="{Binding CircleEventModel.Size}"
+                WidthRequest="{Binding CircleEventModel.Size}"/>
             <StackLayout 
                 Grid.Row="1" 
                 Grid.ColumnSpan="2"

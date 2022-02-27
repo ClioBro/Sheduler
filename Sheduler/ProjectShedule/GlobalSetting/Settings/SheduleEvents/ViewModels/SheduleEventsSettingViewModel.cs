@@ -2,6 +2,8 @@
 using ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models;
 using ProjectShedule.GlobalSetting.ViewModel;
 using ProjectShedule.Language.Resources.Pages.Setting;
+using ProjectShedule.Shedule.Calendar.Models;
+using ProjectShedule.Shedule.Calendar.ViewModels;
 using System.ComponentModel;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
@@ -21,25 +23,21 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
             CornerRadiusEventSettingModel = new CornerRadiusEventSettingModel(_shapeSetting);
             SizeEventSettingModel = new SizeEventSettingModel(_shapeSetting);
 
+            CircleEventModel = new CircleEventViewModel(new CircleEventModel());
             OpacityEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                Opacity = PercentConverter.Convert(result, _shapeSetting.MaxOpacity);
-                OnPropertyChanged(this, nameof(Opacity));
+                CircleEventModel.Opacity = OpacityEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxOpacity);
             };
-            CornerRadiusEventSettingModel.ValueChanged += (object sender, double result) => 
+            CornerRadiusEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                CornerRadius = PercentConverter.Convert(result, _shapeSetting.MaxCornerRadius);
-                OnPropertyChanged(this, nameof(CornerRadius));
+                CircleEventModel.CornerRadius = (float)CornerRadiusEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxCornerRadius);
             };
-            SizeEventSettingModel.ValueChanged += (object sender, double result) => 
+            SizeEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                Size = PercentConverter.Convert(result, _shapeSetting.MaxSize);
-                OnPropertyChanged(this, nameof(Size));
+                CircleEventModel.Size = SizeEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxSize);
             };
         }
-        public double Opacity { get; set; }
-        public double CornerRadius { get; set; }
-        public double Size { get; set; }
+        public CircleEventViewModel CircleEventModel { get; set; }
         public SlideSettingModel OpacityEventSettingModel { get; set; }
         public SlideSettingModel CornerRadiusEventSettingModel { get; set; }
         public SlideSettingModel SizeEventSettingModel { get; set; }

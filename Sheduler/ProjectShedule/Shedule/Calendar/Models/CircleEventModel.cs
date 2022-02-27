@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace ProjectShedule.Calendar.Models
+namespace ProjectShedule.Shedule.Calendar.Models
 {
     public class CircleEventModel : ICircleEvent
     {

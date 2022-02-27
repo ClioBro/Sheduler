@@ -35,7 +35,8 @@
         HasShadow="False"
         Margin="15" Padding="10"
         BackgroundColor="{DynamicResource PopUpBackGroundColor}"
-        BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
+        BorderColor="{DynamicResource PopUpPrimaryBorderColor}"
+        CornerRadius="0">
         <Grid>
             <Label  
                 x:Name="headerLabel"
@@ -72,7 +73,6 @@
                     HorizontalOptions="EndAndExpand"
                     Clicked="AgreementButton_Clicked"/>
             </StackLayout>
-
         </Grid>
         
     </Frame>

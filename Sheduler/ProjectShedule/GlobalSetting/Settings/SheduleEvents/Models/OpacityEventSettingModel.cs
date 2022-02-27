@@ -13,12 +13,12 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MainText = SettingResources.OpacityDopTextLabel;
             MaxValue = 100d;
             MinValue = 0d;
-            Value = PercentConverter.DeConvert(_shapeEventSetting.GetOpacity(), _shapeEventSetting.MaxOpacity);
+            Value = ConvertToValue(_shapeEventSetting.GetOpacity(), _shapeEventSetting.MaxOpacity);
             DragCompletedCommand = new Command(() => SaveOnMemory(Value));
         }
         private void SaveOnMemory(double value)
         {
-            double result = PercentConverter.Convert(value, _shapeEventSetting.MaxOpacity);
+            double result = ConvertToMemory(value, _shapeEventSetting.MaxOpacity);
             _shapeEventSetting.SetOpacity(result);
         }
     }

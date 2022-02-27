@@ -1,15 +1,10 @@
-﻿using ProjectShedule.Calendar.Models;
-using System;
-using System.Collections.Generic;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Views.Header
+namespace ProjectShedule.Shedule.Calendar.Views.Header
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CarouselDayView : ContentView

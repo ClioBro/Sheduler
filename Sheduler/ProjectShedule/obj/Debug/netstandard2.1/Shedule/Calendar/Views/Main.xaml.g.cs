@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.Main.xaml", "Shedule/Calendar/Views/Main.xaml", typeof(global::ProjectShedule.Calendar.Controls.Main))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.Main.xaml", "Shedule/Calendar/Views/Main.xaml", typeof(global::ProjectShedule.Shedule.Calendar.Views.Main))]
 
-namespace ProjectShedule.Calendar.Controls {
+namespace ProjectShedule.Shedule.Calendar.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Calendar\\Views\\Main.xaml")]
@@ -20,25 +20,25 @@ namespace ProjectShedule.Calendar.Controls {
         private global::Xamarin.Forms.ContentView main;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::ProjectShedule.Calendar.Views.Header.CarouselYearsView carouselYearsView;
+        private global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselYearsView carouselYearsView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::ProjectShedule.Calendar.Views.Header.CarouselMonthView carouselMonthView;
+        private global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselMonthView carouselMonthView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::ProjectShedule.Calendar.Views.Header.CarouselDayView carouselDayView;
+        private global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselDayView carouselDayView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::ProjectShedule.Calendar.Views.MonthDays monthDaysView;
+        private global::ProjectShedule.Shedule.Calendar.Views.MonthDays monthDaysView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(Main));
             main = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ContentView>(this, "main");
-            carouselYearsView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Calendar.Views.Header.CarouselYearsView>(this, "carouselYearsView");
-            carouselMonthView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Calendar.Views.Header.CarouselMonthView>(this, "carouselMonthView");
-            carouselDayView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Calendar.Views.Header.CarouselDayView>(this, "carouselDayView");
-            monthDaysView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Calendar.Views.MonthDays>(this, "monthDaysView");
+            carouselYearsView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselYearsView>(this, "carouselYearsView");
+            carouselMonthView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselMonthView>(this, "carouselMonthView");
+            carouselDayView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselDayView>(this, "carouselDayView");
+            monthDaysView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ProjectShedule.Shedule.Calendar.Views.MonthDays>(this, "monthDaysView");
         }
     }
 }

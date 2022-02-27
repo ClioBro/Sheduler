@@ -1,6 +1,6 @@
-﻿using ProjectShedule.Calendar.Models;
-using ProjectShedule.DataNote;
+﻿using ProjectShedule.DataNote;
 using ProjectShedule.GlobalSetting.Settings.SheduleEvents;
+using ProjectShedule.Shedule.Calendar.Models;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;

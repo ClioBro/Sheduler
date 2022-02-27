@@ -1,11 +1,11 @@
-﻿using ProjectShedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using System.Collections.Generic;
 using System.Globalization;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Views.Header
+namespace ProjectShedule.Shedule.Calendar.Views.Header
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CarouselMonthView : ContentView

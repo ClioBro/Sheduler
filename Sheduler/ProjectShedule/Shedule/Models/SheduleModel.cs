@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.PackNotesManager;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;

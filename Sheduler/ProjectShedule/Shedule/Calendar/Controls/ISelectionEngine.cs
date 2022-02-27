@@ -2,11 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
-namespace ProjectShedule.Calendar.Controls
+namespace ProjectShedule.Shedule.Calendar.Controls
 {
-    interface ISelectionEngine
+    internal interface ISelectionEngine
     {
         string GetSelectedDateText(string selectedDateTextFormat, CultureInfo culture);
         bool TryGetSelectedEvents(EventCollection allEvents, out ICollection selectedEvents);

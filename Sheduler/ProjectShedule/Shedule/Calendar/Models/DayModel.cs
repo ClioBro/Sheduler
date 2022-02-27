@@ -1,10 +1,10 @@
-﻿using ProjectShedule.Calendar.Enums;
+﻿using ProjectShedule.Shedule.Calendar.Enums;
 using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace ProjectShedule.Calendar.Models
+namespace ProjectShedule.Shedule.Calendar.Models
 {
     public class DayModel : BindableBase<DayModel>
     {
@@ -19,7 +19,7 @@ namespace ProjectShedule.Calendar.Models
             get => GetProperty<ICommand>();
             set => SetProperty(value);
         }
-        
+
         public bool IsSelected
         {
             get => GetProperty<bool>();
@@ -105,10 +105,10 @@ namespace ProjectShedule.Calendar.Models
                                                ? EventColor
                                                : Color.Default;
 
-        public FlexDirection EventLayoutDirection => (HasEvents && EventIndicatorType == EventIndicatorType.TopDot) ? FlexDirection.ColumnReverse : FlexDirection.Column;
+        public FlexDirection EventLayoutDirection => HasEvents && EventIndicatorType == EventIndicatorType.TopDot ? FlexDirection.ColumnReverse : FlexDirection.Column;
         #endregion
 
-        public Color DefaultBackGroundColor => (Color)App.Current.Resources["CalendarDayDefaultBackGroundColor"];
+        public Color DefaultBackGroundColor => (Color)Application.Current.Resources["CalendarDayDefaultBackGroundColor"];
         public Color BackgroundColor
         {
             get
@@ -116,7 +116,7 @@ namespace ProjectShedule.Calendar.Models
                 return IsSelected ? SelectedBackgroundColor : DefaultBackGroundColor;
             }
         }
-        public Color DefaultSelectedBackgroundColor => (Color)App.Current.Resources["SelectedItemBackGround"];
+        public Color DefaultSelectedBackgroundColor => (Color)Application.Current.Resources["SelectedItemBackGround"];
         public Color SelectedBackgroundColor
         {
             get => GetProperty(DefaultSelectedBackgroundColor);
@@ -132,23 +132,25 @@ namespace ProjectShedule.Calendar.Models
         public Color BorderColor => IsToday
                                    ? TodayBorderColor
                                    : BackgroundColor;
-        public Color PrimaryTextColor 
+        public Color PrimaryTextColor
         {
-            get => GetProperty((Color)App.Current.Resources["PrimaryTextColor"]);
+            get => GetProperty((Color)Application.Current.Resources["PrimaryTextColor"]);
             set => SetProperty(value)
                 .Notify(nameof(TextColor));
         }
 
         public Color SecondaryTextColor
         {
-            get => GetProperty((Color)App.Current.Resources["SecondaryTextColor"]);
+            get => GetProperty((Color)Application.Current.Resources["SecondaryTextColor"]);
             set => SetProperty(value)
                 .Notify(nameof(TextColor));
         }
 
         public Color TextColor => IsThisMonth ? PrimaryTextColor : SecondaryTextColor;
 
-        public void OnAppThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
-            => Notify(nameof(TextColor), nameof(BackgroundColor), nameof(BorderColor));
+        public void OnAppThemeChanged(object sender, ThemeChangedEventArgs e)
+        {
+            _ = Notify(nameof(TextColor), nameof(BackgroundColor), nameof(BorderColor));
+        }
     }
 }

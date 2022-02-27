@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ProjectShedule.Calendar.Views.Header" 
-             xmlns:models="clr-namespace:ProjectShedule.Calendar.Models"
-             xmlns:views="clr-namespace:ProjectShedule.Calendar.Views"
-             x:Class="ProjectShedule.Calendar.Views.Header.CarouselDayView"
+             xmlns:local="clr-namespace:ProjectShedule.Shedule.Calendar.Views.Header" 
+             xmlns:models="clr-namespace:ProjectShedule.Shedule.Calendar.Models"
+             x:Class="ProjectShedule.Shedule.Calendar.Views.Header.CarouselDayView"
              x:DataType="local:CarouselDayView"
              x:Name="thisView">
     <ContentView.Content>

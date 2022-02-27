@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.MonthDays.xaml", "Shedule/Calendar/Views/MonthDays.xaml", typeof(global::ProjectShedule.Calendar.Views.MonthDays))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.MonthDays.xaml", "Shedule/Calendar/Views/MonthDays.xaml", typeof(global::ProjectShedule.Shedule.Calendar.Views.MonthDays))]
 
-namespace ProjectShedule.Calendar.Views {
+namespace ProjectShedule.Shedule.Calendar.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Calendar\\Views\\MonthDays.xaml")]

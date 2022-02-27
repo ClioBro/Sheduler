@@ -1,9 +1,9 @@
-﻿using ProjectShedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.Calendar.Models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Views
+namespace ProjectShedule.Shedule.Calendar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DayView : ContentView

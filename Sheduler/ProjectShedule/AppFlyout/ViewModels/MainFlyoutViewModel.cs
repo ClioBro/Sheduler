@@ -36,9 +36,9 @@ namespace ProjectShedule.AppFlyout.ViewModels
             App.ThemeController.ThemeChanged += OnThemeChanged;
         }
 
-        private void OnThemeChanged(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
+        private void OnThemeChanged(object sender, ThemeChangedEventArgs e)
         {
-            SetDisplayedImageByTheme(newTheme);
+            SetDisplayedImageByTheme(e.NewTheme);
         }
         private ObservableCollection<MainFlyoutMenuItemViewModel> GetMyCustomItems()
         {

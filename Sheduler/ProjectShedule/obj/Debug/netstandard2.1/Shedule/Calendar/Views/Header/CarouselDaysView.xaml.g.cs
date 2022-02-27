@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.Header.CarouselDaysView.xaml", "Shedule/Calendar/Views/Header/CarouselDaysView.xaml", typeof(global::ProjectShedule.Calendar.Views.Header.CarouselDayView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("ProjectShedule.Shedule.Calendar.Views.Header.CarouselDaysView.xaml", "Shedule/Calendar/Views/Header/CarouselDaysView.xaml", typeof(global::ProjectShedule.Shedule.Calendar.Views.Header.CarouselDayView))]
 
-namespace ProjectShedule.Calendar.Views.Header {
+namespace ProjectShedule.Shedule.Calendar.Views.Header {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Shedule\\Calendar\\Views\\Header\\CarouselDaysView.xaml")]
