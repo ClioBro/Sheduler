@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models ="clr-namespace:ProjectShedule.Shedule.Calendar.Models"
+             x:DataType="models:DayModel"
+             x:Class="ProjectShedule.Shedule.Calendar.Views.DayView">
+    <ContentView.Content>
+        <Frame 
+            HeightRequest="40"
+            WidthRequest="40"
+            Padding="0"
+            BorderColor="{Binding BorderColor}"
+            BackgroundColor="{Binding BackgroundColor}"
+            CornerRadius="0"
+            HasShadow="False">
+            <FlexLayout
+                Direction="Column"
+                AlignItems="Center"
+                JustifyContent="Center">
+                <Label 
+                    Text="{Binding Date.Day}" 
+                    TextColor="{Binding TextColor}"
+                    HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                    <Frame
+                        BackgroundColor="{Binding FirstEvent.BackGrountColor}"
+                        BorderColor="{Binding FirstEvent.BorderColor}"   
+                        IsVisible="{Binding FirstEvent.IsVisible}"
+                        WidthRequest="{Binding FirstEvent.Size.Width}"
+                        HeightRequest="{Binding FirstEvent.Size.Height}"
+                        Opacity="{Binding FirstEvent.Opacity}"
+                        Padding="0"
+                        CornerRadius="{Binding FirstEvent.CornerRadius}"
+                        HasShadow="False"/>
+                    <Frame
+                        BackgroundColor="{Binding TwoEvent.BackGrountColor}"
+                        BorderColor="{Binding TwoEvent.BorderColor}" 
+                        IsVisible="{Binding TwoEvent.IsVisible}"
+                        WidthRequest="{Binding TwoEvent.Size.Width}"
+                        HeightRequest="{Binding TwoEvent.Size.Height}"
+                        Opacity="{Binding TwoEvent.Opacity}"
+                        Padding="0"
+                        CornerRadius="{Binding TwoEvent.CornerRadius}"
+                        HasShadow="False"/>
+                    <Frame
+                        BackgroundColor="{Binding ThreeEvent.BackGrountColor}"
+                        BorderColor="{Binding ThreeEvent.BorderColor}" 
+                        IsVisible="{Binding ThreeEvent.IsVisible}"
+                        WidthRequest="{Binding ThreeEvent.Size.Width}"
+                        HeightRequest="{Binding ThreeEvent.Size.Height}"
+                        Opacity="{Binding ThreeEvent.Opacity}"
+                        Padding="0"
+                        CornerRadius="{Binding ThreeEvent.CornerRadius}"
+                        HasShadow="False"/>
+                </StackLayout>
+            </FlexLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

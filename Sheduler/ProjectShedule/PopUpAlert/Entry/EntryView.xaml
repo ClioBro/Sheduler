@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xctViews:Popup
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xctViews="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xmlns:local="clr-namespace:ProjectShedule.PopUpAlert.Entry"
+    x:TypeArguments="local:EntryView+ResultText"
+    x:Class="ProjectShedule.PopUpAlert.Entry.EntryView"
+    x:DataType="local:EntryView"
+    Size="{Binding PageSize}">
+    <xctViews:Popup.Resources>
+        <Style x:Key="ButtonCancelation" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonSecondaryBackGroundColor}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="BorderColor" Value="{DynamicResource ButtonBorderColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style x:Key="ButtonAgreement" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource ButtonPrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonSecondaryBackGroundColor}"/>
+
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="BorderColor" Value="{DynamicResource ButtonBorderColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style x:Key="EditorStyle" TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+    </xctViews:Popup.Resources>
+    <Grid Padding="4" BackgroundColor="{DynamicResource PopUpBackGroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label 
+            Text="{Binding HeaderText}"
+            Grid.Row="0" Grid.ColumnSpan="2"
+            HorizontalOptions="CenterAndExpand"
+            Style="{DynamicResource LargeLabelStyle}" />
+        <ScrollView 
+            x:Name="scroll"
+            HeightRequest="75"
+            Grid.Row="1" Grid.ColumnSpan="2">
+            <Editor
+                Text="{Binding EditorText}"
+                Placeholder="{Binding EditorPlaceHolder}"
+                AutoSize="TextChanges"
+                IsSpellCheckEnabled="True"
+                Style="{DynamicResource EditorStyle}"/>
+        </ScrollView>
+        <Button 
+            Grid.Row="2" Grid.Column="0"
+            Style="{DynamicResource ButtonCancelation}"
+            Clicked="CancelationButton_Clicked"
+            Text="{Binding CancelationButtonText}"/>
+        <Button
+            Grid.Row="2" Grid.Column="1"
+            Style="{DynamicResource ButtonAgreement}" 
+            Clicked="AgreementButton_Clicked"
+            Text="{Binding AgreementButtonText}"/>
+    </Grid>
+</xctViews:Popup>

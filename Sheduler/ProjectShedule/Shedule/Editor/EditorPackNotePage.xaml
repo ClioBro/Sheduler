@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:languageResx="clr-namespace:ProjectShedule.Language.Resources.Pages.EditorPackNote;assembly=ProjectShedule.Language"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+             xmlns:ViewModels ="clr-namespace:ProjectShedule.Shedule.Editor.ViewModels"
+             x:DataType="ViewModels:EditorPackNoteVM"
+             x:Class="ProjectShedule.Shedule.EditorPackNotePage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Resources>
+        <Style x:Key="ColoredButton" TargetType="Button">
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+        <Style x:Key="EditorStyle" TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid CompressedLayout.IsHeadless="True" RowSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Entry 
+                    Text="{Binding Header}" 
+                    Placeholder="{x:Static languageResx:Editor.HeaderPlaceholder}"
+                    Style="{DynamicResource EntryStyle}"/>
+                <ImageButton
+                    Grid.Column="1"
+                    Style="{DynamicResource SaveImageButton}"
+                    WidthRequest="40" HeightRequest="40"
+                    Command="{Binding SavePackNoteCommand}"/>
+                <Button
+                    Grid.Column="2"
+                    BorderColor="{Binding LineColor}"
+                    BackgroundColor="{Binding BackGroundColor}"
+                    Style="{x:StaticResource ColoredButton}"
+                    Command="{Binding ShowColorSelectionPageCommand}"/>
+            </Grid>
+            <CollectionView
+                Grid.Row="1" 
+                ItemsSource="{Binding SmallTasks}"
+                VerticalOptions="Start">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Editor 
+                            AutoSize="TextChanges"
+                            Text="{Binding DopText}" 
+                            Placeholder="{x:Static languageResx:Editor.DopTexPlaceHolder}"
+                            IsSpellCheckEnabled="True"
+                            Style="{DynamicResource EditorStyle}"/>
+                        <Label 
+                            Text="{x:Static languageResx:Editor.AdditionalTasksLabel}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            IsVisible="{Binding HasSmallTasks}"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:TaskView/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <StackLayout CompressedLayout.IsHeadless="True">
+                        <StackLayout CompressedLayout.IsHeadless="True" Orientation="Horizontal">
+                            <Entry 
+                                Text="{Binding TaskAddingEntryText}" 
+                                Placeholder="{x:Static languageResx:Editor.TaskAddingPlaceHolder}"
+                                Style="{DynamicResource EntryStyle}"
+                                HorizontalOptions="FillAndExpand"/>
+                            <ImageButton 
+                                Style="{DynamicResource PluseImageButton}"
+                                WidthRequest="30" HeightRequest="30"
+                                Command="{Binding AddTaskCommand}" />
+                        </StackLayout>
+                        <Label 
+                            Text="{x:Static languageResx:Editor.ForSpecificDateTimeLabel}" 
+                            TextColor="{DynamicResource PrimaryTextColor}"/>
+                        <StackLayout
+                            Orientation="Horizontal" >
+                            <Switch 
+                                x:Name="DateTimeSwitch" 
+                                Style="{DynamicResource SwitchStyle}"
+                                IsToggled="{Binding OnTheDate}"/>
+                            <DatePicker x:Name="datePicker" Format="D" Date="{Binding Date}" 
+                                TextColor="{DynamicResource PrimaryTextColor}"
+                                IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}">
+                                <DatePicker.MinimumDate>10/26/2020</DatePicker.MinimumDate>
+                                <DatePicker.MaximumDate>10/26/2040</DatePicker.MaximumDate>
+                            </DatePicker>
+                            <TimePicker x:Name="timePicker" Time="{Binding Time}" TextColor="{DynamicResource PrimaryTextColor}"
+                                IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" 
+                            IsVisible="{Binding Source={x:Reference DateTimeSwitch}, Path= IsToggled}">
+                            <Switch 
+                                Style="{DynamicResource SwitchStyle}"
+                                IsToggled="{Binding Notify}"/>
+                            <Label Text="{x:Static languageResx:Editor.NotificationLabel}" 
+                                   TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Center"/>
+                            <Label 
+                                Text="{Binding SelectedRepeadText}" 
+                                TextColor="{DynamicResource PrimaryTextColor}" 
+                                TextDecorations="Underline"
+                                IsVisible="{Binding Notify}"
+                                FontSize="15"
+                                VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowAvailableRepeadTypesCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Button 
+                                Text="{x:Static languageResx:Editor.ShowExampleButton}"
+                                Command="{Binding ShowPackNoteViewCommand}" Style="{DynamicResource ButtonAgreement}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </CollectionView.Footer>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectShedule.Shedule.Views.RadioButtonsView"
+             xmlns:local="clr-namespace:ProjectShedule.Shedule.Views" 
+             xmlns:models="clr-namespace:ProjectShedule.Shedule.Models"
+             x:DataType="local:RadioButtonsView"
+             x:Name="thisView">
+    <ContentView.Resources  xmlns:resources="clr-namespace:ProjectShedule.Shedule.PackNotesManager.FilterManager">
+        <resources:RadioButtonResource x:Key="mainPageResource"/>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <StackLayout 
+            BindableLayout.ItemsSource="{Binding Items, Source={x:Reference thisView}}"
+            Orientation="Horizontal"
+            Spacing="0"
+            RadioButtonGroup.GroupName="{Binding GroupName, Source={x:Reference thisView}}"
+            RadioButtonGroup.SelectedValue="{Binding SelectedItem, Source={x:Reference thisView}}"
+            CompressedLayout.IsHeadless="True">
+            <BindableLayout.ItemTemplate CompressedLayout.IsHeadless="True">
+                <DataTemplate x:DataType="models:RadioButtonItem">
+                    <RadioButton 
+                        Content="{Binding Text}"
+                        IsChecked="{Binding IsChecked}" 
+                        Value="{Binding This}"/>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
