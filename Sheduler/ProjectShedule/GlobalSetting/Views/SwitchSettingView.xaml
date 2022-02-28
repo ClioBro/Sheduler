@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Models"
              x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
-             x:DataType="models:BooleanValueElementCell">
+             x:DataType="models:SwitchSettingModel">
   <ContentView.Content>
         <StackLayout  
             Orientation="Horizontal"
