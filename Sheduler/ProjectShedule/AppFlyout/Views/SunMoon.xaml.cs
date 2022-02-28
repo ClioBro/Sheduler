@@ -1,5 +1,5 @@
 ﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
-using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Other;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,7 +10,7 @@ namespace ProjectShedule.AppFlyout.Views
     public partial class SunMoon : ContentView
     {
         private IAnimate _animations ;
-        public bool IsAnimated { get => _animations.IsAnimated; }
+        public bool IsAnimated => _animations.IsAnimated;
         public SunMoon()
         {
             InitializeComponent();
