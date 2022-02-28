@@ -3,11 +3,11 @@ using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme.Models
 {
-    public class DarkModeSettingModel : BooleanValueElementCell
+    public class DarkModeSettingModel : SwitchSettingModel
     {
         private readonly ThemeController _themeController;
 
-        public DarkModeSettingModel() : base(SettingResources.OnLabel, SettingResources.OffLabel)
+        public DarkModeSettingModel()
         {
             _themeController = App.ThemeController;
             MainText = SettingResources.DarkModeDopTextLabel;
