@@ -10,7 +10,14 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
 {
     internal class SheduleEventsSettingViewModel : SettingBox, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region
+        public event PropertyChangedEventHandler PropertyChanged; 
+        private void OnPropertyChanged(object sender, string propName = "")
+        {
+            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propName));
+        }
+        #endregion
+
         private readonly ShapeEventSetting _shapeSetting;
 
         public SheduleEventsSettingViewModel()
@@ -42,9 +49,6 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
         public SlideSettingModel OpacityEventSettingModel { get; set; }
         public SlideSettingModel CornerRadiusEventSettingModel { get; set; }
         public SlideSettingModel SizeEventSettingModel { get; set; }
-        private void OnPropertyChanged(object sender, string propName = "")
-        {
-            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propName));
-        }
+        
     }
 }
