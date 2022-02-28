@@ -3,10 +3,10 @@ using ProjectShedule.Language.Resources.Pages.Setting;
 
 namespace ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Models
 {
-    public class DeleteQuestionSettingModel : BooleanValueElementCell
+    public class DeleteQuestionSettingModel : SwitchSettingModel
     {
         private readonly DeleteConfirmationSetting _deleteConfirmationSetting;
-        public DeleteQuestionSettingModel() : base(SettingResources.OnLabel, SettingResources.OffLabel)
+        public DeleteQuestionSettingModel()
         {
             _deleteConfirmationSetting = new DeleteConfirmationSetting();
             MainText = SettingResources.DeleteQuestionDopTextLabel;
