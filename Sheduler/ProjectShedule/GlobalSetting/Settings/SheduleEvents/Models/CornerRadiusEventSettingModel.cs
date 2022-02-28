@@ -15,11 +15,11 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MaxValue = 100d;
             MinValue = 0d;
             Value = ConvertToValue(_shapeEventSetting.GetCornerRadius(), _shapeEventSetting.MaxCornerRadius);
-            DragCompletedCommand = new Command(() => SaveOnMemory(Value));
+            DragCompletedCommand = new Command(() => SaveOnMemory());
         }
-        private void SaveOnMemory(double value)
+        private void SaveOnMemory()
         {
-            float result = (float)ConvertToMemory(value, _shapeEventSetting.MaxCornerRadius);
+            float result = (float)ConvertToMemory(Value, _shapeEventSetting.MaxCornerRadius);
             _shapeEventSetting.SetCornerRadius(result);
         }
     }

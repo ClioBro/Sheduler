@@ -14,11 +14,11 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.Models
             MaxValue = 100d;
             MinValue = 0d;
             Value = ConvertToValue(_shapeEventSetting.GetOpacity(), _shapeEventSetting.MaxOpacity);
-            DragCompletedCommand = new Command(() => SaveOnMemory(Value));
+            DragCompletedCommand = new Command(() => SaveOnMemory());
         }
-        private void SaveOnMemory(double value)
+        private void SaveOnMemory()
         {
-            double result = ConvertToMemory(value, _shapeEventSetting.MaxOpacity);
+            double result = ConvertToMemory(Value, _shapeEventSetting.MaxOpacity);
             _shapeEventSetting.SetOpacity(result);
         }
     }

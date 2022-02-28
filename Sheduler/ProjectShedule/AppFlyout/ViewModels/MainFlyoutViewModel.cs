@@ -53,14 +53,6 @@ namespace ProjectShedule.AppFlyout.ViewModels
                 },
 
                 new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
-                    Title = Lobby.GameTitle,
-                    TargetType = typeof( Games.TicTacToePage)})
-                {
-                    DarkImage = "ticTacToe_icon.png",
-                    LightImage = "ticTacToe_icon_negate.png"
-                },
-
-                new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem {
                     Title = Lobby.SheduleTitle,
                     TargetType = typeof( Shedule.ShedulePage) })
                 {

@@ -23,21 +23,22 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents.ViewModels
             CornerRadiusEventSettingModel = new CornerRadiusEventSettingModel(_shapeSetting);
             SizeEventSettingModel = new SizeEventSettingModel(_shapeSetting);
 
-            CircleEventModel = new CircleEventViewModel(new CircleEventModel());
+            CircleEventViewModel = new CircleEventViewModel(new CircleEventModel());
+
             OpacityEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                CircleEventModel.Opacity = OpacityEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxOpacity);
+                CircleEventViewModel.Opacity = OpacityEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxOpacity);
             };
             CornerRadiusEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                CircleEventModel.CornerRadius = (float)CornerRadiusEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxCornerRadius);
+                CircleEventViewModel.CornerRadius = (float)CornerRadiusEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxCornerRadius);
             };
             SizeEventSettingModel.ValueChanged += (object sender, double result) =>
             {
-                CircleEventModel.Size = SizeEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxSize);
+                CircleEventViewModel.Size = SizeEventSettingModel.ConvertToMemory(result, _shapeSetting.MaxSize);
             };
         }
-        public CircleEventViewModel CircleEventModel { get; set; }
+        public CircleEventViewModel CircleEventViewModel { get; set; }
         public SlideSettingModel OpacityEventSettingModel { get; set; }
         public SlideSettingModel CornerRadiusEventSettingModel { get; set; }
         public SlideSettingModel SizeEventSettingModel { get; set; }
