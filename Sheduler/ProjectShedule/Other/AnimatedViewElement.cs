@@ -1,9 +1,8 @@
-﻿using ProjectShedule.Shedule.Interfaces;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ProjectShedule
+namespace ProjectShedule.Other
 {
     public class AnimatedViewElement : IAnimate
     {
