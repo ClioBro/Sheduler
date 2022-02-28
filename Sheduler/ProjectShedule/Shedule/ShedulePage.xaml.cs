@@ -1,4 +1,5 @@
-﻿using ProjectShedule.Shedule.ViewModels;
+﻿using ProjectShedule.Other;
+using ProjectShedule.Shedule.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
