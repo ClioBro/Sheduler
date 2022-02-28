@@ -4,7 +4,7 @@ namespace ProjectShedule.GlobalSetting.Settings
 {
     public abstract class Setting<TClass>
     {
-        private string ConvertKey(string nameType) => typeof(TClass).Name + nameType;
+        private string ConvertKey(string nameType) => $"{typeof(TClass).Name}/{nameType}";
 
         private protected void SavePreference(string key, float value)
         {
