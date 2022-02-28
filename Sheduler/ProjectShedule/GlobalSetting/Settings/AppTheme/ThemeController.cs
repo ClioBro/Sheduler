@@ -15,8 +15,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
             _themesDictionaries = new Dictionary<Theme, ResourceDictionary>
             {
                 {Theme.Dark, new DarkTheme()},
-                {Theme.Light, new LightTheme()},
-                {Theme.Nier, new LightTheme()}
+                {Theme.Light, new LightTheme()}
             };
             CurrentTheme = GetPreference(nameof(Theme.Dark), false) ? Theme.Dark : Theme.Light;
         }
@@ -41,7 +40,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
                 SaveThemeOnApp();
             }
             else
-                throw new System.Exception($"ERROR: Key {newTheme} not found in _themesDictionaries");
+                throw new Exception($"ERROR: Key {newTheme} not found in _themesDictionaries");
         }
         private void SetResourceOnApp()
         {
