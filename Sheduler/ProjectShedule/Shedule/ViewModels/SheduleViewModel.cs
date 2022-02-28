@@ -3,13 +3,11 @@ using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.Models;
-using ProjectShedule.Shedule.PackNotesManager.FilterManager;
 using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -61,9 +59,7 @@ namespace ProjectShedule.Shedule.ViewModels
             MoveToDayCommand = new Command(() => _sheduleModel.DisplayedDateOnCarousel = DateTime.Today);
 
             _sheduleModel.PackNoteListUpdated += () => OnPropertyChanged(nameof(PackNotes));
-            //_sheduleModel.SelectedPackNotesChanged += () => OnPropertyChanged(nameof(SelectedPackNotes));
             _sheduleModel.CalendarCirleEventsUpdated += () => OnPropertyChanged(nameof(EventsForCalendar));
-            //_sheduleModel.SelectedDatesChanged += () => OnPropertyChanged(nameof(SelectedDates));
             _sheduleModel.DisplayedDateChanged += () => OnPropertyChanged(nameof(DisplayedDateTime));
 
 
