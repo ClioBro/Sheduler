@@ -27,7 +27,7 @@
 | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/setting_page_light_ru.png) | ![Android Screenshot](https://github.com/ClioBro/Sheduler/blob/main/art/setting_page_light_en.png) | 
 
 ### Различная демонстрация
-| Expander And Scroll | Change Theme |
+| Expander And Scroll | Changing Theme |
 | ------------------- | ------------ |
 | ![ExpandedGIF](https://github.com/ClioBro/Sheduler/blob/main/art/expandAndScroll_animation.gif) | ![AndroidChangeThemeGIF](https://github.com/ClioBro/Sheduler/blob/main/art/theme_change_animation.gif) | 
 
