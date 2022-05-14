@@ -9,39 +9,44 @@ namespace ProjectShedule.AppFlyout.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SunMoon : ContentView
     {
-        private IAnimate _animations ;
-        public bool IsAnimated => _animations.IsAnimated;
+        private BaseViewElementAnimate _baseViewElementAnimate ;
+        private ThemeController _themeController;
+        public bool IsAnimated { get; protected set; }
         public SunMoon()
         {
             InitializeComponent();
-            _animations = new AnimatedViewElement();
+            _themeController = App.ThemeController;
         }
 
-        private async void ImageButton_Clicked(object sender, EventArgs e)
+        private void SwitchTheme(object sender, EventArgs e)
         {
             if (!IsAnimated && sender is VisualElement visualElement)
             {
+                IsAnimated = true;
                 OpacityAnimated();
-                switch (App.ThemeController.CurrentTheme)
+                switch (_themeController.CurrentTheme)
                 {
                     case ThemeController.Theme.Light:
-                        App.ThemeController.SetThemeOnApp(ThemeController.Theme.Dark);
+                        _themeController.SetThemeOnApp(ThemeController.Theme.Dark);
                         break;
                     case ThemeController.Theme.Dark:
-                        App.ThemeController.SetThemeOnApp(ThemeController.Theme.Light);
+                        _themeController.SetThemeOnApp(ThemeController.Theme.Light);
                         break;
                     default:
                         break;
                 }
-                
-                await visualElement.RotateTo(360, 500);
-                visualElement.Rotation = 0;
+                RotationAnimated();
             }
 
-            void OpacityAnimated()
+            async void OpacityAnimated()
             {
-                visualElement.Opacity = 0;
-                visualElement.FadeTo(1, 700);
+                _baseViewElementAnimate = new OpacityAnimatedViewElement();
+                await _baseViewElementAnimate.SinInElementAsync(visualElement);
+            }
+            async void RotationAnimated()
+            {
+                _baseViewElementAnimate = new RotationAnimatedViewElement();
+                await _baseViewElementAnimate.SinInElementAsync(visualElement, ()=> this.IsAnimated = false);
             }
         }
         

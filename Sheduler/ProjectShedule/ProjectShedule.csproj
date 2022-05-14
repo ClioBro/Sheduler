@@ -3,17 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <AssemblyName></AssemblyName>
+    <RootNamespace>ProjectShedule</RootNamespace>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <WarningLevel>4</WarningLevel>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
@@ -23,20 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Shedule\Calendar\Views\DayVIew.xaml.cs">
-      <DependentUpon>DayVIew.xaml</DependentUpon>
+    <ProjectReference Include="..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AppFlyout\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Shedule\Calendar\Views\HeaderView.xaml.cs">
-      <DependentUpon>HeaderView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Shedule\Calendar\Views\Header\CarouselDaysView.xaml.cs">
-      <DependentUpon>CarouselDaysView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Shedule\Calendar\Views\Header\CarouselMonthsView.xaml.cs">
-      <DependentUpon>CarouselMonthsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Shedule\Calendar\Views\MonthDays.xaml.cs">
-      <DependentUpon>MonthDays.xaml</DependentUpon>
+    <Compile Update="AppFlyout\Views\FlyoutPage.xaml.cs">
+      <DependentUpon>FlyoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="GlobalSetting\SettingMainPage.xaml.cs">
       <DependentUpon>SettingMainPage.xaml</DependentUpon>
@@ -53,22 +53,40 @@
     <Compile Update="Shedule\PackNotesManager\PackNoteView.xaml.cs">
       <DependentUpon>PackNoteView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\DaysOfWeekView.xaml.cs">
+      <DependentUpon>DaysOfWeekView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\DayVIew.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\Header\Elements\CarouselDaysView.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\Header\Elements\CarouselMonthsView.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\Header\Elements\CarouselYearsView.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\DateCalendarView.xaml.cs">
+      <DependentUpon>DateCalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\DateCalendar\Views\MonthDaysView.xaml.cs">
+      <DependentUpon>MonthDaysView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="AppFlyout\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="AppFlyout\MainFlyout.xaml">
+    <EmbeddedResource Update="AppFlyout\Views\FlyoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Views\SliderSettingView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml">
@@ -80,34 +98,13 @@
     <EmbeddedResource Update="GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Views\RadioButtonsView.xaml">
+    <EmbeddedResource Update="Views\RadioButtonsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\DarkTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\LightTheme.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\DayVIew.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\DaysOfWeek.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\HeaderView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselDaysView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselMonthsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\Header\CarouselYearsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Calendar\Views\MonthDays.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GlobalSetting\SettingMainPage.xaml">
@@ -146,6 +143,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectShedule.Language\ProjectShedule.Language.csproj" />
+    <Folder Include="Repository\" />
+    <Folder Include="Shedule\DataBase\Controlls\" />
+    <Folder Include="Shedule\Builders\" />
+    <Folder Include="Shedule\PackNotesManager\WorkWithDataBase\" />
+    <Folder Include="Shedule\Views\" />
+    <Folder Include="Views\DateCalendar\" />
+    <Folder Include="Views\GlobalSetting\" />
   </ItemGroup>
 </Project>

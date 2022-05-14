@@ -4,10 +4,10 @@ namespace ProjectShedule.Shedule.Interfaces
 {
     public interface ISortInDate<Ttype>
     {
-        public List<Ttype> GetItems();
+        public IEnumerable<Ttype> GetItems();
     }
-    public interface ISortInOrder<Ttype> 
+    public interface ISortInOrder<Ttype>
     {
-        public List<Ttype> GetSorted(List<Ttype> itemSort);
+        public IEnumerable<Ttype> GetSorted(IEnumerable<Ttype> itemSort);
     }
 }

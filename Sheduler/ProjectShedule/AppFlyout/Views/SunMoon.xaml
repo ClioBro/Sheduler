@@ -9,7 +9,7 @@
             HeightRequest="24" WidthRequest="24"
             Margin="1"
             HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"
-            Clicked="ImageButton_Clicked" 
+            Clicked="SwitchTheme" 
             Style="{DynamicResource ThemeImageButton}"/>
     </ContentView.Content>
 </ContentView>

@@ -1,18 +1,25 @@
-﻿using ProjectShedule.DataNote.Interfaces;
-using System;
+﻿using System;
 
-namespace ProjectShedule.DataNote
+namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface INote : ITable
+    public interface INote : ITable, ICloneable
     {
-        public string Header { get; set; }
-        public string DopText { get; set;}
-        public DateTime CreatedDateTime { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public int RepeadIdKey { get; set; }
-        public bool Notify { get; set; }
-        public bool DateTimeStatus { get; set; }
-        public string BackgroundColorKey { get; set; }
-        public string LineColorKey { get; set; }
+        string Header { get; }
+
+        string DopText { get; }
+
+        DateTime CreatedDateTime { get; }
+
+        DateTime AppointmentDate { get; }
+
+        int RepeadIdKey { get; }
+
+        bool Notify { get; }
+
+        bool DateTimeStatus { get; }
+
+        string BackgroundColorKey { get; }
+
+        string LineColorKey { get; }
     }
 }

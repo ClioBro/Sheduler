@@ -1,6 +1,8 @@
-﻿namespace ProjectShedule.Shedule.Interfaces
+﻿using System;
+
+namespace ProjectShedule.Shedule.Interfaces
 {
-    public interface IPackNote : IHasNote, IHasSmallTasks
+    public interface IPackNote : IHasNote, IHasSmallTasks, ICloneable
     {
 
     }

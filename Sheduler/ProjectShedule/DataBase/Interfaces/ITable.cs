@@ -1,7 +1,7 @@
-﻿namespace ProjectShedule.DataNote.Interfaces
+﻿namespace ProjectShedule.DataBase.Interfaces
 {
     public interface ITable
     {
-        public int Id { get; }
+        int Id { get; }
     }
 }

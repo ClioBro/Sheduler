@@ -7,15 +7,15 @@ namespace ProjectShedule.Shedule
 {
     public class NotifyOnAppManager
     {
-        public void SendNotify(IHasNote note)
+        public void SendNotify(IHasNote ihasNote)
         {
             INotificationManager notificationManager = DependencyService.Get<INotificationManager>();
             Notification notify = new Notification
             {
-                Title = note.Note.Header,
-                Message = note.Note.DopText,
-                RepeadType = (RepeadType)note.Note.RepeadIdKey,
-                AlertTime = note.Note.AppointmentDate
+                Title = ihasNote.Note.Header,
+                Message = ihasNote.Note.DopText,
+                RepeadType = (RepeadType)ihasNote.Note.RepeadIdKey,
+                AlertTime = ihasNote.Note.AppointmentDate
             };
             notificationManager.SendNotification(notify);
         }

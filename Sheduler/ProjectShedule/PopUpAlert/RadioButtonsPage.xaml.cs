@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Models;
+﻿using ProjectShedule.Shedule.Interfaces;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms.Xaml;
@@ -9,21 +9,21 @@ namespace ProjectShedule.PopUpAlert
     public partial class RadioButtonsSelecterPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         public static bool IsPageOpened { get; private set; }
-        private readonly List<RadioButtonItem> _radioButtons;
-        private RadioButtonItem _selectedItem;
-        public RadioButtonsSelecterPage(IEnumerable<RadioButtonItem> items, int selectedItemIndex = 0, string title = null)
+        private readonly List<IRadioButtonItem> _radioButtons;
+        private IRadioButtonItem _selectedItem;
+        public RadioButtonsSelecterPage(IEnumerable<IRadioButtonItem> items, int selectedItemIndex = 0, string title = null)
         {
             InitializeComponent();
-            _radioButtons = new List<RadioButtonItem>(items);
+            _radioButtons = new List<IRadioButtonItem>(items);
             SetSelectedItemByIndex(selectedItemIndex);
             MainText = title;
             BindingContext = this;
         }
 
-        public event EventHandler<RadioButtonItem> SelectedItemChanged;
+        public event EventHandler<IRadioButtonItem> SelectedItemChanged;
 
-        public IEnumerable<RadioButtonItem> Items => _radioButtons;
-        public RadioButtonItem SelectedItem
+        public IEnumerable<IRadioButtonItem> Items => _radioButtons;
+        public IRadioButtonItem SelectedItem
         {
             get => _selectedItem;
             set
