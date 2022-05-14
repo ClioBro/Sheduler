@@ -6,4 +6,11 @@ namespace ProjectShedule.Shedule.Models
     {
         public RepeadType RepeadType { get; set; }
     }
+
+    public class RadioButtonItem
+    {
+        public string Text { get; set; }
+        public bool IsChecked { get; set; }
+        public RadioButtonItem This => this;
+    }
 }

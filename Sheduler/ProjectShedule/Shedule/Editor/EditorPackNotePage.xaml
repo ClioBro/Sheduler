@@ -4,7 +4,7 @@
              xmlns:languageResx="clr-namespace:ProjectShedule.Language.Resources.Pages.EditorPackNote;assembly=ProjectShedule.Language"
              xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
              xmlns:ViewModels ="clr-namespace:ProjectShedule.Shedule.Editor.ViewModels"
-             x:DataType="ViewModels:EditorPackNoteViewModel"
+             x:DataType="ViewModels:EditorPackNoteVM"
              x:Class="ProjectShedule.Shedule.EditorPackNotePage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Resources>
@@ -98,7 +98,7 @@
                             <Switch 
                                 x:Name="DateTimeSwitch" 
                                 Style="{DynamicResource SwitchStyle}"
-                                IsToggled="{Binding DateSelected}"/>
+                                IsToggled="{Binding OnTheDate}"/>
                             <DatePicker x:Name="datePicker" Format="D" Date="{Binding Date}" 
                                 TextColor="{DynamicResource PrimaryTextColor}"
                                 IsEnabled="{Binding Source={x:Reference Name=DateTimeSwitch}, Path= IsToggled}">
@@ -112,7 +112,7 @@
                             IsVisible="{Binding Source={x:Reference DateTimeSwitch}, Path= IsToggled}">
                             <Switch 
                                 Style="{DynamicResource SwitchStyle}"
-                                IsToggled="{Binding EnableNotification}"/>
+                                IsToggled="{Binding Notify}"/>
                             <Label Text="{x:Static languageResx:Editor.NotificationLabel}" 
                                    TextColor="{DynamicResource PrimaryTextColor}"
                                    VerticalOptions="Center"/>
@@ -120,7 +120,7 @@
                                 Text="{Binding SelectedRepeadText}" 
                                 TextColor="{DynamicResource PrimaryTextColor}" 
                                 TextDecorations="Underline"
-                                IsVisible="{Binding EnableNotification}"
+                                IsVisible="{Binding Notify}"
                                 FontSize="15"
                                 VerticalOptions="Center">
                                 <Label.GestureRecognizers>

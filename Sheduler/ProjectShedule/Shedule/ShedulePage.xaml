@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
              xmlns:calendarViews="clr-namespace:ProjectShedule.Shedule.Calendar.Views"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
-             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
-             xmlns:managerPackNote ="clr-namespace:ProjectShedule.Shedule.PackNotesManager"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"  
              x:Class="ProjectShedule.Shedule.ShedulePage"
              x:DataType="viewModels:SheduleViewModel"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
@@ -52,12 +51,12 @@
                 ItemsUpdatingScrollMode="KeepScrollOffset">
                 <CollectionView.Header>
                     <StackLayout>
-                        <calendarViews:DateCalendarView
+                        <calendarViews:Main
                             SelectedDates="{Binding SelectedDates}"
+                            DayEvents="{Binding EventsForCalendar}"
                             MonthDaysIsVisible="{Binding ExpandedCalendar}"
-                            CircleEvents="{Binding EventsForCalendar}"
                             DisplayedCarouselDayMontYear="{Binding DisplayedDateTime}">
-                        </calendarViews:DateCalendarView>
+                        </calendarViews:Main>
                         <xct:Expander AnimationLength="100" >
                             <xct:Expander.Header>
                                 <Frame
@@ -118,7 +117,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <managerPackNote:PackNoteView/>
+                        <views:PackNoteView/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

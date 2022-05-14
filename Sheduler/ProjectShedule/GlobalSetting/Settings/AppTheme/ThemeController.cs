@@ -5,11 +5,7 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
-    public interface INotifyThemeChange
-    {
-        event EventHandler<ThemeChangedEventArgs> ThemeChanged;
-    }
-    public class ThemeController : Setting<ThemeController>, INotifyThemeChange
+    public class ThemeController : Setting<ThemeController>
     {
         public event EventHandler<ThemeChangedEventArgs> ThemeChanged;
         private protected ICollection<ResourceDictionary> _mergedDictionaries = Application.Current.Resources.MergedDictionaries;

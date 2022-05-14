@@ -2,16 +2,15 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Shedule.PackNotesManager
+namespace ProjectShedule.Shedule.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PackNoteView : ContentView
     {
-        public PackNoteView()
+        public PackNoteView() : this(new PackNoteViewModel())
         {
-            InitializeComponent();
         }
-        public PackNoteView(BasePackNoteViewModel packNoteModel)
+        public PackNoteView(PackNoteViewModel packNoteModel)
         {
             InitializeComponent();
             BindingContext = packNoteModel;

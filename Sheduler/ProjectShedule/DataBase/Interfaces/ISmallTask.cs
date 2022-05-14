@@ -1,11 +1,11 @@
-﻿using System;
+﻿using ProjectShedule.DataNote.Interfaces;
 
-namespace ProjectShedule.DataBase.Interfaces
+namespace ProjectShedule.DataNote
 {
-    public interface ISmallTask : ITable, ICloneable
+    public interface ISmallTask : ITable
     {
-        int IdNote { get; }
-        string Text { get; }
-        bool Status { get; }
+        public int IdNote { get; }
+        public string Name { get; }
+        public bool Status { get; }
     }
 }

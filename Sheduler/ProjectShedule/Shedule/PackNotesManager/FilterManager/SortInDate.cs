@@ -1,5 +1,4 @@
-﻿using ProjectShedule.DataBase.Interfaces;
-using ProjectShedule.Shedule.Interfaces;
+﻿using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
 using System;
 using System.Collections.Generic;
@@ -8,40 +7,36 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager
 {
     public abstract class SortInDate : RadioButtonItem, ISortInDate<IPackNote>
     {
-        protected IGetQuereblyItems<IPackNote> _getItems;
-        public SortInDate(IGetQuereblyItems<IPackNote> getItems)
+        public virtual List<IPackNote> GetItems() => GetAll();
+        private protected List<IPackNote> GetAll()
         {
-            _getItems = getItems;
+            var repository = new PackNoteDataBaseController();
+            return repository.GetAll();
         }
-        public virtual IEnumerable<IPackNote> GetItems() => _getItems.GetItems();
+        private protected List<IPackNote> GetForDate(DateTime dateTime)
+        {
+            var repository = new PackNoteDataBaseController();
+            return repository.GetForDate(dateTime);
+        }
     }
     public class SelectedSortInDate : SortInDate
     {
-        public SelectedSortInDate(IGetQuereblyItems<IPackNote> getItems) : base(getItems) { }
         public DateTime Date { get; set; }
-        public override IEnumerable<IPackNote> GetItems() 
-        {
-            return _getItems.GetForDateTime(Date);
-        }
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class ToDaySortInDate : SortInDate
     {
-        public ToDaySortInDate(IGetQuereblyItems<IPackNote> getItems) : base(getItems)
-        {
-
-        }
         public DateTime Date => DateTime.Today;
-        public override IEnumerable<IPackNote> GetItems() => _getItems.GetForDateTime(Date);
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class TomorrowSortInDate : SortInDate
     {
-        public TomorrowSortInDate(IGetQuereblyItems<IPackNote> getItems) : base(getItems) { }
         public DateTime Date => DateTime.Today.AddDays(1);
-        public override IEnumerable<IPackNote> GetItems() => _getItems.GetForDateTime(Date);
+        public override List<IPackNote> GetItems() => GetForDate(Date);
     }
     public class AllSortInDate : SortInDate
     {
-        public AllSortInDate(IGetQuereblyItems<IPackNote> getItems) : base(getItems) { }
+        public override List<IPackNote> GetItems() => GetAll();
     }
 
 }

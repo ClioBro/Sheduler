@@ -1,161 +1,119 @@
-﻿using ProjectShedule.DataBase.Entities;
-using ProjectShedule.DataBase.Entities.Base;
-using ProjectShedule.Shedule.DataBase.Interfaces;
+﻿using ProjectShedule.Language.Resources.PopUp.Repeads;
+using ProjectShedule.PopUpAlert;
+using ProjectShedule.PopUpAlert.ColorSelection;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.PackNotesManager;
 using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace ProjectShedule.Shedule.Editor.Models
 {
-    
-    public interface IEditorPackNote
+    public class EditorPackNoteModel
     {
-        void AddNewSmallTask(string text);
-        void RemoveTask(BaseSmallTaskViewModel smallTaskViewModel);
-        void Save();
-    }
-    public abstract class BaseEditorPackNoteModel : IEditorPackNote
-    {
-        public event EventHandler<Color> LineColorChanged;
-        public event EventHandler<Color> BackGroundColorChanged;
-        public abstract event EventHandler<ReadOnlyPackNote> PackNoteSaved;
+        public event EventHandler<bool> PackNoteSaved;
+        public event EventHandler<ReadOnlyObservableCollection<SmallTaskViewModel>> SmallTasksChanged;
         public event EventHandler<RepeadItem> SelectedRepeadChanged;
-        public abstract event EventHandler<BaseSmallTaskViewModel> SmallTasksAdded;
-        public abstract event EventHandler<BaseSmallTaskViewModel> SmallTasksDeleted;
 
-        protected BasePackNoteModel _basePackNoteModel;
-        public BaseEditorPackNoteModel(BasePackNoteModel basePackNoteModel)
+        private readonly PackNoteModel _packNoteModel;
+        private string _taskName;
+
+        public EditorPackNoteModel() : this(new PackNoteModel())
         {
-            _basePackNoteModel = basePackNoteModel;
+
         }
-        public BasePackNoteModel BasePackNoteModel => _basePackNoteModel;
-        public abstract ICommand DeleteTaskCommand { get; set; }
+        public EditorPackNoteModel(PackNoteModel packNoteModel)
+        {
+            _packNoteModel = packNoteModel;
+
+            DeleteTaskCommand = new Command<SmallTaskViewModel>(RemoveTask);
+            AssigmentCommand(SmallTasks.ToArray());
+            _packNoteModel.SmallTaskAdded += OnSmallTasksChanged;
+            _packNoteModel.SmallTaskDeleted += OnSmallTasksChanged;
+        }
+        private ICommand DeleteTaskCommand { get; set; }
         public string Header
         {
-            get => _basePackNoteModel.Note.Header;
-            set => _basePackNoteModel.Note.Header = value;
+            get => _packNoteModel.Note.Header;
+            set => _packNoteModel.Note.Header = value;
         }
         public string DopText
         {
-            get => _basePackNoteModel.Note.DopText;
-            set => _basePackNoteModel.Note.DopText = value;
-        }
-        public DateTime CreatedDateTime
-        {
-            get => _basePackNoteModel.Note.CreatedDateTime;
-            set => _basePackNoteModel.Note.CreatedDateTime = value;
-        }
-        public bool OnTheDate
-        {
-            get => _basePackNoteModel.Note.DateTimeStatus;
-            set => _basePackNoteModel.Note.DateTimeStatus = value;
-        }
-        public DateTime AppointmentDate
-        {
-            get => _basePackNoteModel.Note.AppointmentDate;
-            set => _basePackNoteModel.Note.AppointmentDate = value;
-        }
-        public bool Notify
-        {
-            get => _basePackNoteModel.Note.Notify;
-            set
-            {
-                _basePackNoteModel.Note.Notify = value;
-
-                if (value == false)
-                {
-                    SelectedRepead = CustomRepeads.RepeadsItems[0];
-                }
-            }
+            get => _packNoteModel.Note.DopText;
+            set => _packNoteModel.Note.DopText = value;
         }
         public Color LineColor
         {
-            get => _basePackNoteModel.LineColor;
-            set
-            {
-                _basePackNoteModel.LineColor = value;
-                LineColorChanged?.Invoke(this, value);
-            }
+            get => _packNoteModel.LineColor;
+            set => _packNoteModel.LineColor = value;
         }
         public Color BackGroundColor
         {
-            get => _basePackNoteModel.BackGroundColor;
-            set
-            {
-                _basePackNoteModel.BackGroundColor = value;
-                BackGroundColorChanged?.Invoke(this, value);
-            }
+            get => _packNoteModel.BackGroundColor;
+            set => _packNoteModel.BackGroundColor = value;
         }
         public RepeadItem SelectedRepead
         {
             get
             {
-                return CustomRepeads.RepeadsItems[_basePackNoteModel.Note.RepeadIdKey];
+                return CustomRepeads.RepeadsItems[_packNoteModel.Note.RepeadIdKey];
             }
             set
             {
-                _basePackNoteModel.Note.RepeadIdKey = (int)value.RepeadType;
+                _packNoteModel.Note.RepeadIdKey = (int)value.RepeadType;
                 SelectedRepeadChanged?.Invoke(this, value);
             }
         }
-
-        public ReadOnlyObservableCollection<BaseSmallTaskViewModel> SmallTasks => _basePackNoteModel.SmallTasks;
-        public abstract void AddNewSmallTask(string text);
-        public virtual void RemoveTask(BaseSmallTaskViewModel smallTaskViewModel)
+        public DateTime CreatedDateTime
         {
-            _basePackNoteModel.DeleteSmallTask(smallTaskViewModel);
+            get => _packNoteModel.Note.CreatedDateTime;
+            set => _packNoteModel.Note.CreatedDateTime = value;
         }
-        public abstract void Save();
-    }
-    public class EditorPackNoteModel : BaseEditorPackNoteModel
-    {
-        public override event EventHandler<ReadOnlyPackNote> PackNoteSaved;
-        public override event EventHandler<BaseSmallTaskViewModel> SmallTasksAdded;
-        public override event EventHandler<BaseSmallTaskViewModel> SmallTasksDeleted;
-
-        private ICommand _commandDelete;
-
-        private IBuilderSmallTaskViewModel _builderSmallTaskViewModel;
-        private readonly IPackNoteDataBaseController _packNoteDBController;
-        public EditorPackNoteModel(BasePackNoteModel packNoteModel, IPackNoteDataBaseController dataBaseController) : base(packNoteModel)
+        public bool OnTheDate
         {
-            _builderSmallTaskViewModel = new BuilderSmallTaskViewModel();
-            _packNoteDBController = dataBaseController;
-
-            _basePackNoteModel.SmallTaskAdded += (BaseSmallTaskViewModel smallTaskViewModel) 
-                => SmallTasksAdded?.Invoke(this, smallTaskViewModel);
-
-            _basePackNoteModel.SmallTaskDeleted += (BaseSmallTaskViewModel smallTaskViewModel) 
-                => SmallTasksDeleted?.Invoke(this, smallTaskViewModel);
+            get => _packNoteModel.Note.DateTimeStatus;
+            set => _packNoteModel.Note.DateTimeStatus = value;
         }
-        public IBuilderSmallTaskViewModel BuilderSmallTaskViewModel 
+        public DateTime AppointmentDate
         {
-            get => _builderSmallTaskViewModel;
-            set => _builderSmallTaskViewModel = value; 
+            get => _packNoteModel.Note.AppointmentDate;
+            set => _packNoteModel.Note.AppointmentDate = value;
         }
-        public override ICommand DeleteTaskCommand
+        public bool Notify
         {
-            get => _commandDelete;
+            get => _packNoteModel.Note.Notify;
             set
             {
-                _commandDelete = value;
-                AssigmentCommand(SmallTasks.ToArray());
-            } 
+                _packNoteModel.Note.Notify = value;
+                if (!value)
+                {
+                    SelectedRepead = CustomRepeads.RepeadsItems[0];
+                }
+            }
         }
-        public override void AddNewSmallTask(string text)
+        public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => _packNoteModel.SmallTasks;
+
+        public string TaskAddingEntryText { get => _taskName; set => _taskName = value; }
+
+        public void AddTask()
         {
-            if (string.IsNullOrWhiteSpace(text))
+            if (string.IsNullOrWhiteSpace(TaskAddingEntryText))
                 return;
-
-            BaseSmallTaskViewModel smallTask = BuildNewSmallTask(text);
-
-            _basePackNoteModel.AddSmallTask(smallTask);
+            string taskName = TaskAddingEntryText;
+            TaskAddingEntryText = string.Empty;
+            var smallTaskViewModel = new SmallTaskViewModel { Text = taskName.Trim() };
+            AssigmentCommand(smallTaskViewModel);
+            _packNoteModel.AddSmallTask(smallTaskViewModel);
         }
-        public override void Save()
+        public void RemoveTask(SmallTaskViewModel smallTaskViewModel)
+        {
+            _packNoteModel.DeleteSmallTask(smallTaskViewModel);
+        }
+        public void Save()
         {
             if (string.IsNullOrWhiteSpace(Header) && string.IsNullOrWhiteSpace(DopText))
                 return;
@@ -164,36 +122,58 @@ namespace ProjectShedule.Shedule.Editor.Models
             if (OnTheDate == false)
                 AppointmentDate = CreatedDateTime;
 
-            _packNoteDBController.Save(_basePackNoteModel);
+            PackNoteDataBaseController packNoteManager = new PackNoteDataBaseController();
+            packNoteManager.Save(_packNoteModel, correct: true);
 
-            bool notifyIsValid = OnTheDate && Notify;
-
-            if (notifyIsValid)
+            bool NotifyIsValid = OnTheDate && Notify;
+            if (NotifyIsValid)
             {
                 NotifyOnAppManager notyfyManager = new NotifyOnAppManager();
-                notyfyManager.SendNotify(_basePackNoteModel);
+                notyfyManager.SendNotify(_packNoteModel);
             }
 
-            PackNoteSaved.Invoke(this, new ReadOnlyPackNote(_basePackNoteModel));
+            PackNoteSaved.Invoke(this, true);
         }
-        private void AssigmentCommand(params BaseSmallTaskViewModel[] smallTaskViewModel)
+        public DemonstrationViewPackNote GetDemonstrationPage()
         {
-            foreach (BaseSmallTaskViewModel smallTask in smallTaskViewModel)
+            return new DemonstrationViewPackNote(_packNoteModel);
+        }
+        public ColorSelectionPage GetColorSelectionPage()
+        {
+            ColorSelectionPageCreation colorSelectionPageCreation = new ColorSelectionPageCreation(_packNoteModel);
+
+            colorSelectionPageCreation.ColorSelection.LineTarget.ColorSelected += (sender, color) => LineColor = color;
+            colorSelectionPageCreation.ColorSelection.BackGroundTarget.ColorSelected += (sender, color) => BackGroundColor = color;
+
+            return colorSelectionPageCreation.Create();
+        }
+        public RadioButtonsSelecterPage GetRadioButtonSelectedPage()
+        {
+            RepeadItem[] repeadItems = CustomRepeads.RepeadsItems;
+
+            var radioButtonPage = new RadioButtonsSelecterPage(repeadItems,
+                                                repeadItems.IndexOf(SelectedRepead),
+                                                Repeads.HeaderLabel);
+
+            radioButtonPage.SelectedItemChanged
+                += (sender, selectedItem)
+                => SelectedRepead = (RepeadItem)selectedItem;
+            return radioButtonPage;
+        }
+        private void AssigmentCommand(params SmallTaskViewModel[] smallTaskViewModel)
+        {
+            foreach (SmallTaskViewModel smallTask in smallTaskViewModel)
             {
-                AssigmentCommand(smallTask);
+                smallTask.DeleteMeCommand = new Command<SmallTaskViewModel>(RemoveTask);
             }
         }
-        private void AssigmentCommand(BaseSmallTaskViewModel smallTaskViewModel)
+        private void AssigmentCommand(SmallTaskViewModel smallTaskViewModel)
         {
             smallTaskViewModel.DeleteMeCommand = DeleteTaskCommand;
         }
-
-        private BaseSmallTaskViewModel BuildNewSmallTask(string text)
+        private void OnSmallTasksChanged(SmallTaskViewModel smallTaskViewModel)
         {
-            return _builderSmallTaskViewModel
-                .SetText(text.Trim())
-                .SetDeleteCommand(DeleteTaskCommand)
-                .Build();
+            SmallTasksChanged?.Invoke(this, SmallTasks);
         }
     }
 }

@@ -4,23 +4,12 @@ using System.Collections.Generic;
 
 namespace ProjectShedule.Shedule.PackNotesManager
 {
-    public interface ISavePackNote
+    public interface IPackNoteRepository
     {
-        void Save(IPackNote packNote, bool correct = true);
-    }
-    public interface IDeletePackNote
-    {
-        void Delete(IPackNote packNote);
-    }
-    public interface IGetPackNote
-    {
-        List<IPackNote> GetAll();
-        List<IPackNote> GetForDate(DateTime dateTime);
-        List<IPackNote> GetForDate(DateTime first, DateTime second);
-    }
-    
-    public interface IPackNoteRepository : IDeletePackNote, ISavePackNote, IGetPackNote
-    {
-
+        public void Save(IPackNote packNote, bool correct = true);
+        public void Delete(IPackNote packNote);
+        public List<IPackNote> GetAll();
+        public List<IPackNote> GetForDate(DateTime dateTime);
+        public List<IPackNote> GetForDate(DateTime first, DateTime second);
     }
 }

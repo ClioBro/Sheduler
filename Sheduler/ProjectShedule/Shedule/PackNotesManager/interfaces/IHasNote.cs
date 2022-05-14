@@ -1,10 +1,10 @@
-﻿using ProjectShedule.DataBase.Entities.Base;
+﻿using ProjectShedule.DataNote;
 
 namespace ProjectShedule.Shedule.Interfaces
 {
     public interface IHasNote
     {
-        BaseNote Note { get;}
+        public Note Note { get;}
     }
 
 

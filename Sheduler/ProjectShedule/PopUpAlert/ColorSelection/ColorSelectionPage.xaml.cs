@@ -9,7 +9,7 @@ namespace ProjectShedule.PopUpAlert.ColorSelection
     {
         public static bool IsPageOpened { get; private set; }
 
-        private readonly ColorSelectionViewModel _colorSelectionViewModel;
+        private ColorSelectionViewModel _colorSelectionViewModel;
 
         public ColorSelectionPage() : this (new ColorSelectionViewModel(new ColorSelectionModel())) { }
         public ColorSelectionPage(ColorSelectionViewModel colorSelectionViewModel)

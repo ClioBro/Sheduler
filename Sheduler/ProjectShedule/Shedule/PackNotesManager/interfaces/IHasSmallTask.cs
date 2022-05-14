@@ -1,9 +1,9 @@
-﻿using ProjectShedule.DataBase.Entities.Base;
+﻿using ProjectShedule.DataNote;
 
 namespace ProjectShedule.Shedule.Interfaces
 {
     public interface IHasSmallTask
     {
-        BaseSmallTask SmallTask { get; }
+        SmallTask SmallTask { get; }
     }
 }

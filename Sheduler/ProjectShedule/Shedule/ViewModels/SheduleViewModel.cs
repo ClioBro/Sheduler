@@ -1,13 +1,9 @@
-﻿using ProjectShedule.DataBase.Entities.Base;
-using ProjectShedule.GlobalSetting;
+﻿using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Calendar.Models;
-using ProjectShedule.Shedule.DataBase.Interfaces;
-using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
-using ProjectShedule.Shedule.PackNotesManager.WorkWithDataBase;
-using ProjectShedule.Shedule.ShapeEvents;
+using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,35 +16,27 @@ namespace ProjectShedule.Shedule.ViewModels
 {
     public class SheduleViewModel : INotifyPropertyChanged
     {
+        private readonly SheduleModel _sheduleModel;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private readonly BaseSheduleModel _sheduleModel;
-
-        private readonly IBuilderSmallTaskViewModel _builderSmallTaskViewModel;
-        private readonly IBuilderPackNote _builderPackNoteModel;
-        private readonly IBuilderPackNoteViewModel _builderPackNoteViewModel;
-        private readonly IBuilderPackNoteEditorPage _builderPackNoteEditorPage;
-
-        private readonly IPackNoteDataBaseController _dataBaseController;
         public SheduleViewModel()
         {
+            _sheduleModel = new SheduleModel();
             Title = Lobby.SheduleTitle;
-            _builderPackNoteEditorPage = new BuilderPackNoteEditorPage();
-            _builderPackNoteViewModel = new BuilderPackNoteViewModel();
-            _builderSmallTaskViewModel = new BuilderSmallTaskViewModel();
-            _builderPackNoteModel = new BuilderPackNoteModel(_builderSmallTaskViewModel);
-
-            _dataBaseController = new PackNoteDataBaseController(App.ApplicationContext);
-            _sheduleModel = new SheduleModel(_dataBaseController, _builderPackNoteViewModel);
-
-            //DisplayedDateTime = DateTime.Today;
-
-            AssigmentCommands();
+            AssigmentCommandEvents();
         }
+
         #region Properties
-        public ReadOnlyObservableCollection<BasePackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
-        public ReadOnlyObservableCollection<CircleEventModel> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
-        public BaseFilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
+        public ICommand OpenEditorCommand { get; set; }
+        public ICommand ExpandedCalendarCommand { get; set; }
+        public ICommand MoveToDayCommand { get; private set; }
+        public INavigation Navigation { get; set; }
+        public bool ExpandedCalendar { get; set; }
+        public string Title { get; set; }
+        public ObservableCollection<PackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
+        public FilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
+        public IEnumerable<ICircleEvent> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
         public List<DateTime> SelectedDates
         {
             get => _sheduleModel.SelectedDates;
@@ -57,63 +45,44 @@ namespace ProjectShedule.Shedule.ViewModels
         public DateTime DisplayedDateTime
         {
             get => _sheduleModel.DisplayedDateOnCarousel;
-            set
-            {
-                if (_sheduleModel.DisplayedDateOnCarousel != value)
-                {
-                    _sheduleModel.DisplayedDateOnCarousel = value;
-                    OnPropertyChanged(nameof(DisplayedDateTime));
-                }
-            }
+            set => _sheduleModel.DisplayedDateOnCarousel = value;
         }
-        public ICommand OpenEditorCommand { get; set; }
-        public ICommand ExpandedCalendarCommand { get; set; }
-        public ICommand MoveToDayCommand { get; private set; }
-        public INavigation Navigation { get; set; }
-        public bool ExpandedCalendar { get; set; }
-        public string Title { get; set; }
         #endregion
 
-        private void AssigmentCommands()
+        private void AssigmentCommandEvents()
         {
-            _sheduleModel.DeletePackNoteCommand = new Command<BasePackNoteViewModel>(DeletePackNoteCommandHandler);
-            _sheduleModel.EditPackNoteCommand = new Command<BasePackNoteViewModel>(OpenEditorCommandHandler);
+            _sheduleModel.DeletePackNoteCommand = new Command<PackNoteViewModel>(DeletePackNoteCommandHandler);
+            _sheduleModel.EditPackNoteCommand = new Command<PackNoteViewModel>(OpenEditorCommandHandler);
 
             ExpandedCalendarCommand = new Command(ExpandCalendar);
             OpenEditorCommand = new Command(OpenEditorCommandHandler);
-            MoveToDayCommand = new Command(() => DisplayedDateTime = DateTime.Today);
+            MoveToDayCommand = new Command(() => _sheduleModel.DisplayedDateOnCarousel = DateTime.Today);
+
+            _sheduleModel.PackNoteListUpdated += () => OnPropertyChanged(nameof(PackNotes));
+            _sheduleModel.CalendarCirleEventsUpdated += () => OnPropertyChanged(nameof(EventsForCalendar));
+            _sheduleModel.DisplayedDateChanged += () => OnPropertyChanged(nameof(DisplayedDateTime));
+
+
+            _sheduleModel.DisplayedDateOnCarousel = DateTime.Today;
+            _sheduleModel.UpdateEvents();
         }
-        private void OpenEditorCommandHandler()
-        {
-            AttemptOpenEditor(_builderPackNoteModel.Build());
-        }
-        private void OpenEditorCommandHandler(BasePackNoteViewModel packNoteViewModel)
-        {
-            IHasModel<BasePackNoteModel> hasModel = packNoteViewModel;
-            BasePackNoteModel cloneBasePackNoteModel = hasModel.Model.Clone() as BasePackNoteModel;
-            AttemptOpenEditor(cloneBasePackNoteModel);
-        }
-        private async void AttemptOpenEditor(BasePackNoteModel basePackNoteModel)
+        private async void OpenEditorCommandHandler()
         {
             if (EditorPackNotePage.IsPageOpened)
                 return;
-
-            ContentPage contentPage = _builderPackNoteEditorPage
-                .SetEditTarget(basePackNoteModel)
-                .SetSavePressedCallBack(SavedPackNoteEventHandler)
-                .SetDataBaseController(_dataBaseController)
-                .Build();
-            await Navigation.PushModalAsync(contentPage);
-
-            void SavedPackNoteEventHandler(ReadOnlyPackNote savedPackNote)
-            {
-                _sheduleModel.UpdatePackNotesAsync();
-                //_sheduleModel.UpdatePackNotes();
-                //_sheduleModel.UpdateEvents();
-            }
+            EditorPackNotePage editorPage = CreaterPageManager
+                .CreateEditorPage(SavePressedCallBack: UpdatePage);
+            await Navigation.PushModalAsync(editorPage);
         }
-
-        private async void DeletePackNoteCommandHandler(BasePackNoteViewModel packNoteViewModel)
+        private async void OpenEditorCommandHandler(PackNoteViewModel packNoteViewModel)
+        {
+            if (EditorPackNotePage.IsPageOpened)
+                return;
+            EditorPackNotePage editorPage = CreaterPageManager
+                .CreateEditorPage(SavePressedCallBack: UpdatePage, packNoteViewModel.Model);
+            await Navigation.PushModalAsync(editorPage);
+        }
+        private async void DeletePackNoteCommandHandler(PackNoteViewModel packNoteViewModel)
         {
             IDeleteConfirmation deleteConfirmation = new DeleteConfirmationSetting();
             if (deleteConfirmation.AskQuestion)
@@ -125,11 +94,18 @@ namespace ProjectShedule.Shedule.ViewModels
             }
             _sheduleModel.DeletePackNote(packNoteViewModel);
         }
+        private void UpdatePage()
+        {
+            _sheduleModel.UpdatePackNotes();
+            _sheduleModel.UpdateEvents();
+        }
+
         private void ExpandCalendar()
         {
             ExpandedCalendar = !ExpandedCalendar;
             OnPropertyChanged(nameof(ExpandedCalendar));
         }
+
         private void OnPropertyChanged([CallerMemberName] string propertyName = "" )
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
