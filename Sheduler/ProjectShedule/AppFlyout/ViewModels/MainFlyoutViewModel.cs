@@ -1,4 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
+﻿using ProjectShedule.AppFlyout.Models;
+using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using System.Collections.ObjectModel;
 
@@ -6,15 +7,22 @@ namespace ProjectShedule.AppFlyout.ViewModels
 {
     internal class MainFlyoutViewModel
     {
+        private ThemeController _themeController;
         public ObservableCollection<MainFlyoutMenuItemViewModel> MenuItems { get; set; }
 
         public MainFlyoutViewModel()
         {
+            _themeController = App.ThemeController;
+            _themeController.ThemeChanged += OnThemeChanged;
+
             MenuItems = GetMyCustomItems();
-            SignatureEvent();
+            
             SetDisplayedImageByTheme(App.ThemeController.CurrentTheme);
         }
-
+        private void OnThemeChanged(object sender, ThemeChangedEventArgs e)
+        {
+            SetDisplayedImageByTheme(e.NewTheme);
+        }
         public void SetDisplayedImageByTheme(ThemeController.Theme newTheme)
         {
             switch (newTheme)
@@ -29,16 +37,6 @@ namespace ProjectShedule.AppFlyout.ViewModels
                         menuItem.DisplayedImage = menuItem.DarkImage;
                     break;
             }
-        }
-
-        private void SignatureEvent()
-        {
-            App.ThemeController.ThemeChanged += OnThemeChanged;
-        }
-
-        private void OnThemeChanged(object sender, ThemeChangedEventArgs e)
-        {
-            SetDisplayedImageByTheme(e.NewTheme);
         }
         private ObservableCollection<MainFlyoutMenuItemViewModel> GetMyCustomItems()
         {

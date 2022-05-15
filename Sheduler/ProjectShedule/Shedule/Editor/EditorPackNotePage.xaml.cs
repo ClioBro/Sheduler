@@ -8,9 +8,8 @@ namespace ProjectShedule.Shedule
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditorPackNotePage : ContentPage
     {
-        public EditorPackNotePage() : this(new EditorPackNoteVM()) { }
 
-        public EditorPackNotePage(EditorPackNoteVM editorViewModel)
+        public EditorPackNotePage(EditorPackNoteViewModel editorViewModel)
         {
             InitializeComponent();
             editorViewModel.Navigation = this.Navigation;

@@ -1,89 +1,89 @@
 ﻿using ProjectShedule.Language.Resources.OtherElements;
 using ProjectShedule.Shedule.Interfaces;
-using ProjectShedule.Shedule.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel
 {
-    public class FilterViewModel : BindableBase<FilterViewModel>
-    {
-        private readonly FilterPackNote _filterPackNotes;
-        public FilterViewModel()
-        {
-            _filterPackNotes = new FilterPackNote();
+    //public class BaseFilterViewModel : BindableBase<BaseFilterViewModel>
+    //{
+    //    private readonly FilterPackNoteModel _filterPackNotes;
+    //    public BaseFilterViewModel()
+    //    {
+    //        _filterPackNotes = new FilterPackNoteModel();
 
-            FilterTypes = new SortInDate[]
-            {
-                new SelectedSortInDate { Text = Filters.BySelectedDate},
-                new ToDaySortInDate { Text = Filters.ByToday},
-                new AllSortInDate { Text = Filters.AllItems},
-            };
+    //        FilterTypes = new SortInDate<IPackNote>[]
+    //        {
+    //            new SelectedSortInDate<IPackNote> { Text = Filters.BySelectedDate},
+    //            new ToDaySortInDate<IPackNote> { Text = Filters.ByToday},
+    //            new AllSortInDate<IPackNote> { Text = Filters.AllItems},
+    //        };
 
-            OrderTypes = new PutInOrder[]
-            {
-                new PutInOrderByDate{ Text = Filters.ByDate},
-                new PutInOrderByAlphabet{ Text = Filters.ByAlphabetically},
-            };
-            PropertyChanged += OnFilterControlPropertyChanged;
+    //        OrderTypes = new PutInOrderNote[]
+    //        {
+    //            new PutInOrderNoteByDate{ Text = Filters.ByDate},
+    //            new PutInOrderNoteByAlphabet{ Text = Filters.ByAlphabetically},
+    //        };
 
-            SelectedFlter = FilterTypes[0];
-            SelectedOrder = OrderTypes[0];
+    //        PropertyChanged += OnFilterControlPropertyChanged;
 
-            SelectedFlter.IsChecked = true;
-            SelectedOrder.IsChecked = true;
-        }
-        public SortInDate SelectedFlter
-        {
-            get => GetProperty<SortInDate>();
-            set => SetProperty(value);
-        }
-        public PutInOrder SelectedOrder
-        {
-            get => GetProperty<PutInOrder>();
-            set => SetProperty(value);
-        }
+    //        SelectedFlter = FilterTypes[0];
+    //        SelectedOrder = OrderTypes[0];
 
-        public SortInDate[] FilterTypes
-        {
-            get => GetProperty<SortInDate[]>();
-            set => SetProperty(value);
-        }
-        public PutInOrder[] OrderTypes
-        {
-            get => GetProperty<PutInOrder[]>();
-            set => SetProperty(value);
-        }
+    //        SelectedFlter.IsChecked = true;
+    //        SelectedOrder.IsChecked = true;
+    //    }
+    //    public SortInDate SelectedFlter
+    //    {
+    //        get => GetProperty<SortInDate>();
+    //        set => SetProperty(value);
+    //    }
+    //    public PutInOrderNote SelectedOrder
+    //    {
+    //        get => GetProperty<PutInOrderNote>();
+    //        set => SetProperty(value);
+    //    }
 
-        public void SetBySelectedDate(DateTime dateTime)
-        {
-            if ((SelectedFlter is SelectedSortInDate) == false)
-                SelectedFlter = FilterTypes.FirstOrDefault(t => t.This is SelectedSortInDate);
+    //    public SortInDate[] FilterTypes
+    //    {
+    //        get => GetProperty<SortInDate[]>();
+    //        set => SetProperty(value);
+    //    }
+    //    public PutInOrderNote[] OrderTypes
+    //    {
+    //        get => GetProperty<PutInOrderNote[]>();
+    //        set => SetProperty(value);
+    //    }
 
-            var selectedSortInDate = SelectedFlter as SelectedSortInDate;
-            selectedSortInDate.Date = dateTime;
-            Notify(nameof(SelectedFlter));
-        } 
-        public IEnumerable<IPackNote> GetFiltered() => _filterPackNotes.GetFiltered();
+    //    public void SetBySelectedDate(DateTime dateTime)
+    //    {
+    //        if ((SelectedFlter is SelectedSortInDate) == false)
+    //            SelectedFlter = FilterTypes.FirstOrDefault(t => t.This is SelectedSortInDate);
 
-        private void OnFilterControlPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case nameof(SelectedFlter):
-                    _filterPackNotes.SortInDate = (SortInDate)SelectedFlter.This;
-                    break;
-                case nameof(SelectedOrder):
-                    _filterPackNotes.PutInOrder = (PutInOrder)SelectedOrder.This;
-                    break;
-                default:
-                    break;
-            }
-        }
-        private enum Types
-        {
-            Selected, Today, Tomorrow, All
-        }
-    }
+    //        var selectedSortInDate = SelectedFlter as SelectedSortInDate;
+    //        selectedSortInDate.Date = dateTime;
+    //        Notify(nameof(SelectedFlter));
+    //    } 
+    //    public IEnumerable<IPackNote> GetFiltered() => _filterPackNotes.GetFiltered();
+
+    //    private void OnFilterControlPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    //    {
+    //        switch (e.PropertyName)
+    //        {
+    //            case nameof(SelectedFlter):
+    //                _filterPackNotes.SortInDate = (SortInDate)SelectedFlter.This;
+    //                break;
+    //            case nameof(SelectedOrder):
+    //                _filterPackNotes.PutInOrder = (PutInOrderNote)SelectedOrder.This;
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //    private enum Types
+    //    {
+    //        Selected, Today, Tomorrow, All
+    //    }
+    //}
 }

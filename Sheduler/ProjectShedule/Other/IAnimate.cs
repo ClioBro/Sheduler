@@ -6,7 +6,6 @@ namespace ProjectShedule.Other
 {
     public interface IAnimate
     {
-        bool IsAnimated { get; }
-        public Task SinInElementAsync(VisualElement animatebleObj, Action finish);
+        public  Task SinInElementAsync(VisualElement visualElement, Action FinishCallBack = null);
     }
 }

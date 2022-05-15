@@ -1,7 +1,7 @@
-﻿using ProjectShedule.DataNote;
+﻿using ProjectShedule.DataBase.Entities.Base;
 using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
-using ProjectShedule.Shedule.Interfaces;
+using ProjectShedule.Shedule.DataBase.Interfaces;
 using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.NotifyOnApp.Enum;
 using System;
@@ -15,7 +15,16 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.ViewModels
 {
-    public class PackNoteViewModel : INotifyPropertyChanged
+    public interface IPackNoteViewModel : INotifyPropertyChanged
+    {
+        INavigation Navigation { get; }
+        ICommand DeleteMeCommand { get; }
+        ICommand EditMeCommand { get; }
+        ICommand SaveMeCommand { get; }
+        ICommand DeleteTaskCommand { get; }
+        ICommand CheckChangedTaskCommand { get; }
+    }
+    public abstract class BasePackNoteViewModel : IPackNoteViewModel, IHasModel<BasePackNoteModel>
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,33 +33,21 @@ namespace ProjectShedule.Shedule.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-        private readonly PackNoteModel _packNoteModel;
+        protected BasePackNoteModel _packNoteModel;
 
-        public delegate void SmallTaskViewModelDelegate(SmallTaskViewModel smallTaskViewModel);
-        public event SmallTaskViewModelDelegate TaskCheckChanged;
-        public event SmallTaskViewModelDelegate TaskDeletePressed;
-
-        public PackNoteViewModel() : this(new PackNoteModel()) { }
-        public PackNoteViewModel(PackNoteModel packNoteModel)
-        {
-            _packNoteModel = packNoteModel;
-            _packNoteModel.SmallTaskAdded += AssigmentCommands;
-
-            DeleteTaskCommand = new Command<SmallTaskViewModel>(DeleteTaskCommandHandler);
-            CheckChangedTaskCommand = new Command<SmallTaskViewModel>(TaskCheckChangedCommandHandler);
-
-            AssigmentCommands(SmallTasks);
-        }
-
+        public delegate void ISmallTaskViewModelDelegate(BaseSmallTaskViewModel smallTaskViewModel);
+        public abstract event ISmallTaskViewModelDelegate TaskCheckChanged;
+        public abstract event ISmallTaskViewModelDelegate TaskDeletePressed;
 
         #region Properties
 
         #region Commands
         public ICommand DeleteMeCommand { get; set; }
         public ICommand EditMeCommand { get; set; }
+        public ICommand SaveMeCommand { get; set; }
 
-        private ICommand DeleteTaskCommand { get; set; }
-        private ICommand CheckChangedTaskCommand { get; set; }
+        public ICommand DeleteTaskCommand { get; protected set; }
+        public ICommand CheckChangedTaskCommand { get; protected set; }
         #endregion
 
         public INavigation Navigation { get; set; }
@@ -160,8 +157,8 @@ namespace ProjectShedule.Shedule.ViewModels
 
         public bool HasSmallTasks => SmallTasks.Count() > 0;
         public string TasksCompletedInformation => $"{SmallTasks.Count(t => t.Status)}/{SmallTasks.Count}";
-        public Note Note => _packNoteModel.Note as Note;
-        public ReadOnlyObservableCollection<SmallTaskViewModel> SmallTasks => _packNoteModel.SmallTasks;
+        public ReadOnlyObservableCollection<BaseSmallTaskViewModel> SmallTasks => _packNoteModel.SmallTasks;
+        BasePackNoteModel IHasModel<BasePackNoteModel>.Model => _packNoteModel;
 
         #region Colors
         public Color BackGroundColor
@@ -189,27 +186,46 @@ namespace ProjectShedule.Shedule.ViewModels
             }
         }
 
-        public IPackNote Model { get => _packNoteModel; }
+        
         #endregion
 
         #endregion
-        private void AssigmentCommands(IEnumerable<SmallTaskViewModel> smallTaskViewModels)
+    }
+    public class PackNoteViewModel : BasePackNoteViewModel
+    {
+        public override event ISmallTaskViewModelDelegate TaskCheckChanged;
+        public override event ISmallTaskViewModelDelegate TaskDeletePressed;
+        
+        public PackNoteViewModel(BasePackNoteModel packNoteModel)
         {
-            foreach (SmallTaskViewModel smallTaskViewModel in smallTaskViewModels)
+            _packNoteModel = packNoteModel;
+            _packNoteModel.SmallTaskAdded += AssigmentCommands;
+
+            DeleteTaskCommand = new Command<BaseSmallTaskViewModel>(DeleteTaskCommandHandler);
+            CheckChangedTaskCommand = new Command<BaseSmallTaskViewModel>(TaskCheckChangedCommandHandler);
+
+            AssigmentCommands(SmallTasks);
+        }
+
+        private void AssigmentCommands(IEnumerable<BaseSmallTaskViewModel> smallTaskViewModels)
+        {
+            foreach (BaseSmallTaskViewModel smallTaskViewModel in smallTaskViewModels)
             {
                 AssigmentCommands(smallTaskViewModel);
             }
         }
-        private void AssigmentCommands(SmallTaskViewModel smallTaskViewModel)
+        private void AssigmentCommands(BaseSmallTaskViewModel smallTaskViewModel)
         {
             smallTaskViewModel.DeleteMeCommand = DeleteTaskCommand;
             smallTaskViewModel.CheckChangedCommand = CheckChangedTaskCommand;
         }
 
-        private protected async void DeleteTaskCommandHandler(SmallTaskViewModel taskViewModel)
+        private protected async void DeleteTaskCommandHandler(BaseSmallTaskViewModel taskViewModel)
         {
+            TaskDeletePressed?.Invoke(taskViewModel);
+
             IDeleteConfirmation deleteConfirmation = new DeleteConfirmationSetting();
-            if (deleteConfirmation.AskQuestion)
+            if (deleteConfirmation.AskQuestion == true)
             {
                 var answer = await Navigation.ShowQuestionForDeletion(taskViewModel.Text);
                 if (answer.Value == false)
@@ -217,16 +233,67 @@ namespace ProjectShedule.Shedule.ViewModels
             }
                 
             _packNoteModel.DeleteSmallTask(taskViewModel);
-            TaskDeletePressed?.Invoke(taskViewModel);
             OnPropertyChanged(nameof(HasSmallTasks));
             OnPropertyChanged(nameof(TasksCompletedInformation));
         }
-
-        private protected void TaskCheckChangedCommandHandler(SmallTaskViewModel taskViewModel)
+        private protected void TaskCheckChangedCommandHandler(BaseSmallTaskViewModel taskViewModel)
         {
             TaskCheckChanged?.Invoke(taskViewModel);
             OnPropertyChanged(nameof(TasksCompletedInformation));
         }
     }
-   
+    public interface IBuilder<T>
+    {
+        T Build();
+    }
+    public interface IBuilderPackNoteViewModel : IBuilder<BasePackNoteViewModel>
+    {
+        IBuilderPackNoteViewModel SetModel(BasePackNoteModel basePackNoteModel);
+        IBuilderPackNoteViewModel SetDeleteMeCommand(ICommand deleteMeCommand);
+        IBuilderPackNoteViewModel SetEditMeCommand(ICommand editMeCommand);
+        IBuilderPackNoteViewModel SetSaveMeCommand(ICommand saveMeCommand);
+    }
+    public class BuilderPackNoteViewModel : IBuilderPackNoteViewModel
+    {
+        private BasePackNoteModel _basePackNoteModel;
+        private ICommand _deleteMeCommand;
+        private ICommand _editMeCommand;
+        private ICommand _saveMeCommand;
+        public BuilderPackNoteViewModel() { }
+        public BuilderPackNoteViewModel(BasePackNoteModel basePackNoteModel)
+        {
+            _basePackNoteModel = basePackNoteModel;
+        }
+       
+        public BasePackNoteViewModel Build()
+        {
+            return new PackNoteViewModel(_basePackNoteModel)
+            {
+                DeleteMeCommand = _deleteMeCommand,
+                EditMeCommand = _editMeCommand,
+                SaveMeCommand = _saveMeCommand
+            };
+        }
+        public IBuilderPackNoteViewModel SetDeleteMeCommand(ICommand deleteMeCommand)
+        {
+            _deleteMeCommand = deleteMeCommand;
+            return this;
+        }
+        public IBuilderPackNoteViewModel SetEditMeCommand(ICommand editMeCommand)
+        {
+            _editMeCommand = editMeCommand;
+            return this;
+        }
+        public IBuilderPackNoteViewModel SetSaveMeCommand(ICommand saveMeCommand)
+        {
+            _saveMeCommand = saveMeCommand;
+            return this;
+        }
+        public IBuilderPackNoteViewModel SetModel(BasePackNoteModel basePackNoteModel)
+        {
+            _basePackNoteModel = basePackNoteModel;
+            return this;
+        }
+    }
+
 }

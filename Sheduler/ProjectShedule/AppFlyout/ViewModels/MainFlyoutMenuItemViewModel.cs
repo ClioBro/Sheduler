@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ProjectShedule.AppFlyout.Models;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace ProjectShedule.AppFlyout
+namespace ProjectShedule.AppFlyout.ViewModels
 {
     public class MainFlyoutMenuItemViewModel : INotifyPropertyChanged
     {

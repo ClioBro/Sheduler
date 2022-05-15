@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Calendar.Views"
+             xmlns:carousels="clr-namespace:ProjectShedule.Shedule.Calendar.Views.Header"
+             x:Class="ProjectShedule.Shedule.Calendar.Views.DateCalendarView"
+             x:Name="main">
+    <ContentView.Content>
+        <Grid  CompressedLayout.IsHeadless="True" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <carousels:CarouselYearsView
+                x:Name="carouselYearsView"
+                Grid.Row="0"
+                DisplayedYear="{Binding CurrentYear, Source={x:Reference main}}"
+                Years="{Binding Years, Source={x:Reference main}}"/>
+            <carousels:CarouselMonthView
+                x:Name="carouselMonthView"
+                Grid.Row="1"
+                Culture="{Binding Culture, Source={x:Reference main}}"
+                DisplayedMonth="{Binding CurrentMonth, Source={x:Reference main}}"/>
+            <carousels:CarouselDayView
+                x:Name="carouselDayView"
+                Grid.Row="2"
+                Days="{Binding Days, Source={x:Reference main}}"
+                CurrentDay="{Binding CurrentDay, Source={x:Reference main}}"/>
+            <views:MonthDays
+                x:Name="monthDaysView"
+                Grid.Row="3"
+                Culture="{Binding Culture, Source={x:Reference main}}"
+                SelectedDates="{Binding SelectedDates, Source={x:Reference main}}"
+                DisplayedMonthYear="{Binding DisplayedCarouselDayMontYear, Source={x:Reference main}}"
+                DayViews="{Binding DayViews, Source={x:Reference main}}"
+                CircleEvents="{Binding CircleEvents, Source={x:Reference main}}"
+                IsVisible="{Binding MonthDaysIsVisible, Source={x:Reference main}}">
+            </views:MonthDays>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

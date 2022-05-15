@@ -9,19 +9,19 @@ namespace ProjectShedule.Shedule
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShedulePage : ContentPage
     {
-        private readonly AnimatedViewElement _animations;
+        private readonly BaseViewElementAnimate _animations;
         public ShedulePage()
         {
             InitializeComponent();
             BindingContext = new SheduleViewModel() { Navigation = this.Navigation };
-            _animations = new AnimatedViewElement();
+            _animations = new BouncingAnimatedViewElement();
         }
-        public bool IsAnimated { get => _animations.IsAnimated; }
+        public bool IsAnimated { get; protected set; }
         private async void ViewAnimatedPush(object sender, EventArgs e)
         {
             if (!IsAnimated && sender is VisualElement visualElement)
             {
-                await _animations.SinInElementAsync(visualElement);
+                await _animations.SinInElementAsync(visualElement, () => IsAnimated = false);
             }
         }
     }
