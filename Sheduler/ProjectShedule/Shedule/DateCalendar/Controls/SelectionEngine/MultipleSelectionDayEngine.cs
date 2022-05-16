@@ -1,28 +1,19 @@
 ﻿using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.DateCalendar.Controls.SelectionEngine;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
 {
-    public abstract class BaseSelectionDateEngine<T> : ISelectionEngine<T> where T : IHasDate
+    public abstract class BaseSelectionHasDateEngine<T> : ISelectionEngine<T> where T : IHasDate
     {
-        protected readonly ObservableCollection<DateTime> _selectedItems;
-        public BaseSelectionDateEngine()
-        {
-            _selectedItems = new ObservableCollection<DateTime>();
-        }
-        public ReadOnlyObservableCollection<DateTime> SelectedDatesTime
-        {
-            get => new ReadOnlyObservableCollection<DateTime>(_selectedItems);
-        }
+        protected ObservableCollection<DateTime> _selectedItems = new ObservableCollection<DateTime>();
+        public ObservableCollection<DateTime> SelectedDatesTime { get => _selectedItems; set => _selectedItems = value; }
         public abstract void SelectItem(T newItem);
         public bool ItemIsSelectet(T item) => _selectedItems.Contains(item.Date);
         public bool DateIsSelected(DateTime dateTime) => _selectedItems.Contains(dateTime);
     }
-    internal class MultipleSelectionDayEngine : BaseSelectionDateEngine<DayModel>
+    internal class MultipleSelectionDayEngine : BaseSelectionHasDateEngine<DayModel>
     {
         public override void SelectItem(DayModel newDay)
         {
@@ -34,7 +25,7 @@ namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
                 _selectedItems.Add(newDay.Date);
         }
     }
-    internal class SingleSelectionDayEngine : BaseSelectionDateEngine<DayModel>
+    internal class SingleSelectionDayEngine : BaseSelectionHasDateEngine<DayModel>
     {
         public override void SelectItem(DayModel newDay)
         {
