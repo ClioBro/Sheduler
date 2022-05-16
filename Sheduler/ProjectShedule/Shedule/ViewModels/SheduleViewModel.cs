@@ -1,15 +1,11 @@
-﻿using ProjectShedule.DataBase.Entities.Base;
-using ProjectShedule.GlobalSetting;
+﻿using ProjectShedule.GlobalSetting;
 using ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete;
 using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.DataBase.Interfaces;
-using ProjectShedule.Shedule.Interfaces;
 using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.PackNotesManager.WorkWithDataBase;
-using ProjectShedule.Shedule.ShapeEvents;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -41,29 +37,20 @@ namespace ProjectShedule.Shedule.ViewModels
             _dataBaseController = new PackNoteDataBaseController(App.ApplicationContext);
             _sheduleModel = new SheduleModel(_dataBaseController, _builderPackNoteViewModel);
 
-            //DisplayedDateTime = DateTime.Today;
-
             AssigmentCommands();
         }
         #region Properties
         public ReadOnlyObservableCollection<BasePackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
         public ReadOnlyObservableCollection<CircleEventModel> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
         public BaseFilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
-        public List<DateTime> SelectedDates
-        {
-            get => _sheduleModel.SelectedDates;
-            set => _sheduleModel.SelectedDates = value;
-        }
+        public ObservableCollection<DateTime> SelectedDates => _sheduleModel.SelectedDates;
         public DateTime DisplayedDateTime
         {
             get => _sheduleModel.DisplayedDateOnCarousel;
             set
             {
-                if (_sheduleModel.DisplayedDateOnCarousel != value)
-                {
-                    _sheduleModel.DisplayedDateOnCarousel = value;
-                    OnPropertyChanged(nameof(DisplayedDateTime));
-                }
+                _sheduleModel.DisplayedDateOnCarousel = value;
+                OnPropertyChanged(nameof(DisplayedDateTime));
             }
         }
         public ICommand OpenEditorCommand { get; set; }
@@ -108,8 +95,6 @@ namespace ProjectShedule.Shedule.ViewModels
             void SavedPackNoteEventHandler(ReadOnlyPackNote savedPackNote)
             {
                 _sheduleModel.UpdatePackNotesAsync();
-                //_sheduleModel.UpdatePackNotes();
-                //_sheduleModel.UpdateEvents();
             }
         }
 
