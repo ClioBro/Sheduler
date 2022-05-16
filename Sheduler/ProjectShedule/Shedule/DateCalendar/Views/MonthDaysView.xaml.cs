@@ -1,7 +1,6 @@
 ﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using ProjectShedule.Shedule.Calendar.Controls.SelectionEngine;
 using ProjectShedule.Shedule.Calendar.Models;
-using ProjectShedule.Shedule.DateCalendar.Controls.SelectionEngine;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +9,6 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,16 +24,13 @@ namespace ProjectShedule.Shedule.Calendar.Views
             ThreeChars = 3
         }
 
-        internal BaseSelectionDateEngine<DayModel> _selectionDateEngine = new MultipleSelectionDayEngine();
+        internal BaseSelectionHasDateEngine<DayModel> _selectionDateEngine = new MultipleSelectionDayEngine();
         internal INotifyThemeChange _notifyThemeChanged = App.ThemeController;
         public MonthDays()
         {
             InitializeComponent();
             DayTappedCommand = new Command<DayModel>(_selectionDateEngine.SelectItem);
-
-            INotifyCollectionChanged notifyCollectionChanged = _selectionDateEngine.SelectedDatesTime;
-            notifyCollectionChanged.CollectionChanged += OnSelectionEngineCollectionChanged;
-
+            _selectionDateEngine.SelectedDatesTime = SelectedDates;
             InitializeDays();
         }
         ~MonthDays() => DiposeDayViews();
@@ -57,7 +52,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
             set => SetValue(CultureProperty, value);
         }
 
-
         public static readonly BindableProperty DisplayedMonthYearProperty =
           BindableProperty.Create(nameof(DisplayedMonthYear), typeof(DateTime), typeof(MonthDays), DateTime.Today, BindingMode.TwoWay, propertyChanged: OnDisplayedMonthYearChanged);
         public DateTime DisplayedMonthYear
@@ -65,7 +59,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
             get => (DateTime)GetValue(DisplayedMonthYearProperty);
             set => SetValue(DisplayedMonthYearProperty, value);
         }
-
 
         public static readonly BindableProperty DayTappedCommandProperty =
             BindableProperty.Create(nameof(DayTappedCommand), typeof(ICommand), typeof(MonthDays), null);
@@ -75,35 +68,29 @@ namespace ProjectShedule.Shedule.Calendar.Views
             set => SetValue(DayTappedCommandProperty, value);
         }
 
-
         public static readonly BindableProperty CircleEventsProperty =
-            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(MonthDays), default, BindingMode.TwoWay, propertyChanged: OnDayEventsChanged);
-        
+            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(MonthDays), default, BindingMode.TwoWay, propertyChanged: OnCircleEventsChanged);
         public ReadOnlyObservableCollection<CircleEventModel> CircleEvents
         {
             get => (ReadOnlyObservableCollection<CircleEventModel>)GetValue(CircleEventsProperty);
             set => SetValue(CircleEventsProperty, value);
         }
 
-
         public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(List<DateTime>), typeof(MonthDays), new List<DateTime>(), BindingMode.TwoWay);
-        
-        public List<DateTime> SelectedDates
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableCollection<DateTime>), typeof(MonthDays), new ObservableCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
+        public ObservableCollection<DateTime> SelectedDates
         {
-            get => (List<DateTime>)GetValue(SelectedDatesProperty);
+            get => (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty);
             set => SetValue(SelectedDatesProperty, value);
         }
 
         public static readonly BindableProperty DayViewsProperty =
           BindableProperty.Create(nameof(DayViews), typeof(List<DayView>), typeof(MonthDays), new List<DayView>(), BindingMode.OneWayToSource);
-
         public List<DayView> DayViews
         {
             get => (List<DayView>)GetValue(DayViewsProperty);
             set => SetValue(DayViewsProperty, value);
         }
-
         #endregion
 
         #region PropertyChanged
@@ -115,7 +102,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 monthDays.UpdateDays();
             }
         }
-        private static void OnDayEventsChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnCircleEventsChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is MonthDays monthDays
                 && !Equals(newValue, oldValue)
@@ -125,11 +112,15 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 notifyCollectionChanged.CollectionChanged += (sender, eventArgs) => monthDays.UpdateDays();
             }
         }
-        private void OnSelectionEngineCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private static void OnSelectedDatesChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            SelectedDates = _selectionDateEngine.SelectedDatesTime.ToList();
+            if (bindable is MonthDays monthDays
+                && !Equals(newValue, oldValue)
+                && newValue is ObservableCollection<DateTime> newObservableCollection)
+            {
+                monthDays._selectionDateEngine.SelectedDatesTime = newObservableCollection;
+            }
         }
-
         #endregion
         private void InitializeDays()
         {
