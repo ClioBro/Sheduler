@@ -53,7 +53,6 @@
                 <CollectionView.Header>
                     <StackLayout>
                         <calendarViews:DateCalendarView
-                            SelectedDates="{Binding SelectedDates}"
                             MonthDaysIsVisible="{Binding ExpandedCalendar}"
                             CircleEvents="{Binding EventsForCalendar}"
                             DisplayedCarouselDayMontYear="{Binding DisplayedDateTime}">
