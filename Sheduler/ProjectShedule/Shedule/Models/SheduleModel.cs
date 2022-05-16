@@ -11,29 +11,30 @@ using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace ProjectShedule.Shedule.Models
 {
-    public abstract class BaseFilterViewModel
+    public abstract class BaseFilterViewModel : INotifyPropertyChanged
     {
-        public virtual SortInDate SelectedFlter { get; set; }
-        public virtual PutInOrderNote SelectedOrder { get; set; }
+        public abstract event PropertyChangedEventHandler PropertyChanged;
+        public abstract SortInDate SelectedFlter { get; set; }
+        public abstract PutInOrderNote SelectedOrder { get; set; }
         public SortInDate[] FilterTypes { get; set; }
         public PutInOrderNote[] OrderTypes { get; set; }
-        public abstract void SilentSetBySelectedDate(DateTime dateTime);
+        public abstract void SetBySelectedDate(DateTime dateTime);
+        public abstract void SetByToday();
         public abstract IEnumerable<IPackNote> GetFiltered();
     }
     public class NoteFilterViewModel : BaseFilterViewModel
     {
         private readonly FilterPackNoteModel _filterPackNote;
-        public event EventHandler<IRadioButtonItem> FilteringMethodChanged;
+        public override event PropertyChangedEventHandler PropertyChanged;
         public NoteFilterViewModel(IGetQuereblyItems<IPackNote> getItems)
         {
             FilterTypes = new SortInDate[]
@@ -62,7 +63,7 @@ namespace ProjectShedule.Shedule.Models
                 if (_filterPackNote.SortInDate != value)
                 {
                     _filterPackNote.SortInDate = value;
-                    FilteringMethodChanged?.Invoke(this, value);
+                    OnPropertyChanged();
                 }
             }
         }
@@ -74,11 +75,11 @@ namespace ProjectShedule.Shedule.Models
                 if (_filterPackNote.PutInOrder != value)
                 {
                     _filterPackNote.PutInOrder = value;
-                    FilteringMethodChanged?.Invoke(this, value);
+                    OnPropertyChanged();
                 }
             }
         }
-        public override void SilentSetBySelectedDate(DateTime dateTime)
+        public override void SetBySelectedDate(DateTime dateTime)
         {
             SortInDate tempSelectedFilter = SelectedFlter;
 
@@ -86,23 +87,16 @@ namespace ProjectShedule.Shedule.Models
                 tempSelectedFilter = FilterTypes.FirstOrDefault(sortInDate => sortInDate is SelectedSortInDate);
 
             ((SelectedSortInDate)tempSelectedFilter).Date = dateTime;
-            _filterPackNote.SortInDate = tempSelectedFilter;
+            SelectedFlter = tempSelectedFilter;
+        }
+        public override void SetByToday()
+        {
+            SelectedFlter = FilterTypes.FirstOrDefault(sortInDate => sortInDate is ToDaySortInDate);
         }
         public override IEnumerable<IPackNote> GetFiltered() => _filterPackNote.GetFiltered();
-
-        private void OnPopertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            switch (e.PropertyName)
-            {
-                case nameof(SelectedFlter):
-                    _filterPackNote.SortInDate = SelectedFlter;
-                    break;
-                case nameof(SelectedOrder):
-                    _filterPackNote.PutInOrder = SelectedOrder;
-                    break;
-                default:
-                    break;
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public abstract class BaseSheduleModel
@@ -113,7 +107,6 @@ namespace ProjectShedule.Shedule.Models
 
         #region Events
         public event Action SelectedPackNotesChanged;
-        public event Action SelectedDatesChanged;
         #endregion
 
         #region Fields
@@ -122,11 +115,11 @@ namespace ProjectShedule.Shedule.Models
         protected ObservableRangeCollection<BasePackNoteViewModel> _packNotes;
         protected ReadOnlyObservableCollection<BasePackNoteViewModel> _readOnlyPackNotes;
 
-        protected MyCustomObservableCollection<CircleEventModel> _calendarCircleEvents;
+        protected ObservableRangeCollection<CircleEventModel> _calendarCircleEvents;
         protected ReadOnlyObservableCollection<CircleEventModel> _readOnlyCircleEvents;
 
-        protected List<BasePackNoteViewModel> _selectedPackNotes;
-        protected List<DateTime> _selectedDates;
+        protected ObservableRangeCollection<BasePackNoteViewModel> _selectedPackNotes;
+        protected ObservableCollection<DateTime> _selectedDates;
 
         protected DateTime _displayedDateOnCarousel;
 
@@ -144,28 +137,8 @@ namespace ProjectShedule.Shedule.Models
         public BaseFilterViewModel FilterPackNotes => _filterPackNotes;
         public ReadOnlyObservableCollection<BasePackNoteViewModel> PackNotes => _readOnlyPackNotes;
         public ReadOnlyObservableCollection<CircleEventModel> CalendarCircleEvents => _readOnlyCircleEvents;
-        public List<BasePackNoteViewModel> SelectedPackNotes
-        {
-            get => _selectedPackNotes;
-            set
-            {
-                _selectedPackNotes = value;
-                SelectedPackNotesChanged?.Invoke();
-            }
-        }
-        public List<DateTime> SelectedDates
-        {
-            get => _selectedDates;
-            set
-            {
-                _selectedDates = value;
-                //if (value.Count() >= 1)
-                //    DisplayedDateOnCarousel = value.LastOrDefault();
-                //else
-                //    DisplayedDateOnCarousel = DateTime.Today;
-                SelectedDatesChanged?.Invoke();
-            }
-        }
+        public ObservableRangeCollection<BasePackNoteViewModel> SelectedPackNotes => _selectedPackNotes;
+        public ObservableCollection<DateTime> SelectedDates => _selectedDates;
         public abstract DateTime DisplayedDateOnCarousel { get; set; }
         #endregion
         public abstract void UpdatePackNotesAsync();
@@ -182,9 +155,10 @@ namespace ProjectShedule.Shedule.Models
             _builderPackNoteViewModel = builderPackNoteViewModel;
             FieldsInicialization();
 
-            var temp = new NoteFilterViewModel(_packNoteDataBaseController); 
-            temp.FilteringMethodChanged += (sender, redioButton) => UpdatePackNotesAsync();
-            _filterPackNotes = temp;
+            var noteFilterVM = new NoteFilterViewModel(_packNoteDataBaseController); 
+            noteFilterVM.PropertyChanged += (sender, e) => UpdatePackNotesAsync();
+            _filterPackNotes = noteFilterVM;
+
             DisplayedDateOnCarousel = DateTime.Today;
         }
         public override DateTime DisplayedDateOnCarousel
@@ -193,10 +167,10 @@ namespace ProjectShedule.Shedule.Models
             set
             {
                 _displayedDateOnCarousel = value;
-                FilterPackNotes.SilentSetBySelectedDate(value);
-                //UpdatePackNotesAsync();
-                UpdatePackNotes();
-                UpdateEvents();
+                if (value != DateTime.Today)
+                    FilterPackNotes.SetBySelectedDate(value);
+                else
+                    FilterPackNotes.SetByToday();
             }
         }
         
@@ -258,10 +232,10 @@ namespace ProjectShedule.Shedule.Models
             _displayedDateOnCarousel = DateTime.Today;
             _packNotes = new ObservableRangeCollection<BasePackNoteViewModel>();
             _readOnlyPackNotes = new ReadOnlyObservableCollection<BasePackNoteViewModel>(_packNotes);
-            _calendarCircleEvents = new MyCustomObservableCollection<CircleEventModel>();
+            _calendarCircleEvents = new ObservableRangeCollection<CircleEventModel>();
             _readOnlyCircleEvents = new ReadOnlyObservableCollection<CircleEventModel>(_calendarCircleEvents);
-            _selectedPackNotes = new List<BasePackNoteViewModel>();
-            _selectedDates = new List<DateTime>();
+            _selectedPackNotes = new ObservableRangeCollection<BasePackNoteViewModel>();
+            _selectedDates = new ObservableCollection<DateTime>();
             _builderCircleEvent = new BuilderCalendarCircleEvents(_packNoteDataBaseController.PartsControl.NoteRepository);
         }
         private IEnumerable<CircleEventModel> BuildCircleEvents()
@@ -270,27 +244,6 @@ namespace ProjectShedule.Shedule.Models
             DateTime maxDate = new DateTime(_displayedDateOnCarousel.Year, _displayedDateOnCarousel.Month, _displayedDateOnCarousel.Day).AddMonths(1).AddDays(12);
 
             return _builderCircleEvent.Build(minDate, maxDate);
-        }
-    }
-
-    public class MyCustomObservableCollection<T> : ObservableRangeCollection<T>
-    {
-        private bool _silence;
-        public void SilenceChangeCollection(IEnumerable<T> items)
-        {
-            _silence = true;
-            AddRange(items);
-            _silence = false;
-        }
-        public void CallOnCollectionChanged()
-        {
-            base.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-        }
-        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-        {
-            if (_silence)
-                return;
-            base.OnCollectionChanged(e);
         }
     }
 }
