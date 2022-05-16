@@ -1,14 +1,10 @@
 ﻿using ProjectShedule.Shedule.Calendar.Models;
-using ProjectShedule.Shedule.ShapeEvents;
-using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Input;
-using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -46,10 +42,10 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
 
         public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(List<DateTime>), typeof(DateCalendarView), new List<DateTime>(), BindingMode.TwoWay);
-        public List<DateTime> SelectedDates
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableCollection<DateTime>), typeof(DateCalendarView), new ObservableCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
+        public ObservableCollection<DateTime> SelectedDates
         {
-            get => (List<DateTime>)GetValue(SelectedDatesProperty);
+            get => (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty);
             set => SetValue(SelectedDatesProperty, value);
         }
 
@@ -116,15 +112,18 @@ namespace ProjectShedule.Shedule.Calendar.Views
             get => (bool)GetValue(EnableDayCarouselProperty);
             set => SetValue(EnableDayCarouselProperty, value);
         }
+
+
         #endregion
         public DateCalendarView()
         {
             InitializeComponent();
             InicializateStartDate(DisplayedCarouselDayMontYear);
+            SelectedDates.CollectionChanged += (s, e) => DisplayedLastSelectedDay();
 
             /// Делаю через таймер, так как при быстром Scrolling обновляется каждый CarouselCurrentItem 
-            /// что потребляет много ресурсов на обновление DisplayedMonthYear
-            
+            /// что потребляет много ресурсов на обновление DisplayedCarouselDayMontYear
+
             Device.StartTimer(TimeSpan.FromMilliseconds(500), TimerChecked);
         }
         public List<DayView> DayViews { get; set; } = new List<DayView>();
@@ -155,7 +154,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
             }
         }
 
-        // Change this THRASH
+
         #region UpdateMonthDaysTimer
         private readonly bool tickedAllTime = true;
         private static bool Scrolled = false;
@@ -238,7 +237,14 @@ namespace ProjectShedule.Shedule.Calendar.Views
             var dayModel = Days[--day];
             carouselDayView.SetCurrentDay(dayModel);
         }
-
+        private void DisplayedLastSelectedDay()
+        {
+            var temp = SelectedDates;
+            if (temp.Count() > 0)
+                DisplayedCarouselDayMontYear = SelectedDates.LastOrDefault();
+            else
+                DisplayedCarouselDayMontYear = DateTime.Today;
+        }
         #region PropertyChangeds
         
         private static void OnDisplayedDateChanged(BindableObject bindable, object oldValue, object newValue)
@@ -254,7 +260,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 if (newDateTime.Year != main.CurrentYear.Number)
                     main.SetCurrentYearOnYearCarousel(newDateTime.Year);
                 
-                //main.UpdateCalendarDays();
                 main.UpdateCarouselDays();
             }
         }
@@ -273,6 +278,35 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 notifyCollectionChanged.CollectionChanged += (sender, eventArgs) => main.UpdateCarouselDays();
             }
         }
+        private static void OnSelectedDatesChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is DateCalendarView main
+                && !Equals(oldValue, newValue)
+                && newValue is INotifyCollectionChanged notifyCollectionChanged)
+            {
+                notifyCollectionChanged.CollectionChanged += (sender, eventArgs)
+                    => main.DisplayedLastSelectedDay();
+            }
+        }
         #endregion
+          /// Нужно испотльзовать Changing вместо Changed;
+          /// Также разделить обязанности при обновлении событий.
+          
+        private static void OnCarouselDateChanging(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is DateCalendarView main && newValue is DateTime newDateTime)
+            {
+                if (newDateTime.Day != main.CurrentDay.Date.Day)
+                    main.SetCurrentDaysOnDaysCarousel(newDateTime.Day);
+
+                if (newDateTime.Month != main.CurrentMonth.Number)
+                    main.SetCurrentMonthOnMonthCarousel(newDateTime.Month);
+
+                if (newDateTime.Year != main.CurrentYear.Number)
+                    main.SetCurrentYearOnYearCarousel(newDateTime.Year);
+
+                main.UpdateCarouselDays();
+            }
+        }
     }
 }
