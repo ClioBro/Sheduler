@@ -10,8 +10,9 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.ShapeEvents
 {
-    public abstract class BaseSheduleCircleEventBuilder : IBuilder<CircleEventModel>
+    public abstract class BaseCircleEventModelBuilder : IBuilder<CircleEventModel>
     {
+        protected int _id;
         protected DateTime _dateTime;
         protected Color _backGrounColor;
         protected Color _borderColor;
@@ -20,48 +21,54 @@ namespace ProjectShedule.Shedule.ShapeEvents
         protected double _opacity;
         protected bool _isVisible;
         public abstract CircleEventModel Build();
-        public virtual BaseSheduleCircleEventBuilder SetDateTime(DateTime dateTime)
+        public virtual BaseCircleEventModelBuilder SetId(int id)
+        {
+            _id = id;
+            return this;
+        }
+        public virtual BaseCircleEventModelBuilder SetDateTime(DateTime dateTime)
         {
             _dateTime = dateTime;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetBackGroundColor(Color color)
+        public virtual BaseCircleEventModelBuilder SetBackGroundColor(Color color)
         {
             _backGrounColor = color;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetBorderColor(Color color)
+        public virtual BaseCircleEventModelBuilder SetBorderColor(Color color)
         {
             _borderColor = color;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetSize(Size size)
+        public virtual BaseCircleEventModelBuilder SetSize(Size size)
         {
             _size = size;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetCornerRadius(float cornerRadius)
+        public virtual BaseCircleEventModelBuilder SetCornerRadius(float cornerRadius)
         {
             _cornerRadius = cornerRadius;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetOpacity(double opacity)
+        public virtual BaseCircleEventModelBuilder SetOpacity(double opacity)
         {
             _opacity = opacity;
             return this;
         }
-        public virtual BaseSheduleCircleEventBuilder SetVisible(bool visible)
+        public virtual BaseCircleEventModelBuilder SetVisible(bool visible)
         {
             _isVisible = visible;
             return this;
         }
     }
-    public class SheduleCircleEventModelBuilder : BaseSheduleCircleEventBuilder
+    public class SheduleCircleEventModelBuilder : BaseCircleEventModelBuilder
     {
         public override CircleEventModel Build()
         {
             return new CircleEventModel()
             {
+                ID = _id,
                 DateTime = _dateTime,
                 BackGrountColor = _backGrounColor,
                 BorderColor = _borderColor,
@@ -72,21 +79,20 @@ namespace ProjectShedule.Shedule.ShapeEvents
             };
         }
     }
-    public interface IBuilderCalendarCircleEvent
+    public interface IBuilderCalendarCircleEvent : IBuilder<IEnumerable<CircleEventModel>>
     {
-        public IEnumerable<CircleEventModel> Build();
         public IEnumerable<CircleEventModel> Build(DateTime start, DateTime end);
     }
     public class BuilderCalendarCircleEvents : IBuilderCalendarCircleEvent
     {
         private readonly ISimpleShape _shapeEventSetting;
         private readonly INoteRepository _noteDataBaseRepository;
-        private readonly BaseSheduleCircleEventBuilder _circleEventBuilder;
+        private readonly BaseCircleEventModelBuilder _circleEventModelBuilder;
         public BuilderCalendarCircleEvents(INoteRepository noteDateBaseRepository)
         {
-            _shapeEventSetting = new ShapeEventSetting();
-            _circleEventBuilder = new SheduleCircleEventModelBuilder();
             _noteDataBaseRepository = noteDateBaseRepository;
+            _shapeEventSetting = new ShapeEventSetting();
+            _circleEventModelBuilder = new SheduleCircleEventModelBuilder();
         }
         public IEnumerable<CircleEventModel> Build()
         {
@@ -94,7 +100,7 @@ namespace ProjectShedule.Shedule.ShapeEvents
         }
         public IEnumerable<CircleEventModel> Build(DateTime start, DateTime end)
         {
-            List<Note> packNoteModels = _noteDataBaseRepository.GetForDateTime(start, end);
+            List<Note> packNoteModels = _noteDataBaseRepository.GetForRangeDate(start, end);
 
             return GetEvents(packNoteModels);
         }
@@ -108,7 +114,8 @@ namespace ProjectShedule.Shedule.ShapeEvents
 
             foreach (var note in notes)
             {
-                anyEvents.Add(_circleEventBuilder
+                anyEvents.Add(_circleEventModelBuilder
+                .SetId(note.Id)
                 .SetDateTime(note.AppointmentDate)
                 .SetBackGroundColor(Color.FromHex(note.BackgroundColorKey))
                 .SetBorderColor(Color.FromHex(note.LineColorKey))
