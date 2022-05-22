@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +14,9 @@ namespace ProjectShedule.Shedule.Calendar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DateCalendarView : ContentView
     {
+        public const double MaxCarouselLabelSize = 17.0;
+        public const double MinCarouseLabelSize = 1.0;
+
         #region BindingProperties
         public static readonly BindableProperty YearLabelSizeProperty =
           BindableProperty.Create(nameof(YearLabelSize), typeof(double), typeof(DateCalendarView), 16.0, BindingMode.TwoWay);
@@ -21,9 +25,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
             get => (double)GetValue(YearLabelSizeProperty);
             set => SetValue(YearLabelSizeProperty, value);
         }
-
-        public const double MaxCarouselLabelSize = 17.0;
-        public const double MinCarouseLabelSize = 1.0;
 
         public static readonly BindableProperty CultureProperty =
           BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(DateCalendarView), CultureInfo.CurrentCulture, BindingMode.TwoWay);
@@ -42,10 +43,10 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
 
         public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableCollection<DateTime>), typeof(DateCalendarView), new ObservableCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
-        public ObservableCollection<DateTime> SelectedDates
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(DateCalendarView), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay);
+        public ObservableRangeCollection<DateTime> SelectedDates
         {
-            get => (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty);
+            get => (ObservableRangeCollection<DateTime>)GetValue(SelectedDatesProperty);
             set => SetValue(SelectedDatesProperty, value);
         }
 
@@ -119,7 +120,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             InitializeComponent();
             InicializateStartDate(DisplayedCarouselDayMontYear);
-            SelectedDates.CollectionChanged += (s, e) => DisplayedLastSelectedDay();
 
             /// Делаю через таймер, так как при быстром Scrolling обновляется каждый CarouselCurrentItem 
             /// что потребляет много ресурсов на обновление DisplayedCarouselDayMontYear
@@ -143,7 +143,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
             int year = MinimumDateTime.Year;
             while (year <= MaximunDateTime.Year)
             {
-                Years.Add(new YearModel() { Number = year++, YearLabelSize = YearLabelSize });
+                Years.Add(new YearModel() { Number = year++, LabelSize = YearLabelSize });
             }
         }
         private void InicializateDaysOnCarousel()
@@ -237,14 +237,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
             var dayModel = Days[--day];
             carouselDayView.SetCurrentDay(dayModel);
         }
-        private void DisplayedLastSelectedDay()
-        {
-            var temp = SelectedDates;
-            if (temp.Count() > 0)
-                DisplayedCarouselDayMontYear = SelectedDates.LastOrDefault();
-            else
-                DisplayedCarouselDayMontYear = DateTime.Today;
-        }
         #region PropertyChangeds
         
         private static void OnDisplayedDateChanged(BindableObject bindable, object oldValue, object newValue)
@@ -267,7 +259,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             Scrolled = true;
         }
-        
         private static void OnEventsChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is DateCalendarView main
@@ -275,38 +266,11 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 && newValue is INotifyCollectionChanged notifyCollectionChanged)
             {
                 main.UpdateCarouselDays();
-                notifyCollectionChanged.CollectionChanged += (sender, eventArgs) => main.UpdateCarouselDays();
-            }
-        }
-        private static void OnSelectedDatesChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is DateCalendarView main
-                && !Equals(oldValue, newValue)
-                && newValue is INotifyCollectionChanged notifyCollectionChanged)
-            {
-                notifyCollectionChanged.CollectionChanged += (sender, eventArgs)
-                    => main.DisplayedLastSelectedDay();
+                notifyCollectionChanged.CollectionChanged 
+                    += (sender, eventArgs) 
+                    => main.UpdateCarouselDays();
             }
         }
         #endregion
-          /// Нужно испотльзовать Changing вместо Changed;
-          /// Также разделить обязанности при обновлении событий.
-          
-        private static void OnCarouselDateChanging(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is DateCalendarView main && newValue is DateTime newDateTime)
-            {
-                if (newDateTime.Day != main.CurrentDay.Date.Day)
-                    main.SetCurrentDaysOnDaysCarousel(newDateTime.Day);
-
-                if (newDateTime.Month != main.CurrentMonth.Number)
-                    main.SetCurrentMonthOnMonthCarousel(newDateTime.Month);
-
-                if (newDateTime.Year != main.CurrentYear.Number)
-                    main.SetCurrentYearOnYearCarousel(newDateTime.Year);
-
-                main.UpdateCarouselDays();
-            }
-        }
     }
 }
