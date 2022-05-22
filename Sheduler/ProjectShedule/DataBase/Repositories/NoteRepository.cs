@@ -43,14 +43,24 @@ namespace ProjectShedule.DataBase.Repositories
                 return database.Insert(item);
             }
         }
-        public List<Note> GetForDateTime(DateTime appointmentDate)
+
+        public List<Note> GetForDates(IEnumerable<DateTime> dateTimes)
+        {
+            List<Note> tempList = new List<Note>();
+            foreach (DateTime dateTime in dateTimes)
+                tempList.AddRange(GetForDate(dateTime));
+
+            return tempList;
+        }
+        public List<Note> GetForDate(DateTime appointmentDate)
         {
             string tableName = nameof(TableName.Notes);
             string propertyName = nameof(Note.AppointmentDate);
+
             return database.Query<Note>($"select * from {tableName} where {propertyName} = ?", appointmentDate.Date);
         }
 
-        public List<Note> GetForDateTime(DateTime from, DateTime till)
+        public List<Note> GetForRangeDate(DateTime from, DateTime till)
         {
             if (from > till)
                 throw new Exception("Не корректное значение даты и времени");
