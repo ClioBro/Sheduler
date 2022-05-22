@@ -3,6 +3,6 @@
     public class YearModel
     {
         public int Number { get; set; }
-        public double YearLabelSize { get; set; }
+        public double LabelSize { get; set; }
     }
 }
