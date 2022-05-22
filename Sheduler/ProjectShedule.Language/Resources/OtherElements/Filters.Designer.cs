@@ -79,29 +79,29 @@ namespace ProjectShedule.Language.Resources.OtherElements {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string ByCalendar {
+            get {
+                return ResourceManager.GetString("ByCalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carousel date.
+        /// </summary>
+        public static string ByCarouselDate {
+            get {
+                return ResourceManager.GetString("ByCarouselDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By Date.
         /// </summary>
         public static string ByDate {
             get {
                 return ResourceManager.GetString("ByDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected date.
-        /// </summary>
-        public static string BySelectedDate {
-            get {
-                return ResourceManager.GetString("BySelectedDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Today.
-        /// </summary>
-        public static string ByToday {
-            get {
-                return ResourceManager.GetString("ByToday", resourceCulture);
             }
         }
     }

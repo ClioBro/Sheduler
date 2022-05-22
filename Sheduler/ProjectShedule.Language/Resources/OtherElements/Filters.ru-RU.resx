@@ -126,10 +126,10 @@
   <data name="ByDate" xml:space="preserve">
     <value>По Дате</value>
   </data>
-  <data name="BySelectedDate" xml:space="preserve">
-    <value>Выранной дате</value>
+  <data name="ByCarouselDate" xml:space="preserve">
+    <value>Карусель</value>
   </data>
-  <data name="ByToday" xml:space="preserve">
-    <value>Сегодня</value>
+  <data name="ByCalendar" xml:space="preserve">
+    <value>Календарь</value>
   </data>
 </root>

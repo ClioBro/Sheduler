@@ -126,10 +126,10 @@
   <data name="ByDate" xml:space="preserve">
     <value>By Date</value>
   </data>
-  <data name="BySelectedDate" xml:space="preserve">
-    <value>Selected date</value>
+  <data name="ByCarouselDate" xml:space="preserve">
+    <value>Carousel date</value>
   </data>
-  <data name="ByToday" xml:space="preserve">
-    <value>Today</value>
+  <data name="ByCalendar" xml:space="preserve">
+    <value>Calendar</value>
   </data>
 </root>
