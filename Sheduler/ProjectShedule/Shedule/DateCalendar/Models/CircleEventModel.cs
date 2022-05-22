@@ -5,6 +5,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
 {
     public class CircleEventModel
     {
+        public int ID { get; set; }
         public DateTime DateTime { get; set; }
         public Color BackGrountColor { get; set; }
         public Color BorderColor { get; set; }
