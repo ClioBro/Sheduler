@@ -66,9 +66,6 @@
             <views:DayView Grid.Row="6" Grid.Column="4" />
             <views:DayView Grid.Row="6" Grid.Column="5" />
             <views:DayView Grid.Row="6" Grid.Column="6" />
-
-            
-
         </Grid>
   </ContentView.Content>
 </ContentView>

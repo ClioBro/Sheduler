@@ -1,6 +1,4 @@
-﻿using ProjectShedule.DataBase.Entities;
-using ProjectShedule.DataBase.Entities.Base;
-using ProjectShedule.Shedule.DataBase.Interfaces;
+﻿using ProjectShedule.Shedule.DataBase.Interfaces;
 using ProjectShedule.Shedule.Models;
 using ProjectShedule.Shedule.ViewModels;
 using System;
@@ -11,7 +9,6 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.Editor.Models
 {
-    
     public interface IEditorPackNote
     {
         void AddNewSmallTask(string text);

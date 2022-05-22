@@ -7,7 +7,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
 {
     internal class MainFlyoutViewModel
     {
-        private ThemeController _themeController;
+        private readonly ThemeController _themeController;
         public ObservableCollection<MainFlyoutMenuItemViewModel> MenuItems { get; set; }
 
         public MainFlyoutViewModel()
@@ -56,8 +56,13 @@ namespace ProjectShedule.AppFlyout.ViewModels
                 {
                     DarkImage = "note_icon.png",
                     LightImage = "note_icon_negate.png"
-                }
+                },
 
+                //new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem 
+                //{
+                //    Title = "TestRoom",
+                //    TargetType = typeof(Tests.View.TetRoom)
+                //}),
             };
         }
     }

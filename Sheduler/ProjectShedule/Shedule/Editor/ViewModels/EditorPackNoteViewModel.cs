@@ -26,10 +26,10 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
         }
         #endregion
         private readonly IBuilderPackNoteViewModel _builderPackNoteViewModel;
-        private readonly BaseEditorPackNoteModel _baseEditorPackNote;
+        private readonly BaseEditorPackNoteModel _baseEditorPackNoteModel;
         public EditorPackNoteViewModel(EditorPackNoteModel editorPackNoteModel)
         {
-            _baseEditorPackNote = editorPackNoteModel;
+            _baseEditorPackNoteModel = editorPackNoteModel;
             _builderPackNoteViewModel = new BuilderPackNoteViewModel();
 
             SavePackNoteCommand = new Command(Save);
@@ -38,15 +38,15 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
             ShowColorSelectionPageCommand = new Command(ShowColorSelectionPageAcync);
             ShowAvailableRepeadTypesCommand = new Command(ShowAvailableRepeads);
 
-            _baseEditorPackNote.DeleteTaskCommand = new Command<BaseSmallTaskViewModel>(DeleteTask);
+            _baseEditorPackNoteModel.DeleteTaskCommand = new Command<BaseSmallTaskViewModel>(DeleteTask);
 
-            _baseEditorPackNote.LineColorChanged += (object sender, Color e) => OnPropertyChanged(nameof(LineColor));
-            _baseEditorPackNote.BackGroundColorChanged += (object sender, Color e) => OnPropertyChanged(nameof(BackGroundColor));
+            _baseEditorPackNoteModel.LineColorChanged += (object sender, Color e) => OnPropertyChanged(nameof(LineColor));
+            _baseEditorPackNoteModel.BackGroundColorChanged += (object sender, Color e) => OnPropertyChanged(nameof(BackGroundColor));
 
-            _baseEditorPackNote.SelectedRepeadChanged += OnSelectedRepeadChanged;
-            _baseEditorPackNote.SmallTasksAdded += (object sender, BaseSmallTaskViewModel e) => TaskAddingEntryText = string.Empty;
+            _baseEditorPackNoteModel.SelectedRepeadChanged += OnSelectedRepeadChanged;
+            _baseEditorPackNoteModel.SmallTasksAdded += (object sender, BaseSmallTaskViewModel e) => TaskAddingEntryText = string.Empty;
             
-            _baseEditorPackNote.PackNoteSaved += PackNoteSavedEventHandler;
+            _baseEditorPackNoteModel.PackNoteSaved += PackNoteSavedEventHandler;
         }
 
         #region Commands
@@ -60,37 +60,37 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
         #region Properties
         public string Header
         {
-            get => _baseEditorPackNote.Header;
+            get => _baseEditorPackNoteModel.Header;
             set
             {
-                _baseEditorPackNote.Header = value;
+                _baseEditorPackNoteModel.Header = value;
                 OnPropertyChanged();
             }
         }
         public string DopText
         {
-            get => _baseEditorPackNote.DopText;
+            get => _baseEditorPackNoteModel.DopText;
             set
             {
-                _baseEditorPackNote.DopText = value;
+                _baseEditorPackNoteModel.DopText = value;
                 OnPropertyChanged();
             }
         }
         public DateTime CreatedDateTime
         {
-            get => _baseEditorPackNote.CreatedDateTime;
+            get => _baseEditorPackNoteModel.CreatedDateTime;
             set
             {
-                _baseEditorPackNote.CreatedDateTime = value;
+                _baseEditorPackNoteModel.CreatedDateTime = value;
                 OnPropertyChanged();
             }
         }
         public DateTime ReminderDateTime
         {
-            get => _baseEditorPackNote.AppointmentDate;
+            get => _baseEditorPackNoteModel.AppointmentDate;
             set
             {
-                _baseEditorPackNote.AppointmentDate = value;
+                _baseEditorPackNoteModel.AppointmentDate = value;
                 OnPropertyChanged();
             }
         }
@@ -114,58 +114,58 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
         }
         public bool DateSelected
         {
-            get => _baseEditorPackNote.OnTheDate;
+            get => _baseEditorPackNoteModel.OnTheDate;
             set
             {
-                _baseEditorPackNote.OnTheDate = value;
+                _baseEditorPackNoteModel.OnTheDate = value;
                 OnPropertyChanged();
             }
         }
         public Color BackGroundColor
         {
-            get => _baseEditorPackNote.BackGroundColor;
+            get => _baseEditorPackNoteModel.BackGroundColor;
             set
             {
-                _baseEditorPackNote.BackGroundColor = value;
+                _baseEditorPackNoteModel.BackGroundColor = value;
                 OnPropertyChanged();
             }
         }
         public Color LineColor
         {
-            get => _baseEditorPackNote.LineColor;
+            get => _baseEditorPackNoteModel.LineColor;
             set
             {
-                _baseEditorPackNote.LineColor = value;
+                _baseEditorPackNoteModel.LineColor = value;
                 OnPropertyChanged();
             }
         }
         public bool HasSmallTasks => SmallTasks.Count() > 0;
         public bool EnableNotification
         {
-            get => _baseEditorPackNote.Notify;
+            get => _baseEditorPackNoteModel.Notify;
             set
             {
-                if (_baseEditorPackNote.Notify != value)
+                if (_baseEditorPackNoteModel.Notify != value)
                 {
-                    _baseEditorPackNote.Notify = value;
+                    _baseEditorPackNoteModel.Notify = value;
                     OnPropertyChanged();
                 }
             }
         }
         public RepeadItem SelectedRepead
         {
-            get => _baseEditorPackNote.SelectedRepead;
+            get => _baseEditorPackNoteModel.SelectedRepead;
             set
             {
-                if (_baseEditorPackNote.SelectedRepead != value)
+                if (_baseEditorPackNoteModel.SelectedRepead != value)
                 {
-                    _baseEditorPackNote.SelectedRepead = value;
+                    _baseEditorPackNoteModel.SelectedRepead = value;
                     OnPropertyChanged();
                 }
             }
         }
-        public string SelectedRepeadText => _baseEditorPackNote.SelectedRepead.Text;
-        public ReadOnlyObservableCollection<BaseSmallTaskViewModel> SmallTasks => _baseEditorPackNote.SmallTasks;
+        public string SelectedRepeadText => _baseEditorPackNoteModel.SelectedRepead.Text;
+        public ReadOnlyObservableCollection<BaseSmallTaskViewModel> SmallTasks => _baseEditorPackNoteModel.SmallTasks;
 
         private string _taskAddingEntryText;
         public string TaskAddingEntryText 
@@ -182,11 +182,11 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
 
         private void AddTask()
         {
-            _baseEditorPackNote.AddNewSmallTask(TaskAddingEntryText);
+            _baseEditorPackNoteModel.AddNewSmallTask(TaskAddingEntryText);
         }
         private void DeleteTask(BaseSmallTaskViewModel smallTask)
         {
-            _baseEditorPackNote.RemoveTask(smallTask);
+            _baseEditorPackNoteModel.RemoveTask(smallTask);
         }
         private async void ShowPackNoteView()
         {
@@ -195,7 +195,7 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
 
             Rg.Plugins.Popup.Pages.PopupPage popUpPage = 
                 new DemonstrationViewPackNote(_builderPackNoteViewModel
-                                                .SetModel(_baseEditorPackNote.BasePackNoteModel)
+                                                .SetModel(_baseEditorPackNoteModel.BasePackNoteModel)
                                                 .Build());
 
             await Navigation.PushPopupAsync(popUpPage);
@@ -207,7 +207,7 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
 
             ColorSelectionPageCreation colorSelectionPageCreation = 
                 new ColorSelectionPageCreation(_builderPackNoteViewModel
-                                                .SetModel(_baseEditorPackNote.BasePackNoteModel)
+                                                .SetModel(_baseEditorPackNoteModel.BasePackNoteModel)
                                                 .Build());
 
             colorSelectionPageCreation.ColorSelection.LineTarget.ColorSelected += (sender, color) => LineColor = color;
@@ -231,15 +231,9 @@ namespace ProjectShedule.Shedule.Editor.ViewModels
 
             await Navigation.ShowAvailableRepeadsAsync(radioButtonPage);
         }
-        private void Save() => _baseEditorPackNote.Save();
-        private async void ReturnNavigationPageAsync() => await Navigation.PopModalAsync();
-
+        private void Save() => _baseEditorPackNoteModel.Save();
         private void PackNoteSavedEventHandler(object sender, ReadOnlyPackNote readOnlyPackNote) => ReturnNavigationPageAsync();
-        //private void OnSmallTasksChangedHandler(object sender, ReadOnlyObservableCollection<ISmallTaskViewModel> e)
-        //{
-        //    OnPropertyChanged(nameof(SmallTasks));
-        //    OnPropertyChanged(nameof(TaskAddingEntryText));
-        //}
+        private async void ReturnNavigationPageAsync() => await Navigation.PopModalAsync();
         private void OnSelectedRepeadChanged(object sender, RepeadItem e)
         {
             OnPropertyChanged(nameof(SelectedRepeadText));

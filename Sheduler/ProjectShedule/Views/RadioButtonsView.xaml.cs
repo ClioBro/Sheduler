@@ -1,6 +1,5 @@
 ﻿using ProjectShedule.Shedule.Models;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,6 +20,7 @@ namespace ProjectShedule.Shedule.Views
             get => (RadioButtonItem[])GetValue(ItemsProperty);
             set => SetValue(ItemsProperty, value);
         }
+
         public static readonly BindableProperty SelectedItemProperty =
           BindableProperty.Create(nameof(SelectedItem), typeof(RadioButtonItem), typeof(RadioButtonsView), null, BindingMode.TwoWay);
         public RadioButtonItem SelectedItem
@@ -28,6 +28,7 @@ namespace ProjectShedule.Shedule.Views
             get => (RadioButtonItem)GetValue(SelectedItemProperty);
             set => SetValue(SelectedItemProperty, value);
         }
+
         public static readonly BindableProperty GroupNameProperty =
          BindableProperty.Create(nameof(GroupName), typeof(string), typeof(RadioButtonsView), null, BindingMode.TwoWay);
         public string GroupName

@@ -54,7 +54,7 @@
                             Text="{Binding Number }" 
                             TextColor="{DynamicResource PrimaryTextColor}" 
                             HorizontalOptions="Center"
-                            FontSize="{Binding YearLabelSize}"/>
+                            FontSize="{Binding LabelSize}"/>
                     </StackLayout>
                 </DataTemplate>
             </CarouselView.ItemTemplate>

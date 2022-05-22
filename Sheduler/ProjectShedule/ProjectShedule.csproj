@@ -98,6 +98,12 @@
     <EmbeddedResource Update="GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Tests\View\TEstView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Tests\View\TetRoom.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\RadioButtonsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -146,7 +152,7 @@
     <Folder Include="Repository\" />
     <Folder Include="Shedule\DataBase\Controlls\" />
     <Folder Include="Shedule\Builders\" />
-    <Folder Include="Shedule\PackNotesManager\WorkWithDataBase\" />
+    <Folder Include="Shedule\Base\" />
     <Folder Include="Shedule\Views\" />
     <Folder Include="Views\DateCalendar\" />
     <Folder Include="Views\GlobalSetting\" />
