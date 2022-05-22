@@ -4,12 +4,14 @@ using ProjectShedule.Language.Resources.Pages.AppFlyout;
 using ProjectShedule.Shedule.Calendar.Models;
 using ProjectShedule.Shedule.DataBase.Interfaces;
 using ProjectShedule.Shedule.Models;
+using ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel;
 using ProjectShedule.Shedule.PackNotesManager.WorkWithDataBase;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace ProjectShedule.Shedule.ViewModels
@@ -26,6 +28,8 @@ namespace ProjectShedule.Shedule.ViewModels
         private readonly IBuilderPackNoteEditorPage _builderPackNoteEditorPage;
 
         private readonly IPackNoteDataBaseController _dataBaseController;
+
+        private readonly bool _askConfirmationDelete;
         public SheduleViewModel()
         {
             Title = Lobby.SheduleTitle;
@@ -35,22 +39,30 @@ namespace ProjectShedule.Shedule.ViewModels
             _builderPackNoteModel = new BuilderPackNoteModel(_builderSmallTaskViewModel);
 
             _dataBaseController = new PackNoteDataBaseController(App.ApplicationContext);
+
             _sheduleModel = new SheduleModel(_dataBaseController, _builderPackNoteViewModel);
 
+            _askConfirmationDelete = new DeleteConfirmationSetting().AskQuestion;
+
+            FilterControl.PropertyChanged += OnFilterSelectionPropertyChanged;
+            
             AssigmentCommands();
         }
         #region Properties
         public ReadOnlyObservableCollection<BasePackNoteViewModel> PackNotes => _sheduleModel.PackNotes;
         public ReadOnlyObservableCollection<CircleEventModel> EventsForCalendar => _sheduleModel.CalendarCircleEvents;
-        public BaseFilterViewModel FilterControl => _sheduleModel.FilterPackNotes;
-        public ObservableCollection<DateTime> SelectedDates => _sheduleModel.SelectedDates;
-        public DateTime DisplayedDateTime
+        public FilterPackNoteViewModel FilterControl => _sheduleModel.FilterPackNotes;
+        public ObservableRangeCollection<DateTime> SelectedDates => _sheduleModel.SelectedDates;
+        public DateTime DisplayedDateOnCarousel
         {
             get => _sheduleModel.DisplayedDateOnCarousel;
             set
             {
-                _sheduleModel.DisplayedDateOnCarousel = value;
-                OnPropertyChanged(nameof(DisplayedDateTime));
+                if (_sheduleModel.DisplayedDateOnCarousel != value)
+                {
+                    _sheduleModel.DisplayedDateOnCarousel = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public ICommand OpenEditorCommand { get; set; }
@@ -68,11 +80,13 @@ namespace ProjectShedule.Shedule.ViewModels
 
             ExpandedCalendarCommand = new Command(ExpandCalendar);
             OpenEditorCommand = new Command(OpenEditorCommandHandler);
-            MoveToDayCommand = new Command(() => DisplayedDateTime = DateTime.Today);
+            MoveToDayCommand = new Command(() => DisplayedDateOnCarousel = DateTime.Today);
         }
         private void OpenEditorCommandHandler()
         {
-            AttemptOpenEditor(_builderPackNoteModel.Build());
+            var model = _builderPackNoteModel.Build();
+            model.Note.AppointmentDate = DateTime.Now;
+            AttemptOpenEditor(model);
         }
         private void OpenEditorCommandHandler(BasePackNoteViewModel packNoteViewModel)
         {
@@ -97,11 +111,9 @@ namespace ProjectShedule.Shedule.ViewModels
                 _sheduleModel.UpdatePackNotesAsync();
             }
         }
-
         private async void DeletePackNoteCommandHandler(BasePackNoteViewModel packNoteViewModel)
         {
-            IDeleteConfirmation deleteConfirmation = new DeleteConfirmationSetting();
-            if (deleteConfirmation.AskQuestion)
+            if (_askConfirmationDelete)
             {
                 string header = packNoteViewModel.Header;
                 var answer = await Navigation.ShowQuestionForDeletion(itemNameToBeDeleted: header);
@@ -114,6 +126,10 @@ namespace ProjectShedule.Shedule.ViewModels
         {
             ExpandedCalendar = !ExpandedCalendar;
             OnPropertyChanged(nameof(ExpandedCalendar));
+        }
+        private void OnFilterSelectionPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            _sheduleModel.UpdatePackNotesAsync();
         }
         private void OnPropertyChanged([CallerMemberName] string propertyName = "" )
         {
