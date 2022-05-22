@@ -53,9 +53,10 @@
                 <CollectionView.Header>
                     <StackLayout>
                         <calendarViews:DateCalendarView
+                            SelectedDates="{Binding SelectedDates}"
                             MonthDaysIsVisible="{Binding ExpandedCalendar}"
                             CircleEvents="{Binding EventsForCalendar}"
-                            DisplayedCarouselDayMontYear="{Binding DisplayedDateTime}">
+                            DisplayedCarouselDayMontYear="{Binding DisplayedDateOnCarousel}">
                         </calendarViews:DateCalendarView>
                         <xct:Expander AnimationLength="100" >
                             <xct:Expander.Header>
