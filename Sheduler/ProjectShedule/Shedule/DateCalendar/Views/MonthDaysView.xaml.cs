@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,17 +25,18 @@ namespace ProjectShedule.Shedule.Calendar.Views
             ThreeChars = 3
         }
 
-        internal BaseSelectionHasDateEngine<DayModel> _selectionDateEngine = new MultipleSelectionDayEngine();
+        internal BaseSelectionHasDateEngine<DayModel> _selectionDateEngine;
         internal INotifyThemeChange _notifyThemeChanged = App.ThemeController;
         public MonthDays()
         {
             InitializeComponent();
-            DayTappedCommand = new Command<DayModel>(_selectionDateEngine.SelectItem);
-            _selectionDateEngine.SelectedDatesTime = SelectedDates;
+            BuildSelectionDaysEngine(SelectionDatesMode);
+            DayTappedCommand = new Command<DayModel>(SelectItem);
+            _selectionDateEngine.SelectedDatesTime = SelectedDates; 
             InitializeDays();
         }
         ~MonthDays() => DiposeDayViews();
-
+        private void SelectItem(DayModel dayModel) => _selectionDateEngine.SelectItem(dayModel);
         #region Bindable properties
         public static readonly BindableProperty DaysTitleMaximumLengthProperty =
           BindableProperty.Create(nameof(DaysTitleMaximumLength), typeof(DaysTitleMaxLength), typeof(MonthDays), DaysTitleMaxLength.TwoChars);
@@ -76,11 +78,19 @@ namespace ProjectShedule.Shedule.Calendar.Views
             set => SetValue(CircleEventsProperty, value);
         }
 
-        public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableCollection<DateTime>), typeof(MonthDays), new ObservableCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
-        public ObservableCollection<DateTime> SelectedDates
+        public static readonly BindableProperty SelectionDatesModeProperty =
+            BindableProperty.Create(nameof(SelectionDatesMode), typeof(SelectionMode), typeof(MonthDays), SelectionMode.Single, propertyChanging:OnSelectedDatesModeChanged);
+        public SelectionMode SelectionDatesMode
         {
-            get => (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty);
+            get => (SelectionMode)GetValue(SelectionDatesModeProperty);
+            set => SetValue(SelectionDatesModeProperty, value);
+        }
+
+        public static readonly BindableProperty SelectedDatesProperty =
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(MonthDays), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
+        public ObservableRangeCollection<DateTime> SelectedDates
+        {
+            get => (ObservableRangeCollection<DateTime>)GetValue(SelectedDatesProperty);
             set => SetValue(SelectedDatesProperty, value);
         }
 
@@ -116,9 +126,21 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             if (bindable is MonthDays monthDays
                 && !Equals(newValue, oldValue)
-                && newValue is ObservableCollection<DateTime> newObservableCollection)
+                && newValue is ObservableRangeCollection<DateTime> newObservableCollection)
             {
                 monthDays._selectionDateEngine.SelectedDatesTime = newObservableCollection;
+            }
+        }
+        private static void OnSelectedDatesModeChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is MonthDays monthDays
+                && !Equals(newValue, oldValue)
+                && newValue is SelectionMode selectingMode)
+            {
+                var tempSelectedCollection = monthDays._selectionDateEngine.SelectedDatesTime;
+                monthDays.BuildSelectionDaysEngine(selectingMode);
+                tempSelectedCollection.Clear();
+                monthDays._selectionDateEngine.SelectedDatesTime = tempSelectedCollection;
             }
         }
         #endregion
@@ -135,6 +157,18 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 newDaysViews.Add(dayView);
             }
             DayViews = newDaysViews;
+        }
+        private void BuildSelectionDaysEngine(SelectionMode selectingMode)
+        {
+            switch (selectingMode)
+            {
+                case SelectionMode.Single:
+                    _selectionDateEngine = new SingleSelectionDayEngine();
+                    break;
+                case SelectionMode.Multiply:
+                    _selectionDateEngine = new MultipleSelectionDayEngine();
+                    break;
+            }
         }
 
         private void DiposeDayViews()
@@ -202,6 +236,11 @@ namespace ProjectShedule.Shedule.Calendar.Views
             dayModel.FirstEvent = events.Length >= 1 ? events?[0] : new CircleEventModel();
             dayModel.TwoEvent = events.Length >= 2 ? events?[1] : new CircleEventModel();
             dayModel.ThreeEvent = events.Length >= 3 ? events?[2] : new CircleEventModel();
+        }
+
+        public enum SelectionMode
+        {
+            Single, Multiply
         }
     }
 }
