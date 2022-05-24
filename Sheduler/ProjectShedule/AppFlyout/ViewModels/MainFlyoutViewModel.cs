@@ -58,7 +58,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
                     LightImage = "note_icon_negate.png"
                 },
 
-                //new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem 
+                //new MainFlyoutMenuItemViewModel(new MainFlyoutMenuItem
                 //{
                 //    Title = "TestRoom",
                 //    TargetType = typeof(Tests.View.TetRoom)
