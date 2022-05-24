@@ -48,14 +48,37 @@ namespace ProjectShedule.Shedule.PackNotesManager.FilterManager.ViewModel
         }
         public SortInDate[] FilterTypes { get; set; }
         public PutInOrderNote[] OrderTypes { get; set; }
-        public void SetDayInCarosuelSelecting(DateTime dateTime)
+        public bool IsCarouselSelected => SelectedFlter is CarouselSelectedDay;
+        public bool IsCalendarSelected => SelectedFlter is CalendarSelectedDays;
+        public void SetByCarouselDaySelecting(DateTime dateTime)
         {
             SortInDate tempSelectedFilter = FilterTypes.FirstOrDefault(sortInDate => sortInDate is CarouselSelectedDay);
+            if (tempSelectedFilter is CarouselSelectedDay carouselSelectedDay)
+            {
+                carouselSelectedDay.Date = dateTime;
+                SelectedFlter = tempSelectedFilter;
+            }
+            else
+                throw new Exception(message: $"There is no {nameof(CarouselSelectedDay)} in the collection.");
+        }
 
+        public void SetDateInCarouselDaySelecting(DateTime dateTime)
+        {
+            SortInDate tempSelectedFilter = FilterTypes.FirstOrDefault(sortInDate => sortInDate is CarouselSelectedDay);
             if (tempSelectedFilter is CarouselSelectedDay carouselSelectedDay)
                 carouselSelectedDay.Date = dateTime;
             else
                 throw new Exception(message: $"There is no {nameof(CarouselSelectedDay)} in the collection.");
+        }
+
+        public void SetByCalendarSelecting()
+        {
+            SortInDate tempSelectedFilter = FilterTypes.FirstOrDefault(sortInDate => sortInDate is CalendarSelectedDays);
+
+            if (tempSelectedFilter is CalendarSelectedDays)
+                SelectedFlter = tempSelectedFilter;
+            else
+                throw new Exception(message: $"There is no {nameof(CalendarSelectedDays)} in the collection.");
         }
         public IEnumerable<IPackNote> GetFiltered() => _filterPackNote.GetFiltered();
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
