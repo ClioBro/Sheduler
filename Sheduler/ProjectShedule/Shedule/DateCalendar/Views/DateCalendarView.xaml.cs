@@ -18,8 +18,8 @@ namespace ProjectShedule.Shedule.Calendar.Views
         private const double MaxCarouselLabelSize = 17.0;
         private const double MinCarouseLabelSize = 1.0;
 
-        private DateTime _maxDateTime = new DateTime(2030, 12, 31);
-        private DateTime _minDateTime = new DateTime(2021, 1, 1);
+        private readonly DateTime _maxDateTime = new DateTime(2030, 12, 31);
+        private readonly DateTime _minDateTime = new DateTime(2021, 1, 1);
 
 
         #region BindingProperties
@@ -118,11 +118,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             InitializeComponent();
             InicializateStartDate(DisplayedCarouselDayMontYear);
-
-            /// Делаю через таймер, так как при быстром Scrolling обновляется каждый CarouselCurrentItem 
-            /// что потребляет много ресурсов на обновление DisplayedCarouselDayMontYear
-
-            Device.StartTimer(TimeSpan.FromMilliseconds(500), TimerChecked);
         }
         public CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
         public IEnumerable<DayView> DayViews { get; set; }
@@ -167,37 +162,43 @@ namespace ProjectShedule.Shedule.Calendar.Views
             Days.AddRange(tempList);
         }
 
-
         #region UpdateMonthDaysTimer
-
-        private readonly bool tickedAllTime = true;
-        private static bool _scrolled = false;
-
-        private bool TimerChecked()
+        /// Делаю через таймер, так как при быстром Scrolling обновляется каждый CarouselCurrentItem 
+        /// что потребляет много ресурсов на обновление DisplayedCarouselDayMontYear
+        private bool _carouselIsScrolled = false;
+        private bool _timerIsStarted = false;
+        private void StarTimer()
         {
-            if (UpdateDisplayedDateValidation())
+            _timerIsStarted = true;
+            Device.StartTimer(TimeSpan.FromMilliseconds(400), MyTimer);
+
+            bool MyTimer()
             {
-                if (CurrentDay.IsThisMonth == false)
+                if (CarouselIsScrolled())
                 {
-                    carouselDayView.SetCurrentDay(Days.LastOrDefault(d => d.IsThisMonth));
+                    _carouselIsScrolled = false;
+                    return true;
                 }
+
+                if (CurrentDay.IsThisMonth == false)
+                    carouselDayView.SetCurrentDay(Days.LastOrDefault(d => d.IsThisMonth));
 
                 var CurrentDateOnCarousels = TryValidDate();
                 if (!Equals(CurrentDateOnCarousels.Date, DisplayedCarouselDayMontYear.Date))
-                {
                     DisplayedCarouselDayMontYear = CurrentDateOnCarousels;
-                }
-            }
-            _scrolled = false;
-            return tickedAllTime;
 
-            bool UpdateDisplayedDateValidation()
-            {
-                return _scrolled == false
-                    && !carouselDayView.IsDragging
-                    && !carouselMonthView.IsDragging
-                    && !carouselYearsView.IsDragging;
+                _timerIsStarted = false;
+                return false;
             }
+
+            bool CarouselIsScrolled()
+            {
+                return _carouselIsScrolled
+                    || carouselDayView.IsDragging
+                    || carouselMonthView.IsDragging
+                    || carouselYearsView.IsDragging;
+            }
+
             DateTime TryValidDate()
             {
                 try
@@ -277,7 +278,12 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
         private static void OnCarouselDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            _scrolled = true;
+            if (bindable is DateCalendarView main)
+            {
+                main._carouselIsScrolled = true;
+                if (main._timerIsStarted == false)
+                    main.StarTimer();
+            }
         }
         private static void OnEventsChanged(BindableObject bindable, object oldValue, object newValue)
         {
