@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,65 +15,16 @@ namespace ProjectShedule.Shedule.Calendar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DateCalendarView : ContentView
     {
-        public const double MaxCarouselLabelSize = 17.0;
-        public const double MinCarouseLabelSize = 1.0;
+        private const double MaxCarouselLabelSize = 17.0;
+        private const double MinCarouseLabelSize = 1.0;
+
+        private DateTime _maxDateTime = new DateTime(2030, 12, 31);
+        private DateTime _minDateTime = new DateTime(2021, 1, 1);
+
 
         #region BindingProperties
-        public static readonly BindableProperty YearLabelSizeProperty =
-          BindableProperty.Create(nameof(YearLabelSize), typeof(double), typeof(DateCalendarView), 16.0, BindingMode.TwoWay);
-        public double YearLabelSize
-        {
-            get => (double)GetValue(YearLabelSizeProperty);
-            set => SetValue(YearLabelSizeProperty, value);
-        }
 
-        public static readonly BindableProperty CultureProperty =
-          BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(DateCalendarView), CultureInfo.CurrentCulture, BindingMode.TwoWay);
-        public CultureInfo Culture
-        {
-            get => (CultureInfo)GetValue(CultureProperty);
-            set => SetValue(CultureProperty, value);
-        }
-
-        public static readonly BindableProperty CircleEventsProperty =
-            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(DateCalendarView), default,  propertyChanged: OnEventsChanged);
-        public ReadOnlyObservableCollection<CircleEventModel> CircleEvents
-        {
-            get => (ReadOnlyObservableCollection<CircleEventModel>)GetValue(CircleEventsProperty);
-            set => SetValue(CircleEventsProperty, value);
-        }
-
-        public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(DateCalendarView), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay);
-        public ObservableRangeCollection<DateTime> SelectedDates
-        {
-            get => (ObservableRangeCollection<DateTime>)GetValue(SelectedDatesProperty);
-            set => SetValue(SelectedDatesProperty, value);
-        }
-
-        public static readonly BindableProperty MaximunDateTimeProperty =
-           BindableProperty.Create(nameof(MaximunDateTime), typeof(DateTime), typeof(DateCalendarView), new DateTime(2040, 12, 12), BindingMode.OneWay);
-        public DateTime MaximunDateTime
-        {
-            get => (DateTime)GetValue(MaximunDateTimeProperty);
-            set => SetValue(MaximunDateTimeProperty, value);
-        }
-
-        public static readonly BindableProperty MinimumDateTimeProperty =
-          BindableProperty.Create(nameof(MinimumDateTime), typeof(DateTime), typeof(DateCalendarView), new DateTime(2020, 12, 12), BindingMode.OneWay);
-        public DateTime MinimumDateTime
-        {
-            get => (DateTime)GetValue(MinimumDateTimeProperty);
-            set => SetValue(MinimumDateTimeProperty, value);
-        }
-
-        public static readonly BindableProperty DisplayedCarouselDayMontYearProperty =
-         BindableProperty.Create(nameof(DisplayedCarouselDayMontYear), typeof(DateTime), typeof(DateCalendarView), DateTime.Today, BindingMode.TwoWay, propertyChanged: OnDisplayedDateChanged);
-        public DateTime DisplayedCarouselDayMontYear
-        {
-            get => (DateTime)GetValue(DisplayedCarouselDayMontYearProperty);
-            set => SetValue(DisplayedCarouselDayMontYearProperty, value);
-        }
+        #region -- Carousel --
 
         public static readonly BindableProperty CurrentYearProperty =
           BindableProperty.Create(nameof(CurrentYear), typeof(YearModel), typeof(DateCalendarView), new YearModel(), BindingMode.TwoWay, propertyChanged: OnCarouselDateChanged);
@@ -98,6 +50,14 @@ namespace ProjectShedule.Shedule.Calendar.Views
             set => SetValue(CurrentDayProperty, value);
         }
 
+        public static readonly BindableProperty YearLabelSizeProperty =
+          BindableProperty.Create(nameof(YearLabelSize), typeof(double), typeof(DateCalendarView), 16.0, BindingMode.TwoWay);
+        public double YearLabelSize
+        {
+            get => (double)GetValue(YearLabelSizeProperty);
+            set => SetValue(YearLabelSizeProperty, value);
+        }
+
         public static readonly BindableProperty MonthDaysIsVisibleProperty =
          BindableProperty.Create(nameof(MonthDaysIsVisible), typeof(bool), typeof(DateCalendarView), true);
         public bool MonthDaysIsVisible
@@ -114,8 +74,46 @@ namespace ProjectShedule.Shedule.Calendar.Views
             set => SetValue(EnableDayCarouselProperty, value);
         }
 
+        #endregion
+
+        #region -- Calendar --
+
+        public static readonly BindableProperty DisplayedCarouselDayMontYearProperty =
+         BindableProperty.Create(nameof(DisplayedCarouselDayMontYear), typeof(DateTime), typeof(DateCalendarView), DateTime.Today, BindingMode.TwoWay, propertyChanged: OnDisplayedDateChanged);
+        public DateTime DisplayedCarouselDayMontYear
+        {
+            get => (DateTime)GetValue(DisplayedCarouselDayMontYearProperty);
+            set => SetValue(DisplayedCarouselDayMontYearProperty, value);
+        }
+
+        public static readonly BindableProperty CalendarDayLongPressedCommandProperty =
+         BindableProperty.Create(nameof(CalendarDayLongPressedCommand), typeof(ICommand), typeof(DateCalendarView), null, BindingMode.TwoWay);
+        public ICommand CalendarDayLongPressedCommand
+        {
+            get => (ICommand)GetValue(CalendarDayLongPressedCommandProperty);
+            set => SetValue(CalendarDayLongPressedCommandProperty, value);
+        }
+
+        public static readonly BindableProperty CircleEventsProperty =
+            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(DateCalendarView), default, propertyChanged: OnEventsChanged);
+        public ReadOnlyObservableCollection<CircleEventModel> CircleEvents
+        {
+            get => (ReadOnlyObservableCollection<CircleEventModel>)GetValue(CircleEventsProperty);
+            set => SetValue(CircleEventsProperty, value);
+        }
+
+        public static readonly BindableProperty SelectedDatesProperty =
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(DateCalendarView), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay);
+        public ObservableRangeCollection<DateTime> SelectedDates
+        {
+            get => (ObservableRangeCollection<DateTime>)GetValue(SelectedDatesProperty);
+            set => SetValue(SelectedDatesProperty, value);
+        }
 
         #endregion
+
+        #endregion
+        
         public DateCalendarView()
         {
             InitializeComponent();
@@ -126,9 +124,11 @@ namespace ProjectShedule.Shedule.Calendar.Views
 
             Device.StartTimer(TimeSpan.FromMilliseconds(500), TimerChecked);
         }
-        public List<DayView> DayViews { get; set; } = new List<DayView>();
-        public ObservableCollection<DayModel> Days { get; set; } = new ObservableCollection<DayModel>();
-        public List<YearModel> Years { get; set; } = new List<YearModel>();
+        public CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
+        public IEnumerable<DayView> DayViews { get; set; }
+        public ObservableRangeCollection<YearModel> Years { get; set; } = new ObservableRangeCollection<YearModel>();
+        public ObservableRangeCollection<DayModel> Days { get; set; } = new ObservableRangeCollection<DayModel>();
+
         private void InicializateStartDate(DateTime date)
         {
             InicializateYearsOnCarousel();
@@ -140,24 +140,39 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
         private void InicializateYearsOnCarousel()
         {
-            int year = MinimumDateTime.Year;
-            while (year <= MaximunDateTime.Year)
+            ICollection<YearModel> tempList = new List<YearModel>();
+            int maxYear = _maxDateTime.Year;
+            int minYear = _minDateTime.Year;
+            for (int year = minYear; year <= maxYear; year++)
             {
-                Years.Add(new YearModel() { Number = year++, LabelSize = YearLabelSize });
+                tempList.Add(new YearModel() { 
+                    Number = year, 
+                    LabelSize = YearLabelSize 
+                });
             }
+            Years.AddRange(tempList);
         }
         private void InicializateDaysOnCarousel()
         {
-            for (int day = 1; day <= DateTime.MaxValue.Day; day++)
+            ICollection<DayModel> tempList = new List<DayModel>();
+            int maxDays = DateTime.MaxValue.Day;
+            for (int day = 1; day <= maxDays; day++)
             {
-                Days.Add(new DayModel() { Date = new DateTime(2021, 10, day), PrimaryTextColor = Color.Red, IsThisMonth = true});
+                tempList.Add(new DayModel() { 
+                    Date = new DateTime(2021, 10, day), 
+                    PrimaryTextColor = Color.Red, 
+                    IsThisMonth = true 
+                });
             }
+            Days.AddRange(tempList);
         }
 
 
         #region UpdateMonthDaysTimer
+
         private readonly bool tickedAllTime = true;
-        private static bool Scrolled = false;
+        private static bool _scrolled = false;
+
         private bool TimerChecked()
         {
             if (UpdateDisplayedDateValidation())
@@ -173,12 +188,12 @@ namespace ProjectShedule.Shedule.Calendar.Views
                     DisplayedCarouselDayMontYear = CurrentDateOnCarousels;
                 }
             }
-            Scrolled = false;
+            _scrolled = false;
             return tickedAllTime;
 
             bool UpdateDisplayedDateValidation()
             {
-                return Scrolled == false
+                return _scrolled == false
                     && !carouselDayView.IsDragging
                     && !carouselMonthView.IsDragging
                     && !carouselYearsView.IsDragging;
@@ -195,7 +210,9 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 }
             }
         }
+
         #endregion
+
         public void UpdateCarouselDays()
         {
             int index = 0;
@@ -223,6 +240,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             monthDaysView.UpdateDays();
         }
+
         private void SetCurrentYearOnYearCarousel(int year)
         {
             var yearModel = Years.FirstOrDefault(y => y.Number == year);
@@ -237,7 +255,8 @@ namespace ProjectShedule.Shedule.Calendar.Views
             var dayModel = Days[--day];
             carouselDayView.SetCurrentDay(dayModel);
         }
-        #region PropertyChangeds
+
+        #region PropertyChangedHandlers
         
         private static void OnDisplayedDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -253,11 +272,12 @@ namespace ProjectShedule.Shedule.Calendar.Views
                     main.SetCurrentYearOnYearCarousel(newDateTime.Year);
                 
                 main.UpdateCarouselDays();
+
             }
         }
         private static void OnCarouselDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            Scrolled = true;
+            _scrolled = true;
         }
         private static void OnEventsChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -271,6 +291,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
                     => main.UpdateCarouselDays();
             }
         }
+        
         #endregion
     }
 }
