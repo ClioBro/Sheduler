@@ -9,6 +9,7 @@ using ProjectShedule.Shedule.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -25,14 +26,12 @@ namespace ProjectShedule.Shedule.Models
 
             FieldsInicialization();
             InicializationFilterPackNotes();
-            
-            _selectedDates.CollectionChanged += (sender, e) =>
-            {
-                if (_filterPackNotes.SelectedFlter is CalendarSelectedDays)
-                    UpdatePackNotes();
-            };
+            SignatureForEvents();
+
             DisplayedDateOnCarousel = _startedDateTime;
         }
+
+        
         private void FieldsInicialization()
         {
             _displayedDateOnCarousel = DateTime.Today;
@@ -53,7 +52,11 @@ namespace ProjectShedule.Shedule.Models
                     Text = Filters.ByCarouselDate,
                     Date = _startedDateTime
                 },
-                new CalendarSelectedDays(_packNoteDataBaseController) { Text = Filters.ByCalendar, Dates = _selectedDates },
+                new CalendarSelectedDays(_packNoteDataBaseController) 
+                { 
+                    Text = Filters.ByCalendar, 
+                    Dates = _selectedDates 
+                },
                 new AllSortInDate(_packNoteDataBaseController) { Text = Filters.AllItems },
             };
             PutInOrderNote[] OrderTypes = new PutInOrderNote[]
@@ -64,6 +67,27 @@ namespace ProjectShedule.Shedule.Models
 
             _filterPackNotes = new FilterPackNoteViewModel(FilterTypes, OrderTypes);
         }
+        private void SignatureForEvents()
+        {
+            _filterPackNotes.PropertyChanged += (sender, e) => { UpdatePackNotes(); UpdateEvents(); };
+
+            _selectedDates.CollectionChanged += (sender, e) =>
+            {
+                if (_filterPackNotes.IsCalendarSelected == false)
+                {
+                    _filterPackNotes.SetByCalendarSelecting();
+                    return;
+                }
+
+                if (_selectedDates.Count() == 0)
+                {
+                    _filterPackNotes.SetByCarouselDaySelecting(_displayedDateOnCarousel);
+                    return;
+                }
+
+                UpdatePackNotes();
+            };
+        }
 
         public override DateTime DisplayedDateOnCarousel
         {
@@ -71,22 +95,15 @@ namespace ProjectShedule.Shedule.Models
             set
             {
                 _displayedDateOnCarousel = value;
-                _filterPackNotes.SetDayInCarosuelSelecting(value);
-                if (_filterPackNotes.SelectedFlter is CarouselSelectedDay)
+                if (_filterPackNotes.IsCarouselSelected)
                 {
+                    _filterPackNotes.SetDateInCarouselDaySelecting(value);
                     UpdatePackNotes();
                     UpdateEvents();
                 }
+                else
+                    _filterPackNotes.SetByCarouselDaySelecting(value);
             }
-        }
-
-        public override void UpdatePackNotesAsync()
-        {
-            Task.Run(() =>
-            {
-                UpdatePackNotes();
-                UpdateEvents();
-            });
         }
         public override void UpdatePackNotes()
         {
@@ -142,7 +159,7 @@ namespace ProjectShedule.Shedule.Models
         {
             _packNoteDataBaseController.PartsControl.DeleteInDataBase(((IHasModel<BaseSmallTask>)hasSmallTask).Model);
         }
-        
+
         private IEnumerable<CircleEventModel> BuildCircleEvents()
         {
             DateTime minDate = new DateTime(_displayedDateOnCarousel.Year, _displayedDateOnCarousel.Month, _displayedDateOnCarousel.Day).AddMonths(-1).AddDays(-5);

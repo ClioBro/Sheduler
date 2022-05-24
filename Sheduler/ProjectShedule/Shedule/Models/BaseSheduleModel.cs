@@ -44,7 +44,6 @@ namespace ProjectShedule.Shedule.Models
         public ObservableRangeCollection<DateTime> SelectedDates => _selectedDates;
         public abstract DateTime DisplayedDateOnCarousel { get; set; }
         #endregion
-        public abstract void UpdatePackNotesAsync();
         public abstract void UpdatePackNotes();
         public abstract void UpdateEvents();
         public abstract void DeletePackNote(BasePackNoteViewModel packNoteViewModel);
