@@ -18,7 +18,12 @@ namespace ProjectShedule.Shedule.Calendar.Models
             set => SetProperty(value)
                     .Notify(nameof(BorderColor));
         }
-        public ICommand TappedCommand
+        public ICommand PressedCommand
+        {
+            get => GetProperty<ICommand>();
+            set => SetProperty(value);
+        }
+        public ICommand LongPressedCommand
         {
             get => GetProperty<ICommand>();
             set => SetProperty(value);

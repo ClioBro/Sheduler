@@ -17,7 +17,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
         {
             if (BindingContext is DayModel dayModel && dayModel.IsThisMonth)
             {
-                dayModel.TappedCommand?.Execute(dayModel);
+                dayModel.PressedCommand?.Execute(dayModel);
             }
         }
     }

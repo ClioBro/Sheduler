@@ -56,9 +56,9 @@
                             SelectedDates="{Binding SelectedDates}"
                             MonthDaysIsVisible="{Binding ExpandedCalendar}"
                             CircleEvents="{Binding EventsForCalendar}"
-                            DisplayedCarouselDayMontYear="{Binding DisplayedDateOnCarousel}">
-                        </calendarViews:DateCalendarView>
-                        <xct:Expander AnimationLength="100" >
+                            CalendarDayLongPressedCommand="{Binding CalendarDayLongPressedCommand}"
+                            DisplayedCarouselDayMontYear="{Binding DisplayedDateOnCarousel}"/>
+                        <xct:Expander AnimationLength="100">
                             <xct:Expander.Header>
                                 <Frame
                                     HeightRequest="27"

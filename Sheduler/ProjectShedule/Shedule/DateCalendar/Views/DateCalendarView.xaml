@@ -32,6 +32,7 @@
                 x:Name="monthDaysView"
                 Grid.Row="3"
                 Culture="{Binding Culture, Source={x:Reference main}}"
+                DayLongPressedCommand="{Binding CalendarDayLongPressedCommand, Source={x:Reference main}}"
                 SelectedDates="{Binding SelectedDates, Source={x:Reference main}}"
                 SelectionDatesMode="Multiply"
                 DisplayedMonthYear="{Binding DisplayedCarouselDayMontYear, Source={x:Reference main}}"
