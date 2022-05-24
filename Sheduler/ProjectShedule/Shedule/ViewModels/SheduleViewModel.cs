@@ -44,7 +44,7 @@ namespace ProjectShedule.Shedule.ViewModels
 
             _askConfirmationDelete = new DeleteConfirmationSetting().AskQuestion;
 
-            FilterControl.PropertyChanged += OnFilterSelectionPropertyChanged;
+            
             
             AssigmentCommands();
         }
@@ -65,12 +65,15 @@ namespace ProjectShedule.Shedule.ViewModels
                 }
             }
         }
-        public ICommand OpenEditorCommand { get; set; }
-        public ICommand ExpandedCalendarCommand { get; set; }
+
+        public ICommand OpenEditorCommand { get; private set; }
+        public ICommand ExpandedCalendarCommand { get; private set; }
         public ICommand MoveToDayCommand { get; private set; }
+        public ICommand CalendarDayLongPressedCommand { get; set; }
         public INavigation Navigation { get; set; }
         public bool ExpandedCalendar { get; set; }
         public string Title { get; set; }
+
         #endregion
 
         private void AssigmentCommands()
@@ -80,7 +83,15 @@ namespace ProjectShedule.Shedule.ViewModels
 
             ExpandedCalendarCommand = new Command(ExpandCalendar);
             OpenEditorCommand = new Command(OpenEditorCommandHandler);
+            CalendarDayLongPressedCommand = new Command<DateTime>(OpenEditorCommandHandler);
             MoveToDayCommand = new Command(() => DisplayedDateOnCarousel = DateTime.Today);
+        }
+        private void OpenEditorCommandHandler(DateTime sendDateTime)
+        {
+            var model = _builderPackNoteModel.Build();
+            model.Note.AppointmentDate = sendDateTime;
+            model.Note.DateTimeStatus = true;
+            AttemptOpenEditor(model);
         }
         private void OpenEditorCommandHandler()
         {
@@ -108,7 +119,8 @@ namespace ProjectShedule.Shedule.ViewModels
 
             void SavedPackNoteEventHandler(ReadOnlyPackNote savedPackNote)
             {
-                _sheduleModel.UpdatePackNotesAsync();
+                _sheduleModel.UpdatePackNotes();
+                _sheduleModel.UpdateEvents();
             }
         }
         private async void DeletePackNoteCommandHandler(BasePackNoteViewModel packNoteViewModel)
@@ -127,10 +139,7 @@ namespace ProjectShedule.Shedule.ViewModels
             ExpandedCalendar = !ExpandedCalendar;
             OnPropertyChanged(nameof(ExpandedCalendar));
         }
-        private void OnFilterSelectionPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
-        {
-            _sheduleModel.UpdatePackNotesAsync();
-        }
+        
         private void OnPropertyChanged([CallerMemberName] string propertyName = "" )
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
