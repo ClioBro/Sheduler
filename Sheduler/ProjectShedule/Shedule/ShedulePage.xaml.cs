@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Other;
+﻿using ProjectShedule.Animation;
 using ProjectShedule.Shedule.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -14,14 +14,13 @@ namespace ProjectShedule.Shedule
         {
             InitializeComponent();
             BindingContext = new SheduleViewModel() { Navigation = this.Navigation };
-            _animations = new BouncingAnimatedViewElement();
+            _animations = new BouncingAnimatedViewElement(length: 300, firstScale: -0.03, secondScale: 0.03);
         }
-        public bool IsAnimated { get; protected set; }
-        private async void ViewAnimatedPush(object sender, EventArgs e)
+        private void ViewAnimatedPush(object sender, EventArgs e)
         {
-            if (!IsAnimated && sender is VisualElement visualElement)
+            if (!_animations.IsAnimated && sender is VisualElement visualElement)
             {
-                await _animations.SinInElementAsync(visualElement, () => IsAnimated = false);
+                _animations.SinInElement(visualElement);
             }
         }
     }

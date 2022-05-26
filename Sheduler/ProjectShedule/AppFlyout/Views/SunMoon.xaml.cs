@@ -1,5 +1,5 @@
-﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
-using ProjectShedule.Other;
+﻿using ProjectShedule.Animation;
+using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,15 +38,15 @@ namespace ProjectShedule.AppFlyout.Views
                 RotationAnimated();
             }
 
-            async void OpacityAnimated()
+            void OpacityAnimated()
             {
-                _baseViewElementAnimate = new OpacityAnimatedViewElement();
-                await _baseViewElementAnimate.SinInElementAsync(visualElement);
+                _baseViewElementAnimate = new OpacityAppearanceAnimatedViewElement();
+                _baseViewElementAnimate.SinInElement(visualElement);
             }
-            async void RotationAnimated()
+            void RotationAnimated()
             {
                 _baseViewElementAnimate = new RotationAnimatedViewElement();
-                await _baseViewElementAnimate.SinInElementAsync(visualElement, ()=> this.IsAnimated = false);
+                _baseViewElementAnimate.SinInElement(visualElement, ()=> this.IsAnimated = false);
             }
         }
         
