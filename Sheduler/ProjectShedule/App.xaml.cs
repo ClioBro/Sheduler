@@ -6,8 +6,8 @@ namespace ProjectShedule
 {
     public partial class App : Application
     {
-        internal static ApplicationContext ApplicationContext { get; set; }
-        public static ThemeController ThemeController { get; set; }
+        internal static ApplicationContext ApplicationContext { get; private set; }
+        public static IThemeController ThemeController { get; private set; }
         public App()
         {
             ApplicationContext = new ApplicationContext();

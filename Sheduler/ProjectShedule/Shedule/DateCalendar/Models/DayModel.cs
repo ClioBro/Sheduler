@@ -151,9 +151,11 @@ namespace ProjectShedule.Shedule.Calendar.Models
 
         public Color TextColor => IsThisMonth ? PrimaryTextColor : SecondaryTextColor;
 
-        public void OnAppThemeChanged(object sender, ThemeChangedEventArgs e)
+        public void NotifyColors()
         {
-            _ = Notify(nameof(TextColor), nameof(BackgroundColor), nameof(BorderColor));
+            Notify(nameof(TextColor),
+                   nameof(BackgroundColor),
+                   nameof(BorderColor));
         }
     }
 }

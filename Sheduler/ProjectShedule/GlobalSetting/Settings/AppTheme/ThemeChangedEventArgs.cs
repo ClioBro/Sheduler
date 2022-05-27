@@ -1,15 +1,16 @@
 ﻿using System;
+using static ProjectShedule.GlobalSetting.Settings.AppTheme.IThemeController;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
     public class ThemeChangedEventArgs : EventArgs
     {
-        public ThemeChangedEventArgs(ThemeController.Theme oldTheme, ThemeController.Theme newTheme)
+        public ThemeChangedEventArgs(ThemeKey oldTheme, ThemeKey newTheme)
         {
             NewTheme = newTheme;
             OldTheme = oldTheme;
         }
-        public ThemeController.Theme NewTheme { get; }
-        public ThemeController.Theme OldTheme { get; }
+        public ThemeKey NewTheme { get; }
+        public ThemeKey OldTheme { get; }
     }
 }

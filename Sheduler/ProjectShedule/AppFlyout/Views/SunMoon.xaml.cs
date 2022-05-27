@@ -10,7 +10,7 @@ namespace ProjectShedule.AppFlyout.Views
     public partial class SunMoon : ContentView
     {
         private BaseViewElementAnimate _baseViewElementAnimate ;
-        private ThemeController _themeController;
+        private readonly IThemeController _themeController;
         public bool IsAnimated { get; protected set; }
         public SunMoon()
         {
@@ -26,11 +26,11 @@ namespace ProjectShedule.AppFlyout.Views
                 OpacityAnimated();
                 switch (_themeController.CurrentTheme)
                 {
-                    case ThemeController.Theme.Light:
-                        _themeController.SetThemeOnApp(ThemeController.Theme.Dark);
+                    case ThemeKey.Light:
+                        _themeController.SetThemeOnApp(ThemeKey.Dark);
                         break;
-                    case ThemeController.Theme.Dark:
-                        _themeController.SetThemeOnApp(ThemeController.Theme.Light);
+                    case ThemeKey.Dark:
+                        _themeController.SetThemeOnApp(ThemeKey.Light);
                         break;
                     default:
                         break;

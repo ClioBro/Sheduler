@@ -32,14 +32,14 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
 
         internal BaseSelectionHasDateEngine<DayModel> _selectionDateEngine;
-        internal INotifyThemeChange _notifyThemeChanged = App.ThemeController;
+        internal INotifyThemeChanger _notifyThemeChanged = App.ThemeController;
         public MonthDays()
         {
             InitializeComponent();
             BuildSelectionDaysEngine(SelectionDatesMode);
             PressedCommand = new Command<DayModel>(SelectInEngine);
             LongPressedCommand = new Command<DayModel>(PropagateUpLongPressed);
-            _selectionDateEngine.SelectedDatesTime = SelectedDates; 
+            _selectionDateEngine.SelectedDatesTime = SelectedDates;
             InitializeDays();
         }
         ~MonthDays() => DiposeDayViews();
@@ -212,7 +212,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
                 dayView.BindingContext = dayModel;
                 dayModel.PressedCommand = PressedCommand;
                 dayModel.LongPressedCommand = LongPressedCommand;
-                _notifyThemeChanged.ThemeChanged += dayModel.OnAppThemeChanged;
+                _notifyThemeChanged.ThemeChanged += (sender, e) => dayModel.NotifyColors();
                 newDaysViews.Add(dayView);
             }
             DayViews = newDaysViews;

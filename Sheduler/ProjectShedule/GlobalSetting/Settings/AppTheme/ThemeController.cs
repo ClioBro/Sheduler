@@ -5,43 +5,40 @@ using Xamarin.Forms;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
-    public interface INotifyThemeChange
-    {
-        event EventHandler<ThemeChangedEventArgs> ThemeChanged;
-    }
-    public class ThemeController : Setting<ThemeController>, INotifyThemeChange
+    public class ThemeController : Setting<ThemeController>, IThemeController
     {
         public event EventHandler<ThemeChangedEventArgs> ThemeChanged;
         private protected ICollection<ResourceDictionary> _mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-        private readonly Dictionary<Theme, ResourceDictionary> _themesDictionaries;
+        private readonly Dictionary<ThemeKey, ResourceDictionary> _themesDictionaries;
         public ThemeController()
         {
-            _themesDictionaries = new Dictionary<Theme, ResourceDictionary>
+            _themesDictionaries = new Dictionary<ThemeKey, ResourceDictionary>
             {
-                {Theme.Dark, new DarkTheme()},
-                {Theme.Light, new LightTheme()}
+                {ThemeKey.Dark, new DarkTheme()},
+                {ThemeKey.Light, new LightTheme()}
             };
-            CurrentTheme = GetPreference(nameof(Theme.Dark), false) ? Theme.Dark : Theme.Light;
+            CurrentTheme = GetPreference(nameof(ThemeKey.Dark), false) ? ThemeKey.Dark : ThemeKey.Light;
         }
-        public Theme CurrentTheme { get; private set; }
-        public void SetThemeOnApp(Theme newTheme)
+        public ThemeKey CurrentTheme { get; protected set; }
+        public void SetThemeOnApp(ThemeKey newTheme)
         {
-            if (CurrentTheme != newTheme) 
+            if (CurrentTheme != newTheme)
                 SetCurrentTheme(newTheme);
         }
         public ResourceDictionary GetCurrentThemeResource()
         {
             return _themesDictionaries[CurrentTheme];
         }
-        private void SetCurrentTheme(Theme newTheme)
+
+        private void SetCurrentTheme(ThemeKey newTheme)
         {
             if (_themesDictionaries.ContainsKey(newTheme))
             {
-                Theme oldTheme = CurrentTheme;
+                ThemeKey oldTheme = CurrentTheme;
                 CurrentTheme = newTheme;
                 SetResourceOnApp();
                 ThemeChanged?.Invoke(this, new ThemeChangedEventArgs(oldTheme, newTheme));
-                SaveThemeOnApp();
+                SaveThemeOnAppMemory();
             }
             else
                 throw new Exception($"ERROR: Key {newTheme} not found in _themesDictionaries");
@@ -52,14 +49,9 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
             _mergedDictionaries.Add(_themesDictionaries[CurrentTheme]);
         }
 
-        private void SaveThemeOnApp()
+        private void SaveThemeOnAppMemory()
         {
-            SavePreference(nameof(Theme.Dark), CurrentTheme is Theme.Dark);
-        }
-
-        public enum Theme
-        {
-            Dark, Light, Nier
+            SavePreference(nameof(ThemeKey.Dark), CurrentTheme is ThemeKey.Dark);
         }
     }
 }

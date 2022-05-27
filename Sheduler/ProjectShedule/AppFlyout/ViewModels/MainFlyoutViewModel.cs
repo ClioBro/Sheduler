@@ -7,7 +7,7 @@ namespace ProjectShedule.AppFlyout.ViewModels
 {
     internal class MainFlyoutViewModel
     {
-        private readonly ThemeController _themeController;
+        private readonly IThemeController _themeController;
         public ObservableCollection<MainFlyoutMenuItemViewModel> MenuItems { get; set; }
 
         public MainFlyoutViewModel()
@@ -23,16 +23,16 @@ namespace ProjectShedule.AppFlyout.ViewModels
         {
             SetDisplayedImageByTheme(e.NewTheme);
         }
-        public void SetDisplayedImageByTheme(ThemeController.Theme newTheme)
+        public void SetDisplayedImageByTheme(ThemeKey newTheme)
         {
             switch (newTheme)
             {
-                case ThemeController.Theme.Dark:
+                case ThemeKey.Dark:
                     foreach (var menuItem in MenuItems)
                         menuItem.DisplayedImage = menuItem.LightImage;
                     break;
 
-                case ThemeController.Theme.Light:
+                case ThemeKey.Light:
                     foreach (var menuItem in MenuItems)
                         menuItem.DisplayedImage = menuItem.DarkImage;
                     break;
