@@ -3,12 +3,12 @@ using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(SearchBar), typeof(ProjectShedule.Droid.Resources.Renderers.SearchBarIconColorCustomRenderer))]
+[assembly: ExportRenderer(typeof(SearchBar), typeof(ProjectShedule.Droid.Resources.Renderers.CustomSearchBarRenderer))]
 namespace ProjectShedule.Droid.Resources.Renderers
 {
-    public class SearchBarIconColorCustomRenderer : SearchBarRenderer
+    public class CustomSearchBarRenderer : SearchBarRenderer
     {
-        public SearchBarIconColorCustomRenderer(Context context) : base(context) { }
+        public CustomSearchBarRenderer(Context context) : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<SearchBar> e)
         {
