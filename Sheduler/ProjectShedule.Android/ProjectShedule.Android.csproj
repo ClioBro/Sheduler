@@ -69,7 +69,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\AlarmHandler .cs" />
     <Compile Include="Resources\AndroidNotificationManager .cs" />
-    <Compile Include="Resources\Renderers\SearchBarIconColorCustomRenderer.cs" />
+    <Compile Include="Resources\Renderers\CustomSearchBarRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
