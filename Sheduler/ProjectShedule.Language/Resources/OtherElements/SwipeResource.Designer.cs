@@ -19,7 +19,7 @@ namespace ProjectShedule.Language.Resources.OtherElements {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class SwipeResource {
@@ -75,6 +75,15 @@ namespace ProjectShedule.Language.Resources.OtherElements {
         public static string EditButton {
             get {
                 return ResourceManager.GetString("EditButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revive.
+        /// </summary>
+        public static string ReviveButton {
+            get {
+                return ResourceManager.GetString("ReviveButton", resourceCulture);
             }
         }
     }

@@ -14,6 +14,8 @@
         }
         public void SetDeleteQuestion(bool question)
         {
+            if (_askQuestion == question)
+                return;
             SavePreference(nameof(DeleteConfirmationSettings.Question), question);
             _askQuestion = question;
         }

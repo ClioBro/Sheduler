@@ -2,7 +2,7 @@
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
-    public interface IThemeController : INotifyThemeChanger
+    public interface IThemeController : INotifyThemeChanged
     {
         ThemeKey CurrentTheme { get; }
         void SetThemeOnApp(ThemeKey newTheme);

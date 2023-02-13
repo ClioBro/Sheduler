@@ -14,6 +14,10 @@ namespace ProjectShedule.GlobalSetting.Settings
         {
             Preferences.Set(ConvertKey(key), value);
         }
+        private protected void SavePreference(string key, int value)
+        {
+            Preferences.Set(ConvertKey(key), value);
+        }
         private protected void SavePreference(string key, bool value)
         {
             Preferences.Set(ConvertKey(key), value);
@@ -24,6 +28,10 @@ namespace ProjectShedule.GlobalSetting.Settings
             return Preferences.Get(ConvertKey(key), defaultValue);
         }
         private protected double GetPreference(string key, double defaultValue)
+        {
+            return Preferences.Get(ConvertKey(key), defaultValue);
+        }
+        private protected int GetPreference(string key, int defaultValue)
         {
             return Preferences.Get(ConvertKey(key), defaultValue);
         }

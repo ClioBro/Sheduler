@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolKit="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:models ="clr-namespace:ProjectShedule.Shedule.Calendar.Models"
+             xmlns:models ="clr-namespace:ProjectShedule.Shedule.DateCalendar.Models"
              x:DataType="models:DayModel"
              x:Class="ProjectShedule.Shedule.Calendar.Views.DayView">
     <ContentView.Content>
@@ -61,9 +61,6 @@
                         HasShadow="False"/>
                 </StackLayout>
             </FlexLayout>
-            <!--<Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnTapped"/>
-            </Frame.GestureRecognizers>-->
         </Frame>
     </ContentView.Content>
 </ContentView>

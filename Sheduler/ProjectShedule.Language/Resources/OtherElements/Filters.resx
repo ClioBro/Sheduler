@@ -123,13 +123,16 @@
   <data name="ByAlphabetically" xml:space="preserve">
     <value>Alphabetically</value>
   </data>
-  <data name="ByDate" xml:space="preserve">
-    <value>By Date</value>
+  <data name="ByDateAppointment" xml:space="preserve">
+    <value>By Date of Appointment</value>
   </data>
   <data name="ByCarouselDate" xml:space="preserve">
     <value>Carousel date</value>
   </data>
   <data name="ByCalendar" xml:space="preserve">
     <value>Calendar</value>
+  </data>
+  <data name="ByCreatedDate" xml:space="preserve">
+    <value>By Creation Date</value>
   </data>
 </root>

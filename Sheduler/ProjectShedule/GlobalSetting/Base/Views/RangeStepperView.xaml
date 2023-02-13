@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectShedule.GlobalSetting.Base.ViewModel"
+             xmlns:stepper="clr-namespace:ProjectShedule.Core.Stepper"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             x:Class="ProjectShedule.GlobalSetting.Base.Views.RangeStepperView"
+             x:DataType="local:DateTimeRangeVewModel">
+  <ContentView.Content>
+        <Grid
+            CompressedLayout.IsHeadless="True"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding MainText}"
+                Style="{DynamicResource MediumLabelStyle}"/>
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Style="{DynamicResource SmallLabelStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding StartText}" />
+                        <Span 
+                            Text=" "/>
+                        <Span
+                            Text="{Binding CustomStartStepperViewModel.Value}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                        <Span 
+                            Text="г."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <stepper:CustomStepper 
+                Grid.Column="1"
+                Grid.Row="1"
+                BindingContext="{Binding CustomStartStepperViewModel}"/>
+            <Label 
+                Grid.Column="0"
+                Grid.Row="2"
+                Style="{DynamicResource SmallLabelStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="{Binding EndText}"/>
+                        <Span 
+                            Text=" "/>
+                        <Span
+                            Text="{Binding CustomEndStepperViewModel.Value}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                        <Span 
+                            Text="г."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <stepper:CustomStepper 
+                Grid.Column="1"
+                Grid.Row="2"
+                BindingContext="{Binding CustomEndStepperViewModel}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

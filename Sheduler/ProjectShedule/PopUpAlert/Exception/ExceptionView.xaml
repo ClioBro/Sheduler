@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xctViews:Popup
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xctViews="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xmlns:local="clr-namespace:ProjectShedule.PopUpAlert.Exception"
+    x:Class="ProjectShedule.PopUpAlert.Exception.ExceptionView"
+    x:DataType="local:ExceptionView"
+    x:Name="popUpView"
+    Size="350,500">
+    <ScrollView  Orientation="Vertical">
+        <Frame Padding="1"
+               BackgroundColor="{DynamicResource PopUpBackGroundColor}"
+               BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
+            <StackLayout CompressedLayout.IsHeadless="True">
+                <Label Text="Exception!" 
+                   Style="{DynamicResource LargeLabelStyle}" 
+                   HorizontalOptions="CenterAndExpand"/>
+                <Label 
+                    HorizontalOptions="Start" Style="{DynamicResource MediumLabelStyle}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                        Text="{Binding Message}"
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                            <Span 
+                        Text=" |||| -> "
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                            <Span 
+                        Text="{Binding StackTrace}" 
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        BackgroundColor="{DynamicResource TransparentColor}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            
+        </Frame>
+    </ScrollView>
+</xctViews:Popup>

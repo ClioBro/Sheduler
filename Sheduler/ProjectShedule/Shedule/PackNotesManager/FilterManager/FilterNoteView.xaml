@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:core="clr-namespace:ProjectShedule.Core" 
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
+             x:Class="ProjectShedule.Shedule.PackNotesManager.FilterManager.FilterNoteView"
+             x:DataType="viewModels:ExpandebleRadioButtonsViewModel">
+  <ContentView.Content>
+        <xct:Expander
+            x:Name="filter" 
+            AnimationLength="100"
+            IsExpanded="{Binding IsExpanded}">
+            <xct:Expander.Header>
+                <Frame
+                    HeightRequest="27"
+                    Padding="1"
+                    BorderColor="{DynamicResource PopUpPrimaryBorderColor}"
+                    BackgroundColor="{DynamicResource TransparentColor}">
+                    <FlexLayout 
+                        AlignItems="Center"
+                        JustifyContent="SpaceBetween">
+                        <Label 
+                            HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
+                            Margin="5,0"
+                            FontSize="18" 
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            BackgroundColor="{DynamicResource TransparentColor}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Text}"/>
+                                    <Span Text=": "/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <core:SortImageButton 
+                            Style="{DynamicResource FilterImage}"
+                            Descending="{Binding Descending}"
+                            HeightRequest="24" WidthRequest="24"
+                            Margin="1"/>
+                    </FlexLayout>
+                </Frame>
+            </xct:Expander.Header>
+            <xct:Expander.ContentTemplate>
+                <DataTemplate>
+                    <StackLayout
+                            BindableLayout.ItemsSource="{Binding ReadOnlyRadioButtonsViewModels}" Spacing="0" >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <views:RadioButtonsView/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </DataTemplate>
+            </xct:Expander.ContentTemplate>
+        </xct:Expander>
+    </ContentView.Content>
+</ContentView>

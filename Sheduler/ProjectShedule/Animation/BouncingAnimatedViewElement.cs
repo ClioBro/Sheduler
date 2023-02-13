@@ -8,15 +8,15 @@ namespace ProjectShedule.Animation
         public double SecondScale { get; set; }
         public BouncingAnimatedViewElement(uint length = 500, double firstScale = -0.1, double secondScale = 0.1)
         {
-            _length = length;
+            Length = length;
             FirstScale = firstScale;
             SecondScale = secondScale;
         }
         protected override async void SinIn()
         {
             IsAnimated = true;
-            await VisualElement.RelScaleTo(FirstScale, _length);
-            await VisualElement.RelScaleTo(SecondScale, _length);
+            await VisualElement.RelScaleTo(FirstScale, Length);
+            await VisualElement.RelScaleTo(SecondScale, Length);
             IsAnimated = false;
             FinishCallBack?.Invoke();
         }

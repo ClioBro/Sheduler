@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectShedule.Core.Stepper"
+             x:Class="ProjectShedule.Core.Stepper.CustomStepper"
+             x:DataType="local:CustomStepperViewModel">
+    <ContentView.Resources>
+        <Style x:Key="StepperButton" TargetType="Button">
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="BorderWidth" Value="2"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentView.Resources>
+  <ContentView.Content>
+      <FlexLayout
+          Wrap="{Binding Wrap}"
+          Direction="{Binding Direction}"
+          AlignContent="{Binding AlignContent}"
+          AlignItems="{Binding AlignItems}"
+          JustifyContent="{Binding JustifyContent}">
+            <Label 
+                IsVisible="{Binding ValueIsVisible}"
+                Text="{Binding Value}"/>
+            <StackLayout 
+                CompressedLayout.IsHeadless="True"
+                Orientation="Horizontal"
+                Spacing="5">
+                <Button 
+                    Text="{Binding DownButtonViewModel.Text}" 
+                    Style="{x:DynamicResource StepperButton}"
+                    Command="{Binding DownButtonViewModel.Command}" 
+                    CommandParameter="{Binding DownButtonViewModel.CommandParameter}"
+                    Opacity="{Binding DownButtonViewModel.Opacity}"
+                    IsEnabled="{Binding DownButtonViewModel.IsEnable}"/>
+                <Button 
+                    Text="{Binding UpButtonViewModel.Text}" 
+                    Style="{x:DynamicResource StepperButton}"
+                    Command="{Binding UpButtonViewModel.Command}" 
+                    CommandParameter="{Binding UpButtonViewModel.CommandParameter}"
+                    Opacity="{Binding UpButtonViewModel.Opacity}"
+                    IsEnabled="{Binding UpButtonViewModel.IsEnable}"/>
+            </StackLayout>
+        </FlexLayout>
+  </ContentView.Content>
+</ContentView>

@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.DateCalendar.Models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

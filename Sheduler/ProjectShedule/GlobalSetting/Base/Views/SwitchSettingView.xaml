@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Base.ViewModel"
+             x:Class="ProjectShedule.GlobalSetting.Views.SwitchSettingView"
+             x:DataType="models:SwitchSettingViewModel">
+  <ContentView.Content>
+        <StackLayout  
+            Orientation="Horizontal"
+            CompressedLayout.IsHeadless="True">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding MainText}"
+                            Style="{DynamicResource SmallLabelStyle}"/>
+                        <Span 
+                            x:Name="spaceSpan"
+                            Text=" "/>
+                        <Span
+                            Text="{Binding ValueText}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Switch 
+                IsToggled="{Binding Value}"
+                Style="{DynamicResource SwitchStyle}"  
+                VerticalOptions="Center"
+                HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

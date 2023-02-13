@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:models="clr-namespace:ProjectShedule.GlobalSetting.Base.ViewModel"
+             x:Class="ProjectShedule.GlobalSetting.Views.SliderSettingView"
+             x:DataType="models:SlideSettingViewModel">
+    <ContentView.Content>
+        <Grid
+            CompressedLayout.IsHeadless="True">
+            <Label
+                Grid.Column="0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding MainText}"
+                            Style="{DynamicResource SmallLabelStyle}"/>
+                        <Span 
+                            x:Name="spaceSpan"
+                            Text=" "/>
+                        <Span
+                            Text="{Binding Source={x:Reference slider}, Path=Value}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextDecorations="Underline"
+                            FontSize="17"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Slider 
+                x:Name="slider"
+                Grid.Column="1"
+                HorizontalOptions="Fill"
+                Maximum="{Binding MaxValue}"
+                Minimum="{Binding MinValue}"
+                Value="{Binding Value}"
+                DragCompletedCommand="{Binding DragCompletedCommand}"
+                ThumbColor="{DynamicResource SliderThumbColor}"
+                MaximumTrackColor="{DynamicResource SliderMaximumTrackColor}"
+                MinimumTrackColor="{DynamicResource SliderMinimumTrackColor}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

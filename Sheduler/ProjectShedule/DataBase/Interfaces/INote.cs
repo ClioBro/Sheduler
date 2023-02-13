@@ -2,24 +2,18 @@
 
 namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface INote : ITable, ICloneable
+    public interface INote : ITableObject, ICloneable
     {
         string Header { get; }
-
         string DopText { get; }
-
         DateTime CreatedDateTime { get; }
+        DateTime? DeletedDateTime { get; }
+        DateTime? AppointmentDate { get; }
 
-        DateTime AppointmentDate { get; }
-
-        int RepeadIdKey { get; }
-
+        int RepeatIdKey { get; }
         bool Notify { get; }
-
-        bool DateTimeStatus { get; }
-
+        bool IsAppointmentDate { get; }
         string BackgroundColorKey { get; }
-
         string LineColorKey { get; }
     }
 }

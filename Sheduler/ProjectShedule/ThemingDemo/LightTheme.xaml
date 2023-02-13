@@ -2,34 +2,35 @@
 <ResourceDictionary  
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ProjectShedule.Calendar.Controls.ThemingDemo.LightTheme">
-             <!--Text-->
+    x:Class="ProjectShedule.ThemingDemo.LightTheme">
+    <!--Pages/Views-->
     <Color x:Key="PageBackgroundColor">White</Color>
     <Color x:Key="ViewBackgroundColor">#E6F2FF</Color>
     <Color x:Key="NavigationBarColor">WhiteSmoke</Color>
     <Color x:Key="PrimaryColor">WhiteSmoke</Color>
     <Color x:Key="SecondaryColor">Black</Color>
+    <Color x:Key="TransparentColor">Transparent</Color>
+    <!--Text-->
     <Color x:Key="PrimaryTextColor">Black</Color>
     <Color x:Key="SecondaryTextColor">Gray</Color>
     <Color x:Key="TertiaryTextColor">Silver</Color>
-    <Color x:Key="TransparentColor">Transparent</Color>
-             <!--Swipe-->
+    <!--Swipe-->
     <Color x:Key="SwipeItemDeleteBackGroundColor">#F87878</Color>
     <Color x:Key="SwipeItemEditBackGroundColor">#72EE72</Color>
-             <!--Button-->
+    <!--Button-->
     <Color x:Key="ButtonPrimaryTextColor">#3A527C</Color>
     <Color x:Key="ButtonSecondaryTextColor">#D049A3</Color>
     <Color x:Key="ButtonPrimaryBackGroundColor">White</Color>
     <Color x:Key="ButtonSecondaryBackGroundColor">#B5B7BA</Color>
     <Color x:Key="ButtonBorderColor">Black</Color>
-        <!--Slider-->
+    <!--Slider-->
     <Color x:Key="SliderThumbColor">#016EDB</Color>
     <Color x:Key="SliderMaximumTrackColor">White</Color>
     <Color x:Key="SliderMinimumTrackColor">#89B0D6</Color>
     <!--Switch-->
     <Color x:Key="SwitchThumbColor">#016EDB</Color>
     <Color x:Key="SwitchOnColor">#BDD8BB</Color>
-             <!--Shield-->
+    <!--Shield-->
     <Color x:Key="ShieldSubjectTextColor">Black</Color>
     <Color x:Key="ShieldSubjectBackGroundColor">Transparent</Color>
     <Color x:Key="ShieldStatusTextColor">Black</Color>
@@ -75,4 +76,17 @@
         <Setter Property="Source" Value="pluse2_icon.png"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
     </Style>
+
+    <Image x:Key="EditIamge" Source="edit_Icon.png"/>
+    <Color x:Key="EditBackGroundColor">#88FF9F</Color>
+    <Color x:Key="EditTextColor">Black</Color>
+
+    <Image x:Key="DeleteIamge" Source="trash_icon.png"/>
+    <Color x:Key="DeleteBackGroundColor">#E17D7D</Color>
+    <Color x:Key="DeleteTextColor">Black</Color>
+
+    <Image x:Key="ReviveIamge" Source="delete_reset_icon.png"/>
+    <Color x:Key="ReviveBackGroundColor">#88FF9F</Color>
+    <Color x:Key="ReviveTextColor">Black</Color>
+
 </ResourceDictionary>

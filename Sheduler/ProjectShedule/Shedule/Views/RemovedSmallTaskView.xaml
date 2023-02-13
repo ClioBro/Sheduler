@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:swipeViews="clr-namespace:ProjectShedule.Core.Swipe"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels" 
+             x:DataType="viewModels:ThrashSmallTaskViewModel" 
+             x:Class="ProjectShedule.ThrashCan.Views.RemovedSmallTaskView"
+             Opacity="{Binding Opacity}"
+             IsEnabled="{Binding ViewIsEnable}">
+    <ContentView.Content CompressedLayout.IsHeadless="True">
+        <swipeViews:PercenetAchivementSwipeView
+            x:Name="swipeView"
+            RightPercenetAchivement="{Binding SwipeView.RightDisclosurePercenetAchivement}"
+            LeftPercenetAchivement="{Binding SwipeView.LeftDisclosurePercenetAchivement}"
+            Threshold="{Binding SwipeView.Threshold}"
+            RightItems="{Binding SwipeView.RightItems}"
+            LeftItems="{Binding SwipeView.LeftItems}">
+            <yummy:PancakeView 
+                x:Name="pancakeView"
+                CornerRadius="0, 4, 0, 4"
+                Margin="0"
+                Padding="0">
+                <input:CheckBox
+                    Padding="5"
+                    CheckChangedCommand="{Binding CheckChangedCommand}"
+                    CommandParameter="{Binding .}"
+                    Text="{Binding Header}" 
+                    IsChecked="{Binding Status}"
+                    Type="Check" TextFontSize="18"
+                    TextColor="{DynamicResource PrimaryTextColor}" 
+                    BorderColor="{DynamicResource SecondaryColor}"
+                    Color="{DynamicResource SecondaryColor}"
+                    BackgroundColor="{DynamicResource PageBackgroundColor}"
+                    IconColor="#0BAB35">
+                </input:CheckBox>
+            </yummy:PancakeView>
+        </swipeViews:PercenetAchivementSwipeView>
+    </ContentView.Content>
+</ContentView>

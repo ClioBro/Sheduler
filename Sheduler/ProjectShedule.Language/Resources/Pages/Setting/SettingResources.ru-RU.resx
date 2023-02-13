@@ -147,4 +147,16 @@
   <data name="OnLabel" xml:space="preserve">
     <value>Вкл</value>
   </data>
+  <data name="CarouselHeaderLabel" xml:space="preserve">
+    <value>Календарь:</value>
+  </data>
+  <data name="YearsRangeLabel" xml:space="preserve">
+    <value>Диапазон Года:</value>
+  </data>
+  <data name="StartLabel" xml:space="preserve">
+    <value>Начало:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>Конец:</value>
+  </data>
 </root>

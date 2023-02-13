@@ -3,7 +3,7 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-                 xmlns:views="clr-namespace:ProjectShedule.Shedule.PackNotesManager"
+                 xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
                  x:Class="ProjectShedule.PopUpAlert.DemonstrationViewPackNote"
                  BackgroundColor="Transparent">
     <pages:PopupPage.Animation>
@@ -16,7 +16,13 @@
             EasingOut="SinInOut"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10" Padding="0" CornerRadius="0">
+    <Frame 
+        HorizontalOptions="FillAndExpand" 
+        VerticalOptions="EndAndExpand" 
+        Margin="10" 
+        Padding="0" 
+        CornerRadius="0"
+        BackgroundColor="Transparent">
         <views:PackNoteView x:Name="packNoteView"/>
     </Frame>
 </pages:PopupPage>

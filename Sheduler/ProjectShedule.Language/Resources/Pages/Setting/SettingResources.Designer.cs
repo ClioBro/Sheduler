@@ -19,7 +19,7 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class SettingResources {
@@ -61,6 +61,15 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar:.
+        /// </summary>
+        public static string CarouselHeaderLabel {
+            get {
+                return ResourceManager.GetString("CarouselHeaderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Corner radius:.
         /// </summary>
         public static string CornerRadiusDopTextLabel {
@@ -93,6 +102,15 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
         public static string DeleteQuestionDopTextLabel {
             get {
                 return ResourceManager.GetString("DeleteQuestionDopTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End:.
+        /// </summary>
+        public static string EndLabel {
+            get {
+                return ResourceManager.GetString("EndLabel", resourceCulture);
             }
         }
         
@@ -142,11 +160,29 @@ namespace ProjectShedule.Language.Resources.Pages.Setting {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start:.
+        /// </summary>
+        public static string StartLabel {
+            get {
+                return ResourceManager.GetString("StartLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme:.
         /// </summary>
         public static string ThemeHeaderLabel {
             get {
                 return ResourceManager.GetString("ThemeHeaderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Years Range:.
+        /// </summary>
+        public static string YearsRangeLabel {
+            get {
+                return ResourceManager.GetString("YearsRangeLabel", resourceCulture);
             }
         }
     }

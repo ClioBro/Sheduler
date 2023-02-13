@@ -1,22 +1,19 @@
-﻿using ProjectShedule.Shedule.Calendar.Enums;
-using ProjectShedule.GlobalSetting.Settings.AppTheme;
+﻿using ProjectShedule.Core.Interfaces;
+using ProjectShedule.Shedule.Calendar.Enums;
+using ProjectShedule.Shedule.Calendar.Models;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace ProjectShedule.Shedule.Calendar.Models
+namespace ProjectShedule.Shedule.DateCalendar.Models
 {
-    public interface IHasDate
-    {
-        DateTime Date { get; }
-    }
     public class DayModel : BindableBase<DayModel>, IHasDate
     {
         public DateTime Date
         {
             get => GetProperty<DateTime>();
             set => SetProperty(value)
-                    .Notify(nameof(BorderColor));
+                    .NotifyProperty(nameof(BorderColor));
         }
         public ICommand PressedCommand
         {
@@ -33,7 +30,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty<bool>();
             set => SetProperty(value)
-                    .Notify(nameof(TextColor),
+                    .NotifyProperty(nameof(TextColor),
                             nameof(BorderColor),
                             nameof(BackgroundColor));
         }
@@ -42,7 +39,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty<bool>();
             set => SetProperty(value)
-                    .Notify(nameof(TextColor));
+                    .NotifyProperty(nameof(TextColor));
         }
         public bool IsToday
             => Date.Date == DateTime.Today;
@@ -57,7 +54,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty<int>();
             set => SetProperty(value)
-                .Notify(nameof(HasEvents));
+                .NotifyProperty(nameof(HasEvents));
         }
         public int MaxColorEvents => 3;
         public bool BackgroundEventIndicator => HasEvents && EventIndicatorType == EventIndicatorType.Background;
@@ -65,7 +62,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty(EventIndicatorType.BottomDot);
             set => SetProperty(value)
-                    .Notify(// nameof(IsEventDotVisible),
+                    .NotifyProperty(// nameof(IsEventDotVisible),
                             nameof(BackgroundEventIndicator),
                             nameof(BackgroundColor));
         }
@@ -89,7 +86,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty(DefaultEventColor);
             set => SetProperty(value)
-                    .Notify(nameof(EventColor),
+                    .NotifyProperty(nameof(EventColor),
                             nameof(BackgroundColor),
                             nameof(BackgroundFullEventColor));
         }
@@ -97,7 +94,7 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty(SelectedBackgroundColor);
             set => SetProperty(value)
-                    .Notify(nameof(EventColor),
+                    .NotifyProperty(nameof(EventColor),
                             nameof(BackgroundColor),
                             nameof(BackgroundFullEventColor));
         }
@@ -124,13 +121,13 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty(DefaultSelectedBackgroundColor);
             set => SetProperty(value)
-                    .Notify(nameof(BackgroundColor));
+                    .NotifyProperty(nameof(BackgroundColor));
         }
         public Color TodayBorderColor
         {
             get => GetProperty(Color.FromHex("#FF0000"));
             set => SetProperty(value)
-                    .Notify(nameof(BorderColor));
+                    .NotifyProperty(nameof(BorderColor));
         }
         public Color BorderColor => IsToday
                                    ? TodayBorderColor
@@ -139,21 +136,21 @@ namespace ProjectShedule.Shedule.Calendar.Models
         {
             get => GetProperty((Color)Application.Current.Resources["PrimaryTextColor"]);
             set => SetProperty(value)
-                .Notify(nameof(TextColor));
+                .NotifyProperty(nameof(TextColor));
         }
 
         public Color SecondaryTextColor
         {
             get => GetProperty((Color)Application.Current.Resources["SecondaryTextColor"]);
             set => SetProperty(value)
-                .Notify(nameof(TextColor));
+                .NotifyProperty(nameof(TextColor));
         }
 
         public Color TextColor => IsThisMonth ? PrimaryTextColor : SecondaryTextColor;
 
         public void NotifyColors()
         {
-            Notify(nameof(TextColor),
+            NotifyProperty(nameof(TextColor),
                    nameof(BackgroundColor),
                    nameof(BorderColor));
         }

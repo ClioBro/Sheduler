@@ -18,12 +18,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\**" />
+    <Compile Remove="Shedule\Builders\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="Shedule\Builders\**" />
+    <None Remove="Repository\**" />
+    <None Remove="Shedule\Builders\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="4.1.6" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
   </ItemGroup>
 
@@ -38,19 +48,31 @@
     <Compile Update="AppFlyout\Views\FlyoutPage.xaml.cs">
       <DependentUpon>FlyoutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GlobalSetting\SettingMainPage.xaml.cs">
-      <DependentUpon>SettingMainPage.xaml</DependentUpon>
+    <Compile Update="GlobalSetting\Base\Views\RangeStepperView.xaml.cs">
+      <DependentUpon>RangeStepperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="GlobalSetting\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="PopUpAlert\ColorSelection\View\ColorsSelector.xaml.cs">
+      <DependentUpon>ColorsSelector.xaml</DependentUpon>
     </Compile>
     <Compile Update="PopUpAlert\DemonstrationViewPackNote.xaml.cs">
       <DependentUpon>DemonstrationViewPackNote.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Shedule\PackNotesManager\FilterManager\RadioButtonResource.xaml.cs">
+    <Compile Update="PopUpAlert\Exception\ExceptionView.xaml.cs">
+      <DependentUpon>ExceptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\RadioButtonResource.xaml.cs">
       <DependentUpon>RadioButtonResource.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Shedule\EditorNotePage.xaml.cs">
+      <DependentUpon>EditorNotePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Shedule\ShedulePage.xaml.cs">
       <DependentUpon>ShedulePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Shedule\PackNotesManager\PackNoteView.xaml.cs">
+    <Compile Update="Shedule\Views\PackNoteView.xaml.cs">
       <DependentUpon>PackNoteView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Shedule\DateCalendar\Views\DaysOfWeekView.xaml.cs">
@@ -86,25 +108,43 @@
     <EmbeddedResource Update="AppFlyout\Views\SunMoon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Views\SliderSettingView.xaml">
+    <EmbeddedResource Update="Core\Search\SearchTitleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Settings\SheduleNotesDelete\Views\SheduleDeleteQuestionSettingView.xaml">
+    <EmbeddedResource Update="Core\Stepper\CustomStepper.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Settings\SheduleEvents\Views\SheduleEventsSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Base\Views\SliderSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\Settings\AppTheme\Views\ThemeSettingView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Base\Views\RangeStepperView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Tests\View\TEstView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\Views\CarouselSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Tests\View\TetRoom.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\Views\SheduleDeleteQuestionSettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RadioButtonsView.xaml">
+    <EmbeddedResource Update="GlobalSetting\Settings\Views\SheduleEventsSettingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="GlobalSetting\Settings\Views\ThemeSettingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\ColorSelection\View\ColorsSelector.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\ColorSelection\NoteColorSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUpAlert\Exception\ExceptionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\RadioButton\RadioButtonsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\FilterNoteView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemingDemo\DarkTheme.xaml">
@@ -113,10 +153,7 @@
     <EmbeddedResource Update="ThemingDemo\LightTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GlobalSetting\SettingMainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="PopUpAlert\ColorSelection\ColorSelectionPage.xaml">
+    <EmbeddedResource Update="GlobalSetting\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PopUpAlert\Entry\EntryView.xaml">
@@ -131,30 +168,37 @@
     <EmbeddedResource Update="PopUpAlert\RadioButtonsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\PackNotesManager\FilterManager\RadioButtonResource.xaml">
+    <EmbeddedResource Update="Resources\RadioButtonResource.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\Editor\EditorPackNotePage.xaml">
+    <EmbeddedResource Update="Shedule\EditorNotePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Shedule\ShedulePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\PackNotesManager\PackNoteView.xaml">
+    <EmbeddedResource Update="Shedule\Views\PackNoteView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Shedule\PackNotesManager\TaskView.xaml">
+    <EmbeddedResource Update="Shedule\Views\TaskView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\RemovedContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\Views\RemovedNoteView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shedule\Views\RemovedSmallTaskView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-    <Folder Include="Shedule\DataBase\Controlls\" />
-    <Folder Include="Shedule\Builders\" />
-    <Folder Include="Shedule\Base\" />
-    <Folder Include="Shedule\Views\" />
-    <Folder Include="Views\DateCalendar\" />
-    <Folder Include="Views\GlobalSetting\" />
+    <Folder Include="DataBase\BusinessLayer\Managers\" />
+    <Folder Include="DataBase\BusinessLayer\Contracts\" />
+    <Folder Include="DataBase\DataAccessLayer\" />
+    <Folder Include="DataBase\DataLayer\" />
+    <Folder Include="Shedule\PackNotesManager\FilterManager\Model\" />
   </ItemGroup>
 </Project>

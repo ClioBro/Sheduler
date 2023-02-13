@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.DateCalendar.Models;
 
 namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
 {

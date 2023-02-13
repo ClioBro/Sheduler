@@ -1,74 +1,48 @@
 ﻿using Android.Content;
+using ProjectShedule.Core;
+using ProjectShedule.Core.Enum;
+using ProjectShedule.Core.Notify;
 using ProjectShedule.Escaping;
-using ProjectShedule.Shedule.NotifyOnApp.Enum;
-using System;
 
 namespace ProjectShedule._0.Droid.Resources
 {
-    [BroadcastReceiver(Enabled =true, Label = "Local Notifications Broatcast Reciver")]
+    [BroadcastReceiver(Enabled = true, Label = "Local Notifications Broatcast Reciver")]
     public class AlarmHandler : BroadcastReceiver
     {
+        AndroidNotificationManager _androidNotifymanager;
+        Notification _notification;
         public override void OnReceive(Context context, Intent intent)
         {
-            if (intent?.Extras != null)
+            if (intent?.Extras == null)
+                return;
+
+            int id = intent.GetIntExtra(AndroidNotificationManager.IDKey, 0);
+            string title = intent.GetStringExtra(AndroidNotificationManager.TitleKey);
+            string message = intent.GetStringExtra(AndroidNotificationManager.MessageKey);
+            int repeat = intent.GetIntExtra(AndroidNotificationManager.RepeatKey, 0);
+            long alertTime = intent.GetLongExtra(AndroidNotificationManager.DateTimeAlertKey, 0);
+
+            _notification = new Notification()
             {
-                string title = intent.GetStringExtra(AndroidNotificationManager.TitleKey);
-                string message = intent.GetStringExtra(AndroidNotificationManager.MessageKey);
-                int repead = intent.GetIntExtra(AndroidNotificationManager.RepeadKey, 0);
-                long alertTime = intent.GetLongExtra(AndroidNotificationManager.DateTimeAlertKey, 0);
-
-                Notification notify = new Notification()
-                {
-                    Title = title,
-                    Message = message,
-                    RepeadType = (RepeadType)repead,
-                    AlertTime = DateTimeExtension.LongInDateTime(alertTime)
-                };
-
-                AndroidNotificationManager manager = AndroidNotificationManager.Instance ?? new AndroidNotificationManager();
-                manager.Show(notify);
-
-                if (notify.RepeadType != RepeadType.NoRepeat)
-                {
-                    RepeadNotifyManager.SetNewAlertTime(notify);
-                    manager.SendNotification(notify);
-                }
-            }
-        }
-    }
-
-    public abstract class RepeadNotifyManager
-    {
-        private const long dayOnMilliseconds = 86400000;
-        private const long weekOnMilliseconds = 604800000;
-        private const long monthOnMilliseconds = 2678400000;
-        private const long yearOnMilliseconds = 31536000000;
-        public static void SetNewAlertTime(Notification notification)
-        {
-            notification.AlertTime = ChangeDepending(notification.AlertTime.Value, notification.RepeadType);
-        }
-        private static DateTime ChangeDepending(DateTime dateTime, RepeadType repeadType)
-        {
-            return dateTime.AddMilliseconds(GetMilliseconds(repeadType)).ToLocalTime();
-        }
-        private static long GetMilliseconds(RepeadType repeadType)
-        {
-            return repeadType switch
-            {
-                RepeadType.EveryDay => dayOnMilliseconds,
-                RepeadType.EveryWeek => weekOnMilliseconds,
-                RepeadType.EveryMonth => monthOnMilliseconds,
-                RepeadType.EveryYear => yearOnMilliseconds,
-                _ => 0
+                ID = id,
+                Title = title,
+                Message = message,
+                RepeatType = (RepeatType)repeat,
+                AlertTime = DateTimeExtensions.LongInDateTime(alertTime)
             };
+
+            _androidNotifymanager = AndroidNotificationManager.Instance ?? new AndroidNotificationManager();
+            _androidNotifymanager.Receive(_notification);
+            _androidNotifymanager.Show(_notification);
+
+            if (_notification.RepeatType != RepeatType.NoRepeat)
+                SetRepeatNotify();
         }
-    }
-    public static class DateTimeExtension
-    {
-        public static DateTime LongInDateTime(long longDateTime)
+        private void SetRepeatNotify()
         {
-            DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return start.AddMilliseconds(longDateTime).ToLocalTime();
+            RepeatNotifyManager repeatNotifyManager = new RepeatNotifyManager(_notification);
+            repeatNotifyManager.SetNewAlertTime();
+            _androidNotifymanager.Send(_notification);
         }
     }
 }

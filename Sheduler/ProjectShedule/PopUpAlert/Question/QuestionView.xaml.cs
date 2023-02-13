@@ -1,17 +1,18 @@
-﻿
-using Xamarin.CommunityToolkit.UI.Views;
+﻿using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
-
 
 namespace ProjectShedule.PopUpAlert.Question
 {
-    
     public partial class QuestionView : Popup<QuestionView.Answer>
     {
         public class Answer
         {
             public bool Value;
+
+            public static implicit operator bool (Answer answer) => answer.Value;
+            public static explicit operator Answer (bool value) => new Answer { Value = value };
         }
+
         private readonly Answer _answer = new Answer();
         public QuestionView(string headerText = null, string secondaryText = null, string dopText = null, string cancelText = "Cancel", string agreementText = "Ok", Size sizePopUp = new Size())
         {
@@ -31,7 +32,7 @@ namespace ProjectShedule.PopUpAlert.Question
         private void VisibleValid(Label label, string text)
         {
             bool empty = string.IsNullOrWhiteSpace(text);
-            if (empty) 
+            if (empty)
                 label.IsVisible = false;
             else
                 label.Text = text;
@@ -55,6 +56,5 @@ namespace ProjectShedule.PopUpAlert.Question
             _answer.Value = true;
             Dismiss(_answer);
         }
-        
     }
 }

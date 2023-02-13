@@ -5,30 +5,30 @@ using Android.OS;
 using AndroidX.Core.App;
 using ProjectShedule.Droid;
 using ProjectShedule.Escaping;
-using LanguageResource = ProjectShedule.Language.Resources.OtherElements;
 using System;
 using Xamarin.Forms;
 using AndroidApp = Android.App.Application;
+using LanguageResource = ProjectShedule.Language.Resources.OtherElements;
 
 [assembly: Dependency(typeof(ProjectShedule._0.Droid.Resources.AndroidNotificationManager))]
 namespace ProjectShedule._0.Droid.Resources
 {
-
     public class AndroidNotificationManager : INotificationManager
     {
         private const string channelId = "default";
         private const string channelName = "Default";
         private const string channelDescription = "The default channel for notifications.";
 
+        public const string IDKey = "idKey";
         public const string TitleKey = "title";
         public const string MessageKey = "message";
-        public const string RepeadKey = "repead";
+        public const string RepeatKey = "repeat";
         public const string DateTimeAlertKey = "dateTimeAlert";
 
 
         private bool channelInitialized = false;
         private int messageId = 0;
-        private int pendingIntentId = 0;
+
         private NotificationManager manager;
 
         public event EventHandler NotificationReceived;
@@ -45,7 +45,7 @@ namespace ProjectShedule._0.Droid.Resources
                 Instance = this;
             }
         }
-        public void SendNotification(Escaping.Notification notify)
+        public void Send(INotification notify)
         {
             if (!channelInitialized)
             {
@@ -57,22 +57,34 @@ namespace ProjectShedule._0.Droid.Resources
                 long triggerTime = GetNotifyTime(notify.AlertTime.Value);
 
                 Intent intent = new Intent(AndroidApp.Context, typeof(AlarmHandler));
+                intent.PutExtra(IDKey, notify.ID);
                 intent.PutExtra(TitleKey, notify.Title);
                 intent.PutExtra(MessageKey, notify.Message);
-                intent.PutExtra(RepeadKey, (int)notify.RepeadType);
+                intent.PutExtra(RepeatKey, (int)notify.RepeatType);
                 intent.PutExtra(DateTimeAlertKey, triggerTime);
 
-                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.CancelCurrent);
+                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, notify.ID, intent, PendingIntentFlags.CancelCurrent);
                 AlarmManager alarmManager = AndroidApp.Context.GetSystemService(Context.AlarmService) as AlarmManager;
                 alarmManager.SetExact(AlarmType.Rtc, triggerTime, pendingIntent);
+
             }
             else
             {
                 Show(notify);
             }
         }
+        public void Cancel(INotification notify)
+        {
+            if (!channelInitialized)
+                CreateNotificationChannel();
 
-        public void ReceiveNotification(Escaping.Notification notification)
+            AlarmManager alarmManager = AndroidApp.Context.GetSystemService(Context.AlarmService) as AlarmManager;
+            Intent myIntent = new Intent(AndroidApp.Context, typeof(AlarmHandler));
+            PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, notify.ID, myIntent, PendingIntentFlags.UpdateCurrent);
+            alarmManager.Cancel(pendingIntent);
+        }
+
+        public void Receive(INotification notification)
         {
             var args = new NotificationEventArgs()
             {
@@ -81,15 +93,15 @@ namespace ProjectShedule._0.Droid.Resources
             NotificationReceived?.Invoke(this, args);
         }
 
-        public void Show(Escaping.Notification notify)
+        public void Show(INotification notify)
         {
             Intent intent = new Intent(AndroidApp.Context, typeof(MainActivity));
             intent.PutExtra(TitleKey, notify.Title);
             intent.PutExtra(MessageKey, notify.Message);
 
-            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.UpdateCurrent);
+            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, notify.ID, intent, PendingIntentFlags.UpdateCurrent);
 
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
                 .SetContentTitle($"{LanguageResource.AppNotification.Title} {notify.Title}")
                 .SetContentText(LanguageResource.AppNotification.Message)
@@ -97,8 +109,8 @@ namespace ProjectShedule._0.Droid.Resources
                 .SetSmallIcon(Resource.Drawable.note_icon_negate)
                 .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
 
-            Android.App.Notification notification = builder.Build();
-            manager.Notify(messageId++, notification);
+            Android.App.Notification androidAppNotification = notificationBuilder.Build();
+            manager.Notify(messageId++, androidAppNotification);
         }
 
         private void CreateNotificationChannel()
@@ -125,7 +137,5 @@ namespace ProjectShedule._0.Droid.Resources
             long utcAlarmTime = utcTime.AddSeconds(-epochDiff).Ticks / 10000;
             return utcAlarmTime; // milliseconds
         }
-
-        
     }
 }

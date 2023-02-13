@@ -1,6 +1,7 @@
 ﻿using ProjectShedule.GlobalSetting.Settings.AppTheme;
 using ProjectShedule.Shedule.Calendar.Controls.SelectionEngine;
 using ProjectShedule.Shedule.Calendar.Models;
+using ProjectShedule.Shedule.DateCalendar.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,33 @@ namespace ProjectShedule.Shedule.Calendar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonthDays : ContentView
     {
+        #region BindableProperties
+
+        public static readonly BindableProperty DaysTitleMaximumLengthProperty =
+          BindableProperty.Create(nameof(DaysTitleMaximumLength), typeof(DaysTitleMaxLength), typeof(MonthDays), DaysTitleMaxLength.TwoChars);
+
+        public static readonly BindableProperty CultureProperty =
+          BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(MonthDays), CultureInfo.CurrentCulture);
+
+        public static readonly BindableProperty DisplayedMonthYearProperty =
+          BindableProperty.Create(nameof(DisplayedMonthYear), typeof(DateTime), typeof(MonthDays), DateTime.Today, BindingMode.TwoWay, propertyChanged: OnDisplayedMonthYearChanged);
+
+        public static readonly BindableProperty DayLongPressedCommandProperty =
+            BindableProperty.Create(nameof(DayLongPressedCommand), typeof(ICommand), typeof(MonthDays), null, BindingMode.TwoWay);
+
+        public static readonly BindableProperty CircleEventsProperty =
+            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(MonthDays), default, BindingMode.TwoWay, propertyChanged: OnCircleEventsChanged);
+
+        public static readonly BindableProperty SelectionDatesModeProperty =
+            BindableProperty.Create(nameof(SelectionDatesMode), typeof(SelectionMode), typeof(MonthDays), SelectionMode.Single, propertyChanging: OnSelectedDatesModeChanged);
+
+        public static readonly BindableProperty SelectedDatesProperty =
+          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(MonthDays), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
+
+        public static readonly BindableProperty DayViewsProperty =
+          BindableProperty.Create(nameof(DayViews), typeof(List<DayView>), typeof(MonthDays), new List<DayView>(), BindingMode.OneWayToSource);
+
+        #endregion
         public enum SelectionMode
         {
             Single, Multiply
@@ -32,7 +60,7 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
 
         internal BaseSelectionHasDateEngine<DayModel> _selectionDateEngine;
-        internal INotifyThemeChanger _notifyThemeChanged = App.ThemeController;
+        internal INotifyThemeChanged _notifyThemeChanged = App.ThemeController;
         public MonthDays()
         {
             InitializeComponent();
@@ -51,78 +79,50 @@ namespace ProjectShedule.Shedule.Calendar.Views
             }
         }
 
-        #region Simple Properties
+        #region Properties
 
-        public ICommand PressedCommand { get; private set; }
-        public ICommand LongPressedCommand { get; private set; }
-
-        #endregion
-
-        #region Bindable properties
-
-        public static readonly BindableProperty DaysTitleMaximumLengthProperty =
-          BindableProperty.Create(nameof(DaysTitleMaximumLength), typeof(DaysTitleMaxLength), typeof(MonthDays), DaysTitleMaxLength.TwoChars);
         public DaysTitleMaxLength DaysTitleMaximumLength
         {
             get => (DaysTitleMaxLength)GetValue(DaysTitleMaximumLengthProperty);
             set => SetValue(DaysTitleMaximumLengthProperty, value);
         }
-
-        public static readonly BindableProperty CultureProperty =
-          BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(MonthDays), CultureInfo.CurrentCulture);
         public CultureInfo Culture
         {
             get => (CultureInfo)GetValue(CultureProperty);
             set => SetValue(CultureProperty, value);
         }
-
-        public static readonly BindableProperty DisplayedMonthYearProperty =
-          BindableProperty.Create(nameof(DisplayedMonthYear), typeof(DateTime), typeof(MonthDays), DateTime.Today, BindingMode.TwoWay, propertyChanged: OnDisplayedMonthYearChanged);
         public DateTime DisplayedMonthYear
         {
             get => (DateTime)GetValue(DisplayedMonthYearProperty);
             set => SetValue(DisplayedMonthYearProperty, value);
         }
-
-        public static readonly BindableProperty DayLongPressedCommandProperty =
-            BindableProperty.Create(nameof(DayLongPressedCommand), typeof(ICommand), typeof(MonthDays), null, BindingMode.TwoWay);
         public ICommand DayLongPressedCommand
         {
             get => (ICommand)GetValue(DayLongPressedCommandProperty);
             set => SetValue(DayLongPressedCommandProperty, value);
         }
-
-        public static readonly BindableProperty CircleEventsProperty =
-            BindableProperty.Create(nameof(CircleEvents), typeof(ReadOnlyObservableCollection<CircleEventModel>), typeof(MonthDays), default, BindingMode.TwoWay, propertyChanged: OnCircleEventsChanged);
         public ReadOnlyObservableCollection<CircleEventModel> CircleEvents
         {
             get => (ReadOnlyObservableCollection<CircleEventModel>)GetValue(CircleEventsProperty);
             set => SetValue(CircleEventsProperty, value);
         }
-
-        public static readonly BindableProperty SelectionDatesModeProperty =
-            BindableProperty.Create(nameof(SelectionDatesMode), typeof(SelectionMode), typeof(MonthDays), SelectionMode.Single, propertyChanging:OnSelectedDatesModeChanged);
         public SelectionMode SelectionDatesMode
         {
             get => (SelectionMode)GetValue(SelectionDatesModeProperty);
             set => SetValue(SelectionDatesModeProperty, value);
         }
-
-        public static readonly BindableProperty SelectedDatesProperty =
-          BindableProperty.Create(nameof(SelectedDates), typeof(ObservableRangeCollection<DateTime>), typeof(MonthDays), new ObservableRangeCollection<DateTime>(), BindingMode.TwoWay, propertyChanged: OnSelectedDatesChanged);
         public ObservableRangeCollection<DateTime> SelectedDates
         {
             get => (ObservableRangeCollection<DateTime>)GetValue(SelectedDatesProperty);
             set => SetValue(SelectedDatesProperty, value);
         }
-
-        public static readonly BindableProperty DayViewsProperty =
-          BindableProperty.Create(nameof(DayViews), typeof(List<DayView>), typeof(MonthDays), new List<DayView>(), BindingMode.OneWayToSource);
         public List<DayView> DayViews
         {
             get => (List<DayView>)GetValue(DayViewsProperty);
             set => SetValue(DayViewsProperty, value);
         }
+        public ICommand PressedCommand { get; private set; }
+        public ICommand LongPressedCommand { get; private set; }
 
         #endregion
 
@@ -166,57 +166,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
         }
 
         #endregion
-
-        private void BuildSelectionDaysEngine(SelectionMode selectingMode)
-        {
-            switch (selectingMode)
-            {
-                case SelectionMode.Single:
-                    _selectionDateEngine = new SingleSelectionDayEngine();
-                    break;
-                case SelectionMode.Multiply:
-                    _selectionDateEngine = new MultipleSelectionDayEngine();
-                    break;
-            }
-        }
-        private void SelectInEngine(DayModel dayModel) => _selectionDateEngine.SelectItem(dayModel);
-        private void PropagateUpLongPressed(DayModel dayModel)
-        {
-            RequestVibration();
-            DateTime dateTime = dayModel.Date;
-            DayLongPressedCommand?.Execute(dateTime);
-        }
-        private void RequestVibration()
-        {
-            try
-            {
-                TimeSpan duration = TimeSpan.FromSeconds(0.1);
-                Vibration.Vibrate(duration);
-            }
-            catch (FeatureNotSupportedException)
-            {
-                // Feature not supported on device
-            }
-            catch (Exception)
-            {
-                // Other error has occurred.
-            }
-        }
-        private void InitializeDays()
-        {
-            var newDaysViews = new List<DayView>();
-            foreach (DayView dayView in daysControl.Children.OfType<DayView>())
-            {
-                var dayModel = new DayModel();
-
-                dayView.BindingContext = dayModel;
-                dayModel.PressedCommand = PressedCommand;
-                dayModel.LongPressedCommand = LongPressedCommand;
-                _notifyThemeChanged.ThemeChanged += (sender, e) => dayModel.NotifyColors();
-                newDaysViews.Add(dayView);
-            }
-            DayViews = newDaysViews;
-        }
 
         public void UpdateDays()
         {
@@ -268,6 +217,56 @@ namespace ProjectShedule.Shedule.Calendar.Views
             });
         }
 
+        private void BuildSelectionDaysEngine(SelectionMode selectingMode)
+        {
+            switch (selectingMode)
+            {
+                case SelectionMode.Single:
+                    _selectionDateEngine = new SingleSelectionDayEngine();
+                    break;
+                case SelectionMode.Multiply:
+                    _selectionDateEngine = new MultipleSelectionDayEngine();
+                    break;
+            }
+        }
+        private void SelectInEngine(DayModel dayModel) => _selectionDateEngine.SelectItem(dayModel);
+        private void PropagateUpLongPressed(DayModel dayModel)
+        {
+            RequestVibration();
+            DateTime dateTime = dayModel.Date;
+            DayLongPressedCommand?.Execute(dateTime);
+        }
+        private void RequestVibration()
+        {
+            try
+            {
+                TimeSpan duration = TimeSpan.FromSeconds(0.1);
+                Vibration.Vibrate(duration);
+            }
+            catch (FeatureNotSupportedException)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception)
+            {
+                // Other error has occurred.
+            }
+        }
+        private void InitializeDays()
+        {
+            var newDaysViews = new List<DayView>();
+            foreach (DayView dayView in daysControl.Children.OfType<DayView>())
+            {
+                var dayModel = new DayModel();
+
+                dayView.BindingContext = dayModel;
+                dayModel.PressedCommand = PressedCommand;
+                dayModel.LongPressedCommand = LongPressedCommand;
+                _notifyThemeChanged.ThemeChanged += (sender, e) => dayModel.NotifyColors();
+                newDaysViews.Add(dayView);
+            }
+            DayViews = newDaysViews;
+        }
         private void UpdateEventsOnDays()
         {
             foreach (var dayView in DayViews)
@@ -289,6 +288,6 @@ namespace ProjectShedule.Shedule.Calendar.Views
             dayModel.TwoEvent = events.Length >= 2 ? events?[1] : new CircleEventModel();
             dayModel.ThreeEvent = events.Length >= 3 ? events?[2] : new CircleEventModel();
         }
-        
+
     }
 }

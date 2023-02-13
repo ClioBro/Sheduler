@@ -1,5 +1,4 @@
 ﻿using System;
-using static ProjectShedule.GlobalSetting.Settings.AppTheme.IThemeController;
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {

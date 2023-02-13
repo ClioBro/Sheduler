@@ -123,4 +123,7 @@
   <data name="DeleteButton" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="ReviveButton" xml:space="preserve">
+    <value>Возобновить</value>
+  </data>
 </root>

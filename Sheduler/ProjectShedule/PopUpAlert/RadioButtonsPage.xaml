@@ -6,8 +6,9 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:popUpAlert="clr-namespace:ProjectShedule.PopUpAlert" 
-    xmlns:models="clr-namespace:ProjectShedule.Shedule.Models"
-    x:DataType="popUpAlert:RadioButtonsSelecterPage"
+    xmlns:views="clr-namespace:ProjectShedule.Shedule.Views" 
+    xmlns:models="clr-namespace:ProjectShedule.Core.RadioButton"
+    x:DataType="popUpAlert:RadioButtonsSelecterPageViewModel"
     BackgroundColor="Transparent"
     CloseWhenBackgroundIsClicked="True">
     <pages:PopupPage.Resources>
@@ -91,31 +92,27 @@
         Margin="35,15" Padding="10"
         BackgroundColor="{DynamicResource PopUpBackGroundColor}"
         BorderColor="{DynamicResource PopUpPrimaryBorderColor}">
-        <StackLayout>
-            <Label 
-                Text="{Binding MainText}" 
-                IsVisible="{Binding MainTextVisible}" 
-                Style="{DynamicResource MediumLabelStyle}"
-                HorizontalOptions="CenterAndExpand"/>
-            <ScrollView>
-                <StackLayout 
-                BindableLayout.ItemsSource="{Binding Items}"
-                Spacing="0"
-                RadioButtonGroup.GroupName="Reminders"
-                RadioButtonGroup.SelectedValue="{Binding SelectedItem}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="models:RadioButtonItem">
-                            <RadioButton 
-                            BackgroundColor="Transparent"
-                            BorderColor="Red"
-                            CornerRadius="4"
-                            Content="{Binding Text}" 
-                            IsChecked="{Binding IsChecked}" 
-                            Value="{Binding This}"/>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
+        <CollectionView 
+            ItemsSource="{Binding Items}"
+            VerticalScrollBarVisibility="Always"
+            SelectionMode="None">
+            <CollectionView.Header>
+                <Label 
+                    Text="{Binding MainText}" 
+                    IsVisible="{Binding MainTextVisible}" 
+                    Style="{DynamicResource MediumLabelStyle}"
+                    HorizontalOptions="CenterAndExpand"/>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:RadioButtonItemModel">
+                    <RadioButton 
+                        BackgroundColor="Transparent"
+                        BorderColor="Red"
+                        CornerRadius="4"
+                        Content="{Binding Text}" 
+                        IsChecked="{Binding IsChecked}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Frame>
 </pages:PopupPage>

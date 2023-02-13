@@ -7,11 +7,12 @@ using Android.Runtime;
 
 namespace ProjectShedule._0.Droid
 {
-    [Activity(Label = "Sheduler", 
-        Icon = "@mipmap/icon", 
+    [Activity(Label = "Sheduler",
+        Icon = "@mipmap/icon",
         Theme = "@style/MainTheme",
         MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
+        //ScreenOrientation = ScreenOrientation.SensorPortrait,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize,
         LaunchMode = LaunchMode.SingleTop)]
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -23,8 +24,6 @@ namespace ProjectShedule._0.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-
-            this.RequestedOrientation = ScreenOrientation.SensorPortrait;
             LoadApplication(new App());
         }
 
@@ -37,7 +36,7 @@ namespace ProjectShedule._0.Droid
 
         protected override void OnNewIntent(Intent intent)
         {
-            
+
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ProjectShedule.GlobalSetting.Settings.AppTheme
 {
-    public interface INotifyThemeChanger
+    public interface INotifyThemeChanged
     {
         event EventHandler<ThemeChangedEventArgs> ThemeChanged;
     }

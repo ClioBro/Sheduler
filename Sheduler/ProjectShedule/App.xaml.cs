@@ -14,10 +14,9 @@ namespace ProjectShedule
             ThemeController = new ThemeController();
             Resources.Add(ThemeController.GetCurrentThemeResource());
             InitializeComponent();
-            
+
             MainPage = new AppFlyout.Main();
         }
-
         protected override void OnStart()
         {
 
@@ -25,6 +24,7 @@ namespace ProjectShedule
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()

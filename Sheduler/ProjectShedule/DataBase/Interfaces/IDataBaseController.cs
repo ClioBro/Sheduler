@@ -1,8 +1,7 @@
 ﻿namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface IDataBaseController<T> : IGetQuereblyItems<T>
+    public interface IDataBaseController<T> : IInsertItem<T>, IUpdateItem<T>, IDeleteItem<T>
     {
-        void Save(T packNote);
-        void Delete(T packNote);
+
     }
 }

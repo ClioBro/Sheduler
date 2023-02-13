@@ -2,10 +2,9 @@
 
 namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface ISmallTask : ITable, ICloneable
+    public interface ISmallTask : ITableObject, ICloneable
     {
-        int IdNote { get; }
-        string Text { get; }
+        string Header { get; }
         bool Status { get; }
     }
 }

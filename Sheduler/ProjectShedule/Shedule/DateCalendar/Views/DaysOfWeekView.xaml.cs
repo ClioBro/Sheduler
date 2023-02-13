@@ -14,28 +14,31 @@ namespace ProjectShedule.Shedule.Calendar.Views
             TwoChars = 2,
             ThreeChars = 3
         }
-        public DaysOfWeek ()
+        public DaysOfWeek()
         {
             InitializeComponent();
             UpdateDayTitles();
         }
 
         #region BindableProperties
+
         public static readonly BindableProperty CultureProperty =
           BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(DaysOfWeek), CultureInfo.CurrentCulture);
+
+        public static readonly BindableProperty DaysTitleMaximumLengthProperty =
+          BindableProperty.Create(nameof(DaysTitleMaximumLength), typeof(DaysTitleMaxLength), typeof(DaysOfWeek), DaysTitleMaxLength.TwoChars);
+
         public CultureInfo Culture
         {
             get => (CultureInfo)GetValue(CultureProperty);
             set => SetValue(CultureProperty, value);
         }
-
-        public static readonly BindableProperty DaysTitleMaximumLengthProperty =
-          BindableProperty.Create(nameof(DaysTitleMaximumLength), typeof(DaysTitleMaxLength), typeof(DaysOfWeek), DaysTitleMaxLength.TwoChars);
         public DaysTitleMaxLength DaysTitleMaximumLength
         {
             get => (DaysTitleMaxLength)GetValue(DaysTitleMaximumLengthProperty);
             set => SetValue(DaysTitleMaximumLengthProperty, value);
         }
+
         #endregion
 
         private void UpdateDayTitles()
@@ -45,7 +48,11 @@ namespace ProjectShedule.Shedule.Calendar.Views
             foreach (var dayLabel in daysControl.Children.OfType<Label>())
             {
                 string abberivatedDayName = Culture.DateTimeFormat.AbbreviatedDayNames[dayNumber];
-                dayLabel.Text = abberivatedDayName.ToUpper().Substring(0, (int)DaysTitleMaximumLength > abberivatedDayName.Length ? abberivatedDayName.Length : (int)DaysTitleMaximumLength);
+                dayLabel.Text = abberivatedDayName
+                    .ToUpper()
+                    .Substring(0, (int)DaysTitleMaximumLength > abberivatedDayName.Length 
+                    ? abberivatedDayName.Length 
+                    : (int)DaysTitleMaximumLength);
                 dayNumber = (dayNumber + 1) % 7;
             }
         }

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms.Xaml;
 
-namespace ProjectShedule.Calendar.Controls.ThemingDemo
+namespace ProjectShedule.ThemingDemo
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LightTheme

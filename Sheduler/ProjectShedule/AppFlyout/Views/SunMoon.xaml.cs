@@ -9,15 +9,17 @@ namespace ProjectShedule.AppFlyout.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SunMoon : ContentView
     {
-        private BaseViewElementAnimate _baseViewElementAnimate ;
+        private BaseViewElementAnimate _baseViewElementAnimate;
         private readonly IThemeController _themeController;
-        public bool IsAnimated { get; protected set; }
+        
         public SunMoon()
         {
             InitializeComponent();
             _themeController = App.ThemeController;
         }
 
+        public bool IsAnimated { get; protected set; }
+        
         private void SwitchTheme(object sender, EventArgs e)
         {
             if (!IsAnimated && sender is VisualElement visualElement)
@@ -45,10 +47,9 @@ namespace ProjectShedule.AppFlyout.Views
             }
             void RotationAnimated()
             {
-                _baseViewElementAnimate = new RotationAnimatedViewElement();
-                _baseViewElementAnimate.SinInElement(visualElement, ()=> this.IsAnimated = false);
+                _baseViewElementAnimate = new RotationAnimatedViewElement() { FastReturnOriginalRotation = true };
+                _baseViewElementAnimate.SinInElement(visualElement, () => this.IsAnimated = false);
             }
         }
-        
     }
 }

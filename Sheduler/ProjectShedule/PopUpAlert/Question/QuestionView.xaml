@@ -74,6 +74,5 @@
                     Clicked="AgreementButton_Clicked"/>
             </StackLayout>
         </Grid>
-        
     </Frame>
 </xctViews:Popup>

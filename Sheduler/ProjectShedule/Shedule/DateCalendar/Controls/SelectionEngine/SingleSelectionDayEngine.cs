@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Calendar.Models;
+﻿using ProjectShedule.Shedule.DateCalendar.Models;
 
 namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
 {
@@ -21,7 +21,7 @@ namespace ProjectShedule.Shedule.Calendar.Controls.SelectionEngine
                 _selectedDayModel = newDay;
                 _selectedItems.Replace(_selectedDayModel.Date);
             }
-                
+
         }
     }
 }

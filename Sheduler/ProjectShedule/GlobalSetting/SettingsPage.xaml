@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectShedule.GlobalSetting.SettingsPage"
+             xmlns:local="clr-namespace:ProjectShedule.GlobalSetting"
+             xmlns:settingViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.Views"
+             x:DataType="local:SettingPageViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Content>
+        <ScrollView Padding="2">
+            <StackLayout
+                xmlns:themeViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.AppTheme.Views"
+                xmlns:sheduleDeleteQuestionViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleNotesDelete.Views"
+                xmlns:sheduleEventsViews="clr-namespace:ProjectShedule.GlobalSetting.Settings.SheduleEvents.Views">
+                <themeViews:ThemeSettingView 
+                    BindingContext="{Binding ThemeSettingViewModel}"/>
+                <sheduleDeleteQuestionViews:SheduleDeleteQuestionSettingView 
+                    BindingContext="{Binding SheduleDeleteSettingViewModel}"/>
+                <sheduleEventsViews:SheduleEventsSettingView 
+                    BindingContext="{Binding SheduleEventsSettingViewModel}"/>
+                <settingViews:CarouselSettings
+                    BindingContext="{Binding CarouselSettingsViewModel}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

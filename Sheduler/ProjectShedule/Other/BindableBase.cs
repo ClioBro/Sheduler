@@ -18,8 +18,8 @@ namespace ProjectShedule
 
         protected TProperty GetProperty<TProperty>(TProperty defaultValue = default, [CallerMemberName] string propertyName = "")
         {
-            return !_properties.ContainsKey(propertyName) 
-                ? defaultValue 
+            return !_properties.ContainsKey(propertyName)
+                ? defaultValue
                 : (TProperty)_properties[propertyName];
         }
 
@@ -40,7 +40,15 @@ namespace ProjectShedule
             return this;
         }
 
-        internal BindableBase<TData> Notify(string propertyName, params string[] otherPropertyNames)
+        internal BindableBase<TData> NotifyProperty(params string[] propertyNames)
+        {
+            foreach (string propertyName in propertyNames)
+            {
+                NotifyProperty(propertyName);
+            }
+            return this;
+        }
+        internal BindableBase<TData> NotifyProperty([CallerMemberName] string propertyName = "")
         {
             if (!_propertyChangedArgs.ContainsKey(propertyName))
             {
@@ -48,24 +56,12 @@ namespace ProjectShedule
             }
 
             PropertyChanged?.Invoke(this, _propertyChangedArgs[propertyName]);
-
-            foreach (string otherPropertyName in otherPropertyNames)
-            {
-                if (!_propertyChangedArgs.ContainsKey(otherPropertyName))
-                {
-                    _propertyChangedArgs.Add(otherPropertyName, new PropertyChangedEventArgs(otherPropertyName));
-                }
-
-                PropertyChanged?.Invoke(this, _propertyChangedArgs[otherPropertyName]);
-            }
-
             return this;
         }
-
-        internal BindableBase<TData> Notify<TProperty>(Expression<Func<TData, TProperty>> propertyExpression)
+        internal BindableBase<TData> NotifyProperty<TProperty>(Expression<Func<TData, TProperty>> propertyExpression)
         {
             return propertyExpression.Body is MemberExpression property
-                ? Notify(property.Member.Name)
+                ? NotifyProperty(property.Member.Name)
                 : throw new ArgumentException($"Expression '{propertyExpression}' does not refer to a property.");
         }
 

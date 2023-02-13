@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectShedule.AppFlyout.Main"
             xmlns:pages="clr-namespace:ProjectShedule.AppFlyout.Views"
-            xmlns:myPages="clr-namespace:ProjectShedule.Shedule">
+            xmlns:shedulePage="clr-namespace:ProjectShedule.Shedule">
   <FlyoutPage.Flyout>
     <pages:FlyoutPage x:Name="FlyoutPage" />
   </FlyoutPage.Flyout>
   <FlyoutPage.Detail>
     <NavigationPage>
       <x:Arguments>
-          <myPages:ShedulePage/>
+          <shedulePage:ShedulePage/>
       </x:Arguments>
     </NavigationPage>
   </FlyoutPage.Detail>

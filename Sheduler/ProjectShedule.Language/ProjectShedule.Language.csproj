@@ -15,6 +15,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\OtherElements\SearchBar.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SearchBar.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\OtherElements\SwipeResource.Designer.cs">
       <DependentUpon>SwipeResource.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -55,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\PopUp\Exception\ExceptionResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExceptionResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\PopUp\Repeads\Repeads.Designer.cs">
       <DependentUpon>Repeads.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -70,6 +80,11 @@
     <EmbeddedResource Update="Resources\OtherElements\Filters.resx">
       <LastGenOutput>Filters.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectShedule.Language.Resources.OtherElements</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\OtherElements\SearchBar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchBar.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ProjectShedule.Language.Resources.OtherElements</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\OtherElements\SwipeResource.resx">
@@ -111,6 +126,10 @@
       <LastGenOutput>EntryViewResource.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>ProjectShedule.Language.Resources.PopUp.Entry</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PopUp\Exception\ExceptionResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\PopUp\Repeads\Repeads.resx">
       <LastGenOutput>Repeads.Designer.cs</LastGenOutput>

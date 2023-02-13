@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjectShedule.Calendar.Controls.ThemingDemo.DarkTheme">
-    <!--Text-->
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ProjectShedule.ThemingDemo.DarkTheme">
+                        <!--Colors-->
+    <!--Pages/Views-->
     <Color x:Key="PageBackgroundColor">#353939</Color>
     <Color x:Key="ViewBackgroundColor">#4A4C4C</Color>
     <Color x:Key="NavigationBarColor">#4F53C2</Color>
     <Color x:Key="PrimaryColor">#3C3C3C</Color>
     <Color x:Key="SecondaryColor">White</Color>
+    <Color x:Key="TransparentColor">Transparent</Color> 
+    <!--Text-->
     <Color x:Key="PrimaryTextColor">WhiteSmoke</Color>
     <Color x:Key="SecondaryTextColor">Gray</Color>
     <Color x:Key="TertiaryTextColor">#8689DA</Color>
-    <Color x:Key="TransparentColor">Transparent</Color> 
     <!--Swipe-->
     <Color x:Key="SwipeItemDeleteBackGroundColor">#D76464</Color>
     <Color x:Key="SwipeItemEditBackGroundColor">#438C43</Color>
@@ -51,7 +54,10 @@
     <!--AppBar-->
     <Color x:Key="AppBarBackGroundColor">#4B555B</Color>
     <Color x:Key="AppBarTextColor">White</Color>
+    <!--CalendarDays-->
+    <Color x:Key="CalendarDayDefaultBackGroundColor">#4A4C4C</Color>
     
+                                <!--Styles-->
     <Style x:Key="ThemeImageButton" TargetType="ImageButton">
         <Setter Property="Source" Value="son_image_negate.png"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -77,7 +83,15 @@
         <Setter Property="BackgroundColor" Value="Transparent"/>
     </Style>
 
-    <!--CalendarDays-->
-    <Color x:Key="CalendarDayDefaultBackGroundColor">#4A4C4C</Color>
+    <Image x:Key="EditIamge" Source="edit_Icon_negate.png"/>
+    <Color x:Key="EditBackGroundColor">#6FD683</Color>
+    <Color x:Key="EditTextColor">#FFFFFF</Color>
 
+    <Image x:Key="DeleteIamge" Source="trash_icon_negate.png"/>
+    <Color x:Key="DeleteBackGroundColor">#BF3333</Color>
+    <Color x:Key="DeleteTextColor">#FFFFFF</Color>
+
+    <Image x:Key="ReviveIamge" Source="delete_reset_icon.png"/>
+    <Color x:Key="ReviveBackGroundColor">#6FD683</Color>
+    <Color x:Key="ReviveTextColor">Black</Color>
 </ResourceDictionary>

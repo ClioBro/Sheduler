@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:toolKit="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:languageResx="clr-namespace:ProjectShedule.Language.Resources.OtherElements;assembly=ProjectShedule.Language"
+             xmlns:swipeViews="clr-namespace:ProjectShedule.Core.Swipe"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
+             x:DataType="viewModels:SimpleSmallTaskViewModel" 
+             x:Class="ProjectShedule.Shedule.Views.TaskView"
+             Opacity="{Binding Opacity}"
+             IsEnabled="{Binding ViewIsEnable}">
+  <ContentView.Content CompressedLayout.IsHeadless="True">
+        <swipeViews:PercenetAchivementSwipeView 
+            x:Name="swipeView"
+            RightPercenetAchivement="{Binding SwipeView.RightDisclosurePercenetAchivement}"
+            LeftPercenetAchivement="{Binding SwipeView.LeftDisclosurePercenetAchivement}"
+            Threshold="{Binding SwipeView.Threshold}"
+            RightItems="{Binding SwipeView.RightItems}"
+            LeftItems="{Binding SwipeView.LeftItems}">
+            <yummy:PancakeView 
+                x:Name="pancakeView"
+                Margin="0"
+                Padding="0">
+                <input:CheckBox
+                    Padding="5"
+                    CheckChangedCommand="{Binding CheckChangedCommand}"
+                    CommandParameter="{Binding .}"
+                    Text="{Binding Header}" 
+                    IsChecked="{Binding Status}"
+                    Type="Regular" TextFontSize="18"
+                    TextColor="{DynamicResource PrimaryTextColor}" 
+                    BorderColor="{DynamicResource SecondaryColor}"
+                    Color="{DynamicResource SecondaryColor}"
+                    BackgroundColor="{DynamicResource PageBackgroundColor}"
+                    IconColor="#0BAB35">
+                </input:CheckBox>
+            </yummy:PancakeView>
+        </swipeViews:PercenetAchivementSwipeView>
+    </ContentView.Content>
+</ContentView>

@@ -129,4 +129,7 @@
   <data name="SheduleTitle" xml:space="preserve">
     <value>Планировщик</value>
   </data>
+  <data name="RecycleBinTitle" xml:space="preserve">
+    <value>Корзина</value>
+  </data>
 </root>

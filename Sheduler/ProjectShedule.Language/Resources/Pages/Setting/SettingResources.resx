@@ -147,4 +147,16 @@
   <data name="OnLabel" xml:space="preserve">
     <value>On</value>
   </data>
+  <data name="CarouselHeaderLabel" xml:space="preserve">
+    <value>Calendar:</value>
+  </data>
+  <data name="YearsRangeLabel" xml:space="preserve">
+    <value>Years Range:</value>
+  </data>
+  <data name="StartLabel" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>End:</value>
+  </data>
 </root>

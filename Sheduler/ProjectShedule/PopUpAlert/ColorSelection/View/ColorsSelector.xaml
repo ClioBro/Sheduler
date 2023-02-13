@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ProjectShedule.PopUpAlert.ColorSelection.View.ColorsSelector"
+             xmlns:viewModels="clr-namespace:ProjectShedule.PopUpAlert.ColorSelection.ViewModels"
+             x:DataType="viewModels:ColoredMarksSelectorViewModel">
+    <ContentView.Resources>
+        <Style x:Key="ColoredButton" TargetType="Button">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <FlexLayout 
+            Direction="{Binding Direction}"
+            Wrap="{Binding Wrap}"
+            AlignContent="{Binding AlignContent}"
+            AlignItems="{Binding AlignItems}"
+            JustifyContent="{Binding JustifyContent}"
+            BindableLayout.ItemsSource="{Binding ColoredMarks}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Button
+                        x:DataType="viewModels:ColoredMarkViewModel"
+                        Style="{x:DynamicResource ColoredButton}"
+                        BorderColor="{Binding State.BorderColor}"
+                        BorderWidth="{Binding State.BorderChick}"
+                        BackgroundColor="{Binding ValueColor}"
+                        Command="{Binding PressedCommand}"
+                        CommandParameter="{Binding .}"/>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </ContentView.Content>
+</ContentView>

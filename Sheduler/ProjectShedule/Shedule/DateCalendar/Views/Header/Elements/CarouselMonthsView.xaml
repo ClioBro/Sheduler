@@ -9,12 +9,12 @@
     
   <ContentView.Content>
         <CarouselView ItemsSource="{Binding Months, Source={x:Reference carouselMonthView}}"
-                          x:Name="carouselMonth" Loop="True"
-                          PeekAreaInsets="130"
-                          IsScrollAnimated="False"
-                          CurrentItem="{Binding CurrentMonth, Source={x:Reference carouselMonthView}}"
-                          CurrentItemChanged="CarouselMonth_CurrentItemChanged"
-                          HorizontalOptions="Center">
+            x:Name="carouselMonth" Loop="True"
+            PeekAreaInsets="130"
+            IsScrollAnimated="False"
+            CurrentItem="{Binding DisplayedMonth, Source={x:Reference carouselMonthView}}"
+            CurrentItemChanged="CarouselMonth_CurrentItemChanged"
+            HorizontalOptions="Center">
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal" SnapPointsAlignment="Center" SnapPointsType="Mandatory"/>
             </CarouselView.ItemsLayout>

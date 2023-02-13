@@ -1,6 +1,6 @@
 ﻿namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface ITable
+    public interface ITableObject
     {
         int Id { get; }
     }

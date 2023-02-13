@@ -1,26 +1,15 @@
 ﻿using ProjectShedule.AppFlyout.Models;
+using ProjectShedule.Core;
 using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace ProjectShedule.AppFlyout.ViewModels
 {
-    public class MainFlyoutMenuItemViewModel : INotifyPropertyChanged
+    public class MainFlyoutMenuItemViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        #region INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged == null)
-                return;
-
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
         private readonly MainFlyoutMenuItem _mainFlyoutMenuItem;
+
         public MainFlyoutMenuItemViewModel(MainFlyoutMenuItem mainFlyoutMenuItem)
         {
             _mainFlyoutMenuItem = mainFlyoutMenuItem;
@@ -28,18 +17,18 @@ namespace ProjectShedule.AppFlyout.ViewModels
 
         public ImageSource DarkImage { get; set; }
         public ImageSource LightImage { get; set; }
-        
+
         public int Id
         {
             get => _mainFlyoutMenuItem.Id;
-            set 
+            set
             {
-                if(_mainFlyoutMenuItem.Id != value)
+                if (_mainFlyoutMenuItem.Id != value)
                 {
                     _mainFlyoutMenuItem.Id = value;
                     OnPropertyChanged();
                 }
-            } 
+            }
         }
         public string Title
         {
@@ -77,5 +66,6 @@ namespace ProjectShedule.AppFlyout.ViewModels
                 }
             }
         }
+
     }
 }

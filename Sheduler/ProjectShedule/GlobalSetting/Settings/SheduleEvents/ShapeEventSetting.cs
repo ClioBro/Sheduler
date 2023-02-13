@@ -38,7 +38,7 @@ namespace ProjectShedule.GlobalSetting.Settings.SheduleEvents
             if (radius >= MinCornerRadius && radius <= MaxCornerRadius)
             {
                 SavePreference(nameof(Type.CornerRadius), radius);
-                
+
             }
         }
         public float GetCornerRadius() => GetPreference(nameof(Type.CornerRadius), _defaultCornerRadius);

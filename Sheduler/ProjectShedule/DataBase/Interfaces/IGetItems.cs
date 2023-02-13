@@ -2,9 +2,9 @@
 
 namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface IGetItems<T>
+    public interface IGetItems<out T>
     {
-        List<T> GetItems();
+        IEnumerable<T> GetAllItems();
         T GetItem(int id);
     }
 }

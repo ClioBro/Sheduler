@@ -129,4 +129,7 @@
   <data name="SheduleTitle" xml:space="preserve">
     <value>Sheduler</value>
   </data>
+  <data name="RecycleBinTitle" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
 </root>

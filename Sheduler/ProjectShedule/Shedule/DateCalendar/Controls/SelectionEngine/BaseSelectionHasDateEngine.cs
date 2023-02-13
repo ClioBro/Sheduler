@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Calendar.Models;
+﻿using ProjectShedule.Core.Interfaces;
 using ProjectShedule.Shedule.DateCalendar.Controls.SelectionEngine;
 using System;
 using Xamarin.CommunityToolkit.ObjectModel;

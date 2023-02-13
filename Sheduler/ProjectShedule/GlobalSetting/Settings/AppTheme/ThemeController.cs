@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Calendar.Controls.ThemingDemo;
+﻿using ProjectShedule.ThemingDemo;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -8,8 +8,10 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
     public class ThemeController : Setting<ThemeController>, IThemeController
     {
         public event EventHandler<ThemeChangedEventArgs> ThemeChanged;
+        
         private protected ICollection<ResourceDictionary> _mergedDictionaries = Application.Current.Resources.MergedDictionaries;
         private readonly Dictionary<ThemeKey, ResourceDictionary> _themesDictionaries;
+        
         public ThemeController()
         {
             _themesDictionaries = new Dictionary<ThemeKey, ResourceDictionary>
@@ -19,6 +21,7 @@ namespace ProjectShedule.GlobalSetting.Settings.AppTheme
             };
             CurrentTheme = GetPreference(nameof(ThemeKey.Dark), false) ? ThemeKey.Dark : ThemeKey.Light;
         }
+        
         public ThemeKey CurrentTheme { get; protected set; }
         public void SetThemeOnApp(ThemeKey newTheme)
         {

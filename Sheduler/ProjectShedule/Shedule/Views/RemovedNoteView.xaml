@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
+             xmlns:thrashViews="clr-namespace:ProjectShedule.ThrashCan.Views"
+             xmlns:swipe="clr-namespace:ProjectShedule.Core.Swipe"
+             xmlns:core="clr-namespace:ProjectShedule.Core"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:DataType="viewModels:ThrashNoteViewModel"
+             x:Class="ProjectShedule.ThrashCan.Views.RemovedNoteView">
+  <ContentView.Content>
+        <yummy:PancakeView
+            VerticalOptions="StartAndExpand" 
+            HorizontalOptions="FillAndExpand"
+            Grid.Column="1"
+            CornerRadius="4">
+            <core:MyExpander 
+                AnimationLength="100" 
+                IsExpanded="{Binding IsExpanded}"
+                ExpanderInfo="{Binding ExpanderInfo}"
+                ForceUpdateSizeCommand="{Binding ForceUpdateSizeCommand}">
+                <core:MyExpander.Header>
+                    <swipe:PercenetAchivementSwipeView
+                        x:Name="noteSwipeView"
+                        HeightRequest="80"
+                        SwipeViewController="{Binding SwipeViewController}"
+                        RightItems="{Binding RightItems}"
+                        LeftItems="{Binding LeftItems}">
+                        <Grid 
+                            BackgroundColor="{Binding BackGroundColor}" 
+                            RowSpacing="1" 
+                            ColumnSpacing="1" 
+                            Opacity="{Binding Opacity}">
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <BoxView 
+                                Color="{Binding LineColor}"
+                                Grid.Column="0" Grid.RowSpan="3" 
+                                WidthRequest="4"/>
+                            <Label 
+                                Text="{Binding Header}"
+                                LineBreakMode="TailTruncation"
+                                TextColor="Black"
+                                FontSize="23"
+                                Grid.Column="1"
+                                MaxLines="1"/>
+                            <Label 
+                                Text="{Binding DopText}"
+                                IsVisible="{Binding DopTextIsVisible}"
+                                VerticalOptions="Start"
+                                LineHeight="0.8"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <Grid Grid.Column="2" HorizontalOptions="End" IsVisible="{Binding IsAppointmentDate}" 
+                                  RowSpacing="0" ColumnSpacing="0"
+                                  WidthRequest="80">
+                                <Label 
+                                    Text="{Binding AppointmentDate, StringFormat='{0:d MMM yy}'}"
+                                    HorizontalOptions="Start"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"/>
+                                <Label 
+                                    Text="{Binding AppointmentDate, StringFormat='{}{0:H:mm}'}" 
+                                    HorizontalOptions="Start"
+                                    Grid.Row="1"/>
+                                <Image
+                                    Source="repeat_icon"
+                                    IsVisible="{Binding HasRepeat}"
+                                    Margin="1.5"
+                                    Grid.Row="1"
+                                    Grid.Column="1"/>
+                            </Grid>
+                            <Image 
+                                Source="arrowDown.png" 
+                                Aspect="AspectFit" 
+                                HeightRequest="17" WidthRequest="17" 
+                                Margin="1"
+                                Grid.Column="3"
+                                HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" 
+                                IsVisible="{Binding HasSmallTasks}">
+                                <Image.Triggers>
+                                    <DataTrigger 
+                                        TargetType="Image"
+                                        Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                        Value="True">
+                                        <Setter 
+                                            Property="Source" 
+                                            Value="arrowUp.png"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <Label 
+                                Text="{Binding TasksCompletedInformation}"  
+                                VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" 
+                                Grid.Column="3"
+                                TextColor="Black" FontAttributes="Italic"
+                                IsVisible="{Binding HasSmallTasks}"/>
+                            <ImageButton 
+                                Aspect="AspectFit" 
+                                HeightRequest="30" WidthRequest="30" 
+                                Grid.Column="3" Grid.Row="1" 
+                                BackgroundColor="{DynamicResource TransparentColor}"
+                                HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" 
+                                Source="read_icon.png"
+                                IsVisible="false"/>
+                            <Label 
+                                Grid.Row="2" Grid.Column="1"
+                                HorizontalOptions="Start"
+                                VerticalOptions="End"
+                                FontSize="10" Text="{Binding CreatedDateTime, StringFormat='{0:d MMM yy. H:mm}'}"/>
+                        </Grid>
+                    </swipe:PercenetAchivementSwipeView>
+                </core:MyExpander.Header>
+                <core:MyExpander.ContentTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            BindableLayout.ItemsSource="{Binding ReadOnlySmallTaskViewModels}"
+                            Spacing="0" 
+                            IsEnabled="{Binding SmallTasksContainerIsEnable}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate >
+                                    <thrashViews:RemovedSmallTaskView/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </DataTemplate>
+                </core:MyExpander.ContentTemplate>
+            </core:MyExpander>
+        </yummy:PancakeView>
+    </ContentView.Content>
+</ContentView>

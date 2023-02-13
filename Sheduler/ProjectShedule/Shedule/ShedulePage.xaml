@@ -4,18 +4,17 @@
              xmlns:viewModels="clr-namespace:ProjectShedule.Shedule.ViewModels"
              xmlns:calendarViews="clr-namespace:ProjectShedule.Shedule.Calendar.Views"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
-             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views"
-             xmlns:managerPackNote ="clr-namespace:ProjectShedule.Shedule.PackNotesManager"
+             xmlns:views="clr-namespace:ProjectShedule.Shedule.Views" 
+             xmlns:filtermanager="clr-namespace:ProjectShedule.Shedule.PackNotesManager.FilterManager"
              x:Class="ProjectShedule.Shedule.ShedulePage"
-             x:DataType="viewModels:SheduleViewModel"
+             x:DataType="viewModels:ShedulePageViewModel"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <NavigationPage.TitleView >
         <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True" Spacing="0">
             <Label 
-                Text="{Binding Title}"        
+                Text="{Binding Title}"       
                 Style="{DynamicResource MediumLabelStyle}"
-                VerticalOptions="Center" />
+                VerticalOptions="Center"/>
             <Label
                 Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:d/MM/yyy}'}"
                 Style="{DynamicResource SmallLabelStyle}"
@@ -48,69 +47,17 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <CollectionView
-                ItemsSource="{Binding PackNotes}"
+                ItemsSource="{Binding NotesViewModels}"
                 ItemsUpdatingScrollMode="KeepScrollOffset">
                 <CollectionView.Header>
-                    <StackLayout>
+                    <StackLayout CompressedLayout.IsHeadless="True">
                         <calendarViews:DateCalendarView
-                            SelectedDates="{Binding SelectedDates}"
+                            SelectedDates="{Binding CalendarSelectedDates}"
                             MonthDaysIsVisible="{Binding ExpandedCalendar}"
                             CircleEvents="{Binding EventsForCalendar}"
                             CalendarDayLongPressedCommand="{Binding CalendarDayLongPressedCommand}"
                             DisplayedCarouselDayMontYear="{Binding DisplayedDateOnCarousel}"/>
-                        <xct:Expander AnimationLength="100">
-                            <xct:Expander.Header>
-                                <Frame
-                                    HeightRequest="27"
-                                    Padding="1"
-                                    BorderColor="{DynamicResource PopUpPrimaryBorderColor}"
-                                    BackgroundColor="{DynamicResource TransparentColor}">
-                                    <FlexLayout 
-                                        AlignItems="Center"
-                                        JustifyContent="SpaceBetween">
-                                        <Label 
-                                            HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="5,0"
-                                            FontSize="18">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                        Text="{Binding FilterControl.SelectedFlter.Text}"
-                                                        TextColor="{DynamicResource PrimaryTextColor}"
-                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
-                                                    <Span 
-                                                        Text=": "
-                                                        TextColor="{DynamicResource PrimaryTextColor}"
-                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
-                                                    <Span 
-                                                        Text="{Binding FilterControl.SelectedOrder.Text}" 
-                                                        TextColor="{DynamicResource PrimaryTextColor}"
-                                                        BackgroundColor="{DynamicResource TransparentColor}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Image 
-                                            Style="{DynamicResource FilterImage}" 
-                                            HeightRequest="24" WidthRequest="24"
-                                            Margin="1"/>
-                                    </FlexLayout>
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ViewAnimatedPush"/>
-                                    </Frame.GestureRecognizers>
-                                </Frame>
-                            </xct:Expander.Header>
-                            <StackLayout CompressedLayout.IsHeadless="True" Spacing="0">
-                                <StackLayout Spacing="0">
-                                    <views:RadioButtonsView
-                                        GroupName="Filter"
-                                        Items="{Binding FilterControl.FilterTypes}"
-                                        SelectedItem="{Binding FilterControl.SelectedFlter}"/>
-                                    <views:RadioButtonsView
-                                        GroupName="Order"
-                                        Items="{Binding FilterControl.OrderTypes}"
-                                        SelectedItem="{Binding FilterControl.SelectedOrder}"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </xct:Expander>
+                        <filtermanager:FilterNoteView BindingContext="{Binding FilterNoteViewModel}"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout >
@@ -118,7 +65,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <managerPackNote:PackNoteView/>
+                        <views:PackNoteView/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

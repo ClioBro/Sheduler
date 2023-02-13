@@ -6,7 +6,8 @@ namespace ProjectShedule.Escaping
     {
         event EventHandler NotificationReceived;
         void Initialize();
-        public void SendNotification(Notification notify);
-        void ReceiveNotification(Notification notify);
+        void Send(INotification notify);
+        void Cancel(INotification notify);
+        void Receive(INotification notify);
     }
 }

@@ -1,0 +1,35 @@
+﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectShedule.Core.Search" 
+             x:Class="ProjectShedule.Core.SearchTitleView"
+             x:DataType="viewModels:SearchBarTitleViewModel">
+  <ContentView.Content>
+      <StackLayout CompressedLayout.IsHeadless="True" Spacing="0" Orientation="Horizontal">
+            <Label 
+                x:Name="label"
+                Text="{Binding Title}" 
+                VerticalOptions="CenterAndExpand"
+                Style="{DynamicResource LargeLabelStyle}"
+                MaxLines="1"
+                LineBreakMode="TailTruncation"
+                HorizontalOptions="StartAndExpand"/>
+            <SearchBar 
+                x:Name="searchBar"
+                HorizontalOptions="EndAndExpand"
+                WidthRequest="{Binding WidthRequest}"
+                Text="{Binding Text}"
+                Placeholder="{Binding Placeholder}"
+                SearchCommand="{Binding SerchCommand}"
+                SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path= Text}"
+                TextColor="{DynamicResource PrimaryTextColor}"
+                PlaceholderColor="{DynamicResource TertiaryTextColor}"
+                CancelButtonColor="{DynamicResource ButtonSecondaryTextColor}"
+                Focused="SearchBar_Focused"
+                Unfocused="SearchBar_Unfocused">
+                <SearchBar.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </SearchBar.GestureRecognizers>
+            </SearchBar>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

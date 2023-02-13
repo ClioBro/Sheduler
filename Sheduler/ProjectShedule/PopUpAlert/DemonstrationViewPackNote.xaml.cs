@@ -1,4 +1,4 @@
-﻿using ProjectShedule.Shedule.Models;
+﻿using ProjectShedule.Core.Swipe.Interfaces;
 using ProjectShedule.Shedule.ViewModels;
 using Xamarin.Forms.Xaml;
 
@@ -8,9 +8,12 @@ namespace ProjectShedule.PopUpAlert
     public partial class DemonstrationViewPackNote : Rg.Plugins.Popup.Pages.PopupPage
     {
         public static bool isPageOpened = false;
-        public DemonstrationViewPackNote(BasePackNoteViewModel packNoteViewModel)
+        public DemonstrationViewPackNote(NoteViewModel packNoteViewModel)
         {
             InitializeComponent();
+            ISwipeItemsControll swipeItemsControll = packNoteViewModel;
+            swipeItemsControll.DisableSwipeItems();
+            packNoteViewModel.SmallTasksContainerIsEnable = false;
             packNoteView.BindingContext = packNoteViewModel;
         }
 

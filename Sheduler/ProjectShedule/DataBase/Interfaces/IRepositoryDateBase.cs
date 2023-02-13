@@ -1,7 +1,7 @@
 ﻿namespace ProjectShedule.DataBase.Interfaces
 {
-    public interface IRepositoryDateBase<T> : IGetItems<T>, ISaveItemInDB<T>, IDeleteItemInDB
+    public interface IDataBase<T> : IWriteDataOperation<T>, IReadDataOperation<T>
     {
-        //SQLiteConnection database;
+
     }
 }
