@@ -8,26 +8,26 @@ namespace ProjectShedule.Shedule.Swipe
     public abstract class BaseSmallTaskSwipeItemView : BaseSwipeItemView, ISwichBackGroundColor
     {
         private readonly BackGroundColorSwich _backGroundColorSwich;
+        
         public BaseSmallTaskSwipeItemView(ImageSource imageSource, string text)
             : base()
         {
-            // Create Image For This
             Image.Source = imageSource;
             Image.Aspect = Aspect.AspectFit;
-            Image.HeightRequest = 17;
-            Image.WidthRequest = 17;
-            // Create Label For This
+            Image.HeightRequest = 20;
+            Image.WidthRequest = 20;
+
             Label.Text = text;
-            Label.Margin = 3;
-            Label.FontAttributes = FontAttributes.Bold;
+            Label.FontSize = 12;
+
             Label.TextTransform = TextTransform.Uppercase;
             Label.HorizontalOptions = LayoutOptions.Center;
-            // Create Stack For This
-            StackLayout.Spacing = 2;
+
+            StackLayout.Spacing = 0;
             StackLayout.VerticalOptions = LayoutOptions.Center;
             StackLayout.HorizontalOptions = LayoutOptions.End;
 
-            _backGroundColorSwich = new BackGroundColorSwich(StackLayout);
+            _backGroundColorSwich = new BackGroundColorSwich(this);
 
             App.ThemeController.ThemeChanged += OnThemeController_ThemeChanged;
         }
