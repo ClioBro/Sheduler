@@ -91,7 +91,7 @@
     <Color x:Key="DeleteBackGroundColor">#BF3333</Color>
     <Color x:Key="DeleteTextColor">#FFFFFF</Color>
 
-    <Image x:Key="ReviveIamge" Source="delete_reset_icon.png"/>
+    <Image x:Key="ReviveIamge" Source="delete_reset_icon_negate.png"/>
     <Color x:Key="ReviveBackGroundColor">#6FD683</Color>
-    <Color x:Key="ReviveTextColor">Black</Color>
+    <Color x:Key="ReviveTextColor">#FFFFFF</Color>
 </ResourceDictionary>
